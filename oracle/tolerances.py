@@ -20,6 +20,11 @@ float64 reference R evaluated on exactly the same input values. It passes iff
     terms. It matters only for float16, whose results near 1e-5 are subnormal (eta = 2^-24); for bfloat16 and
     float32 eta is below 1e-38, so the term is negligible. It was added after calibration found float16 false alarms
     on a fixed commit (see PREREGISTRATION.md, Deviations).
+  * Identically-zero outputs: when an *output* (not a gradient) is exactly 0 in both the float64 and the float32
+    reference (e.g. a single-class loss), relative error is undefined and term (3) is 0 by algebraic luck. Only
+    then, the allowed error is c_acc * u32 * log2(2n) * max(1, max|input|): float32 accumulation over operands of the
+    inputs' magnitude. Gradients never get this floor, so an exactly-zero gradient must still be exactly zero (e.g.
+    at ties). Added after the preliminary random run hit it (PREREGISTRATION.md, Deviations).
   * Constants: c_out = 4, c_acc = 4, K = 8. They were frozen in PREREGISTRATION.md after calibration on the fixed
     commits only.
 
@@ -69,6 +74,11 @@ def allowed_error(dtype: torch.dtype, n: int, ref_max: float, err32: float) -> f
             + C_ACC * U32 * math.log2(2 * n) * ref_max
             + K_FLOOR * err32
             + C_OUT * SMALLEST_SUBNORMAL.get(dtype, 0.0) * math.sqrt(n))
+
+
+def zero_output_floor(n: int, input_scale: float) -> float:
+    """Allowed error for an output whose float64 and float32 references are both identically zero."""
+    return C_ACC * U32 * math.log2(2 * max(int(n), 1)) * max(1.0, float(input_scale))
 
 
 def describe() -> dict:

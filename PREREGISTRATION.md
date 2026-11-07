@@ -88,3 +88,13 @@ been revised before any baseline run, and the revision recorded here.
 2. **2026-11-06, process: the first preliminary random-testing run started before calibration finished.** That run
    used the unrevised rule. It is discarded unread and re-run with the revised rule. Its raw output is kept at
    `results/prelim_random_discarded/` for transparency.
+3. **2026-11-07, tolerance rule: a floor for identically-zero outputs, after the preliminary random run (midway) hit
+   a false alarm.**
+   - On `flce@ae47958e` (fixed), spec 27 has V = 1. The exact loss is identically 0, and the float32 reference
+     also computes exactly 0, so term (3) allowed no error. The kernel returns 3.8e-7, float32 rounding of logits
+     of magnitude about 4.
+   - Fix: only for an output whose float64 and float32 references are both exactly 0, allow
+     `c_acc*u32*log2(2n)*max(1, max|input|)`. Gradients are unchanged.
+   - Calibration and the preliminary random run are re-run with the revised rule. The run that hit this is kept at
+     `results/prelim_random_v2_pre_zero_floor/`.
+   - The preliminary run is not a scored baseline; the budget-matched final run uses the revised rule throughout.

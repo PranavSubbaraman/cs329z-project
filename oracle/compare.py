@@ -15,7 +15,7 @@ import time
 import torch
 
 from .inputs import Built, clone_like, make_upstream
-from .tolerances import allowed_error
+from .tolerances import allowed_error, zero_output_floor
 
 
 def _as_tuple(out):
@@ -40,7 +40,7 @@ def reduction_size(args: dict) -> int:
     return max(dims) if dims else 1
 
 
-def compare_tensor(name, kind, T, R, R32, n) -> dict:
+def compare_tensor(name, kind, T, R, R32, n, input_scale: float = 1.0) -> dict:
     """One comparison under the tolerance rule. T kernel (native dtype), R float64 reference, R32 float32 reference."""
     item = {"name": name, "kind": kind, "dtype": str(T.dtype).replace("torch.", ""), "shape": list(T.shape)}
     if tuple(T.shape) != tuple(R.shape):
@@ -61,6 +61,8 @@ def compare_tensor(name, kind, T, R, R32, n) -> dict:
     err = float(diff.max()) if diff.numel() else 0.0
     err32 = float((r32 - r).abs().where(fin_r & torch.isfinite(r32), torch.zeros_like(r)).max()) if r.numel() else 0.0
     allowed = allowed_error(T.dtype, n, ref_max, err32)
+    if kind == "output" and ref_max == 0.0 and err32 == 0.0:  # identically-zero output (see oracle.tolerances)
+        allowed = max(allowed, zero_output_floor(n, input_scale))
     item.update(max_abs_err=err, ref_max_abs=ref_max, max_rel_err=(err / ref_max if ref_max > 0 else (0.0 if err == 0 else float("inf"))),
                 err32=err32, allowed=allowed, ratio=(err / allowed if allowed > 0 else (0.0 if err == 0 else float("inf"))),
                 passed=bool(err <= allowed))
@@ -102,9 +104,11 @@ def grad_compare(kernel_fn, ref_fn, inputs, upstream: dict | None = None, n: int
     if len(out_k) != len(out_r):
         report.update(error=f"kernel returned {len(out_k)} tensors, reference {len(out_r)}")
         return report
+    s_in = max([float(v.detach().abs().max()) for v in r64.values()
+                if isinstance(v, torch.Tensor) and v.dtype.is_floating_point and v.numel()] or [1.0])
     items = []
     for i, (T, R, R32) in enumerate(zip(out_k, out_r, out_r32)):
-        items.append(compare_tensor(f"output{i}" if len(out_k) > 1 else "output", "output", T, R, R32, n))
+        items.append(compare_tensor(f"output{i}" if len(out_k) > 1 else "output", "output", T, R, R32, n, s_in))
 
     if diff_names:
         req = [i for i, R in enumerate(out_r) if R.requires_grad]
