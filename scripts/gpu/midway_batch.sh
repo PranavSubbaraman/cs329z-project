@@ -2,7 +2,7 @@
 # Midway batch on a GPU allocation:
 #   oracle  - archive the previous preliminary outputs, re-run calibration (100 specs / fixed commit) and the
 #             preliminary random-testing run, both with the current tolerance rule
-#   agents  - one full-agent run on each instance not yet run, and one static-review run on every instance,
+#   agents  - one full-agent run and one static-review run on every instance (18 runs),
 #             3 at a time; per-run JSONL parts are merged into results/runs.jsonl afterwards
 set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"; cd "$ROOT"
@@ -18,7 +18,7 @@ case "${1:-}" in
   agents)
     mkdir -p results/runs_parts
     {
-      for i in flce@395d6166 flce@ae47958e flce@e44a5fe8 flce@9ac26bb8 fljsd@5b828eef fljsd@ed1f856d ce@8c7a5078; do echo "$i full"; done
+      for i in tvd@39adfeef tvd@559d33e7 flce@395d6166 flce@ae47958e flce@e44a5fe8 flce@9ac26bb8 fljsd@5b828eef fljsd@ed1f856d ce@8c7a5078; do echo "$i full"; done
       for i in tvd@39adfeef tvd@559d33e7 flce@395d6166 flce@ae47958e flce@e44a5fe8 flce@9ac26bb8 fljsd@5b828eef fljsd@ed1f856d ce@8c7a5078; do echo "$i static"; done
     } | xargs -P 3 -L 1 bash -c 'OMP_NUM_THREADS=1 '"$PY"' scripts/run_agent.py --instance "$0" --condition "$1" --tag midway-prelim \
           --runs-file results/runs_parts/"$0"_"$1".jsonl > results/runs_parts/"$0"_"$1".log 2>&1; echo "done $0 $1"'
