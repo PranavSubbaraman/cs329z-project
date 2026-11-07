@@ -1,0 +1,269 @@
+{
+ "pair_id": "P4_fljsd_bf16",
+ "buggy": {
+  "stdout_json": {
+   "pair_id": "P4_fljsd_bf16",
+   "tree": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "threshold": 0.02,
+    "shape": {
+     "BT": 256,
+     "H": 1024,
+     "V": 32000
+    },
+    "dtype": "bfloat16",
+    "seed": 0,
+    "torch": "2.15.0",
+    "triton_interpret": "1",
+    "cuda_capability": null,
+    "float32_output_projection_supported_here": false,
+    "tree_has_project_to_float32": false,
+    "jsd_loss_and_grad_backends": [
+     "nvidia-triton"
+    ],
+    "allow_bf16_reduced_precision_reduction": null,
+    "configs": [
+     {
+      "jsd_beta": 0.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.07194408406067238,
+      "grad_weight_rel": 0.0755734296970322,
+      "grad_input_rel_fro": 0.029536752144493184,
+      "grad_weight_rel_fro": 0.029770029931808523,
+      "loss": 120.28362274169922,
+      "loss_ref": 120.35058053392129,
+      "loss_rel": 0.0005563562047230619,
+      "finite": true,
+      "seconds_library": 79.48
+     },
+     {
+      "jsd_beta": 0.5,
+      "logit_std": 10.0,
+      "grad_input_rel": 0.025105772347900516,
+      "grad_weight_rel": 0.02154989721688884,
+      "grad_input_rel_fro": 0.02676095391250081,
+      "grad_weight_rel_fro": 0.028531703536135017,
+      "loss": 0.693129301071167,
+      "loss_ref": 0.6931287324624833,
+      "loss_rel": 8.203507617885469e-07,
+      "finite": true,
+      "seconds_library": 49.13
+     },
+     {
+      "jsd_beta": 1.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.0882527517405486,
+      "grad_weight_rel": 0.0796359052639695,
+      "grad_input_rel_fro": 0.09570311169063735,
+      "grad_weight_rel_fro": 0.09544831580874179,
+      "loss": 124.81412506103516,
+      "loss_ref": 124.85383192154755,
+      "loss_rel": 0.00031802676699058965,
+      "finite": true,
+      "seconds_library": 50.76
+     }
+    ],
+    "max_grad_rel": 0.0882527517405486
+   }
+  },
+  "exit_code": 1,
+  "seconds": 325.3
+ },
+ "fixed": {
+  "stdout_json": {
+   "pair_id": "P4_fljsd_bf16",
+   "tree": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "threshold": 0.02,
+    "shape": {
+     "BT": 256,
+     "H": 1024,
+     "V": 32000
+    },
+    "dtype": "bfloat16",
+    "seed": 0,
+    "torch": "2.15.0",
+    "triton_interpret": "1",
+    "cuda_capability": null,
+    "float32_output_projection_supported_here": false,
+    "tree_has_project_to_float32": true,
+    "jsd_loss_and_grad_backends": [
+     "nvidia-triton"
+    ],
+    "allow_bf16_reduced_precision_reduction": null,
+    "configs": [
+     {
+      "jsd_beta": 0.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.07194408406067238,
+      "grad_weight_rel": 0.0755734296970322,
+      "grad_input_rel_fro": 0.029536752144493184,
+      "grad_weight_rel_fro": 0.029770029931808523,
+      "loss": 120.28362274169922,
+      "loss_ref": 120.35058053392129,
+      "loss_rel": 0.0005563562047230619,
+      "finite": true,
+      "seconds_library": 80.66
+     },
+     {
+      "jsd_beta": 0.5,
+      "logit_std": 10.0,
+      "grad_input_rel": 0.025105772347900516,
+      "grad_weight_rel": 0.02154989721688884,
+      "grad_input_rel_fro": 0.02676095391250081,
+      "grad_weight_rel_fro": 0.028531703536135017,
+      "loss": 0.693129301071167,
+      "loss_ref": 0.6931287324624833,
+      "loss_rel": 8.203507617885469e-07,
+      "finite": true,
+      "seconds_library": 49.75
+     },
+     {
+      "jsd_beta": 1.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.0882527517405486,
+      "grad_weight_rel": 0.0796359052639695,
+      "grad_input_rel_fro": 0.09570311169063735,
+      "grad_weight_rel_fro": 0.09544831580874179,
+      "loss": 124.81412506103516,
+      "loss_ref": 124.85383192154755,
+      "loss_rel": 0.00031802676699058965,
+      "finite": true,
+      "seconds_library": 50.59
+     }
+    ],
+    "max_grad_rel": 0.0882527517405486
+   }
+  },
+  "exit_code": 1,
+  "seconds": 326.0
+ },
+ "reproduces_on_cpu": false,
+ "library_tests": [
+  {
+   "commit": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+   "files": "test/transformers/test_fused_linear_jsd.py test/ops/test_fused_linear_jsd.py",
+   "command": "cd work/trees/5b828eef2bd2a723d001a7557b2e12da1817b505 && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:<root>/scripts/harness <root>/.venv/bin/python -m pytest test/transformers/test_fused_linear_jsd.py test/ops/test_fused_linear_jsd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rs --durations=15",
+   "passed": 59,
+   "failed": 0,
+   "skipped": 12,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 74.04,
+   "subset_notes": "complete files, no subset. The 12 skips are all of test/ops/test_fused_linear_jsd.py (its conftest autouse fixture skips every test without CUDA)."
+  },
+  {
+   "commit": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f",
+   "files": "test/transformers/test_fused_linear_jsd.py test/ops/test_fused_linear_jsd.py",
+   "command": "cd work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:<root>/scripts/harness <root>/.venv/bin/python -m pytest test/transformers/test_fused_linear_jsd.py test/ops/test_fused_linear_jsd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rs --durations=15",
+   "passed": 59,
+   "failed": 0,
+   "skipped": 18,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 65.41,
+   "subset_notes": "complete files, no subset. Skips: the same 12 test/ops tests (CUDA required) + the 6 parametrizations of the fix's new regression test test_logits_projection_is_not_rounded_to_input_dtype (skipif: CUDA sm_80+, torch>=2.8)."
+  },
+  {
+   "commit": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f",
+   "files": "test/transformers/test_fused_linear_jsd.py::test_logits_projection_is_not_rounded_to_input_dtype",
+   "command": "cd work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:<root>/scripts/harness <root>/.venv/bin/python -m pytest test/transformers/test_fused_linear_jsd.py -k test_logits_projection_is_not_rounded_to_input_dtype -p no:cacheprovider -p pytest_cpu_shims -p pytest_cpu_shims_fljsd -o log_cli=false -n 3 --timeout 1200 -rA",
+   "passed": 0,
+   "failed": 5,
+   "skipped": 1,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 127.12,
+   "subset_notes": "CONTEXT run, not part of the main counts: only the fix's regression test, un-skipped on CPU by the per-kernel shim scripts/harness/pytest_cpu_shims_fljsd.py (removes its CUDA-only skipif). It fails on the fixed commit on CPU because the float32-output projection is CUDA sm_80+ only. Its internal skip (float16, beta=0.5) still applies.",
+   "failure_messages": [
+    "grad_input deviates 1.00% (float16)",
+    "grad_input deviates 1.53% (float16)",
+    "grad_input deviates 2.60% (bfloat16)",
+    "grad_input deviates 7.19% (bfloat16)",
+    "grad_input deviates 8.78% (bfloat16)"
+   ]
+  },
+  {
+   "commit": "5b828eef2bd2a723d001a7557b2e12da1817b505 (src) with ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f (test file)",
+   "files": "test/transformers/test_fused_linear_jsd.py::test_logits_projection_is_not_rounded_to_input_dtype",
+   "command": "cd work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<root>/scripts/harness <root>/.venv/bin/python -m pytest test/transformers/test_fused_linear_jsd.py -k test_logits_projection_is_not_rounded_to_input_dtype -p no:cacheprovider -p pytest_cpu_shims -p pytest_cpu_shims_fljsd -o log_cli=false -o \"pythonpath=work/trees/5b828eef2bd2a723d001a7557b2e12da1817b505/src .\" -n 3 --timeout 1200 -rA",
+   "passed": 0,
+   "failed": 5,
+   "skipped": 1,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 110.39,
+   "subset_notes": "CONTEXT run: the fixed commit's regression test file executed against the BUGGY commit's src (the tree's pyproject sets pytest pythonpath=[src, .], so it is overridden with -o; the imported liger_kernel path is printed in the log header and was checked). Same failures, same magnitudes as on the fixed src.",
+   "failure_messages": [
+    "grad_input deviates 1.00% (float16)",
+    "grad_input deviates 1.53% (float16)",
+    "grad_input deviates 2.60% (bfloat16)",
+    "grad_input deviates 7.19% (bfloat16)",
+    "grad_input deviates 8.78% (bfloat16)"
+   ]
+  }
+ ],
+ "notes": "Backend interpreter-cpu. The repro gives bug_manifest=true (exit 1) on the buggy tree AND bug_manifest=true (exit 1) on the fixed tree; per-config metrics identical across trees: True. This is the EXPECTED CPU outcome: the fix (_project_to_float32 -> torch.mm(..., out_dtype=float32)) only takes effect on CUDA with compute capability >= 8 (torch >= 2.8, same-dtype fp16/bf16 operands); off CUDA the fixed commit keeps the old (x @ w.t()).to(float32) expression, and aten::mm.dtype is not implemented on CPU at all. So the pair is NOT distinguishable on CPU; the real GPU run is pending (TRITON_INTERPRET=0 .venv/bin/python harness_only/phase1/run_repro_P4_fljsd_bf16.py, then rebuild this file). Threshold (2%) validated harness-side by a pure-torch SIMULATION over 5 seeds (float32-output path <= 0.54%, cast-after-matmul path >= 8.83%) and by an EMULATION that runs the fixed commit's library code on CPU with only _project_to_float32 monkeypatched to its CUDA branch (repro exit 0, max rel 0.49%). Liger's own suites pass at both commits on CPU (they cannot see this bug: their oracle rounds the same way); the fix's regression test is CUDA-gated and, un-skipped on CPU, fails identically at both.",
+ "harness_evidence": {
+  "simulation": {
+   "path": "harness_only/phase1/P4_fljsd_bf16_sim.json",
+   "script": "harness_only/phase1/P4_fljsd_bf16_sim.py",
+   "kind": "SIMULATION (plain torch, no liger_kernel import); not a library run",
+   "threshold": 0.02,
+   "criterion_per_seed": {
+    "cast_after_matmul": {
+     "0": 0.0882527517405486,
+     "1": 0.15748920302048378,
+     "2": 0.13718573654405675,
+     "3": 0.12395482206607386,
+     "4": 0.12439257129615769
+    },
+    "float32_output": {
+     "0": 0.004932401200662218,
+     "1": 0.005373017134832412,
+     "2": 0.004852567317912213,
+     "3": 0.0047755991585880985,
+     "4": 0.005127900665058695
+    }
+   },
+   "margin_fixed_path": 3.722303409446286,
+   "margin_buggy_path": 4.4126375870274295,
+   "threshold_separates_paths_for_every_seed": true
+  },
+  "emulation_fixed_commit_float32_projection": {
+   "path": "harness_only/phase1/P4_fljsd_bf16_patched_projection.json",
+   "script": "harness_only/phase1/P4_fljsd_bf16_patched_projection.py",
+   "kind": "EMULATION: fixed-commit library on CPU with _project_to_float32 monkeypatched to a float32-output projection (its CUDA sm_80+ branch); not an unmodified library run",
+   "repro_exit_code": 0,
+   "max_grad_rel": 0.004932401200662218,
+   "configs": [
+    {
+     "jsd_beta": 0.0,
+     "logit_std": 30.0,
+     "grad_input_rel": 0.0032964773680048713,
+     "grad_weight_rel": 0.004932401200662218
+    },
+    {
+     "jsd_beta": 0.5,
+     "logit_std": 10.0,
+     "grad_input_rel": 0.0037551533029715305,
+     "grad_weight_rel": 0.0030993547824305235
+    },
+    {
+     "jsd_beta": 1.0,
+     "logit_std": 30.0,
+     "grad_input_rel": 0.0033092266119975106,
+     "grad_weight_rel": 0.0036100477874957677
+    }
+   ]
+  },
+  "expected_on_ampere_plus_gpu": {
+   "buggy": "exit 1 (max rel ~8-16%; simulation lower bound 8.8% at seed 0)",
+   "fixed": "exit 0 (max rel ~0.5-0.7%)"
+  }
+ }
+}

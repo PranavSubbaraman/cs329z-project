@@ -1,0 +1,220 @@
+{
+  "pairs": [
+    {
+      "pair_id": "P1_tvd",
+      "kernel": "tvd",
+      "issue": 1373,
+      "fix_pr": 1374,
+      "bug_class": "logic",
+      "buggy": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+      "fixed": "559d33e7b14d81476b295ef41a962937efa74517",
+      "phase1_status": "kept: reproduces on CPU interpreter and GPU (RTX A4000)",
+      "known_other_bugs": {
+        "39adfeef": [
+          "tvd all-rows-ignored mean/batchmean raises ZeroDivisionError (out of scope)"
+        ],
+        "559d33e7": [
+          "tvd all-rows-ignored mean/batchmean raises ZeroDivisionError (out of scope)"
+        ]
+      },
+      "fix_lines": {
+        "src/liger_kernel/ops/tvd.py": [
+          [
+            87,
+            88
+          ],
+          [
+            89,
+            89
+          ]
+        ]
+      },
+      "fix_lines_source": "fix diff (old side)",
+      "status": "fixed"
+    },
+    {
+      "pair_id": "P2_flce_strides",
+      "kernel": "flce",
+      "issue": 1500,
+      "fix_pr": 1500,
+      "bug_class": "index arithmetic",
+      "buggy": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+      "fixed": "ae47958e39568874e3b21419130582a271f2a903",
+      "phase1_status": "kept: reproduces on CPU interpreter and GPU (RTX A4000)",
+      "known_other_bugs": {
+        "395d6166": [
+          "frozen input + trainable head gets no head gradient (open PR #1588; out of scope)",
+          "retain_graph double backward rescales saved grads in place (out of scope)"
+        ],
+        "ae47958e": [
+          "frozen input + trainable head gets no head gradient (open PR #1588; out of scope)",
+          "retain_graph double backward rescales saved grads in place (out of scope)"
+        ]
+      },
+      "fix_lines": {
+        "src/liger_kernel/ops/fused_linear_cross_entropy.py": [
+          [
+            432,
+            433
+          ],
+          [
+            446,
+            447
+          ]
+        ],
+        "src/liger_kernel/ops/utils.py": [
+          [
+            114,
+            115
+          ],
+          [
+            125,
+            126
+          ],
+          [
+            140,
+            141
+          ]
+        ]
+      },
+      "fix_lines_source": "fix diff (old side)",
+      "status": "fixed"
+    },
+    {
+      "pair_id": "P3_flce_none",
+      "kernel": "flce",
+      "issue": 1298,
+      "fix_pr": 1298,
+      "bug_class": "gradient formula",
+      "buggy": "e44a5fe86d3ee00def43913329e4c4ff70c3b416",
+      "fixed": "9ac26bb82226c9279f0fda784300f5e02ce444b2",
+      "phase1_status": "kept: reproduces on CPU interpreter and GPU (RTX A4000)",
+      "known_other_bugs": {
+        "e44a5fe8": [
+          "P2 column-stride bug (#1500, unfixed until ae47958e)",
+          "#1329 bf16/fp16 true-class gradient precision (out of scope: flce is float32-only)",
+          "frozen input + trainable head gets no head gradient (open PR #1588; out of scope)",
+          "retain_graph double backward rescales saved grads in place (out of scope)"
+        ],
+        "9ac26bb8": [
+          "P2 column-stride bug (#1500, unfixed until ae47958e)",
+          "#1329 bf16/fp16 true-class gradient precision (out of scope: flce is float32-only)",
+          "frozen input + trainable head gets no head gradient (open PR #1588; out of scope)",
+          "retain_graph double backward rescales saved grads in place (out of scope)"
+        ]
+      },
+      "fix_lines": {
+        "src/liger_kernel/ops/fused_linear_cross_entropy.py": [
+          [
+            36,
+            37
+          ],
+          [
+            46,
+            46
+          ],
+          [
+            68,
+            68
+          ],
+          [
+            71,
+            71
+          ],
+          [
+            210,
+            211
+          ],
+          [
+            366,
+            367
+          ],
+          [
+            383,
+            384
+          ],
+          [
+            386,
+            391
+          ],
+          [
+            406,
+            409
+          ]
+        ]
+      },
+      "fix_lines_source": "fix diff (old side)",
+      "status": "fixed"
+    },
+    {
+      "pair_id": "P4_fljsd_bf16",
+      "kernel": "fljsd",
+      "issue": 1432,
+      "fix_pr": 1433,
+      "bug_class": "precision",
+      "buggy": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+      "fixed": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f",
+      "phase1_status": "kept: reproduces on GPU (RTX A4000, sm_86); CPU interpreter cannot distinguish (fix is CUDA sm>=80 only)",
+      "known_other_bugs": {
+        "5b828eef": [
+          "element_mul_kernel column-stride bug (sibling of #1500, unfixed at HEAD; out of scope)",
+          "AMP/autocast with fp32 head keeps logit rounding (out of scope)",
+          "possible JSD underflow NaN (PR #1494 unmerged; unverified)"
+        ],
+        "ed1f856d": [
+          "element_mul_kernel column-stride bug (sibling of #1500, unfixed at HEAD; out of scope)",
+          "AMP/autocast with fp32 head keeps logit rounding (out of scope)",
+          "possible JSD underflow NaN (PR #1494 unmerged; unverified)"
+        ]
+      },
+      "fix_lines": {
+        "src/liger_kernel/ops/fused_linear_jsd.py": [
+          [
+            25,
+            25
+          ],
+          [
+            47,
+            48
+          ],
+          [
+            146,
+            149
+          ],
+          [
+            214,
+            214
+          ]
+        ]
+      },
+      "fix_lines_source": "fix diff (old side)",
+      "status": "fixed"
+    },
+    {
+      "pair_id": "B5_ce_ignore",
+      "kernel": "ce",
+      "issue": 1594,
+      "fix_pr": null,
+      "bug_class": "side effect",
+      "buggy": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+      "fixed": null,
+      "status": "open, buggy-only",
+      "fix_lines": {
+        "src/liger_kernel/ops/cross_entropy.py": [
+          [
+            104,
+            108
+          ]
+        ]
+      },
+      "fix_lines_source": "issue",
+      "phase1_status": "kept (buggy-only, issue open): reproduces on CPU interpreter and GPU",
+      "known_other_bugs": {
+        "8c7a5078": [
+          "by-design in-place gradient write into input when requires_grad=True (#272)",
+          "input with stride(-1) != 1 gets the logits back as its gradient (no issue found; out of scope)"
+        ]
+      }
+    }
+  ]
+}

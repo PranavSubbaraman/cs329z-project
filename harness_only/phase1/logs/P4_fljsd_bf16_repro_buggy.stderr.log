@@ -1,0 +1,7 @@
+Backend impl 'liger_kernel.ops.backends._cutedsl.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda'
+Backend impl 'liger_kernel.ops.backends._cutile.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda'
+/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:599: RuntimeWarning: invalid value encountered in subtract
+  output = op(lhs.data, rhs.data)
+[P4_fljsd_bf16] beta=0.0 std=30.0: grad_input_rel=7.1944% grad_weight_rel=7.5573% loss_rel=5.56e-04 (79.5s)
+[P4_fljsd_bf16] beta=0.5 std=10.0: grad_input_rel=2.5106% grad_weight_rel=2.1550% loss_rel=8.20e-07 (49.1s)
+[P4_fljsd_bf16] beta=1.0 std=30.0: grad_input_rel=8.8253% grad_weight_rel=7.9636% loss_rel=3.18e-04 (50.8s)

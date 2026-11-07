@@ -1,0 +1,21 @@
+# cwd: /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/ae47958e39568874e3b21419130582a271f2a903
+# cmd: env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/ops/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE
+bringing up nodes...
+bringing up nodes...
+
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 50%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [100%]W1106 20:03:42.239000 85909 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+144 skipped, 4 warnings in 8.11s
+EXIT 0
+WALL 14

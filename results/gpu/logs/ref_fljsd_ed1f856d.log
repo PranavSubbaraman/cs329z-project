@@ -1,0 +1,41 @@
+Backend impl 'liger_kernel.ops.backends._cutedsl.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cutlass'
+Backend impl 'liger_kernel.ops.backends._cutile.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda.tile'
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+[ 0] float32  BT= 70 Hs= 7 Ht= 7 V=  19 beta=0.5 T=1.0 lab=partial acc=None g=-1.066 contiguous s=1.091: loss_err=8.13e-09 gi=2.1717452993464686e-07 gw=1.1777289639428202e-07 -> OK 
+[ 1] bfloat16 BT= 47 Hs= 1 Ht= 1 V= 579 beta=0.243 T=1.0 lab=none    acc=None g=1.0 contiguous s=0.721: loss_err=2.48e-08 gi=0.0035600659512571744 gw=0.013289112857917458 -> OK 
+[ 2] float16  BT= 64 Hs=37 Ht=51 V= 279 beta=1.0 T=0.871 lab=partial acc=None g=1.0 contiguous s=2.121: loss_err=1.59e-06 gi=0.0005336517244658391 gw=0.0003262831033697675 -> OK 
+[ 3] float32  BT=  5 Hs=69 Ht=69 V=   6 beta=0.5 T=1.0 lab=none    acc=None g=1.0 contiguous s=2.701: loss_err=3.12e-08 gi=2.9237646209279146e-07 gw=2.828729412456461e-07 -> OK 
+[ 4] bfloat16 BT= 12 Hs=37 Ht=52 V=   2 beta=0.5 T=2.333 lab=none    acc=None g=1.0 contiguous s=0.534: loss_err=6.10e-09 gi=0.0024886172509670378 gw=0.003130992561240963 -> OK 
+[ 5] float16  BT=  7 Hs=48 Ht=48 V=4851 beta=1.0 T=1.0 lab=partial acc=None g=1.0 row_slices s=1.507: loss_err=1.18e-07 gi=0.0004143892206733044 gw=0.0007615696779186982 -> OK 
+[ 6] float32  BT= 19 Hs=19 Ht=19 V= 684 beta=0.549 T=0.746 lab=none    acc=float32 g=1.0 contiguous s=0.836: loss_err=1.52e-08 gi=1.8940971964667007e-07 gw=5.320296323491925e-07 -> OK 
+[ 7] bfloat16 BT= 70 Hs= 2 Ht=69 V=  51 beta=0.14 T=0.345 lab=partial acc=float32 g=2.318 contiguous s=2.405: loss_err=5.55e-09 gi=0.00437854954974409 gw=0.00519800649274198 -> OK 
+[ 8] float16  BT= 64 Hs=62 Ht=62 V=   3 beta=0.5 T=2.39 lab=partial acc=None g=1.739 contiguous s=1.155: loss_err=2.30e-09 gi=0.0006328447026819454 gw=0.00044136794738889733 -> OK 
+[ 9] float32  BT=  3 Hs=48 Ht=48 V=  49 beta=0.824 T=1.064 lab=none    acc=None g=1.0 contiguous s=1.544: loss_err=1.76e-08 gi=2.767775625305263e-07 gw=2.827393940362722e-07 -> OK 
+[10] bfloat16 BT=  3 Hs=18 Ht=13 V=   2 beta=0.0 T=1.0 lab=partial acc=None g=1.0 contiguous s=0.564: loss_err=5.18e-09 gi=0.0033044368501574913 gw=0.004145810983430104 -> OK 
+[11] float16  BT=  2 Hs=16 Ht=16 V=   3 beta=1.0 T=1.0 lab=partial acc=None g=-2.792 contiguous s=2.683: loss_err=3.22e-07 gi=0.00042061113152209973 gw=0.0005054684412853633 -> OK 
+[12] float32  BT= 19 Hs=52 Ht=76 V= 266 beta=1.0 T=1.798 lab=partial acc=None g=1.0 row_slices s=1.077: loss_err=9.51e-08 gi=5.066129857547085e-07 gw=3.4633831600822034e-07 -> OK 
+[13] bfloat16 BT=  3 Hs=60 Ht=51 V=   2 beta=0.58 T=2.997 lab=partial acc=None g=1.0 contiguous s=1.768: loss_err=5.35e-08 gi=0.00205588036400704 gw=0.0024765616822204437 -> OK 
+[14] float16  BT=  3 Hs=67 Ht=67 V=  36 beta=0.0 T=2.118 lab=partial acc=None g=1.0 contiguous s=2.843: loss_err=2.73e-07 gi=0.0003391050912218147 gw=0.0004829200700935349 -> OK 
+[15] float32  BT=  7 Hs=13 Ht=77 V= 324 beta=0.806 T=1.0 lab=none    acc=None g=1.915 contiguous s=0.976: loss_err=2.01e-08 gi=1.8645507591543572e-07 gw=4.3931933847482944e-07 -> OK 
+[16] bfloat16 BT=  7 Hs= 5 Ht=53 V=4328 beta=0.656 T=1.632 lab=none    acc=None g=-0.825 row_slices s=0.978: loss_err=1.79e-08 gi=0.001698950418643412 gw=0.004292146657982469 -> OK 
+[17] float16  BT= 12 Hs=10 Ht=30 V=  63 beta=0.745 T=1.0 lab=partial acc=None g=2.658 contiguous s=0.66: loss_err=1.32e-09 gi=0.00029470307660917164 gw=0.0004319723018842649 -> OK 
+[18] float32  BT=  2 Hs=16 Ht=16 V= 443 beta=0.517 T=1.0 lab=none    acc=None g=1.0 row_slices s=1.558: loss_err=6.94e-09 gi=2.754913940281237e-07 gw=5.956725822861272e-07 -> OK 
+[19] bfloat16 BT= 47 Hs=71 Ht= 1 V=  13 beta=1.0 T=0.375 lab=none    acc=float32 g=1.0 row_slices s=1.086: loss_err=1.95e-07 gi=0.004331568332353647 gw=0.005209655262754865 -> OK 
+[20] float16  BT= 47 Hs=62 Ht= 1 V= 587 beta=0.847 T=1.0 lab=all     acc=None g=1.0 contiguous s=1.1: loss_err=0.00e+00 gi=0.0 gw=0.0 -> OK 
+[21] float32  BT=  3 Hs=63 Ht=63 V=   2 beta=0.576 T=0.866 lab=none    acc=None g=2.105 contiguous s=3.109: loss_err=3.33e-08 gi=2.2647085657106824e-06 gw=1.9226619795536593e-06 -> OK 
+[22] bfloat16 BT=  3 Hs=51 Ht=35 V=   3 beta=0.0 T=1.0 lab=none    acc=None g=1.186 contiguous s=2.775: loss_err=1.84e-07 gi=0.003959517096381291 gw=0.0047102013666112845 -> OK 
+[23] float16  BT= 12 Hs=63 Ht=31 V= 553 beta=0.887 T=1.0 lab=partial acc=None g=-2.084 contiguous s=1.669: loss_err=6.30e-08 gi=0.0005377858891723455 gw=0.0006858102127943549 -> OK 
+[24] float32  BT= 47 Hs= 4 Ht=34 V=  57 beta=0.818 T=1.0 lab=partial acc=None g=1.0 contiguous s=0.629: loss_err=9.78e-09 gi=2.1533422204282328e-07 gw=1.834143518568627e-07 -> OK 
+[25] bfloat16 BT= 33 Hs= 1 Ht=25 V= 216 beta=0.0 T=1.0 lab=none    acc=None g=2.171 contiguous s=1.189: loss_err=1.58e-07 gi=0.0049781703891208584 gw=0.013873251752056151 -> OK 
+[26] float16  BT=  5 Hs=72 Ht= 4 V=   2 beta=0.0 T=1.518 lab=none    acc=float32 g=1.0 contiguous s=2.916: loss_err=1.82e-07 gi=0.0004180197867908905 gw=0.00040138259651869657 -> OK 
+[27] float32  BT=  1 Hs=59 Ht=59 V=4375 beta=1.0 T=1.0 lab=partial acc=None g=1.0 contiguous s=4.873: loss_err=0.00e+00 gi=0.0 gw=0.0 -> OK 
+[28] bfloat16 BT=  5 Hs=64 Ht=40 V= 483 beta=0.0 T=2.542 lab=partial acc=float32 g=1.0 row_slices s=0.834: loss_err=1.03e-07 gi=0.0021965726894548794 gw=0.00432068032003455 -> OK 
+[29] float16  BT=  7 Hs=18 Ht=18 V=   2 beta=1.0 T=2.502 lab=partial acc=None g=1.421 row_slices s=0.513: loss_err=1.67e-08 gi=0.000553392345199439 gw=0.00029209444045307274 -> OK 
+[cond] beta=0.5 std=3.0: max|ref gi|=1.70e-03 kernel32 gi=4.17e-06 ref32 gi=4.27e-06 kernel32 gw=5.98e-06 ref32 gw=6.23e-06
+[cond] beta=0.5 std=10.0: max|ref gi|=9.77e-04 kernel32 gi=2.50e-05 ref32 gi=1.97e-05 kernel32 gw=5.64e-05 ref32 gw=3.14e-05
+[cond] beta=0.5 std=30.0: max|ref gi|=1.21e-10 kernel32 gi=9.03e+02 ref32 gi=7.96e+02 kernel32 gw=6.00e+02 ref32 gw=5.28e+02
+[cond] beta=0.25 std=3.0: max|ref gi|=1.34e-03 kernel32 gi=1.63e-06 ref32 gi=3.10e-06 kernel32 gw=1.15e-06 ref32 gw=1.92e-06
+[cond] beta=0.25 std=10.0: max|ref gi|=3.07e-06 kernel32 gi=2.71e-03 ref32 gi=3.40e-03 kernel32 gw=4.90e-03 ref32 gw=6.35e-03
+[cond] beta=0.25 std=30.0: max|ref gi|=2.31e-12 kernel32 gi=1.06e+04 ref32 gi=1.11e+04 kernel32 gw=2.34e+04 ref32 gw=2.99e+04
+{"tree": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f", "backend": "NVIDIA RTX A4000", "n_configs": 30, "n_ok": 30, "all_ok": true, "mismatches": [], "tolerances": {"float32": {"loss_rtol": 1e-05, "loss_atol": 1e-06, "grad": 0.0001}, "bfloat16": {"loss_rtol": 0.01, "loss_atol": 0.001, "grad": 0.02}, "float16": {"loss_rtol": 0.002, "loss_atol": 0.0001, "grad": 0.005}}, "worst": {"float32": {"grad_input_rel": 2.2647085657106824e-06, "grad_weight_rel": 1.9226619795536593e-06, "loss_abs_err": 9.511608228818247e-08}, "bfloat16": {"grad_input_rel": 0.0049781703891208584, "grad_weight_rel": 0.013873251752056151, "loss_abs_err": 1.9498429626452207e-07}, "float16": {"grad_input_rel": 0.0006328447026819454, "grad_weight_rel": 0.0007615696779186982, "loss_abs_err": 1.5940776760814401e-06}}, "options_covered": {"dtype": ["bfloat16", "float16", "float32"], "jsd_beta": ["0", "1", "interior"], "labels": ["all", "none", "partial"], "accum_dtype": ["None", "float32"], "temperature_ne_1": true, "grad_out_ne_1": true, "layouts": ["contiguous", "row_slices"], "Hs_ne_Ht": true, "V_gt_4096": true, "ignore_index_is_vocab_id": true}, "seconds": 4.6, "torch": "2.15.0+cu132", "conditioning_probe_float32": {"note": "supplementary, not part of all_ok; see conditioning_probe() docstring", "kernel_within_4x_of_float32_baseline_everywhere": true, "worst_kernel32_rel": 23364.392271045384, "worst_ref32_rel": 29866.00036746735}}

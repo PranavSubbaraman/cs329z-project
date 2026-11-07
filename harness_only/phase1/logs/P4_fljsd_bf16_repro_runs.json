@@ -1,0 +1,156 @@
+{
+ "buggy": {
+  "commit": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+  "command": "/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness/in_tree.sh 5b828eef .venv/bin/python harness_only/repros/P4_fljsd_bf16.py",
+  "stdout_json": {
+   "pair_id": "P4_fljsd_bf16",
+   "tree": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "threshold": 0.02,
+    "shape": {
+     "BT": 256,
+     "H": 1024,
+     "V": 32000
+    },
+    "dtype": "bfloat16",
+    "seed": 0,
+    "torch": "2.15.0",
+    "triton_interpret": "1",
+    "cuda_capability": null,
+    "float32_output_projection_supported_here": false,
+    "tree_has_project_to_float32": false,
+    "jsd_loss_and_grad_backends": [
+     "nvidia-triton"
+    ],
+    "allow_bf16_reduced_precision_reduction": null,
+    "configs": [
+     {
+      "jsd_beta": 0.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.07194408406067238,
+      "grad_weight_rel": 0.0755734296970322,
+      "grad_input_rel_fro": 0.029536752144493184,
+      "grad_weight_rel_fro": 0.029770029931808523,
+      "loss": 120.28362274169922,
+      "loss_ref": 120.35058053392129,
+      "loss_rel": 0.0005563562047230619,
+      "finite": true,
+      "seconds_library": 79.48
+     },
+     {
+      "jsd_beta": 0.5,
+      "logit_std": 10.0,
+      "grad_input_rel": 0.025105772347900516,
+      "grad_weight_rel": 0.02154989721688884,
+      "grad_input_rel_fro": 0.02676095391250081,
+      "grad_weight_rel_fro": 0.028531703536135017,
+      "loss": 0.693129301071167,
+      "loss_ref": 0.6931287324624833,
+      "loss_rel": 8.203507617885469e-07,
+      "finite": true,
+      "seconds_library": 49.13
+     },
+     {
+      "jsd_beta": 1.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.0882527517405486,
+      "grad_weight_rel": 0.0796359052639695,
+      "grad_input_rel_fro": 0.09570311169063735,
+      "grad_weight_rel_fro": 0.09544831580874179,
+      "loss": 124.81412506103516,
+      "loss_ref": 124.85383192154755,
+      "loss_rel": 0.00031802676699058965,
+      "finite": true,
+      "seconds_library": 50.76
+     }
+    ],
+    "max_grad_rel": 0.0882527517405486
+   }
+  },
+  "exit_code": 1,
+  "seconds": 325.3,
+  "env": {
+   "TRITON_INTERPRET": null,
+   "OMP_NUM_THREADS": "3"
+  }
+ },
+ "fixed": {
+  "commit": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f",
+  "command": "/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness/in_tree.sh ed1f856d .venv/bin/python harness_only/repros/P4_fljsd_bf16.py",
+  "stdout_json": {
+   "pair_id": "P4_fljsd_bf16",
+   "tree": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "threshold": 0.02,
+    "shape": {
+     "BT": 256,
+     "H": 1024,
+     "V": 32000
+    },
+    "dtype": "bfloat16",
+    "seed": 0,
+    "torch": "2.15.0",
+    "triton_interpret": "1",
+    "cuda_capability": null,
+    "float32_output_projection_supported_here": false,
+    "tree_has_project_to_float32": true,
+    "jsd_loss_and_grad_backends": [
+     "nvidia-triton"
+    ],
+    "allow_bf16_reduced_precision_reduction": null,
+    "configs": [
+     {
+      "jsd_beta": 0.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.07194408406067238,
+      "grad_weight_rel": 0.0755734296970322,
+      "grad_input_rel_fro": 0.029536752144493184,
+      "grad_weight_rel_fro": 0.029770029931808523,
+      "loss": 120.28362274169922,
+      "loss_ref": 120.35058053392129,
+      "loss_rel": 0.0005563562047230619,
+      "finite": true,
+      "seconds_library": 80.66
+     },
+     {
+      "jsd_beta": 0.5,
+      "logit_std": 10.0,
+      "grad_input_rel": 0.025105772347900516,
+      "grad_weight_rel": 0.02154989721688884,
+      "grad_input_rel_fro": 0.02676095391250081,
+      "grad_weight_rel_fro": 0.028531703536135017,
+      "loss": 0.693129301071167,
+      "loss_ref": 0.6931287324624833,
+      "loss_rel": 8.203507617885469e-07,
+      "finite": true,
+      "seconds_library": 49.75
+     },
+     {
+      "jsd_beta": 1.0,
+      "logit_std": 30.0,
+      "grad_input_rel": 0.0882527517405486,
+      "grad_weight_rel": 0.0796359052639695,
+      "grad_input_rel_fro": 0.09570311169063735,
+      "grad_weight_rel_fro": 0.09544831580874179,
+      "loss": 124.81412506103516,
+      "loss_ref": 124.85383192154755,
+      "loss_rel": 0.00031802676699058965,
+      "finite": true,
+      "seconds_library": 50.59
+     }
+    ],
+    "max_grad_rel": 0.0882527517405486
+   }
+  },
+  "exit_code": 1,
+  "seconds": 326.0,
+  "env": {
+   "TRITON_INTERPRET": null,
+   "OMP_NUM_THREADS": "3"
+  }
+ }
+}

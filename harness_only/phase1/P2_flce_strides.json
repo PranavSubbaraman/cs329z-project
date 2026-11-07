@@ -1,0 +1,201 @@
+{
+ "pair_id": "P2_flce_strides",
+ "buggy": {
+  "stdout_json": {
+   "pair_id": "P2_flce_strides",
+   "tree": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "shape_BT_H_V": [
+     24,
+     16,
+     40
+    ],
+    "upstream_scale": 0.5,
+    "rel_err_transposed_input_and_weight": {
+     "loss": 2.538e-08,
+     "grad_input": 1.0,
+     "grad_weight": 1.0,
+     "grad_bias": 8.529e-08
+    },
+    "rel_err_contiguous_control": {
+     "loss": 2.538e-08,
+     "grad_input": 1.421e-07,
+     "grad_weight": 1.269e-07,
+     "grad_bias": 1.188e-07
+    },
+    "max_grad_rel_err": 1.0,
+    "threshold": 0.001
+   }
+  },
+  "exit_code": 1,
+  "seconds": 2.48,
+  "command": "scripts/harness/in_tree.sh 395d6166 .venv/bin/python harness_only/repros/P2_flce_strides.py"
+ },
+ "fixed": {
+  "stdout_json": {
+   "pair_id": "P2_flce_strides",
+   "tree": "ae47958e39568874e3b21419130582a271f2a903",
+   "backend": "interpreter-cpu",
+   "bug_manifest": false,
+   "metrics": {
+    "shape_BT_H_V": [
+     24,
+     16,
+     40
+    ],
+    "upstream_scale": 0.5,
+    "rel_err_transposed_input_and_weight": {
+     "loss": 2.538e-08,
+     "grad_input": 1.558e-07,
+     "grad_weight": 1.269e-07,
+     "grad_bias": 8.529e-08
+    },
+    "rel_err_contiguous_control": {
+     "loss": 2.538e-08,
+     "grad_input": 1.421e-07,
+     "grad_weight": 1.269e-07,
+     "grad_bias": 1.188e-07
+    },
+    "max_grad_rel_err": 1.558e-07,
+    "threshold": 0.001
+   }
+  },
+  "exit_code": 0,
+  "seconds": 2.45,
+  "command": "scripts/harness/in_tree.sh ae47958e .venv/bin/python harness_only/repros/P2_flce_strides.py"
+ },
+ "reproduces_on_cpu": true,
+ "library_tests": [
+  {
+   "commit": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+   "files": "test/transformers/test_fused_linear_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/395d6166e86f64f7c27f3c6e49cef89904add1aa && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 93,
+   "failed": 48,
+   "skipped": 0,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 173.45,
+   "subset_notes": "full file, no subset. all 48 failures are softcap=30.0 parametrizations (test_correctness / test_correctness_with_forward_only second param set, which also sets ce_weight, and every test_correctness_functional case) crashing in the Triton CPU interpreter: 48x triton.runtime.errors.InterpreterError: AttributeError(\"'float' object has no attribute 'to'\"). Interpreter limitation, not a numeric mismatch.",
+   "pytest_summary": "48 failed, 93 passed, 4 warnings in 173.45s (0:02:53)",
+   "wall_seconds": 180,
+   "log": "harness_only/phase1/logs/flce_libtests_395d6166_transformers.log"
+  },
+  {
+   "commit": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+   "files": "test/ops/test_fused_linear_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/395d6166e86f64f7c27f3c6e49cef89904add1aa && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/ops/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 0,
+   "failed": 0,
+   "skipped": 144,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 6.91,
+   "subset_notes": "full file, no subset. Every test is skipped: test/ops/conftest.py autouse fixture skips when CUDA is unavailable.",
+   "pytest_summary": "144 skipped, 4 warnings in 6.91s",
+   "wall_seconds": 14,
+   "log": "harness_only/phase1/logs/flce_libtests_395d6166_ops.log"
+  },
+  {
+   "commit": "ae47958e39568874e3b21419130582a271f2a903",
+   "files": "test/transformers/test_fused_linear_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/ae47958e39568874e3b21419130582a271f2a903 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 93,
+   "failed": 48,
+   "skipped": 0,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 1258.68,
+   "subset_notes": "full file, no subset. all 48 failures are softcap=30.0 parametrizations (test_correctness / test_correctness_with_forward_only second param set, which also sets ce_weight, and every test_correctness_functional case) crashing in the Triton CPU interpreter: 48x triton.runtime.errors.InterpreterError: AttributeError(\"'float' object has no attribute 'to'\"). Interpreter limitation, not a numeric mismatch.",
+   "pytest_summary": "48 failed, 93 passed, 4 warnings in 1258.68s (0:20:58)",
+   "wall_seconds": 1263,
+   "log": "harness_only/phase1/logs/flce_libtests_ae47958e_transformers.log"
+  },
+  {
+   "commit": "ae47958e39568874e3b21419130582a271f2a903",
+   "files": "test/ops/test_fused_linear_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/ae47958e39568874e3b21419130582a271f2a903 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/ops/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 0,
+   "failed": 0,
+   "skipped": 144,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 8.11,
+   "subset_notes": "full file, no subset. Every test is skipped: test/ops/conftest.py autouse fixture skips when CUDA is unavailable.",
+   "pytest_summary": "144 skipped, 4 warnings in 8.11s",
+   "wall_seconds": 14,
+   "log": "harness_only/phase1/logs/flce_libtests_ae47958e_ops.log"
+  }
+ ],
+ "notes": "Reproduces on the Triton CPU interpreter. Repro: reduction='mean', input and weight are transposed leaves (stride (1, BT) / (1, V)), (0.5*loss).backward(); grad_input and grad_weight have max-normalized error 1.0 at 395d6166 (elements left unscaled or scaled twice by element_mul_kernel) and ~1.6e-7 at ae47958e; the contiguous-layout control agrees at both. Cross-check: the same repro also fires at e44a5fe8 and 9ac26bb8 (both July commits predate the fix), and does not depend on reduction='none'. Liger's own suite does not exercise non-contiguous layouts with an upstream gradient != 1, so it passes the same tests at buggy and fixed (the fix PR added no tests); its 48 failures at both commits are softcap/ce_weight cases that crash in the interpreter. See harness_only/phase1/flce_notes.md.",
+ "cross_check_other_pair_commits": {
+  "e44a5fe86d3ee00def43913329e4c4ff70c3b416": {
+   "stdout_json": {
+    "pair_id": "P2_flce_strides",
+    "tree": "e44a5fe86d3ee00def43913329e4c4ff70c3b416",
+    "backend": "interpreter-cpu",
+    "bug_manifest": true,
+    "metrics": {
+     "shape_BT_H_V": [
+      24,
+      16,
+      40
+     ],
+     "upstream_scale": 0.5,
+     "rel_err_transposed_input_and_weight": {
+      "loss": 2.538e-08,
+      "grad_input": 1.0,
+      "grad_weight": 1.0,
+      "grad_bias": 8.113e-08
+     },
+     "rel_err_contiguous_control": {
+      "loss": 2.538e-08,
+      "grad_input": 1.558e-07,
+      "grad_weight": 1.269e-07,
+      "grad_bias": 1.188e-07
+     },
+     "max_grad_rel_err": 1.0,
+     "threshold": 0.001
+    }
+   },
+   "exit_code": 1,
+   "seconds": 2.03,
+   "command": "scripts/harness/in_tree.sh e44a5fe8 .venv/bin/python harness_only/repros/P2_flce_strides.py"
+  },
+  "9ac26bb82226c9279f0fda784300f5e02ce444b2": {
+   "stdout_json": {
+    "pair_id": "P2_flce_strides",
+    "tree": "9ac26bb82226c9279f0fda784300f5e02ce444b2",
+    "backend": "interpreter-cpu",
+    "bug_manifest": true,
+    "metrics": {
+     "shape_BT_H_V": [
+      24,
+      16,
+      40
+     ],
+     "upstream_scale": 0.5,
+     "rel_err_transposed_input_and_weight": {
+      "loss": 2.538e-08,
+      "grad_input": 1.0,
+      "grad_weight": 1.0,
+      "grad_bias": 8.113e-08
+     },
+     "rel_err_contiguous_control": {
+      "loss": 2.538e-08,
+      "grad_input": 1.558e-07,
+      "grad_weight": 1.269e-07,
+      "grad_bias": 1.188e-07
+     },
+     "max_grad_rel_err": 1.0,
+     "threshold": 0.001
+    }
+   },
+   "exit_code": 1,
+   "seconds": 2.14,
+   "command": "scripts/harness/in_tree.sh 9ac26bb8 .venv/bin/python harness_only/repros/P2_flce_strides.py"
+  }
+ }
+}

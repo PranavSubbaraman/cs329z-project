@@ -1,0 +1,150 @@
+commit ae47958e39568874e3b21419130582a271f2a903
+parent 395d6166e86f64f7c27f3c6e49cef89904add1aa
+
+fix: respect gradient column strides in fused linear CE (#1500)
+
+## Summary
+
+Fix incorrect gradient scaling in fused linear cross entropy when its
+cached input or weight gradients have a non-unit column stride.
+
+`zeros_like` can preserve a transposed tensor's layout, but
+`element_mul_kernel` previously addressed every column as contiguous.
+For a `(3, 4)` weight gradient with stride `(1, 3)`, its three programs
+only cover storage offsets 0 through 5, with overlapping accesses,
+leaving half of the gradient unscaled. Consequently, even `(0.0 *
+loss).backward()` can return nonzero gradients.
+
+Pass the actual column strides from FLCE backward and use them in the
+kernel's address calculation, with 64-bit offsets. The new constexpr
+argument defaults to 1 for existing callers. This preserves the gradient
+layout and avoids allocating a contiguous copy. The change is two files,
++7/-2; no test files are included.
+
+Minimal CUDA example:
+
+```python
+import torch
+from liger_kernel.ops.fused_linear_cross_entropy import LigerFusedLinearCrossEntropyFunction
+
+x = torch.ones(2, 4, device="cuda", requires_grad=True)
+w = torch.zeros(4, 3, device="cuda").t().requires_grad_()
+target = torch.tensor([0, 0], device="cuda")
+loss = LigerFusedLinearCrossEntropyFunction.apply(x, w, target)[0]
+(0.0 * loss).backward()
+print(w.grad)
+```
+
+Before: six of twelve weight-gradient elements remain nonzero, with
+maximum magnitude 0.66666663. After: all twelve are zero. This affects
+the cached-gradient `mean`/`sum` backward paths when scaling is
+required; the unit upstream gradient bypasses the kernel.
+
+Open-PR searches found no matching fix. Related #1292 changes
+device/host synchronization, and #1338 addresses compiled loss-buffer
+handling; neither handles column strides in gradient scaling.
+
+## Testing Done
+
+- Hardware: NVIDIA RTX A1000 Laptop GPU (4 GiB), PyTorch 2.13.0+cu130,
+Triton 3.7.1.
+- Existing FLCE suite: **141 passed**.
+- External end-to-end CUDA autograd harness: **360/360 comparisons
+passed** against PyTorch. Covered contiguous/transposed inputs and
+weights, FP32/FP16/BF16, default/FP32 accumulation, `mean`/`sum`/`none`,
+and upstream coefficients 0, 1, 0.5, 2, and -1. The baseline failed 144
+of these comparisons. The harness is outside the repository.
+- Changed-file Ruff lint/format and `git diff --check`: passed.
+
+```text
+python -m pytest test/transformers/test_fused_linear_cross_entropy.py -q --disable-warnings --maxfail=1 -o log_cli=false
+141 passed, 15 warnings in 3.60s
+
+pre-commit run --files src/liger_kernel/ops/fused_linear_cross_entropy.py src/liger_kernel/ops/utils.py
+ruff check...............................................................Passed
+ruff format..............................................................Passed
+```
+
+Small performance check on the final implementation, using the
+repository's benchmark helpers: BF16, input `(256, 512)`, weight `(2048,
+512)`, three measurements per case. Values below are forward+backward
+medians; these are single-GPU microbenchmarks, not model-throughput
+results.
+
+| Layout | Before (ms) | After (ms) | Additional peak allocation,
+before/after |
+| --- | ---: | ---: | ---: |
+| Contiguous | 0.898 | 0.885 | 2.50 / 2.50 MiB |
+| Both transposed | 0.761 | 0.991 | 2.50 / 2.50 MiB |
+
+No speedup is claimed. Correct strided accesses are slower in the
+transposed case; the baseline skips much of the logical gradient while
+repeatedly touching overlapping addresses. Full model convergence,
+compilation, and other device backends were not evaluated.
+
+- [x] Run the targeted FLCE suite and independent CUDA regression
+checks.
+- [x] Run Ruff lint and formatting checks on both changed files.
+- [ ] Run full `make test`.
+- [ ] Run full `make checkstyle`.
+- [ ] Run `make test-convergence`.
+
+AI assistance: OpenAI Codex assisted with implementation and local
+validation.
+
+Signed-off-by: taking-lying-flat <1615405@qq.com>
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Arup De <arde@linkedin.com>
+
+diff --git a/src/liger_kernel/ops/fused_linear_cross_entropy.py b/src/liger_kernel/ops/fused_linear_cross_entropy.py
+index 0dd376d..df35068 100644
+--- a/src/liger_kernel/ops/fused_linear_cross_entropy.py
++++ b/src/liger_kernel/ops/fused_linear_cross_entropy.py
+@@ -430,6 +430,7 @@ def fused_linear_cross_entropy_backward(grad_output, grad_input, grad_weight, gr
+             grad_output,
+             H,
+             BLOCK_SIZE=BLOCK_SIZE,
++            X_col_stride=grad_input.stride(-1),
+             num_warps=32 if not is_hip() else 16,
+         )
+ 
+@@ -444,6 +445,7 @@ def fused_linear_cross_entropy_backward(grad_output, grad_input, grad_weight, gr
+                 grad_output,
+                 H,
+                 BLOCK_SIZE=BLOCK_SIZE,
++                X_col_stride=grad_weight.stride(-1),
+                 num_warps=32 if not is_hip() else 16,
+             )
+ 
+diff --git a/src/liger_kernel/ops/utils.py b/src/liger_kernel/ops/utils.py
+index 9b2599f..45ad478 100644
+--- a/src/liger_kernel/ops/utils.py
++++ b/src/liger_kernel/ops/utils.py
+@@ -112,6 +112,7 @@ def element_mul_kernel(
+     grad_output_ptr,
+     n_cols,
+     BLOCK_SIZE: tl.constexpr,
++    X_col_stride: tl.constexpr = 1,
+ ):
+     """
+     This function multiplies each element of the tensor pointed by X_ptr with the value pointed by grad_output_ptr.
+@@ -123,6 +124,7 @@ def element_mul_kernel(
+     grad_output_ptr: Pointer to the gradient output value.
+     n_cols (int): The number of columns in the input tensor.
+     BLOCK_SIZE (int): The block size for Triton operations.
++    X_col_stride (int): The stride between columns of the input tensor.
+     """
+ 
+     # Get the program ID and convert it to int64 to avoid overflow
+@@ -137,8 +139,9 @@ def element_mul_kernel(
+     # Perform the element-wise multiplication
+     for i in range(0, n_cols, BLOCK_SIZE):
+         X_offsets = i + tl.arange(0, BLOCK_SIZE)
+-        X_block = tl.load(X_ptr + X_offsets, mask=X_offsets < n_cols)
+-        tl.store(X_ptr + X_offsets, X_block * grad_output, mask=X_offsets < n_cols)
++        X_ptrs = X_ptr + X_offsets.to(tl.int64) * X_col_stride
++        X_block = tl.load(X_ptrs, mask=X_offsets < n_cols)
++        tl.store(X_ptrs, X_block * grad_output, mask=X_offsets < n_cols)
+ 
+ 
+ @functools.cache

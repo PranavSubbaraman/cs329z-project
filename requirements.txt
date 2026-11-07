@@ -1,0 +1,17 @@
+# Pinned for the benchmark (verified on every benchmark commit; see NOTES.md).
+# Linux + CUDA: `pip install -r requirements.txt` also pulls the matching triton wheel for torch 2.15.0.
+# macOS / no CUDA: PyPI has no triton wheel, so after this run scripts/install_triton_macos.sh (builds triton v3.9.0).
+torch==2.15.0
+numpy==2.5.4
+z3-solver==5.3.3.0
+openai==3.46.0
+python-dotenv==1.2.4
+matplotlib==3.11.2
+pyyaml==6.0.3
+packaging==26.3
+# Only needed to run Liger-Kernel's own test suites (baseline 1):
+pytest==9.2.0
+pytest-xdist==3.8.0
+pytest-timeout==2.4.0
+transformers==5.22.2
+tokenizers==0.23.3

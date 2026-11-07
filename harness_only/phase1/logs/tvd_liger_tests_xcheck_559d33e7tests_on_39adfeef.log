@@ -1,0 +1,824 @@
+# cross-check: test_correctness_with_ties from 559d33e7's test/transformers/test_tvd.py (copied to /private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py), run against 39adfeef's src (rootdir/config = 39adfeef)
+# cwd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# command: env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness:/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest /private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py -c pyproject.toml --rootdir . -k with_ties -q -p no:cacheprovider -p pytest_cpu_shims -p xcheck_plugin -o log_cli=false --timeout 600 -rs --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_xcheck_559d33e7tests_on_39adfeef.xml
+XCHECK liger_kernel=/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/src/liger_kernel
+XCHECK test.utils=/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/utils.py
+XCHECK kernel: grad_res = tl.where(p > q, 0.5 * scale, -0.5 * scale)
+ssssssssFFFFFF..ssssssssFFFFFF..                                         [100%]
+=================================== FAILURES ===================================
+____ test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-batchmean-2-8-4096] _____
+
+B = 2, T = 8, V = 4096, reduction = 'batchmean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06, tied_fraction = 1.0
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 2, T = 8, V = 4096
+dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'batchmean'
+tied_fraction = 1.0, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.0312, -0.0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [-0.0312, -0.0312, -0.0312,  ..., -0.031...0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [-0.0312, -0.0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312]]), tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.0312, -0.0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [-0.0312, -0.0312, -0.0312,  ..., -0.031...0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [-0.0312, -0.0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+E        +    and   tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+___ test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-batchmean-3-423-1271] ____
+
+B = 3, T = 423, V = 1271, reduction = 'batchmean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06, tied_fraction = 1.0
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 3, T = 423
+V = 1271, dtype = torch.float32, atol = 1e-08, rtol = 1e-06
+reduction = 'batchmean', tied_fraction = 1.0, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.0004, -0.0004, -0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [-0.0004, -0.0004, -0.0004,  ..., -0.000...0004, -0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [-0.0004, -0.0004, -0.0004,  ..., -0.0004, -0.0004, -0.0004]]), tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.0004, -0.0004, -0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [-0.0004, -0.0004, -0.0004,  ..., -0.000...0004, -0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [-0.0004, -0.0004, -0.0004,  ..., -0.0004, -0.0004, -0.0004]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+E        +    and   tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+_______ test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-sum-2-8-4096] ________
+
+B = 2, T = 8, V = 4096, reduction = 'sum', dtype = torch.float32, atol = 1e-08
+rtol = 1e-06, tied_fraction = 1.0
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 2, T = 8, V = 4096
+dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'sum'
+tied_fraction = 1.0, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.500...5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000]]), tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.500...5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+E        +    and   tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+______ test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-sum-3-423-1271] _______
+
+B = 3, T = 423, V = 1271, reduction = 'sum', dtype = torch.float32, atol = 1e-08
+rtol = 1e-06, tied_fraction = 1.0
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 3, T = 423
+V = 1271, dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'sum'
+tied_fraction = 1.0, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.500...5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000]]), tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.500...5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+E        +    and   tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+_______ test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-mean-2-8-4096] _______
+
+B = 2, T = 8, V = 4096, reduction = 'mean', dtype = torch.float32, atol = 1e-08
+rtol = 1e-06, tied_fraction = 1.0
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 2, T = 8, V = 4096
+dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'mean'
+tied_fraction = 1.0, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-7.6294e-06, -7.6294e-06, -7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06],\n        [-7.629..., -7.6294e-06],\n        [-7.6294e-06, -7.6294e-06, -7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06]]), tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-7.6294e-06, -7.6294e-06, -7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06],\n        [-7.629..., -7.6294e-06],\n        [-7.6294e-06, -7.6294e-06, -7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+E        +    and   tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+______ test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-mean-3-423-1271] ______
+
+B = 3, T = 423, V = 1271, reduction = 'mean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06, tied_fraction = 1.0
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 3, T = 423
+V = 1271, dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'mean'
+tied_fraction = 1.0, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-3.1000e-07, -3.1000e-07, -3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07],\n        [-3.100..., -3.1000e-07],\n        [-3.1000e-07, -3.1000e-07, -3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07]]), tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-3.1000e-07, -3.1000e-07, -3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07],\n        [-3.100..., -3.1000e-07],\n        [-3.1000e-07, -3.1000e-07, -3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+E        +    and   tensor([[0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]...       [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.],\n        [0., 0., 0.,  ..., 0., 0., 0.]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+____ test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-batchmean-2-8-4096] _____
+
+B = 2, T = 8, V = 4096, reduction = 'batchmean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06, tied_fraction = 0.5
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 2, T = 8, V = 4096
+dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'batchmean'
+tied_fraction = 0.5, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.0312, -0.0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [ 0.0312,  0.0312,  0.0312,  ..., -0.031...0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [ 0.0312, -0.0312,  0.0312,  ..., -0.0312, -0.0312, -0.0312]]), tensor([[-0.0312, -0.0312, -0.0312,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.0312,  0.0312,  0.0312,  ...,  0.000...0312, -0.0312,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.0312, -0.0312,  0.0312,  ...,  0.0000,  0.0000,  0.0000]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.0312, -0.0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [ 0.0312,  0.0312,  0.0312,  ..., -0.031...0312, -0.0312,  ..., -0.0312, -0.0312, -0.0312],\n        [ 0.0312, -0.0312,  0.0312,  ..., -0.0312, -0.0312, -0.0312]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+E        +    and   tensor([[-0.0312, -0.0312, -0.0312,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.0312,  0.0312,  0.0312,  ...,  0.000...0312, -0.0312,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.0312, -0.0312,  0.0312,  ...,  0.0000,  0.0000,  0.0000]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+___ test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-batchmean-3-423-1271] ____
+
+B = 3, T = 423, V = 1271, reduction = 'batchmean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06, tied_fraction = 0.5
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 3, T = 423
+V = 1271, dtype = torch.float32, atol = 1e-08, rtol = 1e-06
+reduction = 'batchmean', tied_fraction = 0.5, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.0004, -0.0004,  0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [ 0.0004,  0.0004,  0.0004,  ..., -0.000...0004,  0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [-0.0004, -0.0004,  0.0004,  ..., -0.0004, -0.0004, -0.0004]]), tensor([[-0.0004, -0.0004,  0.0004,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.0004,  0.0004,  0.0004,  ...,  0.000...0004,  0.0004,  ...,  0.0000,  0.0000,  0.0000],\n        [-0.0004, -0.0004,  0.0004,  ...,  0.0000,  0.0000,  0.0000]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.0004, -0.0004,  0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [ 0.0004,  0.0004,  0.0004,  ..., -0.000...0004,  0.0004,  ..., -0.0004, -0.0004, -0.0004],\n        [-0.0004, -0.0004,  0.0004,  ..., -0.0004, -0.0004, -0.0004]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+E        +    and   tensor([[-0.0004, -0.0004,  0.0004,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.0004,  0.0004,  0.0004,  ...,  0.000...0004,  0.0004,  ...,  0.0000,  0.0000,  0.0000],\n        [-0.0004, -0.0004,  0.0004,  ...,  0.0000,  0.0000,  0.0000]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+_______ test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-sum-2-8-4096] ________
+
+B = 2, T = 8, V = 4096, reduction = 'sum', dtype = torch.float32, atol = 1e-08
+rtol = 1e-06, tied_fraction = 0.5
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 2, T = 8, V = 4096
+dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'sum'
+tied_fraction = 0.5, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [ 0.5000,  0.5000,  0.5000,  ..., -0.500...5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [ 0.5000, -0.5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000]]), tensor([[-0.5000, -0.5000, -0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.5000,  0.5000,  0.5000,  ...,  0.000...5000, -0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.5000, -0.5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.5000, -0.5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [ 0.5000,  0.5000,  0.5000,  ..., -0.500...5000, -0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [ 0.5000, -0.5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+E        +    and   tensor([[-0.5000, -0.5000, -0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.5000,  0.5000,  0.5000,  ...,  0.000...5000, -0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.5000, -0.5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+______ test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-sum-3-423-1271] _______
+
+B = 3, T = 423, V = 1271, reduction = 'sum', dtype = torch.float32, atol = 1e-08
+rtol = 1e-06, tied_fraction = 0.5
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 3, T = 423
+V = 1271, dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'sum'
+tied_fraction = 0.5, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-0.5000, -0.5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [ 0.5000,  0.5000,  0.5000,  ..., -0.500...5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000]]), tensor([[-0.5000, -0.5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.5000,  0.5000,  0.5000,  ...,  0.000...5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [-0.5000, -0.5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-0.5000, -0.5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [ 0.5000,  0.5000,  0.5000,  ..., -0.500...5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000],\n        [-0.5000, -0.5000,  0.5000,  ..., -0.5000, -0.5000, -0.5000]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+E        +    and   tensor([[-0.5000, -0.5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.5000,  0.5000,  0.5000,  ...,  0.000...5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000],\n        [-0.5000, -0.5000,  0.5000,  ...,  0.0000,  0.0000,  0.0000]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+_______ test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-mean-2-8-4096] _______
+
+B = 2, T = 8, V = 4096, reduction = 'mean', dtype = torch.float32, atol = 1e-08
+rtol = 1e-06, tied_fraction = 0.5
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 2, T = 8, V = 4096
+dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'mean'
+tied_fraction = 0.5, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-7.6294e-06, -7.6294e-06, -7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06],\n        [ 7.629..., -7.6294e-06],\n        [ 7.6294e-06, -7.6294e-06,  7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06]]), tensor([[-7.6294e-06, -7.6294e-06, -7.6294e-06,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00],\n        [ 7.629...,  0.0000e+00],\n        [ 7.6294e-06, -7.6294e-06,  7.6294e-06,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-7.6294e-06, -7.6294e-06, -7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06],\n        [ 7.629..., -7.6294e-06],\n        [ 7.6294e-06, -7.6294e-06,  7.6294e-06,  ..., -7.6294e-06,\n         -7.6294e-06, -7.6294e-06]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+E        +    and   tensor([[-7.6294e-06, -7.6294e-06, -7.6294e-06,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00],\n        [ 7.629...,  0.0000e+00],\n        [ 7.6294e-06, -7.6294e-06,  7.6294e-06,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00]]) = tensor([[4.7660e-05, 4.6412e-05, 1.1436e-04,  ..., 7.0586e-06, 2.6078e-05,\n         2.6825e-04],\n        [1.0370e-03, ...,\n        [2.4005e-04, 3.1449e-05, 3.2329e-04,  ..., 1.6952e-04, 1.9170e-04,\n         3.4338e-05]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+______ test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-mean-3-423-1271] ______
+
+B = 3, T = 423, V = 1271, reduction = 'mean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06, tied_fraction = 0.5
+
+    @pytest.mark.parametrize("B, T, V", [(2, 8, 4096), (3, 423, 1271)])
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    @pytest.mark.parametrize("tied_fraction", [1.0, 0.5])
+    def test_correctness_with_ties(B, T, V, reduction, dtype, atol, rtol, tied_fraction):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_with_ties_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction, tied_fraction)
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target_tvd = LigerTVDLoss(), torch_tvd = TorchTVDLoss(), B = 3, T = 423
+V = 1271, dtype = torch.float32, atol = 1e-08, rtol = 1e-06, reduction = 'mean'
+tied_fraction = 0.5, device = 'cpu'
+
+    def _test_correctness_with_ties_once(
+        target_tvd,
+        torch_tvd,
+        B,
+        T,
+        V,
+        dtype,
+        atol,
+        rtol,
+        reduction,
+        tied_fraction,
+        device=infer_device(),
+    ):
+        torch.manual_seed(0)
+        input = torch.randn(B * T, V, device=device, dtype=dtype).softmax(dim=-1)
+    
+        x1 = input.detach().clone().requires_grad_(True)
+        x2 = input.detach().clone().requires_grad_(True)
+    
+        with torch.no_grad():
+            target = torch.randn(B * T, V, device=device).softmax(dim=-1)
+            # Tie the trailing slots: p == q there, so the gradient of |p - q| is 0.
+            # tied_fraction == 1.0 is self-distillation, where the two distributions
+            # are identical; a partial tie stands in for padded vocabulary slots,
+            # which are exactly 0.0 in both distributions.
+            n_tied = int(V * tied_fraction)
+            target[:, V - n_tied :] = input[:, V - n_tied :]
+    
+        output = target_tvd(x1, target)
+        output2 = torch_tvd(x2, target)
+    
+        assert torch.allclose(output, output2, atol=atol, rtol=rtol)
+    
+        if reduction == "none":
+            return
+    
+        output.backward()
+        output2.backward()
+>       assert torch.allclose(x1.grad, x2.grad, atol=atol, rtol=rtol)
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x106179f28>(tensor([[-3.1000e-07, -3.1000e-07,  3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07],\n        [ 3.100..., -3.1000e-07],\n        [-3.1000e-07, -3.1000e-07,  3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07]]), tensor([[-3.1000e-07, -3.1000e-07,  3.1000e-07,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00],\n        [ 3.100...,  0.0000e+00],\n        [-3.1000e-07, -3.1000e-07,  3.1000e-07,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00]]), atol=1e-08, rtol=1e-06)
+E        +    where <built-in method allclose of type object at 0x106179f28> = torch.allclose
+E        +    and   tensor([[-3.1000e-07, -3.1000e-07,  3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07],\n        [ 3.100..., -3.1000e-07],\n        [-3.1000e-07, -3.1000e-07,  3.1000e-07,  ..., -3.1000e-07,\n         -3.1000e-07, -3.1000e-07]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+E        +    and   tensor([[-3.1000e-07, -3.1000e-07,  3.1000e-07,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00],\n        [ 3.100...,  0.0000e+00],\n        [-3.1000e-07, -3.1000e-07,  3.1000e-07,  ...,  0.0000e+00,\n          0.0000e+00,  0.0000e+00]]) = tensor([[1.4047e-04, 1.3679e-04, 3.3705e-04,  ..., 3.6394e-03, 3.5296e-04,\n         6.9179e-04],\n        [1.6042e-03, ...,\n        [9.5625e-04, 1.9463e-04, 1.7171e-03,  ..., 1.6957e-03, 1.1613e-04,\n         2.3152e-03]], requires_grad=True).grad
+
+/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:150: AssertionError
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+SKIPPED [16] ../../../../../../../../private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py:222: bfloat16 not supported on this GPU
+12 failed, 4 passed, 16 skipped, 200 deselected, 1 warning in 14.09s
+# exit_code 1
+# wall_seconds 16

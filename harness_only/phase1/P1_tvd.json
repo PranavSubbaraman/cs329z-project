@@ -1,0 +1,341 @@
+{
+ "pair_id": "P1_tvd",
+ "buggy": {
+  "stdout_json": {
+   "pair_id": "P1_tvd",
+   "tree": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "max_grad_err": 1.0,
+    "threshold": 0.001,
+    "shape": [
+     8,
+     512
+    ],
+    "dtype": "float32",
+    "full_tie_batchmean_grad_at_tie": -0.0625,
+    "n_tied_nonzero_grad_total": 24576,
+    "max_loss_err": 8.429060319452726e-08,
+    "cases": {
+     "full/none": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 4096,
+      "max_abs_grad_at_ties": 0.7499716281890869,
+      "liger_grad_at_first_tie": -0.4916646182537079,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 1.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "full/sum": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 4096,
+      "max_abs_grad_at_ties": 0.5,
+      "liger_grad_at_first_tie": -0.5,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 1.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "full/mean": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 4096,
+      "max_abs_grad_at_ties": 0.0001220703125,
+      "liger_grad_at_first_tie": -0.0001220703125,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0001220703125,
+      "grad_err": 1.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "full/batchmean": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 4096,
+      "max_abs_grad_at_ties": 0.0625,
+      "liger_grad_at_first_tie": -0.0625,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0625,
+      "grad_err": 1.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "partial/none": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 2048,
+      "max_abs_grad_at_ties": 0.7499716281890869,
+      "liger_grad_at_first_tie": -0.6269170045852661,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 1.0,
+      "loss_err": 2.111954401890725e-08,
+      "loss": 2.0603482723236084
+     },
+     "partial/sum": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 2048,
+      "max_abs_grad_at_ties": 0.5,
+      "liger_grad_at_first_tie": -0.5,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 1.0,
+      "loss_err": 8.429060319452726e-08,
+      "loss": 2.0603482723236084
+     },
+     "partial/mean": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 2048,
+      "max_abs_grad_at_ties": 0.0001220703125,
+      "liger_grad_at_first_tie": -0.0001220703125,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0001220703125,
+      "grad_err": 1.0,
+      "loss_err": 8.429060319452726e-08,
+      "loss": 0.000503014714922756
+     },
+     "partial/batchmean": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 2048,
+      "max_abs_grad_at_ties": 0.0625,
+      "liger_grad_at_first_tie": -0.0625,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0625,
+      "grad_err": 1.0,
+      "loss_err": 8.429060319452726e-08,
+      "loss": 0.25754353404045105
+     }
+    }
+   }
+  },
+  "exit_code": 1,
+  "seconds": 2.98,
+  "command": "scripts/harness/in_tree.sh 39adfeef .venv/bin/python harness_only/repros/P1_tvd.py"
+ },
+ "fixed": {
+  "stdout_json": {
+   "pair_id": "P1_tvd",
+   "tree": "559d33e7b14d81476b295ef41a962937efa74517",
+   "backend": "interpreter-cpu",
+   "bug_manifest": false,
+   "metrics": {
+    "max_grad_err": 0.0,
+    "threshold": 0.001,
+    "shape": [
+     8,
+     512
+    ],
+    "dtype": "float32",
+    "full_tie_batchmean_grad_at_tie": 0.0,
+    "n_tied_nonzero_grad_total": 0,
+    "max_loss_err": 8.429060319452726e-08,
+    "cases": {
+     "full/none": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 0.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "full/sum": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 0.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "full/mean": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0001220703125,
+      "grad_err": 0.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "full/batchmean": {
+      "n_tied": 4096,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0625,
+      "grad_err": 0.0,
+      "loss_err": 0.0,
+      "loss": 0.0
+     },
+     "partial/none": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 0.0,
+      "loss_err": 2.111954401890725e-08,
+      "loss": 2.0603482723236084
+     },
+     "partial/sum": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.5,
+      "grad_err": 0.0,
+      "loss_err": 8.429060319452726e-08,
+      "loss": 2.0603482723236084
+     },
+     "partial/mean": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0001220703125,
+      "grad_err": 0.0,
+      "loss_err": 8.429060319452726e-08,
+      "loss": 0.000503014714922756
+     },
+     "partial/batchmean": {
+      "n_tied": 2048,
+      "n_tied_nonzero_grad": 0,
+      "max_abs_grad_at_ties": 0.0,
+      "liger_grad_at_first_tie": 0.0,
+      "true_grad_at_first_tie": 0.0,
+      "untied_unit_0.5*scale": 0.0625,
+      "grad_err": 0.0,
+      "loss_err": 8.429060319452726e-08,
+      "loss": 0.25754353404045105
+     }
+    }
+   }
+  },
+  "exit_code": 0,
+  "seconds": 2.03,
+  "command": "scripts/harness/in_tree.sh 559d33e7 .venv/bin/python harness_only/repros/P1_tvd.py"
+ },
+ "reproduces_on_cpu": true,
+ "library_tests": [
+  {
+   "commit": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+   "files": "test/transformers/test_tvd.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 2 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_39adfeef.xml",
+   "passed": 14,
+   "failed": 2,
+   "skipped": 34,
+   "errors": 0,
+   "xfailed": 0,
+   "deselected": 0,
+   "seconds": 1495.35,
+   "wall_seconds": null,
+   "exit_code": null,
+   "summary_line": "2 failed, 14 passed, 34 skipped, 3 warnings in 1495.35s (0:24:55)",
+   "interrupted": true,
+   "subset_notes": "FULL file (200 collected), -n 2, interrupted by SIGINT after 24:55 to respect the ~30 min timebox (machine load average ~290 from concurrent builders). Counts are pytest's summary at interruption. Both failures are pytest-timeout (>600 s) on shape (32,4096,1024) (131072 interpreter programs), test_correctness[dtype1-1e-08-1e-06-mean-32-4096-1024] and test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-32-4096-1024], i.e. not assertion failures. Failed tests: ['test_correctness[dtype1-1e-08-1e-06-mean-32-4096-1024]', 'test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-32-4096-1024]']; of the failures, 2 are pytest-timeout (>600 s).",
+   "log": "harness_only/phase1/logs/tvd_liger_tests_39adfeef_full_interrupted.log"
+  },
+  {
+   "commit": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+   "files": "test/transformers/test_tvd.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_39adfeef_subset.xml -k 41-401-1271\\ or\\ 3-423-32000\\ or\\ with_ties",
+   "passed": 40,
+   "failed": 0,
+   "skipped": 40,
+   "errors": 0,
+   "xfailed": 0,
+   "deselected": 0,
+   "seconds": 127.63,
+   "wall_seconds": 133,
+   "exit_code": 0,
+   "summary_line": "40 passed, 40 skipped, 4 warnings in 127.63s (0:02:07)",
+   "interrupted": false,
+   "subset_notes": "Documented subset (-k '41-401-1271 or 3-423-32000 or with_ties'): the full file did not fit the ~30 min timebox on the CPU interpreter (see the interrupted full run). Kept: all three pre-existing test functions x all 4 reductions x both dtype params x every ignore_index, for the two pre-existing shapes with the fewest kernel programs, (41,401,1271) and (3,423,32000), plus (fixed commit only) all 32 new test_correctness_with_ties cases. Dropped: shapes (1,4096,32000) and (32,4096,1024) (4096 and 131072 rows = interpreter programs; the latter timed out at 600 s per test under load) and (1,4096,128256) (skipped anyway: shim reports 32 GiB < 36e9). On CPU every bfloat16 case is skipped by Liger's own supports_bfloat16() (False for device 'cpu'), so only float32 cases execute. Selection (pytest --collect-only with the same -k): 80 of 200 tests at 39adfeef, 112 of 232 at 559d33e7; under xdist pytest's summary line omits the deselected count. Completed within the timebox.",
+   "log": "harness_only/phase1/logs/tvd_liger_tests_39adfeef_subset.log"
+  },
+  {
+   "commit": "559d33e7b14d81476b295ef41a962937efa74517",
+   "files": "test/transformers/test_tvd.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/559d33e7b14d81476b295ef41a962937efa74517 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_559d33e7_subset.xml -k 41-401-1271\\ or\\ 3-423-32000\\ or\\ with_ties",
+   "passed": 56,
+   "failed": 0,
+   "skipped": 56,
+   "errors": 0,
+   "xfailed": 0,
+   "deselected": 0,
+   "seconds": 200.61,
+   "wall_seconds": 205,
+   "exit_code": 0,
+   "summary_line": "56 passed, 56 skipped, 4 warnings in 200.61s (0:03:20)",
+   "interrupted": false,
+   "subset_notes": "Documented subset (-k '41-401-1271 or 3-423-32000 or with_ties'): the full file did not fit the ~30 min timebox on the CPU interpreter (see the interrupted full run). Kept: all three pre-existing test functions x all 4 reductions x both dtype params x every ignore_index, for the two pre-existing shapes with the fewest kernel programs, (41,401,1271) and (3,423,32000), plus (fixed commit only) all 32 new test_correctness_with_ties cases. Dropped: shapes (1,4096,32000) and (32,4096,1024) (4096 and 131072 rows = interpreter programs; the latter timed out at 600 s per test under load) and (1,4096,128256) (skipped anyway: shim reports 32 GiB < 36e9). On CPU every bfloat16 case is skipped by Liger's own supports_bfloat16() (False for device 'cpu'), so only float32 cases execute. Selection (pytest --collect-only with the same -k): 80 of 200 tests at 39adfeef, 112 of 232 at 559d33e7; under xdist pytest's summary line omits the deselected count. Completed within the timebox.",
+   "log": "harness_only/phase1/logs/tvd_liger_tests_559d33e7_subset.log"
+  },
+  {
+   "commit": "559d33e7b14d81476b295ef41a962937efa74517",
+   "files": "test/transformers/test_tvd.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/559d33e7b14d81476b295ef41a962937efa74517 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 2 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_559d33e7_full.xml",
+   "passed": 96,
+   "failed": 0,
+   "skipped": 136,
+   "errors": 0,
+   "xfailed": 0,
+   "deselected": 0,
+   "seconds": 1532.76,
+   "wall_seconds": 1538,
+   "exit_code": 0,
+   "summary_line": "96 passed, 136 skipped, 3 warnings in 1532.76s (0:25:32)",
+   "interrupted": false,
+   "subset_notes": "FULL file (232 collected), retried at lower machine load, -n 2, timebox 1800 s. Completed within the timebox.",
+   "log": "harness_only/phase1/logs/tvd_liger_tests_559d33e7_full.log"
+  },
+  {
+   "commit": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+   "files": "test/transformers/test_tvd.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 4 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_39adfeef.xml",
+   "passed": 80,
+   "failed": 0,
+   "skipped": 120,
+   "errors": 0,
+   "xfailed": 0,
+   "deselected": 0,
+   "seconds": 749.51,
+   "wall_seconds": 754,
+   "exit_code": 0,
+   "summary_line": "80 passed, 120 skipped, 5 warnings in 749.51s (0:12:29)",
+   "interrupted": false,
+   "subset_notes": "FULL file (200 collected), re-run by the lead on an idle machine after the builder stopped (usage limit): -n 4, OMP_NUM_THREADS=1, --timeout 600 per test, no overall timebox. Completed within the timebox.",
+   "log": "harness_only/phase1/logs/tvd_liger_tests_39adfeef_full.log"
+  },
+  {
+   "commit": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+   "files": "test/transformers/test_tvd.py from 559d33e7 (copied to scratch), -k with_ties",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness:/private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest /private/tmp/claude-502/-Users-pranavs-Coding-cs329z-kernel-verification/793eb3b7-b817-4778-858f-71f714346602/scratchpad/xcheck/test_tvd_from_559d33e7.py -c pyproject.toml --rootdir . -k with_ties -q -p no:cacheprovider -p pytest_cpu_shims -p xcheck_plugin -o log_cli=false --timeout 600 -rs --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_xcheck_559d33e7tests_on_39adfeef.xml",
+   "passed": 4,
+   "failed": 12,
+   "skipped": 16,
+   "errors": 0,
+   "xfailed": 0,
+   "deselected": 200,
+   "seconds": 14.09,
+   "wall_seconds": 16,
+   "exit_code": 1,
+   "summary_line": "12 failed, 4 passed, 16 skipped, 200 deselected, 1 warning in 14.09s",
+   "interrupted": false,
+   "subset_notes": "Cross-check: the fixed commit's new regression tests (test_correctness_with_ties, 32 cases) run against the BUGGY source: cwd, rootdir and pytest config = the 39adfeef tree, so liger_kernel and test.utils resolve to 39adfeef (verified by a printing plugin: the kernel line is the two-way tl.where). bfloat16 cases skip on CPU. PR #1374 reports 24 of 32 failing on H100 when only the kernel change is reverted (8 reduction='none' cases pass because they skip backward). Completed within the timebox. Failed tests: ['test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-batchmean-2-8-4096]', 'test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-batchmean-3-423-1271]', 'test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-mean-2-8-4096]', 'test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-mean-3-423-1271]', 'test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-sum-2-8-4096]', 'test_correctness_with_ties[0.5-dtype1-1e-08-1e-06-sum-3-423-1271]', 'test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-batchmean-2-8-4096]', 'test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-batchmean-3-423-1271]', 'test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-mean-2-8-4096]', 'test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-mean-3-423-1271]', 'test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-sum-2-8-4096]', 'test_correctness_with_ties[1.0-dtype1-1e-08-1e-06-sum-3-423-1271]']; of the failures, 0 are pytest-timeout (>600 s).",
+   "log": "harness_only/phase1/logs/tvd_liger_tests_xcheck_559d33e7tests_on_39adfeef.log"
+  }
+ ],
+ "notes": "Repro: p = softmax(randn(8,512)) fp32; q = p.clone() (full tie) or half the columns copied from p; all 4 reductions. Buggy: every tied element gets -0.5*scale (e.g. -0.0625 = -0.5/8 for batchmean, matching the issue's H100 number); fixed: exactly 0. Loss identical at both commits (rel err ~1e-7). Backend: Triton CPU interpreter (TRITON_INTERPRET=1), torch 2.15.0 CPU, triton 3.9.0. Library tests: bf16 cases skip on CPU; the pre-existing suite cannot detect the bug (random inputs never tie); the fixed commit's tie tests fail against the buggy source (cross-check entry). See harness_only/phase1/tvd_notes.md."
+}

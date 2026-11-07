@@ -1,0 +1,40 @@
+Backend impl 'liger_kernel.ops.backends._cutedsl.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda'
+Backend impl 'liger_kernel.ops.backends._cutile.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda'
+/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:599: RuntimeWarning: invalid value encountered in subtract
+  output = op(lhs.data, rhs.data)
+[ 0] float32  BT= 70 Hs= 7 Ht= 7 V=  19 beta=0.5 T=1.0 lab=partial acc=None g=-1.066 contiguous s=1.091: loss_err=1.97e-08 gi=2.1319373792577776e-07 gw=9.7739324959909e-08 -> OK 
+[ 1] bfloat16 BT= 47 Hs= 1 Ht= 1 V= 579 beta=0.243 T=1.0 lab=none    acc=None g=1.0 contiguous s=0.721: loss_err=2.46e-06 gi=0.0027516325767385115 gw=0.006923236166677857 -> OK 
+[ 2] float16  BT= 64 Hs=37 Ht=51 V= 279 beta=1.0 T=0.871 lab=partial acc=None g=1.0 contiguous s=2.121: loss_err=7.92e-05 gi=0.0018282296766331948 gw=0.0012421635689534665 -> OK 
+[ 3] float32  BT=  5 Hs=69 Ht=69 V=   6 beta=0.5 T=1.0 lab=none    acc=None g=1.0 contiguous s=2.701: loss_err=2.40e-08 gi=2.8789666590264035e-07 gw=3.309960110921653e-07 -> OK 
+[ 4] bfloat16 BT= 12 Hs=37 Ht=52 V=   2 beta=0.5 T=2.333 lab=none    acc=None g=1.0 contiguous s=0.534: loss_err=8.66e-06 gi=0.003151626610826016 gw=0.0035256056904684487 -> OK 
+[ 5] float16  BT=  7 Hs=48 Ht=48 V=4851 beta=1.0 T=1.0 lab=partial acc=None g=1.0 row_slices s=1.507: loss_err=4.00e-05 gi=0.000626374298476115 gw=0.0015425162171600385 -> OK 
+[ 6] float32  BT= 19 Hs=19 Ht=19 V= 684 beta=0.549 T=0.746 lab=none    acc=float32 g=1.0 contiguous s=0.836: loss_err=3.13e-08 gi=6.059161831920756e-07 gw=5.017990544358097e-07 -> OK 
+[ 7] bfloat16 BT= 70 Hs= 2 Ht=69 V=  51 beta=0.14 T=0.345 lab=partial acc=float32 g=2.318 contiguous s=2.405: loss_err=9.10e-05 gi=0.008680494117149535 gw=0.017511666043320145 -> OK 
+[ 8] float16  BT= 64 Hs=62 Ht=62 V=   3 beta=0.5 T=2.39 lab=partial acc=None g=1.739 contiguous s=1.155: loss_err=2.07e-06 gi=0.0005983891273273341 gw=0.0004799999576651569 -> OK 
+[ 9] float32  BT=  3 Hs=48 Ht=48 V=  49 beta=0.824 T=1.064 lab=none    acc=None g=1.0 contiguous s=1.544: loss_err=1.12e-08 gi=4.5875916241208147e-07 gw=3.394529425185859e-07 -> OK 
+[10] bfloat16 BT=  3 Hs=18 Ht=13 V=   2 beta=0.0 T=1.0 lab=partial acc=None g=1.0 contiguous s=0.564: loss_err=2.29e-04 gi=0.005080905984352341 gw=0.003916771063385931 -> OK 
+[11] float16  BT=  2 Hs=16 Ht=16 V=   3 beta=1.0 T=1.0 lab=partial acc=None g=-2.792 contiguous s=2.683: loss_err=1.67e-04 gi=0.00042067743084104627 gw=0.0005053538258883502 -> OK 
+[12] float32  BT= 19 Hs=52 Ht=76 V= 266 beta=1.0 T=1.798 lab=partial acc=None g=1.0 row_slices s=1.077: loss_err=6.36e-09 gi=6.998489602162815e-07 gw=3.807059462178516e-07 -> OK 
+[13] bfloat16 BT=  3 Hs=60 Ht=51 V=   2 beta=0.58 T=2.997 lab=partial acc=None g=1.0 contiguous s=1.768: loss_err=3.17e-05 gi=0.004489942851934013 gw=0.006640870234510188 -> OK 
+[14] float16  BT=  3 Hs=67 Ht=67 V=  36 beta=0.0 T=2.118 lab=partial acc=None g=1.0 contiguous s=2.843: loss_err=5.03e-05 gi=0.0005775394606283575 gw=0.00048294064058828506 -> OK 
+[15] float32  BT=  7 Hs=13 Ht=77 V= 324 beta=0.806 T=1.0 lab=none    acc=None g=1.915 contiguous s=0.976: loss_err=1.87e-08 gi=3.5789387290453786e-07 gw=3.6377481129588297e-07 -> OK 
+[16] bfloat16 BT=  7 Hs= 5 Ht=53 V=4328 beta=0.656 T=1.632 lab=none    acc=None g=-0.825 row_slices s=0.978: loss_err=7.30e-06 gi=0.003170160245885616 gw=0.015790963937069535 -> OK 
+[17] float16  BT= 12 Hs=10 Ht=30 V=  63 beta=0.745 T=1.0 lab=partial acc=None g=2.658 contiguous s=0.66: loss_err=1.88e-06 gi=0.00040546784359711356 gw=0.0007684525302303088 -> OK 
+[18] float32  BT=  2 Hs=16 Ht=16 V= 443 beta=0.517 T=1.0 lab=none    acc=None g=1.0 row_slices s=1.558: loss_err=1.49e-08 gi=4.97702224667655e-07 gw=7.08367509268939e-07 -> OK 
+[19] bfloat16 BT= 47 Hs=71 Ht= 1 V=  13 beta=1.0 T=0.375 lab=none    acc=float32 g=1.0 row_slices s=1.086: loss_err=8.15e-04 gi=0.008418807405887014 gw=0.006553146166138368 -> OK 
+[20] float16  BT= 47 Hs=62 Ht= 1 V= 587 beta=0.847 T=1.0 lab=all     acc=None g=1.0 contiguous s=1.1: loss_err=0.00e+00 gi=0.0 gw=0.0 -> OK 
+[21] float32  BT=  3 Hs=63 Ht=63 V=   2 beta=0.576 T=0.866 lab=none    acc=None g=2.105 contiguous s=3.109: loss_err=2.66e-08 gi=1.9512376808219522e-06 gw=1.8427381291380023e-06 -> OK 
+[22] bfloat16 BT=  3 Hs=51 Ht=35 V=   3 beta=0.0 T=1.0 lab=none    acc=None g=1.186 contiguous s=2.775: loss_err=7.19e-03 gi=0.005379617055885241 gw=0.006001452682415436 -> OK 
+[23] float16  BT= 12 Hs=63 Ht=31 V= 553 beta=0.887 T=1.0 lab=partial acc=None g=-2.084 contiguous s=1.669: loss_err=5.44e-06 gi=0.0012486394636656813 gw=0.0017471956657203799 -> OK 
+[24] float32  BT= 47 Hs= 4 Ht=34 V=  57 beta=0.818 T=1.0 lab=partial acc=None g=1.0 contiguous s=0.629: loss_err=1.02e-08 gi=2.693288504114778e-07 gw=1.6706481652884967e-07 -> OK 
+[25] bfloat16 BT= 33 Hs= 1 Ht=25 V= 216 beta=0.0 T=1.0 lab=none    acc=None g=2.171 contiguous s=1.189: loss_err=6.17e-04 gi=0.003623421143907136 gw=0.014301740019381004 -> OK 
+[26] float16  BT=  5 Hs=72 Ht= 4 V=   2 beta=0.0 T=1.518 lab=none    acc=float32 g=1.0 contiguous s=2.916: loss_err=1.20e-04 gi=0.00041801978679108644 gw=0.0004013833745118632 -> OK 
+[27] float32  BT=  1 Hs=59 Ht=59 V=4375 beta=1.0 T=1.0 lab=partial acc=None g=1.0 contiguous s=4.873: loss_err=0.00e+00 gi=0.0 gw=0.0 -> OK 
+[28] bfloat16 BT=  5 Hs=64 Ht=40 V= 483 beta=0.0 T=2.542 lab=partial acc=float32 g=1.0 row_slices s=0.834: loss_err=1.71e-05 gi=0.0021914618481627458 gw=0.005545134042571477 -> OK 
+[29] float16  BT=  7 Hs=18 Ht=18 V=   2 beta=1.0 T=2.502 lab=partial acc=None g=1.421 row_slices s=0.513: loss_err=3.80e-07 gi=0.0005223585192798987 gw=0.0005220292362398742 -> OK 
+[cond] beta=0.5 std=3.0: max|ref gi|=1.70e-03 kernel32 gi=3.32e-05 ref32 gi=2.63e-05 kernel32 gw=4.77e-05 ref32 gw=3.73e-05
+[cond] beta=0.5 std=10.0: max|ref gi|=9.77e-04 kernel32 gi=4.79e-05 ref32 gi=2.61e-05 kernel32 gw=8.25e-05 ref32 gw=5.99e-05
+[cond] beta=0.5 std=30.0: max|ref gi|=1.21e-10 kernel32 gi=4.96e+02 ref32 gi=3.53e+02 kernel32 gw=4.56e+02 ref32 gw=2.87e+02
+[cond] beta=0.25 std=3.0: max|ref gi|=1.34e-03 kernel32 gi=8.01e-06 ref32 gi=1.24e-05 kernel32 gw=4.92e-06 ref32 gw=6.66e-06
+[cond] beta=0.25 std=10.0: max|ref gi|=3.07e-06 kernel32 gi=1.08e-02 ref32 gi=1.02e-02 kernel32 gw=1.32e-02 ref32 gw=1.23e-02
+[cond] beta=0.25 std=30.0: max|ref gi|=2.31e-12 kernel32 gi=1.11e+04 ref32 gi=1.35e+04 kernel32 gw=1.94e+04 ref32 gw=2.92e+04

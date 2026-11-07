@@ -1,0 +1,25 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# environments and build deps
+.venv/
+.deps/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# harness-side caches (full Liger-Kernel clone with git history; never given to the agent)
+.harness_cache/
+
+# generated: exported source trees, per-run sandboxes, scratch
+work/
+
+# notes-type markdown stays local (author's request): notes, walkthrough, per-kernel builder/review notes
+NOTES.md
+docs/WALKTHROUGH.md
+results/RESULTS_NOTES.md
+harness_only/**/*_notes.md
+harness_only/**/*_review.md

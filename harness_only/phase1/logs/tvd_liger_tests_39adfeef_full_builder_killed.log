@@ -1,0 +1,4 @@
+# commit 39adfeefab06c9a8b596199cb7f9e9d515986d8c  tree /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# started 2026-11-07T04:36:43Z
+# cwd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# command: env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 2 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_39adfeef_full.xml

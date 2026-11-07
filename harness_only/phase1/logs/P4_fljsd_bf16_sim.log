@@ -1,0 +1,90 @@
+('bfloat16', 0.0, 30.0) seed=0 old gi=0.0719 gw=0.0756 | new gi=0.0033 gw=0.0049
+('bfloat16', 0.0, 30.0) seed=1 old gi=0.1445 gw=0.1098 | new gi=0.0036 gw=0.0048
+('bfloat16', 0.0, 30.0) seed=2 old gi=0.1045 gw=0.1114 | new gi=0.0036 gw=0.0041
+('bfloat16', 0.0, 30.0) seed=3 old gi=0.1087 gw=0.1012 | new gi=0.0039 gw=0.0041
+('bfloat16', 0.0, 30.0) seed=4 old gi=0.0795 gw=0.0769 | new gi=0.0035 gw=0.0035
+('bfloat16', 0.5, 10.0) seed=0 old gi=0.0251 gw=0.0215 | new gi=0.0038 gw=0.0031
+('bfloat16', 0.5, 10.0) seed=1 old gi=0.1384 gw=0.1501 | new gi=0.0025 gw=0.0025
+('bfloat16', 0.5, 10.0) seed=2 old gi=0.0639 gw=0.0663 | new gi=0.0040 gw=0.0038
+('bfloat16', 0.5, 10.0) seed=3 old gi=0.0696 gw=0.0396 | new gi=0.0032 gw=0.0028
+('bfloat16', 0.5, 10.0) seed=4 old gi=0.1210 gw=0.1244 | new gi=0.0024 gw=0.0037
+('bfloat16', 1.0, 30.0) seed=0 old gi=0.0883 gw=0.0796 | new gi=0.0033 gw=0.0036
+('bfloat16', 1.0, 30.0) seed=1 old gi=0.1181 gw=0.1575 | new gi=0.0046 gw=0.0054
+('bfloat16', 1.0, 30.0) seed=2 old gi=0.1372 gw=0.1230 | new gi=0.0028 gw=0.0049
+('bfloat16', 1.0, 30.0) seed=3 old gi=0.1240 gw=0.1089 | new gi=0.0029 gw=0.0048
+('bfloat16', 1.0, 30.0) seed=4 old gi=0.1223 gw=0.0811 | new gi=0.0038 gw=0.0051
+('bfloat16', 0.0, 10.0) seed=0 (context) old gi=0.0394 gw=0.0392 | new gi=0.0032 gw=0.0042
+('float16', 0.0, 30.0) seed=0 (context) old gi=0.0153 gw=0.0119 | new gi=0.0005 gw=0.0005
+('float16', 1.0, 30.0) seed=0 (context) old gi=0.0099 gw=0.0093 | new gi=0.0004 gw=0.0004
+{
+ "kind": "SIMULATION (plain torch, no liger_kernel import); not a library run",
+ "threshold": 0.02,
+ "shapes": {
+  "BT": 256,
+  "H": 1024,
+  "V": 32000
+ },
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "max_rel_float32_output_over_repro_configs_and_seeds": 0.005373017134832412,
+ "min_over_seeds_of_max_rel_cast_after_matmul_per_config": {
+  "bfloat16/beta=0.0/std=30.0": 0.0755734296970322,
+  "bfloat16/beta=0.5/std=10.0": 0.025105772347900516,
+  "bfloat16/beta=1.0/std=30.0": 0.0882527517405486
+ },
+ "min_rel_cast_after_matmul_over_repro_configs_and_seeds": 0.025105772347900516,
+ "margin_fixed_path": 3.722303409446286,
+ "margin_buggy_path": 1.2552886173950257,
+ "threshold_separates_paths": true,
+ "all_finite": true,
+ "pr_table_for_comparison": {
+  "bfloat16/beta=0.0/std=30.0": {
+   "grad_input_before": 0.1393,
+   "grad_input_after": 0.005,
+   "grad_weight_before": 0.122,
+   "grad_weight_after": 0.0061
+  },
+  "bfloat16/beta=0.5/std=10.0": {
+   "grad_input_before": 0.229,
+   "grad_input_after": 0.0038,
+   "grad_weight_before": 0.236,
+   "grad_weight_after": 0.0062
+  },
+  "bfloat16/beta=1.0/std=30.0": {
+   "grad_input_before": 0.1235,
+   "grad_input_after": 0.006,
+   "grad_weight_before": 0.1028,
+   "grad_weight_after": 0.0071
+  },
+  "bfloat16/beta=0.0/std=10.0": {
+   "grad_input_before": 0.0413,
+   "grad_input_after": 0.0039,
+   "grad_weight_before": 0.0389,
+   "grad_weight_after": 0.0034
+  },
+  "float16/beta=0.0/std=30.0": {
+   "grad_input_before": 0.0125,
+   "grad_input_after": 0.0006,
+   "grad_weight_before": 0.0109,
+   "grad_weight_after": 0.0008
+  },
+  "float16/beta=1.0/std=30.0": {
+   "grad_input_before": 0.0218,
+   "grad_input_after": 0.0008,
+   "grad_weight_before": 0.0153,
+   "grad_weight_after": 0.0004
+  }
+ },
+ "seconds": 564.0,
+ "host": {
+  "torch": "2.15.0",
+  "machine": "arm64",
+  "device": "cpu"
+ }
+}
+exit=0
