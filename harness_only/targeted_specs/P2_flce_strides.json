@@ -1,0 +1,5 @@
+{"tensors": {"input": {"shape": [24, 16], "dtype": "float32", "layout": "transposed"},
+             "weight": {"shape": [40, 16], "dtype": "float32", "init": {"kind": "randn", "std": 0.25}, "layout": "transposed"},
+             "target": {"shape": [24], "dtype": "int64", "init": {"kind": "randint", "low": 0, "high": 40}},
+             "bias": {"shape": [40], "dtype": "float32", "init": {"kind": "randn", "std": 0.5}}},
+ "kwargs": {"reduction": "mean"}, "upstream": {"kind": "scalar", "value": 0.5}, "seed": 0}
