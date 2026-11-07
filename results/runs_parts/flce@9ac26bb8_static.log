@@ -1,0 +1,25 @@
+=== flce@9ac26bb8 condition=static run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 1-400 of 487)\n    1  import torch\n    2  import triton\n    3  \n    4  from packaging.version imp'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-330 of 585)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 395-487 of 487)\n  395          loss, z_loss, token_accuracy, predicted_tokens, grad_input, grad_'
+  [tool 4] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 1-152 of 152)\n    1  """\n    2  This file incorporates code from Unsloth licensed under the Apache License, Version 2'
+  [tool 6] read_file (0.0s): 'task/entry.py (lines 1-25 of 25)\n    1  """Entry point under test. Same signature and outputs as reference.reference()."""\n    2  \n    3  \n    4  def kernel(\n  '
+  [tool 7] read_file (0.0s): 'liger/src/liger_kernel/transformers/functional.py (lines 1-60 of 492)\n    1  from dataclasses import dataclass\n    2  from typing import Optional\n    3  \n    4 '
+  [tool 8] list_files (0.0s): '__init__.py  (1469 B)\ncompare.py  (8017 B)\nconformance.py  (6694 B)\ninputs.py  (10741 B)\nkernels.py  (1667 B)\nproperties.py  (10055 B)\nreplay.py  (2393 B)\nspace'
+  [tool 9] read_file (0.0s): 'oracle/inputs.py (lines 1-226 of 226)\n    1  """Input specs: a JSON-serializable description of one concrete call, turned into tensors.\n    2  \n    3  The same '
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/fused_linear_cross_entropy.py:72",
+ "proof_status": "none",
+ "score": "possible_new_bug",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 10,
+ "wall_s": 65.02,
+ "gpu_s": 0.0,
+ "cost_usd": 0.34345,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/b6008831f719.json"
+}

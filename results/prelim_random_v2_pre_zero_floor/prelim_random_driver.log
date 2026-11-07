@@ -1,0 +1,9 @@
+{"kernel": "tvd", "tree": "39adfeefab06c9a8b596199cb7f9e9d515986d8c", "seed": 0, "verdict": "bug", "specs_run": 39, "gpu_seconds_used": 11.541, "violations": ["grad_compare"]}
+{"kernel": "tvd", "tree": "559d33e7b14d81476b295ef41a962937efa74517", "seed": 0, "verdict": "no_bug", "specs_run": 200, "gpu_seconds_used": 23.407, "violations": null}
+{"kernel": "flce", "tree": "395d6166e86f64f7c27f3c6e49cef89904add1aa", "seed": 0, "verdict": "bug", "specs_run": 11, "gpu_seconds_used": 8.695, "violations": ["zero_upstream"]}
+{"kernel": "flce", "tree": "ae47958e39568874e3b21419130582a271f2a903", "seed": 0, "verdict": "bug", "specs_run": 28, "gpu_seconds_used": 12.855, "violations": ["grad_compare"]}
+{"kernel": "flce", "tree": "e44a5fe86d3ee00def43913329e4c4ff70c3b416", "seed": 0, "verdict": "bug", "specs_run": 1, "gpu_seconds_used": 6.068, "violations": ["grad_compare"]}
+{"kernel": "flce", "tree": "9ac26bb82226c9279f0fda784300f5e02ce444b2", "seed": 0, "verdict": "bug", "specs_run": 11, "gpu_seconds_used": 9.349, "violations": ["zero_upstream"]}
+{"kernel": "fljsd", "tree": "5b828eef2bd2a723d001a7557b2e12da1817b505", "seed": 0, "verdict": "bug", "specs_run": 1, "gpu_seconds_used": 6.019, "violations": ["grad_compare"]}
+{"kernel": "fljsd", "tree": "ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f", "seed": 0, "verdict": "no_bug", "specs_run": 200, "gpu_seconds_used": 77.75, "violations": null}
+{"kernel": "ce", "tree": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5", "seed": 0, "verdict": "bug", "specs_run": 1, "gpu_seconds_used": 8.245, "violations": ["no_mutation_without_grad"]}

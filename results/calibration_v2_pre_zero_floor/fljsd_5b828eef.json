@@ -1,0 +1,92 @@
+{
+ "kernel": "fljsd",
+ "tree": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ },
+ "runs": [],
+ "targeted": {
+  "spec_file": "/atlas/u/pranavsb/kernel-verification/harness_only/targeted_specs/P4_fljsd_bf16.json",
+  "reproduces": true,
+  "violations": [
+   "grad_compare"
+  ],
+  "errors": [],
+  "items": [
+   {
+    "name": "output",
+    "dtype": "float32",
+    "max_rel_err": 0.00015251394940062003,
+    "ratio": 35.462318854823096,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_student_input",
+    "dtype": "bfloat16",
+    "max_rel_err": 0.14455553070068008,
+    "ratio": 9.1964743607034,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_student_weight",
+    "dtype": "bfloat16",
+    "max_rel_err": 0.1176052787555239,
+    "ratio": 7.487105928288419,
+    "passed": false,
+    "reason": null
+   }
+  ],
+  "props": {
+   "zero_upstream": {
+    "status": "pass",
+    "violations": {}
+   },
+   "layout_invariance": {
+    "status": "inconclusive",
+    "reason": "contiguous baseline already fails the tolerance rule"
+   },
+   "no_mutation_without_grad": {
+    "status": "pass",
+    "violations": {}
+   },
+   "compile_matches_eager": {
+    "status": "inconclusive",
+    "backend": "inductor",
+    "reason": "eager already fails the tolerance rule"
+   },
+   "determinism": {
+    "status": "pass",
+    "nondeterministic": []
+   }
+  },
+  "seconds": 27.879
+ },
+ "summary": {
+  "n": 0,
+  "n_violating": 0,
+  "violations_by_check": {
+   "grad_compare": 0,
+   "zero_upstream": 0,
+   "layout_invariance": 0,
+   "no_mutation_without_grad": 0,
+   "compile_matches_eager": 0,
+   "determinism": 0
+  },
+  "n_errors": 0,
+  "max_ratio": null,
+  "p99_ratio": null,
+  "seconds": 27.9
+ }
+}

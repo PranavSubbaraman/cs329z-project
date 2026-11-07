@@ -1,0 +1,100 @@
+{
+ "kernel": "flce",
+ "tree": "e44a5fe86d3ee00def43913329e4c4ff70c3b416",
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ },
+ "runs": [],
+ "targeted": {
+  "spec_file": "/atlas/u/pranavsb/kernel-verification/harness_only/targeted_specs/P3_flce_none.json",
+  "reproduces": true,
+  "violations": [
+   "grad_compare"
+  ],
+  "errors": [],
+  "items": [
+   {
+    "name": "output",
+    "dtype": "float32",
+    "max_rel_err": 5.6358847946433464e-08,
+    "ratio": 0.023388825946251933,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_input",
+    "dtype": "float32",
+    "max_rel_err": 1.1572262823977268,
+    "ratio": 267887.4915928097,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_weight",
+    "dtype": "float32",
+    "max_rel_err": 1.224270240401375,
+    "ratio": 442642.13431005424,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_bias",
+    "dtype": "float32",
+    "max_rel_err": 1.2348541258265262,
+    "ratio": 433592.662323656,
+    "passed": false,
+    "reason": null
+   }
+  ],
+  "props": {
+   "zero_upstream": {
+    "status": "pass",
+    "violations": {}
+   },
+   "layout_invariance": {
+    "status": "inconclusive",
+    "reason": "contiguous baseline already fails the tolerance rule"
+   },
+   "no_mutation_without_grad": {
+    "status": "pass",
+    "violations": {}
+   },
+   "compile_matches_eager": {
+    "status": "inconclusive",
+    "backend": "inductor",
+    "reason": "eager already fails the tolerance rule"
+   },
+   "determinism": {
+    "status": "pass",
+    "nondeterministic": []
+   }
+  },
+  "seconds": 7.844
+ },
+ "summary": {
+  "n": 0,
+  "n_violating": 0,
+  "violations_by_check": {
+   "grad_compare": 0,
+   "zero_upstream": 0,
+   "layout_invariance": 0,
+   "no_mutation_without_grad": 0,
+   "compile_matches_eager": 0,
+   "determinism": 0
+  },
+  "n_errors": 0,
+  "max_ratio": null,
+  "p99_ratio": null,
+  "seconds": 7.8
+ }
+}

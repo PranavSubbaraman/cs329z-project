@@ -13,7 +13,11 @@ SPEC_DOC = ("An input spec is JSON: {\"tensors\": {<arg>: {\"shape\", \"dtype\",
             "\"layout\"}}, \"kwargs\": {...}, \"upstream\": {...}, \"seed\": int}. See oracle/inputs.py for init kinds "
             "(randn, uniform, softmax, log_softmax, constant, values, copy, randint), edits (exact element/row/column "
             "overrides, incl. copying from another tensor), layouts (contiguous, transposed, row_strided:K, col_strided:K, "
-            "offset:K) and upstream gradients (ones, scalar, randn, values, zeros). oracle.example_spec('<kernel>') gives a start.")
+            "offset:K) and upstream gradients (ones, scalar, randn, values, zeros). oracle.example_spec('<kernel>') gives a start. "
+            "Example: {\"tensors\": {\"x\": {\"shape\": [4, 8], \"dtype\": \"float32\", \"init\": {\"kind\": \"randn\", \"std\": 2.0}, "
+            "\"edits\": [{\"index\": [0, 3], \"value\": 0.0}, {\"rows\": [1], \"value\": 1.0}], \"layout\": \"transposed\"}}, "
+            "\"kwargs\": {\"reduction\": \"sum\"}, \"upstream\": {\"kind\": \"scalar\", \"value\": 0.5}, \"seed\": 0} "
+            "(\"from\" must name a tensor listed earlier in \"tensors\").")
 
 TOOLS = {
     "list_files": {

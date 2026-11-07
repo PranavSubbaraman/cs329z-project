@@ -45,7 +45,7 @@ def main():
     def tf(x):
         return "yes" if x else "no"
     md = ["## Oracle validation (GPU)", "", "| instance | pair/side | targeted spec flagged | violated checks | calibration violations / n | max error/allowed |", "|---|---|---|---|---|---|"]
-    tex = [r"\begin{table}[h]\centering\small", r"\begin{tabular}{@{}llccl@{}}\toprule",
+    tex = [r"\begin{table}[h]\centering\small", r"\resizebox{\textwidth}{!}{\begin{tabular}{@{}llccl@{}}\toprule",
            r"Instance & Side & Targeted spec & Random specs violating & Max err/allowed\\\midrule"]
     for r in rows_c:
         cal = f"{r['calib_violating']}/{r['calib_n']}" if r["calib_n"] else "--"
@@ -55,7 +55,7 @@ def main():
         tex.append(f"{r['instance'].replace('_', '-')} & {r['side']} & {'flagged' if r['targeted_violation'] else 'clean'} "
                    f"({', '.join(x.replace('_', ' ') for x in (r['targeted_checks'] or [])) or '--'}) & {cal}"
                    f"{(' (' + by.replace('_', ' ') + ')') if by else ''} & {mr}" + r"\\")
-    tex += [r"\bottomrule\end{tabular}",
+    tex += [r"\bottomrule\end{tabular}}",
             r"\caption{Oracle validation on GPU. ``Targeted spec'': a harness-side input that triggers the instance's bug "
             r"condition; it must be flagged on the buggy commit and clean on the fixed one. ``Random specs'': 100 draws from "
             r"the documented domain (calibration seeds, disjoint from evaluation). Every 10th also ran torch.compile; "
@@ -63,14 +63,14 @@ def main():
             r"\end{table}"]
     md += ["", "## Preliminary random differential testing (GPU, 200 specs max, seed 0, stop at first violation)", "",
            "| instance | pair/side | verdict | first violation (spec #) | specs run | GPU-s |", "|---|---|---|---|---|---|"]
-    tex2 = [r"\begin{table}[h]\centering\small", r"\begin{tabular}{@{}llllrr@{}}\toprule",
+    tex2 = [r"\begin{table}[h]\centering\small", r"\resizebox{\textwidth}{!}{\begin{tabular}{@{}llllrr@{}}\toprule",
             r"Instance & Side & Verdict & First violation (spec \#) & Specs & GPU-s\\\midrule"]
     for r in rows_r:
         v = f"{', '.join(r['violations'])} (#{r['spec_index']})" if r["violations"] else "--"
         md.append(f"| {r['instance']} | {r['pair']} {r['side']} | {r['verdict']} | {v} | {r['specs_run']} | {r['gpu_seconds']:.1f} |")
         tex2.append(f"{r['instance'].replace('_', '-')} & {r['side']} & {r['verdict'].replace('_', ' ')} & "
                     f"{v.replace('_', ' ').replace('#', chr(92) + '#')} & {r['specs_run']} & {r['gpu_seconds']:.1f}" + r"\\")
-    tex2 += [r"\bottomrule\end{tabular}",
+    tex2 += [r"\bottomrule\end{tabular}}",
              r"\caption{Preliminary random differential testing (not yet budget-matched to the agent).}", r"\end{table}"]
     (ROOT / "results" / "prelim_oracle_and_random.md").write_text("\n".join(md) + "\n")
     rep = ROOT / "report"

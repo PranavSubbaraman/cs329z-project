@@ -1,0 +1,133 @@
+{
+ "method": "random_testing",
+ "kernel": "fljsd",
+ "tree": "5b828eef2bd2a723d001a7557b2e12da1817b505",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "bug",
+ "counterexample": {
+  "spec": {
+   "tensors": {
+    "student_input": {
+     "shape": [
+      34,
+      40
+     ],
+     "dtype": "float16",
+     "init": {
+      "kind": "randn"
+     },
+     "layout": "contiguous"
+    },
+    "student_weight": {
+     "shape": [
+      10,
+      40
+     ],
+     "dtype": "float16",
+     "init": {
+      "kind": "randn",
+      "std": 0.6648201016540565
+     },
+     "layout": "offset:3"
+    },
+    "teacher_input": {
+     "shape": [
+      34,
+      8
+     ],
+     "dtype": "float16",
+     "init": {
+      "kind": "randn"
+     },
+     "layout": "contiguous"
+    },
+    "teacher_weight": {
+     "shape": [
+      10,
+      8
+     ],
+     "dtype": "float16",
+     "init": {
+      "kind": "randn",
+      "std": 9.883427330002101
+     },
+     "layout": "contiguous"
+    }
+   },
+   "kwargs": {
+    "jsd_beta": 0.83,
+    "temperature": 0.669,
+    "accum_dtype": null
+   },
+   "upstream": {
+    "kind": "ones"
+   },
+   "seed": 0
+  },
+  "violations": [
+   "grad_compare"
+  ],
+  "spec_index": 0,
+  "grad_items": [
+   {
+    "name": "output",
+    "max_rel_err": 6.864313535906286e-06,
+    "ratio": 3.120825194668388,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_student_input",
+    "max_rel_err": 0.00089988496106206,
+    "ratio": 0.4028141805957074,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_student_weight",
+    "max_rel_err": 0.0007704005862794361,
+    "ratio": 0.355074361002529,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "properties": {
+   "zero_upstream": "pass",
+   "layout_invariance": "inconclusive",
+   "no_mutation_without_grad": "pass",
+   "compile_matches_eager": "inconclusive",
+   "determinism": "pass"
+  }
+ },
+ "specs_run": 1,
+ "gpu_seconds_used": 9.927,
+ "wall_seconds": 9.927,
+ "n_spec_errors": 0,
+ "log": [
+  {
+   "i": 0,
+   "violations": [
+    "grad_compare"
+   ],
+   "errors": [],
+   "seconds": 9.927
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}

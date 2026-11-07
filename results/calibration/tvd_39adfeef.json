@@ -65,7 +65,7 @@
     "nondeterministic": []
    }
   },
-  "seconds": 14.997
+  "seconds": 54.174
  },
  "summary": {
   "n": 0,
@@ -81,6 +81,6 @@
   "n_errors": 0,
   "max_ratio": null,
   "p99_ratio": null,
-  "seconds": 15.0
+  "seconds": 54.2
  }
 }

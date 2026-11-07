@@ -1,0 +1,30 @@
+=== fljsd@5b828eef condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_jsd.py (lines 1-347 of 347)\n    1  from typing import Optional\n    2  \n    3  import torch\n    4  import triton\n    5  \n'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/jsd.py (lines 1-213 of 213)\n    1  from typing import Optional\n    2  \n    3  import torch\n    4  import triton\n    5  import triton.'
+  [tool 3] run_gradient_test (0.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 0.053,\n "stdout": "\\n\\"\\"\\"Triton backend registration for ``jsd``.\\n\\nTwo ops registered here:\\n\\n1. ``jsd'
+  [tool 4] run_gradient_test (4.7s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 4.683,\n "stdout": "(kernel_fn, ref_fn, inputs, upstream: \'dict | None\' = None, n: \'int | None\' = None) -> \''
+  [tool 5] run_gradient_test (0.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 0.03,\n "stdout": "(\\n    X_ptr,\\n    X_stride,\\n    grad_output_ptr,\\n    n_cols,\\n    BLOCK_SIZE: tl.const'
+  [tool 6] run_gradient_test (15.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 15.062,\n "stdout": "b0 T1.0 True [(\'output\', None, None)] None\\nb0 T0.5 True [(\'output\', None, None)] None\\'
+  [tool 7] run_gradient_test (10.7s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 10.745,\n "stdout": "{\\"pass\\": false, \\"items\\": [{\\"name\\": \\"output\\", \\"kind\\": \\"output\\", \\"dtype\\": \\'
+  [tool 8] run_gradient_test (11.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 11.641,\n "stdout": "f32 b.3 True [(\'output\', 0.04), (\'grad_student_input\', 0.04), (\'grad_student_weight\', 0'
+  [tool 9] run_gradient_test (0.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 0.026,\n "stdout": "\\"\\"\\"Tolerance rule used by every comparison in the oracle (grad_compare, properties, c'
+  [tool 10] run_gradient_test (9.3s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 9.283,\n "stdout": "rowstride True [(\'output\', 0.01), (\'grad_student_input\', 0.03), (\'grad_student_weight\', '
+  [tool 11] run_gradient_test (10.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 10.077,\n "stdout": "bf16 randint True [(\'output\', 0.01), (\'grad_student_input\', 0.2), (\'grad_student_weight'
+  [tool 12] run_gradient_test (7.5s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 7.516,\n "stdout": "0.39610394835472107 0.3960331543391045 0.3961039478928127\\n",\n "stderr": "Backend impl \''
+  [tool 13] replay (8.8s): '{\n "result": {\n  "kernel": "fljsd",\n  "checks": [\n   "grad_compare"\n  ],\n  "violations": [\n   "grad_compare"\n  ],\n  "errors": [],\n  "grad_compare": {\n   "pass":'
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/fused_linear_jsd.py:148",
+ "proof_status": "none",
+ "score": "detection",
+ "proof": null,
+ "localized": true,
+ "tool_calls": 14,
+ "wall_s": 192.81,
+ "gpu_s": 77.87,
+ "cost_usd": 0.772798,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/f80b9d8b5948.json"
+}

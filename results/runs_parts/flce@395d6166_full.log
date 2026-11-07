@@ -1,0 +1,29 @@
+=== flce@395d6166 condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 1-400 of 632)\n    1  import torch\n    2  import triton\n    3  \n    4  from packaging.version imp'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-290 of 607)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 288-345 of 607)\n  288      tl.debug_barrier()\n  289  \n  290      # 5. Calculate the loss\n  291  \n  292      #'
+  [tool 4] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 398-632 of 632)\n  398      if reduction == "none":\n  399          # Return per-token losses\n  40'
+  [tool 5] run_gradient_test (9.3s): '{\n "returncode": 1,\n "timed_out": false,\n "seconds": 9.273,\n "stdout": "{\'tensors\': {\'input\': {\'shape\': [8, 16], \'dtype\': \'float32\'}, \'weight\': {\'shape\': [32, 1'
+  [tool 6] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 60-140 of 165)\n   60      MAX_FUSED_SIZE = 65536\n   61      BLOCK_SIZE = triton.next_power_of_2(n)\n   62      if BLOC'
+  [tool 7] run_gradient_test (3.8s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 3.774,\n "stdout": "contiguous input None\\ncontiguous weight None\\ntransposed input None\\ntransposed weight '
+  [tool 8] run_gradient_test (4.5s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 4.477,\n "stdout": "(kernel_fn, ref_fn, inputs, upstream: \'dict | None\' = None, n: \'int | None\' = None) -> \''
+  [tool 9] run_gradient_test (21.9s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 21.903,\n "stdout": "done\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/sit'
+  [tool 10] run_gradient_test (33.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 33.089,\n "stdout": "mean 13 4 32 0 True 0 0 None transposed {\\"pass\\": false, \\"items\\": [{\\"name\\": \\"outp'
+  [tool 11] run_gradient_test (11.9s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 11.898,\n "stdout": "(\'transposed\', \'contiguous\', \'contiguous\') mean False [(\'output\', True, 0.015), (\'grad_'
+  [tool 12] replay (8.5s): '{\n "result": {\n  "kernel": "flce",\n  "checks": [\n   "grad_compare"\n  ],\n  "violations": [\n   "grad_compare"\n  ],\n  "errors": [],\n  "grad_compare": {\n   "pass": '
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/fused_linear_cross_entropy.py:108",
+ "proof_status": "none",
+ "score": "detection",
+ "proof": null,
+ "localized": false,
+ "tool_calls": 13,
+ "wall_s": 142.39,
+ "gpu_s": 92.89,
+ "cost_usd": 0.649688,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/50fa1ca7d9a0.json"
+}

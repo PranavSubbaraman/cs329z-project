@@ -1,0 +1,26 @@
+=== flce@e44a5fe8 condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 1-400 of 426)\n    1  import torch\n    2  import triton\n    3  \n    4  from packaging.version imp'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-270 of 585)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 268-340 of 585)\n  268      # 5. Calculate the loss\n  269  \n  270      # loss = log (softmax(X_y)) = log ((e ^'
+  [tool 4] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 396-426 of 426)\n  396  \n  397      @staticmethod\n  398      @amp_custom_bwd\n  399      def backw'
+  [tool 5] run_gradient_test (25.1s): '{\n "returncode": 1,\n "timed_out": false,\n "seconds": 25.089,\n "stdout": "\\n",\n "stderr": "Traceback (most recent call last):\\n  File \\"/atlas2/u/pranavsb/kernel'
+  [tool 6] run_gradient_test (0.2s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 0.154,\n "stdout": "97:def element_mul_kernel(\\n98-    X_ptr,\\n99-    X_stride,\\n100-    grad_output_ptr,\\n1'
+  [tool 7] run_gradient_test (3.8s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 3.764,\n "stdout": "{\\"tensors\\": {\\"input\\": {\\"shape\\": [8, 16], \\"dtype\\": \\"float32\\"}, \\"weight\\": {\\"s'
+  [tool 8] run_gradient_test (4.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 4.611,\n "stdout": "none err grad_compare() missing 2 required positional arguments: \'ref_fn\' and \'inputs\'\\n'
+  [tool 9] replay (12.9s): '{\n "result": {\n  "kernel": "flce",\n  "checks": [\n   "grad_compare"\n  ],\n  "violations": [\n   "grad_compare"\n  ],\n  "errors": [],\n  "grad_compare": {\n   "pass": '
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/fused_linear_cross_entropy.py:275-316",
+ "proof_status": "none",
+ "score": "detection",
+ "proof": null,
+ "localized": false,
+ "tool_calls": 10,
+ "wall_s": 77.01,
+ "gpu_s": 46.52,
+ "cost_usd": 0.38098,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/2dd83c978f53.json"
+}

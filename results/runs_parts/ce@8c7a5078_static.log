@@ -1,0 +1,28 @@
+=== ce@8c7a5078 condition=static run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-400 of 607)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 400-607 of 607)\n  400          )\n  401          sum_non_ignore_weight = torch.gather(weight, dim=0, index=tar'
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 1-168 of 168)\n    1  """\n    2  This file incorporates code from Unsloth licensed under the Apache License, Version 2'
+  [tool 4] read_file (0.0s): 'task/entry.py (lines 1-26 of 26)\n    1  """Entry point under test. Same signature and outputs as reference.reference()."""\n    2  \n    3  \n    4  def kernel(\n  '
+  [tool 5] read_file (0.0s): 'task/reference.py (lines 1-47 of 47)\n    1  """Plain-PyTorch reference for the cross-entropy op described in task.md.\n    2  \n    3  Same signature and output s'
+  [tool 6] list_files (0.0s): '__init__.py  (1469 B)\ncompare.py  (8017 B)\nconformance.py  (6694 B)\ninputs.py  (10741 B)\nkernels.py  (1667 B)\nproperties.py  (10055 B)\nreplay.py  (2393 B)\nspace'
+  [tool 7] read_file (0.0s): 'liger/src/liger_kernel/transformers/functional.py (lines 1-60 of 586)\n    1  from dataclasses import dataclass\n    2  from typing import Optional\n    3  \n    4 '
+  [tool 8] read_file (0.0s): 'oracle/inputs.py (lines 1-226 of 226)\n    1  """Input specs: a JSON-serializable description of one concrete call, turned into tensors.\n    2  \n    3  The same '
+  [tool 9] read_file (0.0s): 'liger/src/liger_kernel/transformers/functional.py (lines 60-110 of 586)\n   60      return_predicted_tokens: bool = False,\n   61  ):\n   62      loss, z_loss, tok'
+  [tool 10] read_file (0.0s): 'oracle/tolerances.py (lines 1-87 of 87)\n    1  """Tolerance rule used by every comparison in the oracle (grad_compare, properties, conformance, replay).\n    2  '
+  [tool 11] read_file (0.0s): 'oracle/properties.py (lines 1-193 of 193)\n    1  """Property checks (tolerance-free except where stated), applied to one input spec:\n    2  \n    3    zero_upstr'
+{
+ "verdict": "no_bug",
+ "location": null,
+ "proof_status": "none",
+ "score": "miss",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 12,
+ "wall_s": 101.95,
+ "gpu_s": 0.0,
+ "cost_usd": 0.427944,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/28b787127122.json"
+}

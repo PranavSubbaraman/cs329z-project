@@ -92,7 +92,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00028344620163030563,
-     "ratio": 0.14466431535686536,
+     "ratio": 0.10542954169068743,
      "passed": true,
      "reason": null
     },
@@ -100,7 +100,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00044132650760885244,
-     "ratio": 0.22535706695893765,
+     "ratio": 0.20544131836778023,
      "passed": true,
      "reason": null
     }
@@ -127,7 +127,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.35
+   "seconds": 1.386
   },
   {
    "seed": 10001,
@@ -207,7 +207,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0006031567370202734,
-     "ratio": 0.30787078317125327,
+     "ratio": 0.306400869152389,
      "passed": true,
      "reason": null
     },
@@ -215,7 +215,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0006335302817066325,
-     "ratio": 0.3235150754817953,
+     "ratio": 0.3232199421870988,
      "passed": true,
      "reason": null
     }
@@ -238,7 +238,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.217
+   "seconds": 0.451
   },
   {
    "seed": 10002,
@@ -331,7 +331,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0003452996277129234,
-     "ratio": 0.17612574424149377,
+     "ratio": 0.17160748552440963,
      "passed": true,
      "reason": null
     },
@@ -339,7 +339,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00012995073285154257,
-     "ratio": 0.06641949792538407,
+     "ratio": 0.06386563275290821,
      "passed": true,
      "reason": null
     }
@@ -362,7 +362,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.514
+   "seconds": 0.951
   },
   {
    "seed": 10003,
@@ -442,7 +442,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00014422966695444277,
-     "ratio": 0.0736731896141068,
+     "ratio": 0.06059988070430687,
      "passed": true,
      "reason": null
     },
@@ -450,7 +450,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00026134533629444565,
-     "ratio": 0.1335245196798901,
+     "ratio": 0.02669592821196243,
      "passed": true,
      "reason": null
     }
@@ -473,7 +473,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.188
+   "seconds": 0.408
   },
   {
    "seed": 10004,
@@ -584,7 +584,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.578
+   "seconds": 0.386
   },
   {
    "seed": 10005,
@@ -709,7 +709,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.341
+   "seconds": 0.588
   },
   {
    "seed": 10006,
@@ -834,7 +834,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.46
+   "seconds": 0.63
   },
   {
    "seed": 10007,
@@ -945,7 +945,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.209
+   "seconds": 0.505
   },
   {
    "seed": 10008,
@@ -1069,7 +1069,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.237
+   "seconds": 0.343
   },
   {
    "seed": 10009,
@@ -1179,7 +1179,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.195
+   "seconds": 0.45
   },
   {
    "seed": 10010,
@@ -1272,7 +1272,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00033895083873598564,
-     "ratio": 0.17145472299527117,
+     "ratio": 0.13039786806499432,
      "passed": true,
      "reason": null
     },
@@ -1280,7 +1280,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00023750555787036698,
-     "ratio": 0.12017795306934742,
+     "ratio": 0.050353640183133624,
      "passed": true,
      "reason": null
     }
@@ -1307,7 +1307,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.843
+   "seconds": 1.726
   },
   {
    "seed": 10011,
@@ -1417,7 +1417,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.189
+   "seconds": 0.086
   },
   {
    "seed": 10012,
@@ -1541,7 +1541,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.499
+   "seconds": 0.629
   },
   {
    "seed": 10013,
@@ -1665,7 +1665,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.765
+   "seconds": 0.589
   },
   {
    "seed": 10014,
@@ -1790,7 +1790,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.23
+   "seconds": 0.314
   },
   {
    "seed": 10015,
@@ -1915,7 +1915,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.397
+   "seconds": 0.46
   },
   {
    "seed": 10016,
@@ -2040,7 +2040,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.569
+   "seconds": 0.479
   },
   {
    "seed": 10017,
@@ -2165,7 +2165,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.41
+   "seconds": 0.32
   },
   {
    "seed": 10018,
@@ -2289,7 +2289,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.288
+   "seconds": 0.372
   },
   {
    "seed": 10019,
@@ -2400,7 +2400,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.141
+   "seconds": 0.245
   },
   {
    "seed": 10020,
@@ -2480,7 +2480,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00047482656769550044,
-     "ratio": 0.2407008768777688,
+     "ratio": 0.2393516832483324,
      "passed": true,
      "reason": null
     },
@@ -2488,7 +2488,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00039070896306467974,
-     "ratio": 0.1961661952281467,
+     "ratio": 0.18561856075931787,
      "passed": true,
      "reason": null
     }
@@ -2515,7 +2515,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.213
+   "seconds": 1.501
   },
   {
    "seed": 10021,
@@ -2594,7 +2594,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00044537245491083164,
-     "ratio": 0.22724833160872385,
+     "ratio": 0.2251544113835156,
      "passed": true,
      "reason": null
     },
@@ -2602,7 +2602,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00023148593377891145,
-     "ratio": 0.1179866123615312,
+     "ratio": 0.11017466864423733,
      "passed": true,
      "reason": null
     }
@@ -2625,7 +2625,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.044
+   "seconds": 0.069
   },
   {
    "seed": 10022,
@@ -2719,7 +2719,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0005358963568824535,
-     "ratio": 0.2691278930443512,
+     "ratio": 0.23207623791488913,
      "passed": true,
      "reason": null
     },
@@ -2727,7 +2727,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0006542350118510943,
-     "ratio": 0.32942294055877647,
+     "ratio": 0.20969199432091426,
      "passed": true,
      "reason": null
     }
@@ -2750,7 +2750,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.472
+   "seconds": 0.444
   },
   {
    "seed": 10023,
@@ -2875,7 +2875,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.228
+   "seconds": 0.232
   },
   {
    "seed": 10024,
@@ -3000,7 +3000,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.423
+   "seconds": 0.306
   },
   {
    "seed": 10025,
@@ -3124,7 +3124,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.351
+   "seconds": 0.426
   },
   {
    "seed": 10026,
@@ -3249,7 +3249,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.578
+   "seconds": 0.303
   },
   {
    "seed": 10027,
@@ -3329,7 +3329,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0005530646635032973,
-     "ratio": 0.28264470845852013,
+     "ratio": 0.2649363699577856,
      "passed": true,
      "reason": null
     },
@@ -3337,7 +3337,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00040753295763671835,
-     "ratio": 0.20823830622191541,
+     "ratio": 0.17762338867564303,
      "passed": true,
      "reason": null
     }
@@ -3360,7 +3360,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.209
+   "seconds": 0.169
   },
   {
    "seed": 10028,
@@ -3471,7 +3471,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.271
+   "seconds": 0.183
   },
   {
    "seed": 10029,
@@ -3550,7 +3550,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00033955238377076415,
-     "ratio": 0.17352234005384182,
+     "ratio": 0.1735043575223398,
      "passed": true,
      "reason": null
     },
@@ -3558,7 +3558,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0001508710079841407,
-     "ratio": 0.07709350756093478,
+     "ratio": 0.07692048899141386,
      "passed": true,
      "reason": null
     }
@@ -3581,7 +3581,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.258
+   "seconds": 0.221
   },
   {
    "seed": 10030,
@@ -3710,7 +3710,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.688
+   "seconds": 1.971
   },
   {
    "seed": 10031,
@@ -3835,7 +3835,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.78
+   "seconds": 0.52
   },
   {
    "seed": 10032,
@@ -3929,7 +3929,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0004304086840872224,
-     "ratio": 0.21958824546058678,
+     "ratio": 0.04263383055772471,
      "passed": true,
      "reason": null
     },
@@ -3937,7 +3937,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0006887443479593451,
-     "ratio": 0.3508400788288705,
+     "ratio": 0.026280547094306782,
      "passed": true,
      "reason": null
     }
@@ -3960,7 +3960,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.505
+   "seconds": 0.619
   },
   {
    "seed": 10033,
@@ -4071,7 +4071,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.228
+   "seconds": 0.31
   },
   {
    "seed": 10034,
@@ -4196,7 +4196,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.301
+   "seconds": 0.132
   },
   {
    "seed": 10035,
@@ -4307,7 +4307,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.269
+   "seconds": 0.135
   },
   {
    "seed": 10036,
@@ -4386,7 +4386,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00017844740133619156,
-     "ratio": 0.09124719872569376,
+     "ratio": 0.0912322858606277,
      "passed": true,
      "reason": null
     },
@@ -4394,7 +4394,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00025813273880624584,
-     "ratio": 0.1320006464786669,
+     "ratio": 0.1318996917256599,
      "passed": true,
      "reason": null
     }
@@ -4417,7 +4417,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.189
+   "seconds": 0.137
   },
   {
    "seed": 10037,
@@ -4541,7 +4541,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.768
+   "seconds": 0.475
   },
   {
    "seed": 10038,
@@ -4634,7 +4634,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.004920938966524713,
-     "ratio": 0.0834538741367821,
+     "ratio": 0.05771297076967814,
      "passed": true,
      "reason": null
     },
@@ -4642,7 +4642,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0054694421694563575,
-     "ratio": 0.11134666014984079,
+     "ratio": 0.03166195147723218,
      "passed": true,
      "reason": null
     }
@@ -4665,7 +4665,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.341
+   "seconds": 0.182
   },
   {
    "seed": 10039,
@@ -4790,7 +4790,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.553
+   "seconds": 0.41
   },
   {
    "seed": 10040,
@@ -4905,7 +4905,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.232
+   "seconds": 1.234
   },
   {
    "seed": 10041,
@@ -4998,7 +4998,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0011391304721031902,
-     "ratio": 0.5740935679656024,
+     "ratio": 0.060657468709395534,
      "passed": true,
      "reason": null
     },
@@ -5006,7 +5006,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0003938623906620784,
-     "ratio": 0.19796382297288134,
+     "ratio": 0.05101840196383737,
      "passed": true,
      "reason": null
     }
@@ -5029,7 +5029,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.816
+   "seconds": 0.518
   },
   {
    "seed": 10042,
@@ -5139,7 +5139,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.172
+   "seconds": 0.318
   },
   {
    "seed": 10043,
@@ -5264,7 +5264,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.242
+   "seconds": 0.214
   },
   {
    "seed": 10044,
@@ -5375,7 +5375,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.324
+   "seconds": 0.352
   },
   {
    "seed": 10045,
@@ -5468,7 +5468,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00023739261766692366,
-     "ratio": 0.12106956593705581,
+     "ratio": 0.1208384574794365,
      "passed": true,
      "reason": null
     },
@@ -5476,7 +5476,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00017957853737837323,
-     "ratio": 0.09154041017063111,
+     "ratio": 0.09123760274165094,
      "passed": true,
      "reason": null
     }
@@ -5499,7 +5499,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.358
+   "seconds": 0.259
   },
   {
    "seed": 10046,
@@ -5624,7 +5624,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.466
+   "seconds": 0.271
   },
   {
    "seed": 10047,
@@ -5735,7 +5735,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.337
+   "seconds": 0.184
   },
   {
    "seed": 10048,
@@ -5860,7 +5860,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.192
+   "seconds": 0.19
   },
   {
    "seed": 10049,
@@ -5985,7 +5985,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.24
+   "seconds": 0.223
   },
   {
    "seed": 10050,
@@ -6064,7 +6064,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0004488666329237992,
-     "ratio": 0.2292278302592795,
+     "ratio": 0.08016691792450344,
      "passed": true,
      "reason": null
     },
@@ -6072,7 +6072,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00037719727153489663,
-     "ratio": 0.1925620621366186,
+     "ratio": 0.08286440018049737,
      "passed": true,
      "reason": null
     }
@@ -6099,7 +6099,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.133
+   "seconds": 1.216
   },
   {
    "seed": 10051,
@@ -6210,7 +6210,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.383
+   "seconds": 0.318
   },
   {
    "seed": 10052,
@@ -6303,7 +6303,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00033164796504492734,
-     "ratio": 0.16945994237214174,
+     "ratio": 0.1455956556701672,
      "passed": true,
      "reason": null
     },
@@ -6311,7 +6311,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0003372170835971467,
-     "ratio": 0.17230447411096486,
+     "ratio": 0.1694762451931955,
      "passed": true,
      "reason": null
     }
@@ -6334,7 +6334,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.294
+   "seconds": 0.286
   },
   {
    "seed": 10053,
@@ -6398,10 +6398,8 @@
     },
     "seed": 10053
    },
-   "reproduces": true,
-   "violations": [
-    "grad_compare"
-   ],
+   "reproduces": false,
+   "violations": [],
    "errors": [],
    "items": [
     {
@@ -6416,15 +6414,15 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.002373921878791715,
-     "ratio": 1.206067316103206,
-     "passed": false,
+     "ratio": 0.1645732273642723,
+     "passed": true,
      "reason": null
     },
     {
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.001023373872698025,
-     "ratio": 0.518691498262434,
+     "ratio": 0.11159743915775654,
      "passed": true,
      "reason": null
     }
@@ -6435,8 +6433,8 @@
      "violations": {}
     },
     "layout_invariance": {
-     "status": "inconclusive",
-     "reason": "contiguous baseline already fails the tolerance rule"
+     "status": "pass",
+     "violating_variants": []
     },
     "no_mutation_without_grad": {
      "status": "pass",
@@ -6447,7 +6445,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.759
+   "seconds": 1.371
   },
   {
    "seed": 10054,
@@ -6557,7 +6555,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.243
+   "seconds": 0.448
   },
   {
    "seed": 10055,
@@ -6667,7 +6665,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.061
+   "seconds": 0.11
   },
   {
    "seed": 10056,
@@ -6746,7 +6744,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00041604930170919776,
-     "ratio": 0.21231037614399173,
+     "ratio": 0.19641180743459039,
      "passed": true,
      "reason": null
     },
@@ -6754,7 +6752,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0004634914925958157,
-     "ratio": 0.23667228666575452,
+     "ratio": 0.230150985343707,
      "passed": true,
      "reason": null
     }
@@ -6777,7 +6775,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.209
+   "seconds": 0.24
   },
   {
    "seed": 10057,
@@ -6902,7 +6900,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.265
+   "seconds": 0.294
   },
   {
    "seed": 10058,
@@ -7027,7 +7025,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.418
+   "seconds": 0.357
   },
   {
    "seed": 10059,
@@ -7138,7 +7136,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.275
+   "seconds": 0.323
   },
   {
    "seed": 10060,
@@ -7252,7 +7250,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.876
+   "seconds": 0.924
   },
   {
    "seed": 10061,
@@ -7363,7 +7361,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.213
+   "seconds": 0.337
   },
   {
    "seed": 10062,
@@ -7443,7 +7441,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0004684535004279963,
-     "ratio": 0.2393615857602764,
+     "ratio": 0.21834957012045444,
      "passed": true,
      "reason": null
     },
@@ -7451,7 +7449,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0004369033583073635,
-     "ratio": 0.22333559891867014,
+     "ratio": 0.21942528638190148,
      "passed": true,
      "reason": null
     }
@@ -7474,7 +7472,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.212
+   "seconds": 0.236
   },
   {
    "seed": 10063,
@@ -7568,7 +7566,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0004384946634518071,
-     "ratio": 0.22426041903655478,
+     "ratio": 0.21937787383290955,
      "passed": true,
      "reason": null
     },
@@ -7576,7 +7574,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00028892095918114143,
-     "ratio": 0.1478020856617596,
+     "ratio": 0.14726898413508852,
      "passed": true,
      "reason": null
     }
@@ -7599,7 +7597,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.373
+   "seconds": 0.479
   },
   {
    "seed": 10064,
@@ -7710,7 +7708,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.257
+   "seconds": 0.336
   },
   {
    "seed": 10065,
@@ -7820,7 +7818,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.259
+   "seconds": 0.495
   },
   {
    "seed": 10066,
@@ -7931,7 +7929,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.053
+   "seconds": 0.087
   },
   {
    "seed": 10067,
@@ -8041,7 +8039,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.253
+   "seconds": 0.235
   },
   {
    "seed": 10068,
@@ -8151,7 +8149,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.094
+   "seconds": 0.102
   },
   {
    "seed": 10069,
@@ -8275,7 +8273,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.609
+   "seconds": 0.517
   },
   {
    "seed": 10070,
@@ -8389,7 +8387,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.924
+   "seconds": 0.923
   },
   {
    "seed": 10071,
@@ -8499,7 +8497,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.297
+   "seconds": 0.29
   },
   {
    "seed": 10072,
@@ -8623,7 +8621,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.509
+   "seconds": 0.576
   },
   {
    "seed": 10073,
@@ -8747,7 +8745,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.3
+   "seconds": 0.473
   },
   {
    "seed": 10074,
@@ -8872,7 +8870,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.311
+   "seconds": 0.23
   },
   {
    "seed": 10075,
@@ -8997,7 +8995,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.256
+   "seconds": 0.204
   },
   {
    "seed": 10076,
@@ -9107,7 +9105,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.314
+   "seconds": 0.32
   },
   {
    "seed": 10077,
@@ -9218,7 +9216,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.369
+   "seconds": 0.271
   },
   {
    "seed": 10078,
@@ -9329,7 +9327,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.265
+   "seconds": 0.129
   },
   {
    "seed": 10079,
@@ -9454,7 +9452,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.26
+   "seconds": 0.189
   },
   {
    "seed": 10080,
@@ -9582,7 +9580,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.734
+   "seconds": 1.877
   },
   {
    "seed": 10081,
@@ -9693,7 +9691,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.236
+   "seconds": 0.212
   },
   {
    "seed": 10082,
@@ -9786,7 +9784,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0003846097915919023,
-     "ratio": 0.1966171687151653,
+     "ratio": 0.19243592425117562,
      "passed": true,
      "reason": null
     },
@@ -9794,7 +9792,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00032893786094234835,
-     "ratio": 0.168135117785192,
+     "ratio": 0.16735221054580124,
      "passed": true,
      "reason": null
     }
@@ -9817,7 +9815,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.173
+   "seconds": 0.309
   },
   {
    "seed": 10083,
@@ -9942,7 +9940,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.187
+   "seconds": 0.236
   },
   {
    "seed": 10084,
@@ -10067,7 +10065,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.28
+   "seconds": 0.19
   },
   {
    "seed": 10085,
@@ -10146,7 +10144,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00032225003974911535,
-     "ratio": 0.16472747841198243,
+     "ratio": 0.16342803574221845,
      "passed": true,
      "reason": null
     },
@@ -10154,7 +10152,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0003897369756461351,
-     "ratio": 0.19922607159156785,
+     "ratio": 0.19897820245107142,
      "passed": true,
      "reason": null
     }
@@ -10177,7 +10175,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.192
+   "seconds": 0.107
   },
   {
    "seed": 10086,
@@ -10287,7 +10285,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.067
+   "seconds": 0.066
   },
   {
    "seed": 10087,
@@ -10380,7 +10378,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00031228191720535336,
-     "ratio": 0.15948437349900013,
+     "ratio": 0.1517981767977532,
      "passed": true,
      "reason": null
     },
@@ -10388,7 +10386,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00017971255256647758,
-     "ratio": 0.09182545535216408,
+     "ratio": 0.08654174750652018,
      "passed": true,
      "reason": null
     }
@@ -10411,7 +10409,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.509
+   "seconds": 0.391
   },
   {
    "seed": 10088,
@@ -10489,10 +10487,8 @@
     },
     "seed": 10088
    },
-   "reproduces": true,
-   "violations": [
-    "grad_compare"
-   ],
+   "reproduces": false,
+   "violations": [],
    "errors": [],
    "items": [
     {
@@ -10507,16 +10503,16 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00745304990196003,
-     "ratio": 3.786479687414811,
-     "passed": false,
+     "ratio": 0.028114017745237842,
+     "passed": true,
      "reason": null
     },
     {
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.002902549885237633,
-     "ratio": 1.4805652098927582,
-     "passed": false,
+     "ratio": 0.01948340741415335,
+     "passed": true,
      "reason": null
     }
    ],
@@ -10526,8 +10522,8 @@
      "violations": {}
     },
     "layout_invariance": {
-     "status": "inconclusive",
-     "reason": "contiguous baseline already fails the tolerance rule"
+     "status": "pass",
+     "violating_variants": []
     },
     "no_mutation_without_grad": {
      "status": "pass",
@@ -10538,7 +10534,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.819
+   "seconds": 1.206
   },
   {
    "seed": 10089,
@@ -10648,7 +10644,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.219
+   "seconds": 0.103
   },
   {
    "seed": 10090,
@@ -10776,7 +10772,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.69
+   "seconds": 1.756
   },
   {
    "seed": 10091,
@@ -10870,7 +10866,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.00038592263727733574,
-     "ratio": 0.1969207721336137,
+     "ratio": 0.16239424593612425,
      "passed": true,
      "reason": null
     },
@@ -10878,7 +10874,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.000530975819066386,
-     "ratio": 0.27124495351497446,
+     "ratio": 0.24689741814666386,
      "passed": true,
      "reason": null
     }
@@ -10901,7 +10897,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.279
+   "seconds": 0.199
   },
   {
    "seed": 10092,
@@ -11012,7 +11008,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.216
+   "seconds": 0.135
   },
   {
    "seed": 10093,
@@ -11091,7 +11087,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0010513990016551397,
-     "ratio": 0.5333109898003449,
+     "ratio": 0.11504143832787417,
      "passed": true,
      "reason": null
     },
@@ -11099,7 +11095,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0005668745871319208,
-     "ratio": 0.2874793091881416,
+     "ratio": 0.11509277342018583,
      "passed": true,
      "reason": null
     }
@@ -11122,7 +11118,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.218
+   "seconds": 0.163
   },
   {
    "seed": 10094,
@@ -11232,7 +11228,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.189
+   "seconds": 0.157
   },
   {
    "seed": 10095,
@@ -11356,7 +11352,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.277
+   "seconds": 0.291
   },
   {
    "seed": 10096,
@@ -11481,7 +11477,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.403
+   "seconds": 0.477
   },
   {
    "seed": 10097,
@@ -11560,7 +11556,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.001462686661649398,
-     "ratio": 0.7419797315010097,
+     "ratio": 0.092344949884631,
      "passed": true,
      "reason": null
     },
@@ -11568,7 +11564,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.0014561292576632844,
-     "ratio": 0.7426118313515893,
+     "ratio": 0.2494971438165975,
      "passed": true,
      "reason": null
     }
@@ -11591,7 +11587,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.396
+   "seconds": 0.392
   },
   {
    "seed": 10098,
@@ -11670,7 +11666,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0014036760529356463,
-     "ratio": 0.7166625341756746,
+     "ratio": 0.6982182468529151,
      "passed": true,
      "reason": null
     },
@@ -11678,7 +11674,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 9.361531356229682e-05,
-     "ratio": 0.04787101952919915,
+     "ratio": 0.046717097453033714,
      "passed": true,
      "reason": null
     }
@@ -11701,7 +11697,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.224
+   "seconds": 0.097
   },
   {
    "seed": 10099,
@@ -11795,7 +11791,7 @@
      "name": "grad_student_input",
      "dtype": "float16",
      "max_rel_err": 0.0005786565623433082,
-     "ratio": 0.2954393165804706,
+     "ratio": 0.28826831292282007,
      "passed": true,
      "reason": null
     },
@@ -11803,7 +11799,7 @@
      "name": "grad_student_weight",
      "dtype": "float16",
      "max_rel_err": 0.00042616178354978716,
-     "ratio": 0.21790803829852268,
+     "ratio": 0.21407736015897702,
      "passed": true,
      "reason": null
     }
@@ -11826,7 +11822,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.107
+   "seconds": 0.121
   }
  ],
  "targeted": {
@@ -11882,13 +11878,13 @@
     "nondeterministic": []
    }
   },
-  "seconds": 50.152
+  "seconds": 64.572
  },
  "summary": {
   "n": 100,
-  "n_violating": 2,
+  "n_violating": 0,
   "violations_by_check": {
-   "grad_compare": 2,
+   "grad_compare": 0,
    "zero_upstream": 0,
    "layout_invariance": 0,
    "no_mutation_without_grad": 0,
@@ -11896,8 +11892,8 @@
    "determinism": 0
   },
   "n_errors": 0,
-  "max_ratio": 3.786479687414811,
-  "p99_ratio": 0.9604977483997011,
-  "seconds": 93.3
+  "max_ratio": 0.9604977483997011,
+  "p99_ratio": 0.4878251140454716,
+  "seconds": 109.2
  }
 }

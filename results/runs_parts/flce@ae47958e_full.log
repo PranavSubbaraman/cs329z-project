@@ -1,0 +1,29 @@
+=== flce@ae47958e condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 1-400 of 634)\n    1  import torch\n    2  import triton\n    3  \n    4  from packaging.version imp'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-270 of 607)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 270-340 of 607)\n  270                  dx_y = dx_y / n_non_ignore\n  271          else:\n  272              dlo'
+  [tool 4] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 398-634 of 634)\n  398      if reduction == "none":\n  399          # Return per-token losses\n  40'
+  [tool 5] run_gradient_test (22.7s): '{\n "returncode": 1,\n "timed_out": false,\n "seconds": 22.668,\n "stdout": "(kernel_fn, ref_fn, inputs, upstream: \'dict | None\' = None, n: \'int | None\' = None) -> '
+  [tool 7] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 60-160 of 168)\n   60      MAX_FUSED_SIZE = 65536\n   61      BLOCK_SIZE = triton.next_power_of_2(n)\n   62      if BLOC'
+  [tool 8] run_gradient_test (34.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 34.026,\n "stdout": "216\\n(\'mean\', 0.0, 0.0, False, -100, 8, 16, 32, \\"{\'kernel\': \'flce\', \'checks\': [\'grad_c'
+  [tool 9] run_gradient_test (28.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 28.031,\n "stdout": "576 0\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/si'
+  [tool 10] run_gradient_test (59.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 59.108,\n "stdout": "576 0\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/si'
+  [tool 11] run_gradient_test (72.5s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 72.492,\n "stdout": "1512 0\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/s'
+  [tool 12] check_properties (17.2s): '{\n "result": {\n  "kernel": "flce",\n  "results": {\n   "zero_upstream": {\n    "status": "pass",\n    "violations": {},\n    "seconds": 2.871\n   },\n   "layout_invari'
+  [tool 13] check_properties (18.1s): '{\n "result": {\n  "kernel": "flce",\n  "results": {\n   "zero_upstream": {\n    "status": "pass",\n    "violations": {},\n    "seconds": 3.47\n   },\n   "layout_invaria'
+{
+ "verdict": "no_bug",
+ "location": null,
+ "proof_status": "none",
+ "score": "correct_no_bug",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 14,
+ "wall_s": 309.86,
+ "gpu_s": 251.66,
+ "cost_usd": 0.64459,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/946a9472602a.json"
+}

@@ -102,7 +102,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 3.39
+   "seconds": 2.905
   },
   {
    "seed": 10001,
@@ -177,7 +177,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.218
+   "seconds": 0.131
   },
   {
    "seed": 10002,
@@ -231,7 +231,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00034427368725883527,
-     "ratio": 0.17611560555724914,
+     "ratio": 0.17611270029981094,
      "passed": true,
      "reason": null
     },
@@ -239,7 +239,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00023913120256565762,
-     "ratio": 0.12161838914456696,
+     "ratio": 0.12087977789927908,
      "passed": true,
      "reason": null
     }
@@ -262,7 +262,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.752
+   "seconds": 0.704
   },
   {
    "seed": 10003,
@@ -314,7 +314,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 2.6903401308452005e-05,
-     "ratio": 0.013760996774708172,
+     "ratio": 0.013760736052988496,
      "passed": true,
      "reason": null
     },
@@ -322,7 +322,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00018721931513916587,
-     "ratio": 0.09461482664085392,
+     "ratio": 0.09372656523958373,
      "passed": true,
      "reason": null
     }
@@ -345,7 +345,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.629
+   "seconds": 0.277
   },
   {
    "seed": 10004,
@@ -421,7 +421,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.213
+   "seconds": 0.076
   },
   {
    "seed": 10005,
@@ -504,7 +504,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.466
+   "seconds": 0.201
   },
   {
    "seed": 10006,
@@ -654,7 +654,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.461
+   "seconds": 0.211
   },
   {
    "seed": 10007,
@@ -708,7 +708,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0002838855939684086,
-     "ratio": 0.14524398563743188,
+     "ratio": 0.14523841642501242,
      "passed": true,
      "reason": null
     },
@@ -716,7 +716,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00047812286272087704,
-     "ratio": 0.24459248237654782,
+     "ratio": 0.2444064023465485,
      "passed": true,
      "reason": null
     }
@@ -760,7 +760,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.612
+   "seconds": 0.376
   },
   {
    "seed": 10008,
@@ -953,7 +953,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.463
+   "seconds": 0.223
   },
   {
    "seed": 10009,
@@ -1113,7 +1113,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.669
+   "seconds": 0.299
   },
   {
    "seed": 10010,
@@ -1200,7 +1200,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.944
+   "seconds": 2.67
   },
   {
    "seed": 10011,
@@ -1285,7 +1285,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.516
+   "seconds": 0.305
   },
   {
    "seed": 10012,
@@ -1337,7 +1337,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00013457144818410132,
-     "ratio": 0.06878477920444193,
+     "ratio": 0.0687756299101569,
      "passed": true,
      "reason": null
     }
@@ -1360,7 +1360,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.44
+   "seconds": 0.293
   },
   {
    "seed": 10013,
@@ -1557,7 +1557,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.561
+   "seconds": 0.369
   },
   {
    "seed": 10014,
@@ -1662,7 +1662,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.507
+   "seconds": 0.182
   },
   {
    "seed": 10015,
@@ -1746,7 +1746,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.528
+   "seconds": 0.147
   },
   {
    "seed": 10016,
@@ -1854,7 +1854,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.523
+   "seconds": 0.195
   },
   {
    "seed": 10017,
@@ -1938,7 +1938,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.461
+   "seconds": 0.207
   },
   {
    "seed": 10018,
@@ -1990,7 +1990,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0004624863918396338,
-     "ratio": 0.2364422515988839,
+     "ratio": 0.23642791765207316,
      "passed": true,
      "reason": null
     },
@@ -1998,7 +1998,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00028070510402194125,
-     "ratio": 0.1429589213930304,
+     "ratio": 0.14203705276808182,
      "passed": true,
      "reason": null
     }
@@ -2021,7 +2021,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.646
+   "seconds": 0.233
   },
   {
    "seed": 10019,
@@ -2131,7 +2131,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.503
+   "seconds": 0.15
   },
   {
    "seed": 10020,
@@ -2184,7 +2184,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00012682172943162277,
-     "ratio": 0.06481883685544244,
+     "ratio": 0.0648076733391954,
      "passed": true,
      "reason": null
     }
@@ -2211,7 +2211,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.38
+   "seconds": 1.944
   },
   {
    "seed": 10021,
@@ -2265,7 +2265,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 8.689565359958186e-05,
-     "ratio": 0.04444786807695268,
+     "ratio": 0.04444410240391941,
      "passed": true,
      "reason": null
     },
@@ -2273,7 +2273,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0003716693037710899,
-     "ratio": 0.1897761269542987,
+     "ratio": 0.1882573708346361,
      "passed": true,
      "reason": null
     }
@@ -2325,7 +2325,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.596
+   "seconds": 0.502
   },
   {
    "seed": 10022,
@@ -2427,7 +2427,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.355
+   "seconds": 0.157
   },
   {
    "seed": 10023,
@@ -2512,7 +2512,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.89
+   "seconds": 0.405
   },
   {
    "seed": 10024,
@@ -2565,7 +2565,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 9.664957882590785e-05,
-     "ratio": 0.04941805758542627,
+     "ratio": 0.04941790082316384,
      "passed": true,
      "reason": null
     },
@@ -2573,7 +2573,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0004490593747613285,
-     "ratio": 0.22861412565785413,
+     "ratio": 0.22809397759991998,
      "passed": true,
      "reason": null
     }
@@ -2596,7 +2596,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.724
+   "seconds": 0.435
   },
   {
    "seed": 10025,
@@ -2650,7 +2650,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0002705666923484709,
-     "ratio": 0.13832968110885088,
+     "ratio": 0.13826306807955294,
      "passed": true,
      "reason": null
     },
@@ -2658,7 +2658,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00022129263596949204,
-     "ratio": 0.11297713189999732,
+     "ratio": 0.10288137772805657,
      "passed": true,
      "reason": null
     }
@@ -2706,7 +2706,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.541
+   "seconds": 0.513
   },
   {
    "seed": 10026,
@@ -2790,7 +2790,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.629
+   "seconds": 0.243
   },
   {
    "seed": 10027,
@@ -2875,7 +2875,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.487
+   "seconds": 0.271
   },
   {
    "seed": 10028,
@@ -3039,7 +3039,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.582
+   "seconds": 0.427
   },
   {
    "seed": 10029,
@@ -3141,7 +3141,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.723
+   "seconds": 0.429
   },
   {
    "seed": 10030,
@@ -3333,7 +3333,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.193
+   "seconds": 1.815
   },
   {
    "seed": 10031,
@@ -3386,7 +3386,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00017925190420601763,
-     "ratio": 0.09163830346959186,
+     "ratio": 0.09163447697289147,
      "passed": true,
      "reason": null
     },
@@ -3394,7 +3394,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00030166066753916705,
-     "ratio": 0.15257783416506798,
+     "ratio": 0.1488040130811786,
      "passed": true,
      "reason": null
     }
@@ -3417,7 +3417,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.809
+   "seconds": 0.263
   },
   {
    "seed": 10032,
@@ -3470,7 +3470,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00017840040524133726,
-     "ratio": 0.09123750750685883,
+     "ratio": 0.09123642010985178,
      "passed": true,
      "reason": null
     },
@@ -3478,7 +3478,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0002706193042176314,
-     "ratio": 0.13744564742181983,
+     "ratio": 0.13729899331013415,
      "passed": true,
      "reason": null
     }
@@ -3501,7 +3501,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.445
+   "seconds": 0.185
   },
   {
    "seed": 10033,
@@ -3615,7 +3615,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.539
+   "seconds": 0.312
   },
   {
    "seed": 10034,
@@ -3745,7 +3745,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.452
+   "seconds": 0.511
   },
   {
    "seed": 10035,
@@ -3845,7 +3845,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.655
+   "seconds": 0.228
   },
   {
    "seed": 10036,
@@ -3898,7 +3898,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00020379951943985458,
-     "ratio": 0.10421985343048136,
+     "ratio": 0.10419834198940908,
      "passed": true,
      "reason": null
     }
@@ -3921,7 +3921,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.227
+   "seconds": 0.082
   },
   {
    "seed": 10037,
@@ -4020,7 +4020,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.64
+   "seconds": 0.242
   },
   {
    "seed": 10038,
@@ -4075,7 +4075,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00014614881416647954,
-     "ratio": 0.07471486011810839,
+     "ratio": 0.07469332832476877,
      "passed": true,
      "reason": null
     },
@@ -4083,7 +4083,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0006746456557872967,
-     "ratio": 0.344961105774558,
+     "ratio": 0.1932345015637789,
      "passed": true,
      "reason": null
     }
@@ -4137,7 +4137,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.573
+   "seconds": 0.303
   },
   {
    "seed": 10039,
@@ -4234,7 +4234,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.198
+   "seconds": 0.141
   },
   {
    "seed": 10040,
@@ -4338,7 +4338,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.295
+   "seconds": 2.111
   },
   {
    "seed": 10041,
@@ -4473,7 +4473,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.209
+   "seconds": 0.207
   },
   {
    "seed": 10042,
@@ -4581,7 +4581,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.477
+   "seconds": 0.36
   },
   {
    "seed": 10043,
@@ -4635,7 +4635,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00040252515068621544,
-     "ratio": 0.20569993824014268,
+     "ratio": 0.20568165084278003,
      "passed": true,
      "reason": null
     }
@@ -4658,7 +4658,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.291
+   "seconds": 0.179
   },
   {
    "seed": 10044,
@@ -4710,7 +4710,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0005236454730542671,
-     "ratio": 0.26777138682333385,
+     "ratio": 0.26776531868843284,
      "passed": true,
      "reason": null
     },
@@ -4718,7 +4718,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0002363061675308975,
-     "ratio": 0.12069672149231936,
+     "ratio": 0.12046064346212126,
      "passed": true,
      "reason": null
     }
@@ -4741,7 +4741,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.54
+   "seconds": 0.253
   },
   {
    "seed": 10045,
@@ -4793,7 +4793,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00024099942897021662,
-     "ratio": 0.12327218944371321,
+     "ratio": 0.12326263518614973,
      "passed": true,
      "reason": null
     }
@@ -4816,7 +4816,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.372
+   "seconds": 0.204
   },
   {
    "seed": 10046,
@@ -4870,7 +4870,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00021532744765852003,
-     "ratio": 0.11010834939984712,
+     "ratio": 0.1101070750312944,
      "passed": true,
      "reason": null
     },
@@ -4878,7 +4878,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0004656822756522427,
-     "ratio": 0.2380616381700376,
+     "ratio": 0.23538153876317336,
      "passed": true,
      "reason": null
     }
@@ -4942,7 +4942,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.623
+   "seconds": 0.358
   },
   {
    "seed": 10047,
@@ -5050,7 +5050,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.211
+   "seconds": 0.125
   },
   {
    "seed": 10048,
@@ -5103,7 +5103,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00032043110536098294,
-     "ratio": 0.16374538638590835,
+     "ratio": 0.16361146558883455,
      "passed": true,
      "reason": null
     },
@@ -5111,7 +5111,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 3.2277188708323e-05,
-     "ratio": 0.016499757082040982,
+     "ratio": 0.016191276829595393,
      "passed": true,
      "reason": null
     }
@@ -5134,7 +5134,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.982
+   "seconds": 0.357
   },
   {
    "seed": 10049,
@@ -5187,7 +5187,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00012328482382202894,
-     "ratio": 0.06301335226707494,
+     "ratio": 0.0629918424493241,
      "passed": true,
      "reason": null
     },
@@ -5195,7 +5195,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00040837458169547735,
-     "ratio": 0.20863385526962178,
+     "ratio": 0.20472556120712834,
      "passed": true,
      "reason": null
     }
@@ -5218,7 +5218,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.673
+   "seconds": 0.251
   },
   {
    "seed": 10050,
@@ -5334,7 +5334,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.353
+   "seconds": 1.923
   },
   {
    "seed": 10051,
@@ -5388,7 +5388,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.000226499645850796,
-     "ratio": 0.11567635076570852,
+     "ratio": 0.11565960760225451,
      "passed": true,
      "reason": null
     }
@@ -5411,7 +5411,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.525
+   "seconds": 0.261
   },
   {
    "seed": 10052,
@@ -5511,7 +5511,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.784
+   "seconds": 0.606
   },
   {
    "seed": 10053,
@@ -5595,7 +5595,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.997
+   "seconds": 0.387
   },
   {
    "seed": 10054,
@@ -5700,7 +5700,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.279
+   "seconds": 0.133
   },
   {
    "seed": 10055,
@@ -5815,7 +5815,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.667
+   "seconds": 0.263
   },
   {
    "seed": 10056,
@@ -5868,7 +5868,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 2.4942086383903702e-05,
-     "ratio": 0.012761187604981027,
+     "ratio": 0.012759321099718213,
      "passed": true,
      "reason": null
     },
@@ -5876,7 +5876,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00040068248824819813,
-     "ratio": 0.20500948927203258,
+     "ratio": 0.2048237549468747,
      "passed": true,
      "reason": null
     }
@@ -5899,7 +5899,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.816
+   "seconds": 0.431
   },
   {
    "seed": 10057,
@@ -6000,7 +6000,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.197
+   "seconds": 0.165
   },
   {
    "seed": 10058,
@@ -6056,7 +6056,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0002335661336212087,
-     "ratio": 0.11944631666972542,
+     "ratio": 0.11942727064815699,
      "passed": true,
      "reason": null
     },
@@ -6064,7 +6064,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00036108455411808265,
-     "ratio": 0.18464814057399587,
+     "ratio": 0.18428685047580795,
      "passed": true,
      "reason": null
     }
@@ -6100,7 +6100,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.592
+   "seconds": 0.314
   },
   {
    "seed": 10059,
@@ -6278,7 +6278,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.414
+   "seconds": 0.424
   },
   {
    "seed": 10060,
@@ -6384,7 +6384,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.599
+   "seconds": 2.165
   },
   {
    "seed": 10061,
@@ -6437,7 +6437,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0001362467019309454,
-     "ratio": 0.06969985423638128,
+     "ratio": 0.0696989139502526,
      "passed": true,
      "reason": null
     }
@@ -6460,7 +6460,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.535
+   "seconds": 0.22
   },
   {
    "seed": 10062,
@@ -6516,7 +6516,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0002812386268944692,
-     "ratio": 0.14387315531139028,
+     "ratio": 0.143872234544767,
      "passed": true,
      "reason": null
     }
@@ -6579,7 +6579,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.198
+   "seconds": 0.143
   },
   {
    "seed": 10063,
@@ -6677,7 +6677,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.497
+   "seconds": 0.332
   },
   {
    "seed": 10064,
@@ -6732,7 +6732,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00028284072688147756,
-     "ratio": 0.14471861998248592,
+     "ratio": 0.14471710986875785,
      "passed": true,
      "reason": null
     },
@@ -6740,7 +6740,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 9.342619808226253e-05,
-     "ratio": 0.047800712048335595,
+     "ratio": 0.047743522485381856,
      "passed": true,
      "reason": null
     }
@@ -6778,7 +6778,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.461
+   "seconds": 0.129
   },
   {
    "seed": 10065,
@@ -6831,7 +6831,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0002921652199836998,
-     "ratio": 0.14936198490385824,
+     "ratio": 0.1492822107877395,
      "passed": true,
      "reason": null
     },
@@ -6839,7 +6839,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.00016602308099533314,
-     "ratio": 0.08487023850388503,
+     "ratio": 0.08364350002875272,
      "passed": true,
      "reason": null
     }
@@ -6862,7 +6862,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.693
+   "seconds": 0.367
   },
   {
    "seed": 10066,
@@ -6960,7 +6960,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.835
+   "seconds": 0.433
   },
   {
    "seed": 10067,
@@ -7053,7 +7053,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.384
+   "seconds": 0.195
   },
   {
    "seed": 10068,
@@ -7159,7 +7159,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.435
+   "seconds": 0.268
   },
   {
    "seed": 10069,
@@ -7261,7 +7261,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.201
+   "seconds": 0.166
   },
   {
    "seed": 10070,
@@ -7370,7 +7370,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.091
+   "seconds": 2.131
   },
   {
    "seed": 10071,
@@ -7425,7 +7425,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0002297896998444269,
-     "ratio": 0.11755043450721063,
+     "ratio": 0.11754610983542894,
      "passed": true,
      "reason": null
     },
@@ -7433,7 +7433,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0003730780121675061,
-     "ratio": 0.19078326710542645,
+     "ratio": 0.19047870377770737,
      "passed": true,
      "reason": null
     }
@@ -7499,7 +7499,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.936
+   "seconds": 0.312
   },
   {
    "seed": 10072,
@@ -7582,7 +7582,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 1.363
+   "seconds": 1.046
   },
   {
    "seed": 10073,
@@ -7696,7 +7696,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.872
+   "seconds": 0.326
   },
   {
    "seed": 10074,
@@ -7781,7 +7781,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.743
+   "seconds": 0.416
   },
   {
    "seed": 10075,
@@ -7911,7 +7911,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.677
+   "seconds": 0.33
   },
   {
    "seed": 10076,
@@ -7996,7 +7996,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.717
+   "seconds": 0.337
   },
   {
    "seed": 10077,
@@ -8135,7 +8135,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.468
+   "seconds": 0.305
   },
   {
    "seed": 10078,
@@ -8191,7 +8191,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00014074632707285415,
-     "ratio": 0.0719875701127636,
+     "ratio": 0.07198667147211887,
      "passed": true,
      "reason": null
     },
@@ -8199,7 +8199,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0005135941732192489,
-     "ratio": 0.2623513463497584,
+     "ratio": 0.2622890765796589,
      "passed": true,
      "reason": null
     }
@@ -8237,7 +8237,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.545
+   "seconds": 0.327
   },
   {
    "seed": 10079,
@@ -8321,7 +8321,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.649
+   "seconds": 0.392
   },
   {
    "seed": 10080,
@@ -8457,7 +8457,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.371
+   "seconds": 2.185
   },
   {
    "seed": 10081,
@@ -8513,7 +8513,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00017865645238665151,
-     "ratio": 0.09133044683921152,
+     "ratio": 0.09131969165120787,
      "passed": true,
      "reason": null
     }
@@ -8558,7 +8558,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.543
+   "seconds": 0.327
   },
   {
    "seed": 10082,
@@ -8653,7 +8653,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.282
+   "seconds": 0.133
   },
   {
    "seed": 10083,
@@ -8767,7 +8767,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.444
+   "seconds": 0.246
   },
   {
    "seed": 10084,
@@ -8823,7 +8823,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00023869429059960668,
-     "ratio": 0.12201410690812176,
+     "ratio": 0.12201252861092612,
      "passed": true,
      "reason": null
     }
@@ -8872,7 +8872,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.379
+   "seconds": 0.305
   },
   {
    "seed": 10085,
@@ -9008,7 +9008,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.047
+   "seconds": 0.22
   },
   {
    "seed": 10086,
@@ -9106,7 +9106,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.706
+   "seconds": 0.443
   },
   {
    "seed": 10087,
@@ -9209,7 +9209,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.217
+   "seconds": 0.227
   },
   {
    "seed": 10088,
@@ -9292,7 +9292,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.434
+   "seconds": 0.245
   },
   {
    "seed": 10089,
@@ -9347,7 +9347,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0004261092437740746,
-     "ratio": 0.21788683223131258,
+     "ratio": 0.21785817946140096,
      "passed": true,
      "reason": null
     },
@@ -9355,7 +9355,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0006177835760923891,
-     "ratio": 0.3158942677690877,
+     "ratio": 0.2970822664989176,
      "passed": true,
      "reason": null
     }
@@ -9391,7 +9391,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.037
+   "seconds": 0.099
   },
   {
    "seed": 10090,
@@ -9445,7 +9445,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.00036150207886755353,
-     "ratio": 0.18490531739255345,
+     "ratio": 0.18490485804720636,
      "passed": true,
      "reason": null
     }
@@ -9496,7 +9496,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 2.039
+   "seconds": 1.833
   },
   {
    "seed": 10091,
@@ -9579,7 +9579,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.65
+   "seconds": 0.287
   },
   {
    "seed": 10092,
@@ -9631,7 +9631,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 4.039056443160188e-05,
-     "ratio": 0.020652202513197628,
+     "ratio": 0.02065211951651347,
      "passed": true,
      "reason": null
     },
@@ -9639,7 +9639,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.000213828134367829,
-     "ratio": 0.10851257290758591,
+     "ratio": 0.10822228044361532,
      "passed": true,
      "reason": null
     }
@@ -9662,7 +9662,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.586
+   "seconds": 0.444
   },
   {
    "seed": 10093,
@@ -9716,7 +9716,7 @@
      "name": "output",
      "dtype": "float16",
      "max_rel_err": 0.0001018218409480565,
-     "ratio": 0.052060037592278244,
+     "ratio": 0.05205289683944671,
      "passed": true,
      "reason": null
     },
@@ -9724,7 +9724,7 @@
      "name": "grad_input",
      "dtype": "float16",
      "max_rel_err": 0.0002957218121142209,
-     "ratio": 0.1509292130944863,
+     "ratio": 0.15052848237621186,
      "passed": true,
      "reason": null
     }
@@ -9747,7 +9747,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.512
+   "seconds": 0.372
   },
   {
    "seed": 10094,
@@ -9831,7 +9831,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.417
+   "seconds": 0.362
   },
   {
    "seed": 10095,
@@ -10022,7 +10022,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.23
+   "seconds": 0.104
   },
   {
    "seed": 10096,
@@ -10121,7 +10121,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.243
+   "seconds": 0.18
   },
   {
    "seed": 10097,
@@ -10216,7 +10216,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.48
+   "seconds": 0.185
   },
   {
    "seed": 10098,
@@ -10301,7 +10301,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.813
+   "seconds": 0.417
   },
   {
    "seed": 10099,
@@ -10431,7 +10431,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.661
+   "seconds": 0.298
   }
  ],
  "targeted": {
@@ -10491,7 +10491,7 @@
     "nondeterministic": []
    }
   },
-  "seconds": 9.402
+  "seconds": 9.264
  },
  "summary": {
   "n": 100,
@@ -10505,8 +10505,8 @@
    "determinism": 0
   },
   "n_errors": 0,
-  "max_ratio": 0.344961105774558,
-  "p99_ratio": 0.26777138682333385,
-  "seconds": 81.8
+  "max_ratio": 0.2970822664989176,
+  "p99_ratio": 0.2622890765796589,
+  "seconds": 57.4
  }
 }

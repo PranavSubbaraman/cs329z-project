@@ -1,0 +1,209 @@
+{
+ "method": "random_testing",
+ "kernel": "flce",
+ "tree": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "bug",
+ "counterexample": {
+  "spec": {
+   "tensors": {
+    "input": {
+     "shape": [
+      7,
+      7
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn"
+     },
+     "layout": "contiguous"
+    },
+    "weight": {
+     "shape": [
+      47,
+      7
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn",
+      "std": 1.7552250130184992
+     },
+     "layout": "transposed",
+     "requires_grad": true
+    },
+    "target": {
+     "shape": [
+      7
+     ],
+     "dtype": "int64",
+     "init": {
+      "kind": "randint",
+      "low": 0,
+      "high": 47,
+      "ignore_frac": 0.4188305871844895,
+      "ignore_index": 0
+     }
+    },
+    "bias": {
+     "shape": [
+      47
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn",
+      "std": 0.5
+     },
+     "layout": "contiguous",
+     "requires_grad": true
+    }
+   },
+   "kwargs": {
+    "ignore_index": 0,
+    "reduction": "sum",
+    "label_smoothing": 0.544,
+    "lse_square_scale": 0.0
+   },
+   "upstream": {
+    "kind": "scalar",
+    "value": 1.049
+   },
+   "seed": 10
+  },
+  "violations": [
+   "grad_compare",
+   "zero_upstream",
+   "layout_invariance"
+  ],
+  "spec_index": 10,
+  "grad_items": [
+   {
+    "name": "output",
+    "max_rel_err": 7.040398040839186e-08,
+    "ratio": 0.03419036534847815,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_input",
+    "max_rel_err": 1.7107407566031416e-07,
+    "ratio": 0.021475987849737675,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_weight",
+    "max_rel_err": 0.04671107100482055,
+    "ratio": 5976.351036062136,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_bias",
+    "max_rel_err": 2.2739541916953962e-07,
+    "ratio": 0.03278336983788099,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "properties": {
+   "zero_upstream": "fail",
+   "layout_invariance": "fail",
+   "no_mutation_without_grad": "pass",
+   "compile_matches_eager": "inconclusive",
+   "determinism": "pass"
+  }
+ },
+ "specs_run": 11,
+ "gpu_seconds_used": 37.846,
+ "wall_seconds": 37.847,
+ "n_spec_errors": 0,
+ "log": [
+  {
+   "i": 0,
+   "violations": [],
+   "errors": [],
+   "seconds": 26.404
+  },
+  {
+   "i": 1,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.436
+  },
+  {
+   "i": 2,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.194
+  },
+  {
+   "i": 3,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.552
+  },
+  {
+   "i": 4,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.469
+  },
+  {
+   "i": 5,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.592
+  },
+  {
+   "i": 6,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.125
+  },
+  {
+   "i": 7,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.148
+  },
+  {
+   "i": 8,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.597
+  },
+  {
+   "i": 9,
+   "violations": [],
+   "errors": [],
+   "seconds": 1.948
+  },
+  {
+   "i": 10,
+   "violations": [
+    "grad_compare",
+    "zero_upstream",
+    "layout_invariance"
+   ],
+   "errors": [],
+   "seconds": 6.38
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}

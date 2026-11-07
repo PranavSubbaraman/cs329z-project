@@ -1,0 +1,37 @@
+=== fljsd@ed1f856d condition=static run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_jsd.py (lines 1-383 of 383)\n    1  from typing import Optional\n    2  \n    3  import torch\n    4  import triton\n    5  \n'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/jsd.py (lines 1-213 of 213)\n    1  from typing import Optional\n    2  \n    3  import torch\n    4  import triton\n    5  import triton.'
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/backends/_triton/jsd.py (lines 1-154 of 154)\n    1  """Triton backend registration for ``jsd``.\n    2  \n    3  Two ops registered her'
+  [tool 5] read_file (0.0s): 'task/entry.py (lines 1-27 of 27)\n    1  """Entry point under test. Same signature and outputs as reference.reference()."""\n    2  \n    3  \n    4  def kernel(\n  '
+  [tool 6] list_files (0.0s): '__init__.py  (10788 B)\n_nvidia_shared.py  (4634 B)\nattn_res.py  (12018 B)\nbackends/\ncross_entropy.py  (27364 B)\ncute/\ncutedsl/\ncutile/\ndyt.py  (5461 B)\nexperime'
+  [tool 7] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 60-160 of 165)\n   60      MAX_FUSED_SIZE = 65536\n   61      BLOCK_SIZE = triton.next_power_of_2(n)\n   62      if BLOC'
+  [tool 8] read_file (0.0s): 'task/reference.py (lines 1-58 of 58)\n    1  """Plain-PyTorch reference for the fused linear generalized Jensen-Shannon divergence loss.\n    2  \n    3  Same sign'
+  [tool 9] read_file (0.0s): 'liger/src/liger_kernel/transformers/functional.py (lines 1-40 of 549)\n    1  from dataclasses import dataclass\n    2  from typing import Optional\n    3  \n    4 '
+  [tool 10] list_files (0.0s): 'README.md  (7899 B)\n__init__.py  (734 B)\n_ascend/\n_cutedsl/\n_cutile/\n_triton/\nregistry.py  (4218 B)'
+  [tool 11] read_file (0.0s): 'liger/src/liger_kernel/ops/backends/registry.py (lines 1-108 of 108)\n    1  """\n    2  Implementation registry for Liger-Kernel.\n    3  \n    4  An "implementati'
+  [tool 12] list_files (0.0s): '__init__.py  (1757 B)\n_cute_lib/\ncross_entropy.py  (9535 B)\nfused_add_rms_norm.py  (21665 B)\nfused_linear_cross_entropy.py  (3822 B)\nfused_linear_jsd.py  (3144 '
+  [tool 13] list_files (0.0s): '__init__.py  (3426 B)\ncapability.py  (4657 B)\ndispatch.py  (15202 B)\nregistry.py  (16082 B)'
+  [tool 15] read_file (0.0s): 'liger/src/liger_kernel/transformers/functional.py (lines 150-230 of 549)\n  150      )\n  151  \n  152  \n  153  def liger_fused_linear_jsd(\n  154      student_inpu'
+  [tool 16] read_file (0.0s): 'liger/src/liger_kernel/backends/dispatch.py (lines 1-380 of 380)\n    1  """Implementation resolution and dispatch.\n    2  \n    3  Resolution order (first match '
+  [tool 17] read_file (0.0s): 'liger/src/liger_kernel/functional.py (lines 1-120 of 762)\n    1  """Functional (autograd-aware) wrappers over the implementation dispatcher.\n    2  \n    3  Thes'
+  [tool 18] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 1-60 of 165)\n    1  """\n    2  This file incorporates code from Unsloth licensed under the Apache License, Version 2.'
+  [tool 19] read_file (0.0s): 'liger/src/liger_kernel/ops/backends/_cutedsl/fused_linear_jsd.py (lines 1-85 of 85)\n    1  """CuTe DSL backend registration for ``fused_linear_jsd``.\n    2  \n  '
+  [tool 20] list_files (0.0s): '__init__.py  (613 B)\nfused_linear_jsd.py  (2205 B)\njsd.py  (12384 B)\nlayer_norm.py  (26277 B)\nrms_norm.py  (47291 B)\nsoftmax.py  (18444 B)'
+  [tool 21] read_file (0.0s): 'liger/src/liger_kernel/ops/backends/_cutedsl/jsd.py (lines 1-120 of 649)\n    1  """CuTe DSL (CUTLASS python) backend for the ``jsd_loss_and_grad`` primitive.\n  '
+  [tool 22] read_file (0.0s): 'liger/src/liger_kernel/backends/registry.py (lines 1-200 of 389)\n    1  """Per-(op, backend) registry of kernel implementations.\n    2  \n    3  Each impl file r'
+{
+ "verdict": "no_bug",
+ "location": null,
+ "proof_status": "none",
+ "score": "correct_no_bug",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 23,
+ "wall_s": 264.26,
+ "gpu_s": 0.0,
+ "cost_usd": 0.994588,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/66f800a138d6.json"
+}

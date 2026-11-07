@@ -31,6 +31,8 @@ def main():
     ap.add_argument("--no-score", action="store_true")
     ap.add_argument("--max-calls", type=int, default=25)
     ap.add_argument("--max-seconds", type=float, default=600)
+    ap.add_argument("--runs-file", default=str(ROOT / "results" / "runs.jsonl"),
+                    help="JSONL to append to (use one file per process when running in parallel on NFS)")
     a = ap.parse_args()
     inst = {i["instance_id"]: i for i in json.loads((ROOT / "benchmark" / "instances.json").read_text())["instances"]}[a.instance]
     for k in range(a.runs):
@@ -41,7 +43,8 @@ def main():
         rec["timestamp"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         if not a.no_score:
             rec["score"] = score(rec)
-        with open(ROOT / "results" / "runs.jsonl", "a") as f:
+        Path(a.runs_file).parent.mkdir(parents=True, exist_ok=True)
+        with open(a.runs_file, "a") as f:
             f.write(json.dumps(rec, default=str) + "\n")
         v = rec["verdict"]
         print(json.dumps({"verdict": v.get("verdict"), "location": v.get("location"), "proof_status": v.get("proof_status"),

@@ -1,0 +1,22 @@
+=== tvd@39adfeef condition=static run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/tvd.py (lines 1-218 of 218)\n    1  from typing import Literal\n    2  from typing import Optional\n    3  \n    4  import torch\n    5  i'
+  [tool 2] read_file (0.0s): 'task/reference.py (lines 1-34 of 34)\n    1  """Plain-PyTorch reference for the TVD loss described in task.md.\n    2  \n    3  Same signature and output structure'
+  [tool 3] read_file (0.0s): 'oracle/inputs.py (lines 1-226 of 226)\n    1  """Input specs: a JSON-serializable description of one concrete call, turned into tensors.\n    2  \n    3  The same '
+  [tool 4] list_files (0.0s): '__init__.py  (10788 B)\n_nvidia_shared.py  (4634 B)\nattn_res.py  (12018 B)\nbackends/\ncross_entropy.py  (27364 B)\ncute/\ncutedsl/\ncutile/\ndyt.py  (5461 B)\nexperime'
+  [tool 5] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 1-120 of 165)\n    1  """\n    2  This file incorporates code from Unsloth licensed under the Apache License, Version 2'
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/tvd.py:89",
+ "proof_status": "none",
+ "score": "detection",
+ "proof": null,
+ "localized": true,
+ "tool_calls": 6,
+ "wall_s": 24.58,
+ "gpu_s": 0.0,
+ "cost_usd": 0.121994,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/3b1c881b1cfc.json"
+}

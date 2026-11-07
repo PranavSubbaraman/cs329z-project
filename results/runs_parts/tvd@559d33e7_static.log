@@ -1,0 +1,24 @@
+=== tvd@559d33e7 condition=static run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/tvd.py (lines 1-219 of 219)\n    1  from typing import Literal\n    2  from typing import Optional\n    3  \n    4  import torch\n    5  i'
+  [tool 2] read_file (0.0s): 'task/reference.py (lines 1-34 of 34)\n    1  """Plain-PyTorch reference for the TVD loss described in task.md.\n    2  \n    3  Same signature and output structure'
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 1-80 of 165)\n    1  """\n    2  This file incorporates code from Unsloth licensed under the Apache License, Version 2.'
+  [tool 4] read_file (0.0s): 'task/entry.py (lines 1-13 of 13)\n    1  """Entry point under test. Same signature and outputs as reference.reference()."""\n    2  \n    3  \n    4  def kernel(p, '
+  [tool 5] list_files (0.0s): '__init__.py  (14394 B)\nauto_model.py  (2714 B)\ncross_entropy.py  (2366 B)\ndyt.py  (719 B)\nexperimental/\nfsdp.py  (3096 B)\nfunctional.py  (15748 B)\nfused_add_rms'
+  [tool 6] read_file (0.0s): 'liger/src/liger_kernel/transformers/tvd.py (lines 1-13 of 13)\n    1  import torch.nn as nn\n    2  \n    3  from liger_kernel.ops import LigerTVDLossFunction\n    '
+  [tool 7] read_file (0.0s): 'liger/src/liger_kernel/transformers/functional.py (lines 1-40 of 549)\n    1  from dataclasses import dataclass\n    2  from typing import Optional\n    3  \n    4 '
+{
+ "verdict": "no_bug",
+ "location": null,
+ "proof_status": "none",
+ "score": "correct_no_bug",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 8,
+ "wall_s": 36.14,
+ "gpu_s": 0.0,
+ "cost_usd": 0.128708,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/2f403941be71.json"
+}

@@ -1,0 +1,337 @@
+{
+ "method": "random_testing",
+ "kernel": "tvd",
+ "tree": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "bug",
+ "counterexample": {
+  "spec": {
+   "tensors": {
+    "p": {
+     "shape": [
+      17,
+      1
+     ],
+     "dtype": "bfloat16",
+     "init": {
+      "kind": "softmax",
+      "std": 0.138
+     },
+     "layout": "contiguous"
+    },
+    "q": {
+     "shape": [
+      17,
+      1
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "softmax",
+      "std": 0.496
+     },
+     "layout": "contiguous"
+    }
+   },
+   "kwargs": {
+    "reduction": "mean"
+   },
+   "upstream": {
+    "kind": "ones"
+   },
+   "seed": 38
+  },
+  "violations": [
+   "grad_compare"
+  ],
+  "spec_index": 38,
+  "grad_items": [
+   {
+    "name": "output",
+    "max_rel_err": 0.0,
+    "ratio": 0.0,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_p",
+    "max_rel_err": Infinity,
+    "ratio": 1.9423704852102575e+37,
+    "passed": false,
+    "reason": null
+   }
+  ],
+  "properties": {
+   "zero_upstream": "pass",
+   "layout_invariance": "inconclusive",
+   "no_mutation_without_grad": "pass",
+   "determinism": "pass"
+  }
+ },
+ "specs_run": 39,
+ "gpu_seconds_used": 11.541,
+ "wall_seconds": 11.543,
+ "n_spec_errors": 4,
+ "log": [
+  {
+   "i": 0,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+   ],
+   "seconds": 7.348
+  },
+  {
+   "i": 1,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.058
+  },
+  {
+   "i": 2,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.032
+  },
+  {
+   "i": 3,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.075
+  },
+  {
+   "i": 4,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.031
+  },
+  {
+   "i": 5,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.045
+  },
+  {
+   "i": 6,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.094
+  },
+  {
+   "i": 7,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.034
+  },
+  {
+   "i": 8,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.033
+  },
+  {
+   "i": 9,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.059
+  },
+  {
+   "i": 10,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+   ],
+   "seconds": 0.81
+  },
+  {
+   "i": 11,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.035
+  },
+  {
+   "i": 12,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 13,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.049
+  },
+  {
+   "i": 14,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 15,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.046
+  },
+  {
+   "i": 16,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.039
+  },
+  {
+   "i": 17,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.053
+  },
+  {
+   "i": 18,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.04
+  },
+  {
+   "i": 19,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.037
+  },
+  {
+   "i": 20,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+   ],
+   "seconds": 0.852
+  },
+  {
+   "i": 21,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.035
+  },
+  {
+   "i": 22,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.034
+  },
+  {
+   "i": 23,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.032
+  },
+  {
+   "i": 24,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.047
+  },
+  {
+   "i": 25,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 26,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 27,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.167
+  },
+  {
+   "i": 28,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.042
+  },
+  {
+   "i": 29,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.035
+  },
+  {
+   "i": 30,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.71
+  },
+  {
+   "i": 31,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.039
+  },
+  {
+   "i": 32,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.218
+  },
+  {
+   "i": 33,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.038
+  },
+  {
+   "i": 34,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.028
+  },
+  {
+   "i": 35,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.039
+  },
+  {
+   "i": 36,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.094
+  },
+  {
+   "i": 37,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.05
+  },
+  {
+   "i": 38,
+   "violations": [
+    "grad_compare"
+   ],
+   "errors": [],
+   "seconds": 0.017
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}

@@ -1,0 +1,1271 @@
+{
+ "method": "random_testing",
+ "kernel": "tvd",
+ "tree": "559d33e7b14d81476b295ef41a962937efa74517",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "no_bug",
+ "counterexample": null,
+ "specs_run": 200,
+ "gpu_seconds_used": 42.625,
+ "wall_seconds": 42.639,
+ "n_spec_errors": 20,
+ "log": [
+  {
+   "i": 0,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+   ],
+   "seconds": 7.514
+  },
+  {
+   "i": 1,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.081
+  },
+  {
+   "i": 2,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.052
+  },
+  {
+   "i": 3,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.228
+  },
+  {
+   "i": 4,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.111
+  },
+  {
+   "i": 5,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.117
+  },
+  {
+   "i": 6,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.127
+  },
+  {
+   "i": 7,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.093
+  },
+  {
+   "i": 8,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.039
+  },
+  {
+   "i": 9,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.225
+  },
+  {
+   "i": 10,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+   ],
+   "seconds": 0.913
+  },
+  {
+   "i": 11,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.061
+  },
+  {
+   "i": 12,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.054
+  },
+  {
+   "i": 13,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.053
+  },
+  {
+   "i": 14,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.09
+  },
+  {
+   "i": 15,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.051
+  },
+  {
+   "i": 16,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.121
+  },
+  {
+   "i": 17,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.051
+  },
+  {
+   "i": 18,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.064
+  },
+  {
+   "i": 19,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.052
+  },
+  {
+   "i": 20,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+   ],
+   "seconds": 0.865
+  },
+  {
+   "i": 21,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.058
+  },
+  {
+   "i": 22,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.039
+  },
+  {
+   "i": 23,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.077
+  },
+  {
+   "i": 24,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.301
+  },
+  {
+   "i": 25,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.093
+  },
+  {
+   "i": 26,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.148
+  },
+  {
+   "i": 27,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.373
+  },
+  {
+   "i": 28,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.052
+  },
+  {
+   "i": 29,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.049
+  },
+  {
+   "i": 30,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.856
+  },
+  {
+   "i": 31,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.09
+  },
+  {
+   "i": 32,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.282
+  },
+  {
+   "i": 33,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.096
+  },
+  {
+   "i": 34,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.084
+  },
+  {
+   "i": 35,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.232
+  },
+  {
+   "i": 36,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.265
+  },
+  {
+   "i": 37,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.163
+  },
+  {
+   "i": 38,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.067
+  },
+  {
+   "i": 39,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.091
+  },
+  {
+   "i": 40,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.938
+  },
+  {
+   "i": 41,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.104
+  },
+  {
+   "i": 42,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.136
+  },
+  {
+   "i": 43,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.052
+  },
+  {
+   "i": 44,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.123
+  },
+  {
+   "i": 45,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.038
+  },
+  {
+   "i": 46,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.071
+  },
+  {
+   "i": 47,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.041
+  },
+  {
+   "i": 48,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.046
+  },
+  {
+   "i": 49,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.217
+  },
+  {
+   "i": 50,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.432
+  },
+  {
+   "i": 51,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.198
+  },
+  {
+   "i": 52,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.08
+  },
+  {
+   "i": 53,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.035
+  },
+  {
+   "i": 54,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.045
+  },
+  {
+   "i": 55,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.13
+  },
+  {
+   "i": 56,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.18
+  },
+  {
+   "i": 57,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.051
+  },
+  {
+   "i": 58,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.057
+  },
+  {
+   "i": 59,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.064
+  },
+  {
+   "i": 60,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.543
+  },
+  {
+   "i": 61,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.023
+  },
+  {
+   "i": 62,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.057
+  },
+  {
+   "i": 63,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.04
+  },
+  {
+   "i": 64,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.075
+  },
+  {
+   "i": 65,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.123
+  },
+  {
+   "i": 66,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.062
+  },
+  {
+   "i": 67,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.04
+  },
+  {
+   "i": 68,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.098
+  },
+  {
+   "i": 69,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.143
+  },
+  {
+   "i": 70,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.517
+  },
+  {
+   "i": 71,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.225
+  },
+  {
+   "i": 72,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.079
+  },
+  {
+   "i": 73,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.087
+  },
+  {
+   "i": 74,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.085
+  },
+  {
+   "i": 75,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.071
+  },
+  {
+   "i": 76,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.209
+  },
+  {
+   "i": 77,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.065
+  },
+  {
+   "i": 78,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.039
+  },
+  {
+   "i": 79,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.023
+  },
+  {
+   "i": 80,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.795
+  },
+  {
+   "i": 81,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.151
+  },
+  {
+   "i": 82,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.195
+  },
+  {
+   "i": 83,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.078
+  },
+  {
+   "i": 84,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.1
+  },
+  {
+   "i": 85,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.142
+  },
+  {
+   "i": 86,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.115
+  },
+  {
+   "i": 87,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 88,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.099
+  },
+  {
+   "i": 89,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.133
+  },
+  {
+   "i": 90,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.687
+  },
+  {
+   "i": 91,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.034
+  },
+  {
+   "i": 92,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.134
+  },
+  {
+   "i": 93,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.084
+  },
+  {
+   "i": 94,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 95,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.04
+  },
+  {
+   "i": 96,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.34
+  },
+  {
+   "i": 97,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.026
+  },
+  {
+   "i": 98,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.13
+  },
+  {
+   "i": 99,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.147
+  },
+  {
+   "i": 100,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.85
+  },
+  {
+   "i": 101,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.028
+  },
+  {
+   "i": 102,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.018
+  },
+  {
+   "i": 103,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.081
+  },
+  {
+   "i": 104,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.114
+  },
+  {
+   "i": 105,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.194
+  },
+  {
+   "i": 106,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.088
+  },
+  {
+   "i": 107,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.143
+  },
+  {
+   "i": 108,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.159
+  },
+  {
+   "i": 109,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.061
+  },
+  {
+   "i": 110,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 1.115
+  },
+  {
+   "i": 111,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.089
+  },
+  {
+   "i": 112,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.181
+  },
+  {
+   "i": 113,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.044
+  },
+  {
+   "i": 114,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.125
+  },
+  {
+   "i": 115,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.18
+  },
+  {
+   "i": 116,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.063
+  },
+  {
+   "i": 117,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.225
+  },
+  {
+   "i": 118,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.114
+  },
+  {
+   "i": 119,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.054
+  },
+  {
+   "i": 120,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.611
+  },
+  {
+   "i": 121,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.031
+  },
+  {
+   "i": 122,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.17
+  },
+  {
+   "i": 123,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.122
+  },
+  {
+   "i": 124,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.061
+  },
+  {
+   "i": 125,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.06
+  },
+  {
+   "i": 126,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.107
+  },
+  {
+   "i": 127,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.14
+  },
+  {
+   "i": 128,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.22
+  },
+  {
+   "i": 129,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.022
+  },
+  {
+   "i": 130,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.969
+  },
+  {
+   "i": 131,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 132,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.328
+  },
+  {
+   "i": 133,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.018
+  },
+  {
+   "i": 134,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.299
+  },
+  {
+   "i": 135,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.07
+  },
+  {
+   "i": 136,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.248
+  },
+  {
+   "i": 137,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.214
+  },
+  {
+   "i": 138,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.141
+  },
+  {
+   "i": 139,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.302
+  },
+  {
+   "i": 140,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.784
+  },
+  {
+   "i": 141,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.113
+  },
+  {
+   "i": 142,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.112
+  },
+  {
+   "i": 143,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.125
+  },
+  {
+   "i": 144,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.15
+  },
+  {
+   "i": 145,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.111
+  },
+  {
+   "i": 146,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.05
+  },
+  {
+   "i": 147,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.408
+  },
+  {
+   "i": 148,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.107
+  },
+  {
+   "i": 149,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.169
+  },
+  {
+   "i": 150,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.599
+  },
+  {
+   "i": 151,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.023
+  },
+  {
+   "i": 152,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.034
+  },
+  {
+   "i": 153,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.141
+  },
+  {
+   "i": 154,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.065
+  },
+  {
+   "i": 155,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.019
+  },
+  {
+   "i": 156,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.134
+  },
+  {
+   "i": 157,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.2
+  },
+  {
+   "i": 158,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.024
+  },
+  {
+   "i": 159,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.105
+  },
+  {
+   "i": 160,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.765
+  },
+  {
+   "i": 161,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.062
+  },
+  {
+   "i": 162,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.157
+  },
+  {
+   "i": 163,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.17
+  },
+  {
+   "i": 164,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.187
+  },
+  {
+   "i": 165,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.037
+  },
+  {
+   "i": 166,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.099
+  },
+  {
+   "i": 167,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.022
+  },
+  {
+   "i": 168,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.031
+  },
+  {
+   "i": 169,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.064
+  },
+  {
+   "i": 170,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 1.062
+  },
+  {
+   "i": 171,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.126
+  },
+  {
+   "i": 172,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.096
+  },
+  {
+   "i": 173,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.058
+  },
+  {
+   "i": 174,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.377
+  },
+  {
+   "i": 175,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.135
+  },
+  {
+   "i": 176,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.182
+  },
+  {
+   "i": 177,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.17
+  },
+  {
+   "i": 178,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.055
+  },
+  {
+   "i": 179,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.111
+  },
+  {
+   "i": 180,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 0.612
+  },
+  {
+   "i": 181,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.036
+  },
+  {
+   "i": 182,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.124
+  },
+  {
+   "i": 183,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.394
+  },
+  {
+   "i": 184,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.133
+  },
+  {
+   "i": 185,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.192
+  },
+  {
+   "i": 186,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.044
+  },
+  {
+   "i": 187,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.07
+  },
+  {
+   "i": 188,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.056
+  },
+  {
+   "i": 189,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.148
+  },
+  {
+   "i": 190,
+   "violations": [],
+   "errors": [
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
+   ],
+   "seconds": 1.186
+  },
+  {
+   "i": 191,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.024
+  },
+  {
+   "i": 192,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.066
+  },
+  {
+   "i": 193,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.04
+  },
+  {
+   "i": 194,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.057
+  },
+  {
+   "i": 195,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.061
+  },
+  {
+   "i": 196,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.072
+  },
+  {
+   "i": 197,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.031
+  },
+  {
+   "i": 198,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.127
+  },
+  {
+   "i": 199,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.089
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}
