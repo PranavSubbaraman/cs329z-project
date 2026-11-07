@@ -71,10 +71,20 @@ range over the 3 runs where applicable.
 
 ## Oracle tolerance (frozen)
 `oracle/tolerances.py`:
-`max|T-R| <= c_out*u(d)*max|R| + c_acc*u32*log2(2n)*max|R| + K*max|R32-R|`, with **c_out = 4, c_acc = 4, K = 8**.
+`max|T-R| <= c_out*u(d)*max|R| + c_acc*u32*log2(2n)*max|R| + K*max|R32-R| + c_out*eta(d)*sqrt(n)` (the last term added before any baseline result was used; see Deviations), with **c_out = 4, c_acc = 4, K = 8**.
 The constants were chosen before calibration. The calibration on fixed commits (seeds 10000+, 100 specs each) is
 used only to confirm zero false alarms. If it had shown false alarms, the constants or the reference would have
 been revised before any baseline run, and the revision recorded here.
 
 ## Deviations
-(none yet)
+1. **2026-11-06, tolerance rule: an underflow term was added after calibration, before any baseline result was used.**
+   - Calibration on `fljsd@ed1f856d` (fixed) gave 2 of 100 float16 `grad_student_input` false alarms (ratios 1.2 and
+     3.8).
+   - Both are fp16 underflow. Gradients of about 1e-5 to 1e-7 are subnormal in fp16. In one case the kernel returns
+     0 where the reference is 1.85e-7, about 3 subnormal steps.
+   - Added term (4): `c_out*eta(d)*sqrt(n)`, the absolute part of the IEEE rounding model. It is negligible for
+     float32 and bfloat16. The constants are unchanged, and the calibration on every fixed commit is re-run with the
+     revised rule.
+2. **2026-11-06, process: the first preliminary random-testing run started before calibration finished.** That run
+   used the unrevised rule. It is discarded unread and re-run with the revised rule. Its raw output is kept at
+   `results/prelim_random_discarded/` for transparency.

@@ -61,7 +61,15 @@ def _gen(seed: int, name: str) -> torch.Generator:
 def _values(name: str, t: dict, built: dict, seed: int) -> torch.Tensor:
     shape = tuple(t.get("shape", []))
     init = t.get("init") or {"kind": "randn"}
+    if isinstance(init, str):  # shorthand: "init": "randn"
+        init = {"kind": init}
+    init = dict(init)
+    if init.get("kind") == "copy" and "from" not in init:  # accept "source" / tensor-level "from"
+        init["from"] = init.get("source") or t.get("from") or t.get("source")
     kind = init.get("kind", "randn")
+    if kind == "copy" and init.get("from") not in built:
+        raise ValueError(f"{name}: init copy needs 'from' naming an argument defined earlier in 'tensors' "
+                         f"(got {init.get('from')!r}; defined so far: {sorted(built)})")
     g = _gen(seed, name)
     if kind == "randn":
         v = torch.randn(shape, generator=g, dtype=torch.float64) * init.get("std", 1.0) + init.get("mean", 0.0)
@@ -84,7 +92,8 @@ def _values(name: str, t: dict, built: dict, seed: int) -> torch.Tensor:
             mask = torch.rand(shape, generator=g) < frac
             v[mask] = float(init.get("ignore_index", -100))
     else:
-        raise ValueError(f"unknown init kind {kind!r} for {name}")
+        raise ValueError(f"unknown init kind {kind!r} for {name}; use one of randn, uniform, softmax, log_softmax, "
+                         "constant, values, copy, randint")
     for e in t.get("edits", []) or []:
         src = built[e["from"]].detach().to("cpu", torch.float64) if "from" in e else None
         if "index" in e:

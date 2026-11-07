@@ -7,6 +7,7 @@ float64 reference R evaluated on exactly the same input values. It passes iff
                   + c_acc * u32 * log2(2n) * max|R|        (2) float32 accumulation over reductions of length n
                   + K * max|R32 - R|                       (3) data-dependent floor: the error of the same
                                                                reference evaluated in float32
+                  + c_out * eta(d) * sqrt(n)               (4) underflow: eta(d) = smallest positive subnormal of d
 
   * u(d) is the unit roundoff of d: float32 2^-24, bfloat16 2^-8, float16 2^-11 (float64: 2^-53).
   * n is the reduction size, bounded by the largest dimension of any tensor argument (every reduction in these
@@ -15,6 +16,10 @@ float64 reference R evaluated on exactly the same input values. It passes iff
     with conditioning and with reduction size. When R is tiny only because O(1) terms cancel, R32 carries an
     absolute error of order u32 times those terms, so the comparison gets a meaningful absolute floor.
     When R is exactly 0 and R32 is exactly 0 (e.g. a gradient that is identically zero), the rule allows no error.
+  * Term (4) is the absolute part of the IEEE rounding model |fl(x) - x| <= u|x| + eta/2, accumulated over up to n
+    terms. It matters only for float16, whose results near 1e-5 are subnormal (eta = 2^-24); for bfloat16 and
+    float32 eta is below 1e-38, so the term is negligible. It was added after calibration found float16 false alarms
+    on a fixed commit (see PREREGISTRATION.md, Deviations).
   * Constants: c_out = 4, c_acc = 4, K = 8. They were frozen in PREREGISTRATION.md after calibration on the fixed
     commits only.
 
@@ -45,6 +50,13 @@ UNIT_ROUNDOFF = {
 }
 U32 = UNIT_ROUNDOFF[torch.float32]
 
+SMALLEST_SUBNORMAL = {
+    torch.float64: 2.0**-1074,
+    torch.float32: 2.0**-149,
+    torch.bfloat16: 2.0**-133,
+    torch.float16: 2.0**-24,
+}
+
 
 def unit_roundoff(dtype: torch.dtype) -> float:
     return UNIT_ROUNDOFF.get(dtype, U32)
@@ -55,10 +67,11 @@ def allowed_error(dtype: torch.dtype, n: int, ref_max: float, err32: float) -> f
     n = max(int(n), 1)
     return (C_OUT * unit_roundoff(dtype) * ref_max
             + C_ACC * U32 * math.log2(2 * n) * ref_max
-            + K_FLOOR * err32)
+            + K_FLOOR * err32
+            + C_OUT * SMALLEST_SUBNORMAL.get(dtype, 0.0) * math.sqrt(n))
 
 
 def describe() -> dict:
-    return {"rule": "max|T-R| <= c_out*u(d)*max|R| + c_acc*u32*log2(2n)*max|R| + K*max|R32-R|",
+    return {"rule": "max|T-R| <= c_out*u(d)*max|R| + c_acc*u32*log2(2n)*max|R| + K*max|R32-R| + c_out*eta(d)*sqrt(n)",
             "c_out": C_OUT, "c_acc": C_ACC, "K": K_FLOOR,
             "unit_roundoff": {str(k).replace("torch.", ""): v for k, v in UNIT_ROUNDOFF.items()}}
