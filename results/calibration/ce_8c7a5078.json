@@ -1,0 +1,10512 @@
+{
+ "kernel": "ce",
+ "tree": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ },
+ "runs": [
+  {
+   "seed": 10000,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       11,
+       668
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 14.764
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       11
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 668,
+       "ignore_frac": 0.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.326,
+     "lse_square_scale": 0.0233
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10000
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.4596268455773968e-07,
+     "ratio": 0.04491821023692062,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 9.305613898244726e-08,
+     "ratio": 0.00958832007538336,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 3.39
+  },
+  {
+   "seed": 10001,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       17,
+       154
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 2.108
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       17
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 154,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.717,
+     "lse_square_scale": 0.000189
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10001
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 3.97175512180985e-09,
+     "ratio": 0.0017721966187193973,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.218
+  },
+  {
+   "seed": 10002,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       34
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 17.189
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 34,
+       "ignore_frac": 0.12694238249183298,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.32,
+     "lse_square_scale": 4.66e-05
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10002
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00034427368725883527,
+     "ratio": 0.17611560555724914,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00023913120256565762,
+     "ratio": 0.12161838914456696,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.752
+  },
+  {
+   "seed": 10003,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       8,
+       96
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 25.051
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       8
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 96,
+       "ignore_frac": 0.19368893358940537,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.569,
+     "lse_square_scale": 1.72e-05
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10003
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 2.6903401308452005e-05,
+     "ratio": 0.013760996774708172,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00018721931513916587,
+     "ratio": 0.09461482664085392,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.629
+  },
+  {
+   "seed": 10004,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       11,
+       1689
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 3.387
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       11
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1689,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.206
+    },
+    "seed": 10004
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.100054120470701e-08,
+     "ratio": 0.0035245103821189643,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.213
+  },
+  {
+   "seed": 10005,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       3
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 14.662
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.000152
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10005
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 7.09676846424599e-08,
+     "ratio": 0.04989070191868331,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 1.2272929409040506e-08,
+     "ratio": 0.012879487577927461,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.466
+  },
+  {
+   "seed": 10006,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       26,
+       35
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 0.9
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       26
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 35,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.55,
+     "lse_square_scale": 0.000389
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10006
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 910,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 910,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.461
+  },
+  {
+   "seed": 10007,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       10,
+       7
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 0.529
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       10
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 7,
+       "ignore_frac": 0.4387716457293749,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.49,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10007
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0002838855939684086,
+     "ratio": 0.14524398563743188,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00047812286272087704,
+     "ratio": 0.24459248237654782,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 35,
+       "rows_changed": [
+        3,
+        4,
+        6,
+        8,
+        9
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 35,
+       "rows_changed": [
+        3,
+        4,
+        6,
+        8,
+        9
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.612
+  },
+  {
+   "seed": 10008,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       48,
+       6
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 2.466
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       48
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 6,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.747,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.013
+    },
+    "seed": 10008
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 288,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 288,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.463
+  },
+  {
+   "seed": 10009,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       32,
+       19
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 8.769
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       32
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 19,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.994,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10009
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 608,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 608,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.669
+  },
+  {
+   "seed": 10010,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       34,
+       786
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 7.126
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       34
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 786,
+       "ignore_frac": 0.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.697,
+     "lse_square_scale": 1.88e-05
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10010
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.1990831112211494e-08,
+     "ratio": 0.007464727702226005,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 1.5303514840106338e-07,
+     "ratio": 0.014300037045657497,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.944
+  },
+  {
+   "seed": 10011,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       3,
+       987
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 24.506
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       3
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 987,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10011
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 5.4897431844175204e-08,
+     "ratio": 0.016698615732212353,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 5.1294720600206554e-08,
+     "ratio": 0.0036742602067670366,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.516
+  },
+  {
+   "seed": 10012,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       1217
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 14.872
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1217,
+       "ignore_frac": 0.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 1.99e-05
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10012
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00013457144818410132,
+     "ratio": 0.06878477920444193,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.44
+  },
+  {
+   "seed": 10013,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       50,
+       205
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 9.145
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       50
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 205,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.18,
+     "lse_square_scale": 1.61e-05
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.201
+    },
+    "seed": 10013
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 10250,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 10250,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.561
+  },
+  {
+   "seed": 10014,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       513
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 6.648
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 513,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.227,
+     "lse_square_scale": 0.000303
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.69
+    },
+    "seed": 10014
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2052,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2052,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.507
+  },
+  {
+   "seed": 10015,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       91
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.74
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 91,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.63,
+     "lse_square_scale": 0.0627
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.955
+    },
+    "seed": 10015
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.1235902397370026e-08,
+     "ratio": 0.005304198499299085,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 8.682443734525355e-08,
+     "ratio": 0.026547194856394552,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.528
+  },
+  {
+   "seed": 10016,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       5,
+       4
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 1.289
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       5
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 4,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10016
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 20,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 20,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.523
+  },
+  {
+   "seed": 10017,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       60
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 0.83
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 60,
+       "ignore_frac": 0.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0517
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.378
+    },
+    "seed": 10017
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.986101640042457e-09,
+     "ratio": 0.0010447456529455834,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 4.062448529877507e-08,
+     "ratio": 0.017271662675934288,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.461
+  },
+  {
+   "seed": 10018,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       2030
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 5.973
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 2030,
+       "ignore_frac": 0.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.235,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10018
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0004624863918396338,
+     "ratio": 0.2364422515988839,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00028070510402194125,
+     "ratio": 0.1429589213930304,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.646
+  },
+  {
+   "seed": 10019,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       6,
+       1167
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 9.608
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       6
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1167,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.155,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10019
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 7002,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 7002,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.503
+  },
+  {
+   "seed": 10020,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       1813
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 8.465
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1813,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.332,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.474
+    },
+    "seed": 10020
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00012682172943162277,
+     "ratio": 0.06481883685544244,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.38
+  },
+  {
+   "seed": 10021,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       20,
+       3
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 9.935
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       20
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 0.45218973479239927,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.773,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10021
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 8.689565359958186e-05,
+     "ratio": 0.04444786807695268,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0003716693037710899,
+     "ratio": 0.1897761269542987,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 27,
+       "rows_changed": [
+        2,
+        3,
+        5,
+        6,
+        9,
+        10,
+        13,
+        15,
+        16
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 27,
+       "rows_changed": [
+        2,
+        3,
+        5,
+        6,
+        9,
+        10,
+        13,
+        15,
+        16
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.596
+  },
+  {
+   "seed": 10022,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       8,
+       489
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 33.881
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       8
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 489,
+       "ignore_frac": 0.3203327231931294,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.067,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.531
+    },
+    "seed": 10022
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.5601439645790125e-08,
+     "ratio": 0.009105626828611324,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2445,
+       "rows_changed": [
+        0,
+        1,
+        4,
+        5,
+        6
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2445,
+       "rows_changed": [
+        0,
+        1,
+        4,
+        5,
+        6
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 2445
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.355
+  },
+  {
+   "seed": 10023,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       40
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 2.809
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 40,
+       "ignore_frac": 0.0706856414004311,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.817,
+     "lse_square_scale": 0.0152
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10023
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.306107635167921e-08,
+     "ratio": 0.008946060639512619,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 5.633724918182925e-08,
+     "ratio": 0.012946256651599413,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.89
+  },
+  {
+   "seed": 10024,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       11,
+       339
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 21.521
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       11
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 339,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.98
+    },
+    "seed": 10024
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 9.664957882590785e-05,
+     "ratio": 0.04941805758542627,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0004490593747613285,
+     "ratio": 0.22861412565785413,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.724
+  },
+  {
+   "seed": 10025,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       19,
+       1525
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 2.409
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       19
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1525,
+       "ignore_frac": 0.3049857561563553,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "mean",
+     "label_smoothing": 0.419,
+     "lse_square_scale": 1.79e-05
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10025
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0002705666923484709,
+     "ratio": 0.13832968110885088,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00022129263596949204,
+     "ratio": 0.11297713189999732,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 10675,
+       "rows_changed": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        9,
+        14
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 10675,
+       "rows_changed": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        9,
+        14
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.541
+  },
+  {
+   "seed": 10026,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       6,
+       707
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 16.214
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       6
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 707,
+       "ignore_frac": 0.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "mean",
+     "label_smoothing": 0.173,
+     "lse_square_scale": 0.07
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.591
+    },
+    "seed": 10026
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.4810256131693216e-07,
+     "ratio": 0.04391307345386094,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 2.2309749497793897e-07,
+     "ratio": 0.014589633825360826,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.629
+  },
+  {
+   "seed": 10027,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       195
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 16.13
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 195,
+       "ignore_frac": 0.15983893746306083,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.165,
+     "lse_square_scale": 0.0614
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10027
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 6.23726065043467e-08,
+     "ratio": 0.02261998909764174,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 3.7781584940972905e-08,
+     "ratio": 0.003094433775005563,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.487
+  },
+  {
+   "seed": 10028,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       33,
+       8
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 29.671
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       33
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 8,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10028
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 264,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 264,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.582
+  },
+  {
+   "seed": 10029,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       5,
+       488
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 2.894
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       5
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 488,
+       "ignore_frac": 0.3670632574260854,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.643,
+     "lse_square_scale": 0.027
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10029
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 4.982142375077183e-08,
+     "ratio": 0.016581372390575864,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 5.697771650750171e-08,
+     "ratio": 0.012412503209830146,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 1464,
+       "rows_changed": [
+        0,
+        2,
+        4
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 1464,
+       "rows_changed": [
+        0,
+        2,
+        4
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.723
+  },
+  {
+   "seed": 10030,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       48,
+       151
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 5.169
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       48
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 151,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.000527
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.547
+    },
+    "seed": 10030
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 7248,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 7248,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 7248
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.193
+  },
+  {
+   "seed": 10031,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       9,
+       498
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 25.065
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       9
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 498,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.955
+    },
+    "seed": 10031
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00017925190420601763,
+     "ratio": 0.09163830346959186,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00030166066753916705,
+     "ratio": 0.15257783416506798,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.809
+  },
+  {
+   "seed": 10032,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       3,
+       262
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 16.693
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       3
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 262,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.835
+    },
+    "seed": 10032
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00017840040524133726,
+     "ratio": 0.09123750750685883,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0002706193042176314,
+     "ratio": 0.13744564742181983,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.445
+  },
+  {
+   "seed": 10033,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       58,
+       42
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 27.899
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       58
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 42,
+       "ignore_frac": 0.1551669155120181,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.638,
+     "lse_square_scale": 0.00129
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10033
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 4.7387358366851856e-08,
+     "ratio": 0.019358322920345367,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 2.1071017481138028e-07,
+     "ratio": 0.008211713289821263,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 378,
+       "rows_changed": [
+        16,
+        22,
+        26,
+        33,
+        43,
+        46,
+        47,
+        49,
+        57
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 378,
+       "rows_changed": [
+        16,
+        22,
+        26,
+        33,
+        43,
+        46,
+        47,
+        49,
+        57
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.539
+  },
+  {
+   "seed": 10034,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       17,
+       2
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 29.196
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       17
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 2,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 2.19e-05
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10034
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 34,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 34,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.452
+  },
+  {
+   "seed": 10035,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       24
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 8.268
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 24,
+       "ignore_frac": 0.1295728188252971,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.401,
+     "lse_square_scale": 8.09e-05
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10035
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.2121573974016008e-08,
+     "ratio": 0.012662969198745518,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 1.0363966908649192e-07,
+     "ratio": 0.023092121418619375,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 24,
+       "rows_changed": [
+        1
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 24,
+       "rows_changed": [
+        1
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.655
+  },
+  {
+   "seed": 10036,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       157
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 2.247
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 157,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.403,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.964
+    },
+    "seed": 10036
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00020379951943985458,
+     "ratio": 0.10421985343048136,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.227
+  },
+  {
+   "seed": 10037,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       2
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 1.066
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 2,
+       "ignore_frac": 0.10590519489626943,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.45,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -0.427
+    },
+    "seed": 10037
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2,
+       "rows_changed": [
+        0
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.64
+  },
+  {
+   "seed": 10038,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       60,
+       186
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 0.907
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       60
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 186,
+       "ignore_frac": 0.1426750942194937,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.16,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.126
+    },
+    "seed": 10038
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00014614881416647954,
+     "ratio": 0.07471486011810839,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0006746456557872967,
+     "ratio": 0.344961105774558,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 1860,
+       "rows_changed": [
+        6,
+        8,
+        17,
+        20,
+        28,
+        29,
+        37,
+        39,
+        54,
+        58
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 1860,
+       "rows_changed": [
+        6,
+        8,
+        17,
+        20,
+        28,
+        29,
+        37,
+        39,
+        54,
+        58
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.573
+  },
+  {
+   "seed": 10039,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       4
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 30.131
+      },
+      "layout": "row_strided:2",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 4,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.919,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10039
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 8,
+       "rows_changed": [
+        0,
+        1
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 8,
+       "rows_changed": [
+        0,
+        1
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 8
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.198
+  },
+  {
+   "seed": 10040,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       3
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 12.07
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "mean",
+     "label_smoothing": 0.156,
+     "lse_square_scale": 0.00363
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10040
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 6,
+       "rows_changed": [
+        0,
+        1
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 6,
+       "rows_changed": [
+        0,
+        1
+       ]
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.295
+  },
+  {
+   "seed": 10041,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       21,
+       82
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 3.169
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       21
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 82,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.208,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10041
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 1722,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 1722,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 1722
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.209
+  },
+  {
+   "seed": 10042,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       5,
+       149
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 12.73
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       5
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 149,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 4.16e-05
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10042
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 745,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 745,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.477
+  },
+  {
+   "seed": 10043,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       47,
+       731
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 9.351
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       47
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 731,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.694,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10043
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00040252515068621544,
+     "ratio": 0.20569993824014268,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.291
+  },
+  {
+   "seed": 10044,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       3,
+       259
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 12.803
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       3
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 259,
+       "ignore_frac": 0.0779310633795981,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10044
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0005236454730542671,
+     "ratio": 0.26777138682333385,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0002363061675308975,
+     "ratio": 0.12069672149231936,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.54
+  },
+  {
+   "seed": 10045,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       94
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 8.131
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 94,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.000341
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10045
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00024099942897021662,
+     "ratio": 0.12327218944371321,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.372
+  },
+  {
+   "seed": 10046,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       51,
+       595
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 1.175
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       51
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 595,
+       "ignore_frac": 0.2757303087216727,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.74,
+     "lse_square_scale": 0.000144
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10046
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00021532744765852003,
+     "ratio": 0.11010834939984712,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0004656822756522427,
+     "ratio": 0.2380616381700376,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 8925,
+       "rows_changed": [
+        0,
+        7,
+        9,
+        12,
+        15,
+        16,
+        18,
+        19,
+        21,
+        28,
+        38,
+        40,
+        45,
+        46,
+        48
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 8925,
+       "rows_changed": [
+        0,
+        7,
+        9,
+        12,
+        15,
+        16,
+        18,
+        19,
+        21,
+        28,
+        38,
+        40,
+        45,
+        46,
+        48
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.623
+  },
+  {
+   "seed": 10047,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       44,
+       126
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 11.69
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       44
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 126,
+       "ignore_frac": 0.15777396859279352,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.4,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.15
+    },
+    "seed": 10047
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 8.448695401943641e-08,
+     "ratio": 0.029999849213467142,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 1008,
+       "rows_changed": [
+        0,
+        6,
+        19,
+        22,
+        36,
+        37,
+        39,
+        43
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 1008,
+       "rows_changed": [
+        0,
+        6,
+        19,
+        22,
+        36,
+        37,
+        39,
+        43
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 1008
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.211
+  },
+  {
+   "seed": 10048,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       3780
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 0.871
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3780,
+       "ignore_frac": 0.012867910793497084,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "mean",
+     "label_smoothing": 0.106,
+     "lse_square_scale": 0.00531
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.44
+    },
+    "seed": 10048
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00032043110536098294,
+     "ratio": 0.16374538638590835,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 3.2277188708323e-05,
+     "ratio": 0.016499757082040982,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.982
+  },
+  {
+   "seed": 10049,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       9,
+       672
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 2.397
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       9
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 672,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.235,
+     "lse_square_scale": 0.00179
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.945
+    },
+    "seed": 10049
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00012328482382202894,
+     "ratio": 0.06301335226707494,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00040837458169547735,
+     "ratio": 0.20863385526962178,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.673
+  },
+  {
+   "seed": 10050,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       10,
+       546
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 9.063
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       10
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 546,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "mean",
+     "label_smoothing": 0.975,
+     "lse_square_scale": 0.00386
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.258
+    },
+    "seed": 10050
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 5460,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 5460,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 5460
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.353
+  },
+  {
+   "seed": 10051,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       39,
+       1508
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 7.552
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       39
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1508,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.919,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10051
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.000226499645850796,
+     "ratio": 0.11567635076570852,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.525
+  },
+  {
+   "seed": 10052,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       41
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 0.729
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 41,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10052
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 41,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 41,
+       "rows_changed": [
+        0
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.784
+  },
+  {
+   "seed": 10053,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       18
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.176
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 18,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.408,
+     "lse_square_scale": 0.0151
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -0.928
+    },
+    "seed": 10053
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 9.785921817260545e-09,
+     "ratio": 0.004434272281684808,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 5.036489602371497e-08,
+     "ratio": 0.025564869629239775,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.997
+  },
+  {
+   "seed": 10054,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       6,
+       116
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 1.788
+      },
+      "layout": "row_strided:2",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       6
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 116,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10054
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 696,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 696,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 696
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.279
+  },
+  {
+   "seed": 10055,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       9,
+       676
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 26.282
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       9
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 676,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 1.08e-05
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 1.662
+    },
+    "seed": 10055
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 6084,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 6084,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.667
+  },
+  {
+   "seed": 10056,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       3
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 4.803
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.728,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.674
+    },
+    "seed": 10056
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 2.4942086383903702e-05,
+     "ratio": 0.012761187604981027,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00040068248824819813,
+     "ratio": 0.20500948927203258,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.816
+  },
+  {
+   "seed": 10057,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       556
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 0.509
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 556,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.00257
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10057
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2224,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2224,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 2224
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.197
+  },
+  {
+   "seed": 10058,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       3,
+       14
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 0.671
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       3
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 14,
+       "ignore_frac": 0.06963541343154489,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.874,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10058
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0002335661336212087,
+     "ratio": 0.11944631666972542,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00036108455411808265,
+     "ratio": 0.18464814057399587,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 14,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 14,
+       "rows_changed": [
+        0
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.592
+  },
+  {
+   "seed": 10059,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       41,
+       18
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.536
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       41
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 18,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.00024
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10059
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 738,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 738,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.414
+  },
+  {
+   "seed": 10060,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       7,
+       467
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 3.521
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       7
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 467,
+       "ignore_frac": 0.46179036097097853,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.868,
+     "lse_square_scale": 0.00906
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10060
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 9.553980007354272e-08,
+     "ratio": 0.02426522954366523,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 7.651799043625671e-08,
+     "ratio": 0.015344320083029949,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 934,
+       "rows_changed": [
+        3,
+        6
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 934,
+       "rows_changed": [
+        3,
+        6
+       ]
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.599
+  },
+  {
+   "seed": 10061,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       40
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 25.839
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 40,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.941,
+     "lse_square_scale": 0.000125
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.597
+    },
+    "seed": 10061
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0001362467019309454,
+     "ratio": 0.06969985423638128,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.535
+  },
+  {
+   "seed": 10062,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       34,
+       28
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 18.535
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       34
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 28,
+       "ignore_frac": 0.41513486694856333,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10062
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0002812386268944692,
+     "ratio": 0.14387315531139028,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 364,
+       "rows_changed": [
+        2,
+        7,
+        10,
+        12,
+        13,
+        14,
+        15,
+        18,
+        19,
+        23,
+        28,
+        30,
+        31
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 364,
+       "rows_changed": [
+        2,
+        7,
+        10,
+        12,
+        13,
+        14,
+        15,
+        18,
+        19,
+        23,
+        28,
+        30,
+        31
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 364
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.198
+  },
+  {
+   "seed": 10063,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       149
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.817
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 149,
+       "ignore_frac": 0.1690014193456434,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.133,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10063
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.459666330894111e-08,
+     "ratio": 0.0102708874139989,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 7.289532204503159e-09,
+     "ratio": 0.003114051053641862,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 149,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 149,
+       "rows_changed": [
+        0
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.497
+  },
+  {
+   "seed": 10064,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       3,
+       17
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 20.138
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       3
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 17,
+       "ignore_frac": 0.24661136990614863,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.515,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.433
+    },
+    "seed": 10064
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00028284072688147756,
+     "ratio": 0.14471861998248592,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 9.342619808226253e-05,
+     "ratio": 0.047800712048335595,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 34,
+       "rows_changed": [
+        0,
+        1
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 34,
+       "rows_changed": [
+        0,
+        1
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.461
+  },
+  {
+   "seed": 10065,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       1548
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 2.997
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1548,
+       "ignore_frac": 0.09076705294331805,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.327
+    },
+    "seed": 10065
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0002921652199836998,
+     "ratio": 0.14936198490385824,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.00016602308099533314,
+     "ratio": 0.08487023850388503,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.693
+  },
+  {
+   "seed": 10066,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       320
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 3.144
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 320,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10066
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 320,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 320,
+       "rows_changed": [
+        0
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.835
+  },
+  {
+   "seed": 10067,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       981
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 3.636
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 981,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0183
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10067
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 981,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 981,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 981
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.384
+  },
+  {
+   "seed": 10068,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       8,
+       2
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 2.348
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       8
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 2,
+       "ignore_frac": 0.4531961313983994,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.035,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10068
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 3.390144254843617e-07,
+     "ratio": 0.09100086813833001,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 4.233307729511791e-07,
+     "ratio": 0.05604816587409231,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 8,
+       "rows_changed": [
+        0,
+        1,
+        3,
+        6
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 8,
+       "rows_changed": [
+        0,
+        1,
+        3,
+        6
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.435
+  },
+  {
+   "seed": 10069,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       5,
+       14
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 20.539
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       5
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 14,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 1.06e-05
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.324
+    },
+    "seed": 10069
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 70,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 70,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 70
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.201
+  },
+  {
+   "seed": 10070,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       47,
+       393
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 24.299
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       47
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 393,
+       "ignore_frac": 0.11688282938286215,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.962,
+     "lse_square_scale": 1.06e-05
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10070
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.08913149627934e-07,
+     "ratio": 0.029730973621132917,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2358,
+       "rows_changed": [
+        7,
+        17,
+        20,
+        21,
+        31,
+        33
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2358,
+       "rows_changed": [
+        7,
+        17,
+        20,
+        21,
+        31,
+        33
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 2358
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.091
+  },
+  {
+   "seed": 10071,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       31,
+       3
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 1.047
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       31
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 0.24782570162144119,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.083,
+     "lse_square_scale": 0.0928
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.393
+    },
+    "seed": 10071
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0002297896998444269,
+     "ratio": 0.11755043450721063,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0003730780121675061,
+     "ratio": 0.19078326710542645,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 48,
+       "rows_changed": [
+        0,
+        2,
+        3,
+        6,
+        9,
+        11,
+        12,
+        14,
+        15,
+        19,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 48,
+       "rows_changed": [
+        0,
+        2,
+        3,
+        6,
+        9,
+        11,
+        12,
+        14,
+        15,
+        19,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.936
+  },
+  {
+   "seed": 10072,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       47,
+       2391
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 4.042
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       47
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 2391,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.12,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10072
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.801982368913474e-08,
+     "ratio": 0.00829759106281135,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 1.2150438312609146e-07,
+     "ratio": 0.011736674137964647,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 1.363
+  },
+  {
+   "seed": 10073,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       9,
+       50
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 11.654
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       9
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 50,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.617,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10073
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 450,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 450,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.872
+  },
+  {
+   "seed": 10074,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       9,
+       1960
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 2.134
+      },
+      "layout": "offset:3",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       9
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1960,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10074
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 4.775017983314833e-08,
+     "ratio": 0.013775403207512367,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 5.755755127458692e-08,
+     "ratio": 0.015563827466351307,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.743
+  },
+  {
+   "seed": 10075,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       16,
+       182
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 1.505
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       16
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 182,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.59,
+     "lse_square_scale": 0.00066
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10075
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2912,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2912,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.677
+  },
+  {
+   "seed": 10076,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       16,
+       669
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 20.476
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       16
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 669,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.909,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10076
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.0405281159673674e-07,
+     "ratio": 0.029335246252674464,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 7.751126118674772e-08,
+     "ratio": 0.0032835683221945767,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.717
+  },
+  {
+   "seed": 10077,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       21,
+       3
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 21.819
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       21
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.941,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -0.175
+    },
+    "seed": 10077
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 63,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 63,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.468
+  },
+  {
+   "seed": 10078,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       13,
+       20
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 15.311
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       13
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 20,
+       "ignore_frac": 0.026852821088753254,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.713,
+     "lse_square_scale": 0.00132
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10078
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00014074632707285415,
+     "ratio": 0.0719875701127636,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0005135941732192489,
+     "ratio": 0.2623513463497584,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 40,
+       "rows_changed": [
+        6,
+        12
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 40,
+       "rows_changed": [
+        6,
+        12
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.545
+  },
+  {
+   "seed": 10079,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       9,
+       1131
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.15
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       9
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1131,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -1.754
+    },
+    "seed": 10079
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 5.818539035564038e-08,
+     "ratio": 0.019907160498389805,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 6.927979924231849e-08,
+     "ratio": 0.02167337565451877,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.649
+  },
+  {
+   "seed": 10080,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       17,
+       6
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 0.805
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       17
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 6,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10080
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 102,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 102,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.371
+  },
+  {
+   "seed": 10081,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       10,
+       920
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 5.878
+      },
+      "layout": "row_strided:2",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       10
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 920,
+       "ignore_frac": 0.1361960822258379,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.000774
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10081
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00017865645238665151,
+     "ratio": 0.09133044683921152,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 3680,
+       "rows_changed": [
+        4,
+        5,
+        7,
+        8
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 3680,
+       "rows_changed": [
+        4,
+        5,
+        7,
+        8
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 3680
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.543
+  },
+  {
+   "seed": 10082,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       1407
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 11.316
+      },
+      "layout": "offset:3",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 1407,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.00646
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10082
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 2814,
+       "rows_changed": [
+        0,
+        1
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 2814,
+       "rows_changed": [
+        0,
+        1
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 2814
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.282
+  },
+  {
+   "seed": 10083,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       25,
+       5
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 20.125
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       25
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 5,
+       "ignore_frac": 0.4437895387468898,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10083
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 2.9298486622477735e-08,
+     "ratio": 0.0161121752909152,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 6.918010064804747e-08,
+     "ratio": 0.004896781218416183,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 45,
+       "rows_changed": [
+        0,
+        5,
+        11,
+        13,
+        18,
+        19,
+        22,
+        23,
+        24
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 45,
+       "rows_changed": [
+        0,
+        5,
+        11,
+        13,
+        18,
+        19,
+        22,
+        23,
+        24
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.444
+  },
+  {
+   "seed": 10084,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       51,
+       766
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 20.396
+      },
+      "layout": "offset:3",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       51
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 766,
+       "ignore_frac": 0.1117008809594709,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.547,
+     "lse_square_scale": 0.0199
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10084
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00023869429059960668,
+     "ratio": 0.12201410690812176,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 4596,
+       "rows_changed": [
+        2,
+        3,
+        13,
+        20,
+        28,
+        42
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 4596,
+       "rows_changed": [
+        2,
+        3,
+        13,
+        20,
+        28,
+        42
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 4596
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.379
+  },
+  {
+   "seed": 10085,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       19,
+       3
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 3.517
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       19
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 3,
+       "ignore_frac": 1.0,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10085
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 57,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 57,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.047
+  },
+  {
+   "seed": 10086,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       5
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 13.649
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 5,
+       "ignore_frac": 0.271317084727026,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.638,
+     "lse_square_scale": 1.55e-05
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10086
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 5,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 5,
+       "rows_changed": [
+        0
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.706
+  },
+  {
+   "seed": 10087,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       6,
+       77
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.108
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       6
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 77,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.014,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10087
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 462,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 462,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 462
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.217
+  },
+  {
+   "seed": 10088,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       6,
+       19
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 20.084
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       6
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 19,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10088
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 9.17446257682678e-09,
+     "ratio": 0.005869711246853794,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 6.623312398534864e-08,
+     "ratio": 0.008655776553929273,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.434
+  },
+  {
+   "seed": 10089,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       4,
+       276
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 2.077
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       4
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 276,
+       "ignore_frac": 0.28128602747575915,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": -0.032
+    },
+    "seed": 10089
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0004261092437740746,
+     "ratio": 0.21788683223131258,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0006177835760923891,
+     "ratio": 0.3158942677690877,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 276,
+       "rows_changed": [
+        1
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 276,
+       "rows_changed": [
+        1
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.037
+  },
+  {
+   "seed": 10090,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       49,
+       31
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 3.589
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       49
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 31,
+       "ignore_frac": 0.037470588731296106,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "sum",
+     "label_smoothing": 0.068,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10090
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.00036150207886755353,
+     "ratio": 0.18490531739255345,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 155,
+       "rows_changed": [
+        14,
+        32,
+        40,
+        43,
+        44
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 155,
+       "rows_changed": [
+        14,
+        32,
+        40,
+        43,
+        44
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 155
+      }
+     }
+    },
+    "compile_matches_eager": {
+     "status": "pass",
+     "backend": "inductor"
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 2.039
+  },
+  {
+   "seed": 10091,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       23
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.024
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 23,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "mean",
+     "label_smoothing": 0.849,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10091
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 8.213007805326882e-08,
+     "ratio": 0.0371229695169219,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 6.871480752255262e-08,
+     "ratio": 0.028109028949517383,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.65
+  },
+  {
+   "seed": 10092,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       19,
+       490
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 11.098
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       19
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 490,
+       "ignore_frac": 0.002767907121772162,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.162,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10092
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 4.039056443160188e-05,
+     "ratio": 0.020652202513197628,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.000213828134367829,
+     "ratio": 0.10851257290758591,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.586
+  },
+  {
+   "seed": 10093,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       2,
+       885
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 6.822
+      },
+      "layout": "row_strided:2",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       2
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 885,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10093
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0001018218409480565,
+     "ratio": 0.052060037592278244,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float16",
+     "max_rel_err": 0.0002957218121142209,
+     "ratio": 0.1509292130944863,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.512
+  },
+  {
+   "seed": 10094,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       16,
+       2
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 4.038
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       16
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 2,
+       "ignore_frac": 0.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0244
+    },
+    "upstream": {
+     "kind": "scalar",
+     "value": 0.92
+    },
+    "seed": 10094
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 5.17890174451567e-08,
+     "ratio": 0.02807261195452516,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 6.05055081546378e-08,
+     "ratio": 0.021626271493769167,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.417
+  },
+  {
+   "seed": 10095,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       55,
+       13
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 0.941
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       55
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 13,
+       "ignore_frac": 1.0,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "mean",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10095
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 715,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 715,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 715
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.23
+  },
+  {
+   "seed": 10096,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       11,
+       91
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 0.862
+      },
+      "layout": "contiguous",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       11
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 91,
+       "ignore_frac": 0.41731580314800915,
+       "ignore_index": 1
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 1,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "strided"
+    },
+    "seed": 10096
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 4.4765613532907415e-08,
+     "ratio": 0.018757527924308254,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 273,
+       "rows_changed": [
+        3,
+        5,
+        9
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 273,
+       "rows_changed": [
+        3,
+        5,
+        9
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 273
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.243
+  },
+  {
+   "seed": 10097,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       144
+      ],
+      "dtype": "float16",
+      "init": {
+       "kind": "randn",
+       "std": 31.224
+      },
+      "layout": "row_strided:2",
+      "requires_grad": false
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 144,
+       "ignore_frac": 0.11578971250724102,
+       "ignore_index": -100
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": -100,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10097
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float16",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "skip",
+     "reason": "no input requires grad"
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 144,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 144,
+       "rows_changed": [
+        0
+       ]
+      },
+      "input (gradients enabled, no gradient for this input)": {
+       "elements_changed": 144
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.48
+  },
+  {
+   "seed": 10098,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       1,
+       29
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 1.905
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       1
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 29,
+       "ignore_frac": 0.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "none",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "randn",
+     "std": 1.0,
+     "layout": "contiguous"
+    },
+    "seed": 10098
+   },
+   "reproduces": false,
+   "violations": [],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 1.3019800669270133e-09,
+     "ratio": 0.0007912435148946837,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 1.954327428374261e-08,
+     "ratio": 0.008121709757157588,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "pass",
+     "violations": {}
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.813
+  },
+  {
+   "seed": 10099,
+   "spec": {
+    "tensors": {
+     "input": {
+      "shape": [
+       17,
+       8
+      ],
+      "dtype": "float32",
+      "init": {
+       "kind": "randn",
+       "std": 19.229
+      },
+      "layout": "contiguous",
+      "requires_grad": true
+     },
+     "target": {
+      "shape": [
+       17
+      ],
+      "dtype": "int64",
+      "init": {
+       "kind": "randint",
+       "low": 0,
+       "high": 8,
+       "ignore_frac": 1.0,
+       "ignore_index": 0
+      }
+     }
+    },
+    "kwargs": {
+     "ignore_index": 0,
+     "reduction": "sum",
+     "label_smoothing": 0.0,
+     "lse_square_scale": 0.0
+    },
+    "upstream": {
+     "kind": "ones"
+    },
+    "seed": 10099
+   },
+   "reproduces": true,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "items": [
+    {
+     "name": "output",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    },
+    {
+     "name": "grad_input",
+     "dtype": "float32",
+     "max_rel_err": 0.0,
+     "ratio": 0.0,
+     "passed": true,
+     "reason": null
+    }
+   ],
+   "props": {
+    "zero_upstream": {
+     "status": "pass",
+     "violations": {}
+    },
+    "layout_invariance": {
+     "status": "pass",
+     "violating_variants": []
+    },
+    "no_mutation_without_grad": {
+     "status": "fail",
+     "violations": {
+      "input (plain, requires_grad=False)": {
+       "elements_changed": 136,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      },
+      "input (no_grad, requires_grad=False)": {
+       "elements_changed": 136,
+       "rows_changed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+       ]
+      }
+     }
+    },
+    "determinism": {
+     "status": "pass",
+     "nondeterministic": []
+    }
+   },
+   "seconds": 0.661
+  }
+ ],
+ "targeted": {
+  "spec_file": "/atlas/u/pranavsb/kernel-verification/harness_only/targeted_specs/B5_ce_ignore.json",
+  "reproduces": true,
+  "violations": [
+   "no_mutation_without_grad"
+  ],
+  "errors": [],
+  "items": [
+   {
+    "name": "output",
+    "dtype": "float32",
+    "max_rel_err": 5.2188437899333805e-08,
+    "ratio": 0.023860337803514958,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "props": {
+   "zero_upstream": {
+    "status": "skip",
+    "reason": "no input requires grad"
+   },
+   "layout_invariance": {
+    "status": "pass",
+    "violating_variants": []
+   },
+   "no_mutation_without_grad": {
+    "status": "fail",
+    "violations": {
+     "input (plain, requires_grad=False)": {
+      "elements_changed": 74,
+      "rows_changed": [
+       2,
+       7
+      ]
+     },
+     "input (no_grad, requires_grad=False)": {
+      "elements_changed": 74,
+      "rows_changed": [
+       2,
+       7
+      ]
+     },
+     "input (gradients enabled, no gradient for this input)": {
+      "elements_changed": 74
+     }
+    }
+   },
+   "compile_matches_eager": {
+    "status": "pass",
+    "backend": "inductor"
+   },
+   "determinism": {
+    "status": "pass",
+    "nondeterministic": []
+   }
+  },
+  "seconds": 9.402
+ },
+ "summary": {
+  "n": 100,
+  "n_violating": 60,
+  "violations_by_check": {
+   "grad_compare": 0,
+   "zero_upstream": 0,
+   "layout_invariance": 0,
+   "no_mutation_without_grad": 60,
+   "compile_matches_eager": 0,
+   "determinism": 0
+  },
+  "n_errors": 0,
+  "max_ratio": 0.344961105774558,
+  "p99_ratio": 0.26777138682333385,
+  "seconds": 81.8
+ }
+}

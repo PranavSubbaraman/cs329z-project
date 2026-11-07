@@ -1,0 +1,7 @@
+START 2026-11-07T03:37:20Z epoch=1794022640
+CMD: cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5 && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 2 --timeout 600 -rfEsx --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/ce_libtests_8c7a5078.junit.xml
+bringing up nodes...
+bringing up nodes...
+
+ssssss.......ss....ss..FFFFssssss..ss.ssssssFFFFFFss..ss..ss..ss..ssFFss [ 38%]
+..ssFFssssssssssFFFFEXIT 143 END 2026-11-07T04:02:54Z epoch=1794024174

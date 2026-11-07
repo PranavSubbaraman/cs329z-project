@@ -1,0 +1,214 @@
+# commit 39adfeefab06c9a8b596199cb7f9e9d515986d8c  tree /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# started 2026-11-07T03:38:20Z
+# cwd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# command: env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 2 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_39adfeef.xml
+bringing up nodes...
+bringing up nodes...
+
+ssssssssssssssssssss.....s.s..ssssssssss..FF.s.s..W1106 19:38:24.385000 82467 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+=================================== FAILURES ===================================
+____________ test_correctness[dtype1-1e-08-1e-06-mean-32-4096-1024] ____________
+[gw1] darwin -- Python 3.12.0 /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python
+
+B = 32, T = 4096, V = 1024, reduction = 'mean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06
+
+    @pytest.mark.parametrize(*_SHAPE_PARAMS)
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    def test_correctness(B, T, V, reduction, dtype, atol, rtol):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction)
+
+test/transformers/test_tvd.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test/transformers/test_tvd.py:95: in _test_correctness_once
+    output = target_tvd(x1, target)
+             ^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1787: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1798: in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/transformers/tvd.py:13: in forward
+    return LigerTVDLossFunction.apply(p, q, shift_labels, self.reduction, self.ignore_index)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/utils.py:52: in wrapper
+    return fn(ctx, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:199: in forward
+    loss, grads = tv_distance_forward_triton(p, q, shift_labels, reduction, ignore_index, has_label)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:127: in tv_distance_forward_triton
+    _tv_distance_kernel[grid](
+../../../.venv/lib/python3.12/site-packages/triton/runtime/jit.py:375: in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1681: in run
+    return GridExecutor(fn, self.arg_names, grid, self.pre_run_hooks)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1511: in __call__
+    self.fn(**args)
+src/liger_kernel/ops/tvd.py:96: in _tv_distance_kernel
+    loss_sum += tl.sum(tv_loss, axis=0)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1698: in __call__
+    _patch_lang(self.fn)
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1348: in _patch_lang
+    _patch_builtin(lang, interpreter_builder, scope)
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1014: in _patch_builtin
+    if tl.core.is_builtin(member):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+fn = <class 'triton.language.core.dtype'>
+
+    def is_builtin(fn) -> bool:
+        """Is this a registered triton builtin function?"""
+>       return getattr(fn, TRITON_BUILTIN, False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: Timeout (>600.0s) from pytest-timeout.
+
+../../../.venv/lib/python3.12/site-packages/triton/language/core.py:121: Failed
+----------------------------- Captured stdout call -----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~ Stack of <unknown> (6145945600) ~~~~~~~~~~~~~~~~~~~~~~~~
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 411, in _perform_spawn
+    reply.run()
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 341, in run
+    self._result = func(*args, **kwargs)
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 1160, in _thread_receiver
+    msg = Message.from_io(io)
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 567, in from_io
+    header = io.read(9)  # type 1, channel 4, payload 4
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 534, in read
+    data = self._read(numbytes - len(buf))
+_____ test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-32-4096-1024] _____
+[gw0] darwin -- Python 3.12.0 /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python
+
+B = 32, T = 4096, V = 1024, reduction = 'batchmean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06
+
+    @pytest.mark.parametrize(*_SHAPE_PARAMS)
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    def test_correctness_not_last(B, T, V, reduction, dtype, atol, rtol):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+>       _test_correctness_once(
+            liger_tvd,
+            torch_tvd,
+            B,
+            T,
+            V,
+            dtype,
+            atol,
+            rtol,
+            reduction,
+            is_last_layer=False,
+        )
+
+test/transformers/test_tvd.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test/transformers/test_tvd.py:95: in _test_correctness_once
+    output = target_tvd(x1, target)
+             ^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1787: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1798: in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/transformers/tvd.py:13: in forward
+    return LigerTVDLossFunction.apply(p, q, shift_labels, self.reduction, self.ignore_index)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/utils.py:52: in wrapper
+    return fn(ctx, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:199: in forward
+    loss, grads = tv_distance_forward_triton(p, q, shift_labels, reduction, ignore_index, has_label)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:127: in tv_distance_forward_triton
+    _tv_distance_kernel[grid](
+../../../.venv/lib/python3.12/site-packages/triton/runtime/jit.py:375: in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1681: in run
+    return GridExecutor(fn, self.arg_names, grid, self.pre_run_hooks)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1511: in __call__
+    self.fn(**args)
+src/liger_kernel/ops/tvd.py:96: in _tv_distance_kernel
+    loss_sum += tl.sum(tv_loss, axis=0)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1698: in __call__
+    _patch_lang(self.fn)
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1345: in _patch_lang
+    langs = [value for _, value in fn.__globals__.items() if inspect.ismodule(value) and value in [tl, tl.core]]
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+object = <triton.runtime.jit.ConstexprFunction object at 0x10e786480>
+
+>   def ismodule(object):
+E   Failed: Timeout (>600.0s) from pytest-timeout.
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/inspect.py:291: Failed
+----------------------------- Captured stdout call -----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~ Stack of <unknown> (6180696064) ~~~~~~~~~~~~~~~~~~~~~~~~
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 411, in _perform_spawn
+    reply.run()
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 341, in run
+    self._result = func(*args, **kwargs)
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 1160, in _thread_receiver
+    msg = Message.from_io(io)
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 567, in from_io
+    header = io.read(9)  # type 1, channel 4, payload 4
+  File "/Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/execnet/gateway_base.py", line 534, in read
+    data = self._read(numbytes - len(buf))
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================= slowest 25 durations =============================
+600.19s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-32-4096-1024]
+600.05s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-mean-32-4096-1024]
+334.72s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-mean-41-401-1271]
+279.42s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-41-401-1271]
+223.41s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-1-4096-32000]
+212.13s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-32-4096-1024]
+210.42s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-32-4096-1024]
+183.73s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-mean-1-4096-32000]
+65.86s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-3-423-32000]
+54.91s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-3-423-32000]
+24.75s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-1-4096-32000]
+24.36s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-3-423-32000]
+23.35s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-1-4096-32000]
+20.12s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-41-401-1271]
+20.06s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-41-401-1271]
+16.39s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-mean-3-423-32000]
+0.08s setup    test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-41-401-1271]
+0.07s setup    test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-none-1-4096-32000]
+0.06s setup    test/transformers/test_tvd.py::test_correctness_not_last[dtype0-1e-08-1e-06-none-3-423-32000]
+0.06s teardown test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-32-4096-1024]
+0.06s teardown test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-32-4096-1024]
+0.04s teardown test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-32-4096-1024]
+0.03s setup    test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-41-401-1271]
+0.02s setup    test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-41-401-1271]
+0.02s teardown test/transformers/test_tvd.py::test_correctness_not_last[dtype0-1e-08-1e-06-mean-1-4096-32000]
+=========================== short test summary info ============================
+SKIPPED [20] test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU
+SKIPPED [3] test/transformers/test_tvd.py:152: This test requires a GPU with at least 36GB of memory
+SKIPPED [10] test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU
+SKIPPED [1] test/transformers/test_tvd.py:161: This test requires a GPU with at least 36GB of memory
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py:338: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+2 failed, 14 passed, 34 skipped, 3 warnings in 1495.35s (0:24:55)

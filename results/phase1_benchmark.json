@@ -1,0 +1,173 @@
+{
+  "pairs": [
+    {
+      "pair_id": "P1_tvd",
+      "kernel": "tvd",
+      "bug_class": "logic",
+      "issue": 1373,
+      "fix_pr": 1374,
+      "status": "fixed",
+      "buggy": "39adfeef",
+      "fixed": "559d33e7",
+      "backend": "interpreter-cpu",
+      "repro_buggy_exit": 1,
+      "repro_fixed_exit": 0,
+      "reproduces": true,
+      "reproduces_on_cpu_recorded": true,
+      "libtests_buggy": {
+        "files": "test/transformers/test_tvd.py",
+        "passed": 80,
+        "failed": 0,
+        "skipped": 120,
+        "errors": 0
+      },
+      "libtests_fixed": {
+        "files": "test/transformers/test_tvd.py",
+        "passed": 96,
+        "failed": 0,
+        "skipped": 136,
+        "errors": 0
+      },
+      "libtests_buggy_str": "80 passed, 0 failed, 120 skipped",
+      "libtests_fixed_str": "96 passed, 0 failed, 136 skipped",
+      "gpu_repro_buggy_exit": 1,
+      "gpu_repro_fixed_exit": 0,
+      "gpu_libtests_buggy": "160 passed, 40 skipped",
+      "gpu_libtests_fixed": "192 passed, 40 skipped"
+    },
+    {
+      "pair_id": "P2_flce_strides",
+      "kernel": "flce",
+      "bug_class": "index arithmetic",
+      "issue": 1500,
+      "fix_pr": 1500,
+      "status": "fixed",
+      "buggy": "395d6166",
+      "fixed": "ae47958e",
+      "backend": "interpreter-cpu",
+      "repro_buggy_exit": 1,
+      "repro_fixed_exit": 0,
+      "reproduces": true,
+      "reproduces_on_cpu_recorded": true,
+      "libtests_buggy": {
+        "files": "test/transformers/test_fused_linear_cross_entropy.py",
+        "passed": 93,
+        "failed": 48,
+        "skipped": 0,
+        "errors": 0
+      },
+      "libtests_fixed": {
+        "files": "test/transformers/test_fused_linear_cross_entropy.py",
+        "passed": 93,
+        "failed": 48,
+        "skipped": 0,
+        "errors": 0
+      },
+      "libtests_buggy_str": "93 passed, 48 failed",
+      "libtests_fixed_str": "93 passed, 48 failed",
+      "gpu_repro_buggy_exit": 1,
+      "gpu_repro_fixed_exit": 0,
+      "gpu_libtests_buggy": "285 passed",
+      "gpu_libtests_fixed": "285 passed"
+    },
+    {
+      "pair_id": "P3_flce_none",
+      "kernel": "flce",
+      "bug_class": "gradient formula",
+      "issue": 1298,
+      "fix_pr": 1298,
+      "status": "fixed",
+      "buggy": "e44a5fe8",
+      "fixed": "9ac26bb8",
+      "backend": "interpreter-cpu",
+      "repro_buggy_exit": 1,
+      "repro_fixed_exit": 0,
+      "reproduces": true,
+      "reproduces_on_cpu_recorded": true,
+      "libtests_buggy": {
+        "files": "test/transformers/test_fused_linear_cross_entropy.py",
+        "passed": 89,
+        "failed": 48,
+        "skipped": 0,
+        "errors": 0
+      },
+      "libtests_fixed": {
+        "files": "test/transformers/test_fused_linear_cross_entropy.py",
+        "passed": 93,
+        "failed": 48,
+        "skipped": 0,
+        "errors": 0
+      },
+      "libtests_buggy_str": "89 passed, 48 failed",
+      "libtests_fixed_str": "93 passed, 48 failed",
+      "gpu_repro_buggy_exit": 1,
+      "gpu_repro_fixed_exit": 0,
+      "gpu_libtests_buggy": "137 passed",
+      "gpu_libtests_fixed": "141 passed"
+    },
+    {
+      "pair_id": "P4_fljsd_bf16",
+      "kernel": "fljsd",
+      "bug_class": "precision",
+      "issue": 1432,
+      "fix_pr": 1433,
+      "status": "fixed",
+      "buggy": "5b828eef",
+      "fixed": "ed1f856d",
+      "backend": "interpreter-cpu",
+      "repro_buggy_exit": 1,
+      "repro_fixed_exit": 1,
+      "reproduces": false,
+      "reproduces_on_cpu_recorded": false,
+      "libtests_buggy": {
+        "files": "test/transformers/test_fused_linear_jsd.py test/ops/test_fused_linear_jsd.py",
+        "passed": 59,
+        "failed": 0,
+        "skipped": 12,
+        "errors": 0
+      },
+      "libtests_fixed": {
+        "files": "test/transformers/test_fused_linear_jsd.py test/ops/test_fused_linear_jsd.py",
+        "passed": 59,
+        "failed": 0,
+        "skipped": 18,
+        "errors": 0
+      },
+      "libtests_buggy_str": "59 passed, 0 failed, 12 skipped",
+      "libtests_fixed_str": "59 passed, 0 failed, 18 skipped",
+      "gpu_repro_buggy_exit": 1,
+      "gpu_repro_fixed_exit": 0,
+      "gpu_libtests_buggy": "71 passed",
+      "gpu_libtests_fixed": "76 passed, 1 skipped"
+    },
+    {
+      "pair_id": "B5_ce_ignore",
+      "kernel": "ce",
+      "bug_class": "side effect",
+      "issue": 1594,
+      "fix_pr": null,
+      "status": "open, buggy-only",
+      "buggy": "8c7a5078",
+      "fixed": null,
+      "backend": "interpreter-cpu",
+      "repro_buggy_exit": 1,
+      "repro_fixed_exit": null,
+      "reproduces": true,
+      "reproduces_on_cpu_recorded": true,
+      "libtests_buggy": {
+        "files": "test/transformers/test_cross_entropy.py",
+        "passed": 68,
+        "failed": 41,
+        "skipped": 76,
+        "errors": 0
+      },
+      "libtests_fixed": null,
+      "libtests_buggy_str": "68 passed, 41 failed, 76 skipped",
+      "libtests_fixed_str": "n/a",
+      "gpu_repro_buggy_exit": 1,
+      "gpu_repro_fixed_exit": null,
+      "gpu_libtests_buggy": "185 passed",
+      "gpu_libtests_fixed": "n/a"
+    }
+  ]
+}

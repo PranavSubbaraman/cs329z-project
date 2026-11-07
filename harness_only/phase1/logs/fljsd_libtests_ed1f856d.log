@@ -1,0 +1,48 @@
+bringing up nodes...
+bringing up nodes...
+
+.....................................................ssssssssssssssssss. [ 93%]
+.....                                                                    [100%]W1106 20:04:03.671000 86011 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+test/transformers/test_fused_linear_jsd.py: 27 warnings
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:599: RuntimeWarning: invalid value encountered in subtract
+    output = op(lhs.data, rhs.data)
+
+test/transformers/test_fused_linear_jsd.py: 16 warnings
+  /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f/test/transformers/test_fused_linear_jsd.py:169: UserWarning: Anomaly Detection has been enabled. This mode will increase the runtime and should only be enabled for debugging.
+    with torch.autograd.detect_anomaly():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================= slowest 15 durations =============================
+11.19s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-1.0-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+10.82s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-0.5-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+10.53s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-0.0-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+8.97s call     test/transformers/test_fused_linear_jsd.py::test_correctness[2.0-0.1-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+8.41s call     test/transformers/test_fused_linear_jsd.py::test_correctness_with_ignore_index[1.0-1.0-2-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+8.39s call     test/transformers/test_fused_linear_jsd.py::test_correctness_with_ignore_index[1.0-0.0-2-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+8.24s call     test/transformers/test_fused_linear_jsd.py::test_correctness_with_ignore_index[1.0-0.5-2-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+6.99s call     test/transformers/test_fused_linear_jsd.py::test_correctness_with_ignore_index[2.0-0.1-42-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+4.17s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-0.5-1.0-dtype0-0.005-0.05-4-423-167-1423]
+4.05s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-1.0-1.0-dtype0-0.005-0.05-4-423-167-1423]
+3.99s call     test/transformers/test_fused_linear_jsd.py::test_correctness[2.0-0.1-1.0-dtype0-0.005-0.05-4-423-167-1423]
+3.81s call     test/transformers/test_fused_linear_jsd.py::test_correctness_all_ignored[1.0-0.5-2-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+3.79s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-0.0-1.0-dtype0-0.005-0.05-4-423-167-1423]
+3.66s call     test/transformers/test_fused_linear_jsd.py::test_correctness[1.0-0.0-1.0-dtype1-1e-05-0.0005-4-423-167-1423]
+3.61s call     test/transformers/test_fused_linear_jsd.py::test_correctness_all_ignored[2.0-0.1-42-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+=========================== short test summary info ============================
+SKIPPED [6] test/transformers/test_fused_linear_jsd.py:514: the float32 projection needs torch>=2.8 out_dtype support on CUDA sm_80+
+SKIPPED [9] test/ops/test_fused_linear_jsd.py:78: CUDA required for op-level kernel tests
+SKIPPED [1] test/ops/test_fused_linear_jsd.py:150: CUDA required for op-level kernel tests
+SKIPPED [1] test/ops/test_fused_linear_jsd.py:156: CUDA required for op-level kernel tests
+SKIPPED [1] test/ops/test_fused_linear_jsd.py:190: CUDA required for op-level kernel tests
+59 passed, 18 skipped, 47 warnings in 65.41s (0:01:05)
+EXIT=0 START=1794024238.077728 END=1794024311.074721

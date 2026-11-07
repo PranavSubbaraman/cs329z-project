@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="34" tests="50" time="1495.346" timestamp="2026-11-06T19:38:24.981601-08:00" hostname="Mac"><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-batchmean-1-4096-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-batchmean-32-4096-1024]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-batchmean-41-401-1271]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-batchmean-1-4096-128256]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-batchmean-3-423-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-sum-1-4096-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-sum-32-4096-1024]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-sum-41-401-1271]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-sum-1-4096-128256]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-sum-3-423-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-mean-1-4096-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-mean-32-4096-1024]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-mean-41-401-1271]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-mean-1-4096-128256]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-mean-3-423-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-sum-1-4096-32000]" time="23.352" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-none-1-4096-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-none-32-4096-1024]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-none-41-401-1271]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-none-1-4096-128256]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype0-1e-08-1e-06-none-3-423-32000]" time="0.000"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-batchmean-1-4096-32000]" time="24.751" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-sum-32-4096-1024]" time="210.482" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-batchmean-32-4096-1024]" time="212.176" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-sum-41-401-1271]" time="20.151" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-batchmean-41-401-1271]" time="20.083" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-sum-1-4096-128256]" time="0.001"><skipped type="pytest.skip" message="This test requires a GPU with at least 36GB of memory">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: This test requires a GPU with at least 36GB of memory</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-sum-3-423-32000]" time="54.923" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-batchmean-1-4096-128256]" time="0.002"><skipped type="pytest.skip" message="This test requires a GPU with at least 36GB of memory">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: This test requires a GPU with at least 36GB of memory</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-batchmean-3-423-32000]" time="65.870" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-mean-1-4096-32000]" time="183.741" /><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-mean-1-4096-32000]" time="0.023"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-mean-32-4096-1024]" time="0.025"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-mean-41-401-1271]" time="0.002"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-mean-1-4096-128256]" time="0.001"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-mean-3-423-32000]" time="0.001"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-none-1-4096-32000]" time="0.001"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-none-32-4096-1024]" time="0.001"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-none-41-401-1271]" time="0.005"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-none-1-4096-128256]" time="0.001"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype0-1e-08-1e-06-none-3-423-32000]" time="0.067"><skipped type="pytest.skip" message="bfloat16 not supported on this GPU">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-1-4096-32000]" time="223.433" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-mean-32-4096-1024]" time="600.070"><failure message="Failed: Timeout (&gt;600.0s) from pytest-timeout.">B = 32, T = 4096, V = 1024, reduction = 'mean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06
+
+    @pytest.mark.parametrize(*_SHAPE_PARAMS)
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    def test_correctness(B, T, V, reduction, dtype, atol, rtol):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+&gt;       _test_correctness_once(liger_tvd, torch_tvd, B, T, V, dtype, atol, rtol, reduction)
+
+test/transformers/test_tvd.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test/transformers/test_tvd.py:95: in _test_correctness_once
+    output = target_tvd(x1, target)
+             ^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1787: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1798: in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/transformers/tvd.py:13: in forward
+    return LigerTVDLossFunction.apply(p, q, shift_labels, self.reduction, self.ignore_index)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/utils.py:52: in wrapper
+    return fn(ctx, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:199: in forward
+    loss, grads = tv_distance_forward_triton(p, q, shift_labels, reduction, ignore_index, has_label)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:127: in tv_distance_forward_triton
+    _tv_distance_kernel[grid](
+../../../.venv/lib/python3.12/site-packages/triton/runtime/jit.py:375: in &lt;lambda&gt;
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1681: in run
+    return GridExecutor(fn, self.arg_names, grid, self.pre_run_hooks)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1511: in __call__
+    self.fn(**args)
+src/liger_kernel/ops/tvd.py:96: in _tv_distance_kernel
+    loss_sum += tl.sum(tv_loss, axis=0)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1698: in __call__
+    _patch_lang(self.fn)
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1348: in _patch_lang
+    _patch_builtin(lang, interpreter_builder, scope)
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1014: in _patch_builtin
+    if tl.core.is_builtin(member):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+fn = &lt;class 'triton.language.core.dtype'&gt;
+
+    def is_builtin(fn) -&gt; bool:
+        """Is this a registered triton builtin function?"""
+&gt;       return getattr(fn, TRITON_BUILTIN, False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: Timeout (&gt;600.0s) from pytest-timeout.
+
+../../../.venv/lib/python3.12/site-packages/triton/language/core.py:121: Failed</failure></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-32-4096-1024]" time="600.256"><failure message="Failed: Timeout (&gt;600.0s) from pytest-timeout.">B = 32, T = 4096, V = 1024, reduction = 'batchmean', dtype = torch.float32
+atol = 1e-08, rtol = 1e-06
+
+    @pytest.mark.parametrize(*_SHAPE_PARAMS)
+    @pytest.mark.parametrize("reduction", ["batchmean", "sum", "mean", "none"])
+    @pytest.mark.parametrize(*_DTYPE_PARAMS)
+    def test_correctness_not_last(B, T, V, reduction, dtype, atol, rtol):
+        liger_tvd = LigerTVDLoss(reduction=reduction)
+        torch_tvd = TorchTVDLoss(reduction=reduction)
+&gt;       _test_correctness_once(
+            liger_tvd,
+            torch_tvd,
+            B,
+            T,
+            V,
+            dtype,
+            atol,
+            rtol,
+            reduction,
+            is_last_layer=False,
+        )
+
+test/transformers/test_tvd.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test/transformers/test_tvd.py:95: in _test_correctness_once
+    output = target_tvd(x1, target)
+             ^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1787: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/torch/nn/modules/module.py:1798: in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/transformers/tvd.py:13: in forward
+    return LigerTVDLossFunction.apply(p, q, shift_labels, self.reduction, self.ignore_index)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/utils.py:52: in wrapper
+    return fn(ctx, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:199: in forward
+    loss, grads = tv_distance_forward_triton(p, q, shift_labels, reduction, ignore_index, has_label)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/liger_kernel/ops/tvd.py:127: in tv_distance_forward_triton
+    _tv_distance_kernel[grid](
+../../../.venv/lib/python3.12/site-packages/triton/runtime/jit.py:375: in &lt;lambda&gt;
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1681: in run
+    return GridExecutor(fn, self.arg_names, grid, self.pre_run_hooks)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1511: in __call__
+    self.fn(**args)
+src/liger_kernel/ops/tvd.py:96: in _tv_distance_kernel
+    loss_sum += tl.sum(tv_loss, axis=0)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1698: in __call__
+    _patch_lang(self.fn)
+../../../.venv/lib/python3.12/site-packages/triton/runtime/interpreter.py:1345: in _patch_lang
+    langs = [value for _, value in fn.__globals__.items() if inspect.ismodule(value) and value in [tl, tl.core]]
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+object = &lt;triton.runtime.jit.ConstexprFunction object at 0x10e786480&gt;
+
+&gt;   def ismodule(object):
+E   Failed: Timeout (&gt;600.0s) from pytest-timeout.
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/inspect.py:291: Failed</failure></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-mean-41-401-1271]" time="334.727" /><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-41-401-1271]" time="279.500" /><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-mean-1-4096-128256]" time="0.001"><skipped type="pytest.skip" message="This test requires a GPU with at least 36GB of memory">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:152: This test requires a GPU with at least 36GB of memory</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness[dtype1-1e-08-1e-06-mean-3-423-32000]" time="16.407" /><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-1-4096-128256]" time="0.000"><skipped type="pytest.skip" message="This test requires a GPU with at least 36GB of memory">/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c/test/transformers/test_tvd.py:161: This test requires a GPU with at least 36GB of memory</skipped></testcase><testcase classname="test.transformers.test_tvd" name="test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-3-423-32000]" time="24.373" /><testcase time="0.066" /><testcase time="0.011" /></testsuite></testsuites>

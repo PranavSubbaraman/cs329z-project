@@ -1,0 +1,3 @@
+{"tensors": {"input": {"shape": [8, 37], "dtype": "float32", "requires_grad": false},
+             "target": {"shape": [8], "dtype": "int64", "init": {"kind": "randint", "low": 0, "high": 37, "ignore_frac": 0.4, "ignore_index": -100}}},
+ "kwargs": {"reduction": "mean"}, "upstream": {"kind": "ones"}, "seed": 0}

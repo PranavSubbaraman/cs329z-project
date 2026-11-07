@@ -1,0 +1,19 @@
+# commit 395d6166 tree /atlas/u/pranavsb/kernel-verification/work/trees/395d6166e86f64f7c27f3c6e49cef89904add1aa files test/transformers/test_fused_linear_cross_entropy.py test/ops/test_fused_linear_cross_entropy.py
+# started 2026-11-07T06:20:17Z
+........................................................................ [ 25%]
+........................................................................ [ 50%]
+........................................................................ [ 75%]
+.....................................................................    [100%]
+=============================== warnings summary ===============================
+../../../../../../../atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+test/transformers/test_fused_linear_cross_entropy.py::test_correctness[False-0--100-0-None-False-None-True-mean-1.0-dtype0-0.005-0.05-8-128-1024-4096]
+  /atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+    warn_once(FP_FUSION_DEFAULT_WARNING)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+285 passed, 2 warnings in 29.16s
+# exit_code 0 wall_seconds 37

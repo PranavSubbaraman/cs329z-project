@@ -1,0 +1,65 @@
+{
+  "model_requested": "anthropic/claude-sonnet-5.5",
+  "provider_prefs": {
+    "order": [
+      "anthropic"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true
+  },
+  "call": {
+    "t_start": 1794022300.630482,
+    "seconds": 1.724,
+    "model_requested": "anthropic/claude-sonnet-5.5",
+    "model_served": "anthropic/claude-sonnet-5.5",
+    "provider": "Anthropic",
+    "generation_id": "gen-1794022300-bTyaQowwnHbENaSZ24zr",
+    "finish_reason": "tool_calls",
+    "prompt_tokens": 412,
+    "completion_tokens": 70,
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "reasoning_tokens": 0,
+    "cost_usd": 0.001524,
+    "n_tool_calls": 1,
+    "error": null
+  },
+  "response_provider_field": "Anthropic",
+  "generation_endpoint": {
+    "provider_name": "Anthropic",
+    "model": "anthropic/claude-sonnet-5.5-20260928",
+    "total_cost": 0.001524,
+    "native_tokens_prompt": 412,
+    "native_tokens_completion": 70,
+    "native_tokens_reasoning": 0,
+    "native_tokens_cached": 0,
+    "latency": 820,
+    "generation_time": 1417,
+    "finish_reason": "tool_calls",
+    "native_finish_reason": "tool_use",
+    "provider_responses": [
+      {
+        "endpoint_id": "8120faed-3f9c-4758-931e-4154e9b5a503",
+        "id": "msg_011CgnrxFTuRt46QGL5YkP1s",
+        "is_byok": false,
+        "latency": 820,
+        "model_permaslug": "anthropic/claude-sonnet-5.5-20260928",
+        "provider_name": "Anthropic",
+        "status": 200
+      }
+    ],
+    "data_region": "global"
+  },
+  "tool_call": {
+    "id": "toolu_012C7kHSnxVu7bDMHX22MrNm",
+    "function": {
+      "arguments": "{\"a\": 17, \"b\": 25}",
+      "name": "add_numbers"
+    },
+    "type": "function",
+    "index": 0
+  },
+  "tool_call_ok": true,
+  "assistant_content": null,
+  "model_permaslug": "anthropic/claude-sonnet-5.5-20260928"
+}

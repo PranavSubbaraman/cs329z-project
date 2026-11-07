@@ -1,0 +1,166 @@
+{
+ "pair_id": "B5_ce_ignore",
+ "buggy": {
+  "stdout_json": {
+   "pair_id": "B5_ce_ignore",
+   "tree": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "device": "cpu",
+    "BT": 8,
+    "V": 37,
+    "dtype": "float32",
+    "ignore_index": -100,
+    "n_ignored_rows": 3,
+    "forward_only": {
+     "plain/mean": {
+      "rows_changed": 3,
+      "ignored_rows_changed": 3,
+      "ignored_rows_now_all_zero": 3,
+      "non_ignored_rows_changed": 0,
+      "max_abs_change": 3.4105026721954346,
+      "loss_max_abs_err_vs_fp64": 1.718976534448302e-07
+     },
+     "plain/sum": {
+      "rows_changed": 3,
+      "ignored_rows_changed": 3,
+      "ignored_rows_now_all_zero": 3,
+      "non_ignored_rows_changed": 0,
+      "max_abs_change": 3.4105026721954346,
+      "loss_max_abs_err_vs_fp64": 1.336325425427276e-06
+     },
+     "plain/none": {
+      "rows_changed": 3,
+      "ignored_rows_changed": 3,
+      "ignored_rows_now_all_zero": 3,
+      "non_ignored_rows_changed": 0,
+      "max_abs_change": 3.4105026721954346,
+      "loss_max_abs_err_vs_fp64": 3.007340487748422e-07
+     },
+     "no_grad/mean": {
+      "rows_changed": 3,
+      "ignored_rows_changed": 3,
+      "ignored_rows_now_all_zero": 3,
+      "non_ignored_rows_changed": 0,
+      "max_abs_change": 3.4105026721954346,
+      "loss_max_abs_err_vs_fp64": 1.718976534448302e-07
+     },
+     "no_grad/sum": {
+      "rows_changed": 3,
+      "ignored_rows_changed": 3,
+      "ignored_rows_now_all_zero": 3,
+      "non_ignored_rows_changed": 0,
+      "max_abs_change": 3.4105026721954346,
+      "loss_max_abs_err_vs_fp64": 1.336325425427276e-06
+     },
+     "no_grad/none": {
+      "rows_changed": 3,
+      "ignored_rows_changed": 3,
+      "ignored_rows_now_all_zero": 3,
+      "non_ignored_rows_changed": 0,
+      "max_abs_change": 3.4105026721954346,
+      "loss_max_abs_err_vs_fp64": 3.007340487748422e-07
+     }
+    },
+    "rows_changed_total": 18,
+    "rows_changed_expected": 0,
+    "control_no_ignored_targets_rows_changed": 0,
+    "by_design_grad_write": {
+     "grad_mode": {
+      "rows_changed": 8,
+      "input_now_holds_grad_max_abs_err": 7.91556506452018e-09,
+      "input_grad_max_abs_err_vs_fp64": 7.91556506452018e-09,
+      "input_grad_aliases_input": true
+     },
+     "no_grad": {
+      "rows_changed": 8,
+      "input_now_holds_grad_max_abs_err": 7.91556506452018e-09
+     }
+    }
+   }
+  },
+  "exit_code": 1,
+  "seconds": 9.45
+ },
+ "fixed": null,
+ "reproduces_on_cpu": true,
+ "library_tests": [
+  {
+   "commit": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+   "files": "test/transformers/test_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5 && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfEsx --durations=25",
+   "passed": 68,
+   "failed": 41,
+   "skipped": 76,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 507.14,
+   "subset_notes": "FULL FILE, no subset (185 collected): the primary count. Re-run of the whole file once the machine load dropped (load average ~20-40); finished in 8.5 min. 76 skipped = every bfloat16 parametrization (supports_bfloat16() is False on CPU). 41 failures, none attributable to a Liger defect: 36 = Triton 3.9.0 CPU-interpreter limitation on the class-weight / softcap code paths (InterpreterError: AttributeError(\"'float' object has no attribute 'to'\"); test_correctness_with_weight_once x6, test_correctness_with_weight_with_other_params_once x12, test_correctness_with_softcap_once x6, test_correctness_not_last_layer_with_other_params x8, test_correctness_functional x4); 4 = test_correctness_with_z_loss_with_other_params_once[0.2--42-sum-*] (both shapes): rtol 1e-6/atol 1e-8 against torch's CPU fp32 gradient, which is the inaccurate side (max err vs float64 2.5e-7 for torch vs 4.2e-8 for Liger on the 3x423 case); 1 = test_correctness_with_forward_only[float16-mean-2-4096-32000--100]: torch's CPU float16 CrossEntropyLoss(mean) overflows to inf over 8192 rows, Liger returns 10.88 (correct). No test in the file checks whether the input is modified in forward-only mode, so B5 is invisible to the suite.",
+   "pytest_summary": "41 failed, 68 passed, 76 skipped, 4 warnings in 507.14s",
+   "wall_seconds": 512,
+   "log": "harness_only/phase1/logs/ce_libtests_8c7a5078_full_retry.log",
+   "junit": "harness_only/phase1/logs/ce_libtests_8c7a5078_full_retry.junit.xml"
+  },
+  {
+   "commit": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+   "files": "test/transformers/test_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5 && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -k 'not 4096 and not 1024' -rfEsx --durations=15",
+   "passed": 43,
+   "failed": 22,
+   "skipped": 42,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 80.52,
+   "subset_notes": "Documented subset run after the first full attempt hit the timebox: -k 'not 4096 and not 1024' selects 107/185 (deselects the 78 parametrizations with the large shapes (2,4096,32000) / (2,1024,32000)). 42 skipped = bfloat16 params (supports_bfloat16() is False on CPU). 22 failures: 20 = Triton CPU interpreter limitation on the class-weight / softcap paths (InterpreterError: AttributeError(\"'float' object has no attribute 'to'\")), 2 = test_correctness_with_z_loss_with_other_params_once[0.2--42-sum-*] tolerance (rtol 1e-6, atol 1e-8 vs torch CPU fp32; vs float64 torch-fp32 errs up to 2.5e-7, Liger only 4.2e-8).",
+   "pytest_summary": "22 failed, 43 passed, 42 skipped, 4 warnings in 80.52s",
+   "wall_seconds": 86,
+   "log": "harness_only/phase1/logs/ce_libtests_8c7a5078_subset.log",
+   "junit": "harness_only/phase1/logs/ce_libtests_8c7a5078_subset.junit.xml"
+  },
+  {
+   "commit": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+   "files": "test/transformers/test_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5 && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest <the 22 failing node ids of the subset run, listed in the log> -q -p no:cacheprovider -p pytest_cpu_shims -p pytest_cpu_shims_ce -o log_cli=false -n 3 --timeout 600 -rfEsx",
+   "passed": 3,
+   "failed": 19,
+   "skipped": 0,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 22.5,
+   "subset_notes": "DIAGNOSTIC (not a primary count): the 22 subset failures re-run with the extra harness plugin pytest_cpu_shims_ce (wraps Python-float kernel args as fp32 tensors in the interpreter, as compiled Triton does). 3 passed = the class-weight-only tests; 17 failed at libdevice.tanh, which is a stub under the interpreter (softcap paths, AttributeError(\"'NoneType' object has no attribute 'dtype'\")); 2 failed = the same z-loss/sum tolerance mismatches (249978 and 250016 elements, identical to the unshimmed run).",
+   "pytest_summary": "19 failed, 3 passed, 4 warnings in 22.50s",
+   "wall_seconds": 25,
+   "log": "harness_only/phase1/logs/ce_libtests_8c7a5078_subset_failures_with_ce_shim.log",
+   "junit": "harness_only/phase1/logs/ce_libtests_8c7a5078_subset_failures_with_ce_shim.junit.xml"
+  },
+  {
+   "commit": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+   "files": "test/transformers/test_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5 && TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 2 --timeout 600 -rfEsx --durations=25",
+   "seconds": 1534,
+   "subset_notes": "INCOMPLETE, superseded by the full re-run (library_tests[0]). Full file (185 collected), -n 2, stopped by the builder after 25.6 min wall-clock (the ~30 min timebox) while the machine was overloaded by concurrent agents (load average 90-220). Counts are the 92 progress characters pytest printed before it was stopped (93 tests had no outcome yet); pytest printed no summary and wrote no junit.",
+   "pytest_summary": null,
+   "wall_seconds": 1534,
+   "log": "harness_only/phase1/logs/ce_libtests_8c7a5078.log",
+   "passed": 26,
+   "failed": 18,
+   "skipped": 48,
+   "errors": 0,
+   "xfailed": 0
+  }
+ ],
+ "notes": "Open, buggy-only pair: there is no fixed commit, so 'fixed' is null; the issue's proposed guard was not simulated (that would require editing library source). Reproduces on the Triton CPU interpreter: on 8c7a5078 every forward-only call (input.requires_grad False; plain call and under torch.no_grad(); reductions mean/sum/none) zeroes the caller's logits at exactly the rows whose target == ignore_index (3 of 8 rows per call, 18 rows over 6 calls, expected 0); counted rows are byte-identical and returned losses match float64 torch (max abs err 1.3e-6); control with no ignored targets changes 0 rows. HEAD check: src/liger_kernel/ops/cross_entropy.py is blob b2bfba14 at both 8c7a5078 and the harness clone HEAD 37607058 (lines 104-108 identical, unguarded store), as are transformers/functional.py, transformers/cross_entropy.py, ops/utils.py and test_cross_entropy.py. By design and NOT this bug (recorded in metrics.by_design_grad_write): with input.requires_grad True the forward writes d(loss)/d(input) into input (all 8 rows change, contents = float64 gradient within 7.9e-9), also under torch.no_grad() because HAS_GRADIENTS = _input.requires_grad, and for mean/sum input.grad aliases input's storage after backward. Suggested property-check rule: input modified while input.requires_grad is True = by design; modified while input.requires_grad is False = B5. The caller only sees B5 when input.stride(-1) == 1 (otherwise Liger copies first). Kernel agreement on 8c7a5078 (scripts/harness/ref_vs_kernel_ce.py): 45/45 in-scope configs agree on outputs and gradients; informationally, all 4 forward-only draws with ignored rows had exactly their ignored rows modified. Liger's own suite (full file, 185 tests): 68 passed / 41 failed / 76 skipped; all 41 failures are interpreter limitations (weight/softcap paths) or tolerance/overflow problems on the torch-CPU reference side, and no test checks input mutation, so the suite does not detect B5. Separate, unlabeled defect found at this commit (and HEAD): an input with stride(-1) != 1 gets its own logits back as the gradient (harness_only/phase1/ce_extra_last_dim_stride_probe.py); out of the documented scope, see ce_notes.md section 5.",
+ "head_check": {
+  "harness_clone_head": "37607058f981045df738fd719fc7b8062b25c183",
+  "blobs_identical_8c7a5078_vs_head": {
+   "src/liger_kernel/ops/cross_entropy.py": "b2bfba14474f84a804f272459d83f81a12f18553",
+   "src/liger_kernel/transformers/functional.py": "179c4dd83affa1407ec3568fdebf8541b86b3dfb",
+   "src/liger_kernel/transformers/cross_entropy.py": "1f62a7a78b9a72d2553f6030f2c6bd6f88392fa2",
+   "src/liger_kernel/ops/utils.py": "45ad4788023febcbe233d0f3c3b0879e22ead8fe",
+   "test/transformers/test_cross_entropy.py": "369cb7f81a8524edb05f4b2a156534edc5ecd0fa"
+  },
+  "head_lines_104_108": "if y == ignore_index: / # set all X_ptr as 0 / for i in range(0, n_cols, BLOCK_SIZE): / X_offsets = i + tl.arange(0, BLOCK_SIZE) / tl.store(X_ptr + X_offsets, 0.0, mask=X_offsets < n_cols)"
+ },
+ "repro_command": "scripts/harness/in_tree.sh 8c7a5078 .venv/bin/python harness_only/repros/B5_ce_ignore.py"
+}

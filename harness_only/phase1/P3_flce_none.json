@@ -1,0 +1,182 @@
+{
+ "pair_id": "P3_flce_none",
+ "buggy": {
+  "stdout_json": {
+   "pair_id": "P3_flce_none",
+   "tree": "e44a5fe86d3ee00def43913329e4c4ff70c3b416",
+   "backend": "interpreter-cpu",
+   "bug_manifest": true,
+   "metrics": {
+    "shape_BT_H_V": [
+     32,
+     32,
+     64
+    ],
+    "rel_err_nonuniform_upstream": {
+     "loss": 8.129e-08,
+     "grad_input": 0.431,
+     "grad_weight": 0.3951,
+     "grad_bias": 0.3806
+    },
+    "rel_err_uniform_upstream_control": {
+     "loss": 8.129e-08,
+     "grad_input": 2.495e-07,
+     "grad_weight": 1.068e-07,
+     "grad_bias": 4.095e-08
+    },
+    "max_grad_rel_err": 0.431,
+    "threshold": 0.001
+   }
+  },
+  "exit_code": 1,
+  "seconds": 2.01,
+  "command": "scripts/harness/in_tree.sh e44a5fe8 .venv/bin/python harness_only/repros/P3_flce_none.py"
+ },
+ "fixed": {
+  "stdout_json": {
+   "pair_id": "P3_flce_none",
+   "tree": "9ac26bb82226c9279f0fda784300f5e02ce444b2",
+   "backend": "interpreter-cpu",
+   "bug_manifest": false,
+   "metrics": {
+    "shape_BT_H_V": [
+     32,
+     32,
+     64
+    ],
+    "rel_err_nonuniform_upstream": {
+     "loss": 8.129e-08,
+     "grad_input": 3.002e-07,
+     "grad_weight": 9.765e-08,
+     "grad_bias": 1.372e-07
+    },
+    "rel_err_uniform_upstream_control": {
+     "loss": 8.129e-08,
+     "grad_input": 2.495e-07,
+     "grad_weight": 1.068e-07,
+     "grad_bias": 4.095e-08
+    },
+    "max_grad_rel_err": 3.002e-07,
+    "threshold": 0.001
+   }
+  },
+  "exit_code": 0,
+  "seconds": 2.2,
+  "command": "scripts/harness/in_tree.sh 9ac26bb8 .venv/bin/python harness_only/repros/P3_flce_none.py"
+ },
+ "reproduces_on_cpu": true,
+ "library_tests": [
+  {
+   "commit": "e44a5fe86d3ee00def43913329e4c4ff70c3b416",
+   "files": "test/transformers/test_fused_linear_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 89,
+   "failed": 48,
+   "skipped": 0,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 88.38,
+   "subset_notes": "full file, no subset. all 48 failures are softcap=30.0 parametrizations (test_correctness / test_correctness_with_forward_only second param set, which also sets ce_weight, and every test_correctness_functional case) crashing in the Triton CPU interpreter: 48x triton.runtime.errors.InterpreterError: TypeError(\"unsupported operand type(s) for *: 'float' and 'NoneType'\"). Interpreter limitation, not a numeric mismatch.",
+   "pytest_summary": "48 failed, 89 passed, 4 warnings in 88.38s (0:01:28)",
+   "wall_seconds": 92,
+   "log": "harness_only/phase1/logs/flce_libtests_e44a5fe8_transformers.log"
+  },
+  {
+   "commit": "9ac26bb82226c9279f0fda784300f5e02ce444b2",
+   "files": "test/transformers/test_fused_linear_cross_entropy.py",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/9ac26bb82226c9279f0fda784300f5e02ce444b2 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_fused_linear_cross_entropy.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 93,
+   "failed": 48,
+   "skipped": 0,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 97.62,
+   "subset_notes": "full file, no subset. all 48 failures are softcap=30.0 parametrizations (test_correctness / test_correctness_with_forward_only second param set, which also sets ce_weight, and every test_correctness_functional case) crashing in the Triton CPU interpreter: 48x triton.runtime.errors.InterpreterError: TypeError(\"unsupported operand type(s) for *: 'float' and 'NoneType'\"). Interpreter limitation, not a numeric mismatch.",
+   "pytest_summary": "48 failed, 93 passed, 4 warnings in 97.62s (0:01:37)",
+   "wall_seconds": 101,
+   "log": "harness_only/phase1/logs/flce_libtests_9ac26bb8_transformers.log"
+  },
+  {
+   "commit": "e44a5fe86d3ee00def43913329e4c4ff70c3b416",
+   "files": "test/transformers/test_fused_linear_cross_entropy.py of 9ac26bb8 (fixed) run against e44a5fe8 (buggy) src",
+   "command": "cd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/9ac26bb82226c9279f0fda784300f5e02ce444b2 && env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_fused_linear_cross_entropy.py -k test_correctness_reduction_none_per_token_grad_output -q -p no:cacheprovider -p pytest_cpu_shims -p flce_where -o \"pythonpath=/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src .\" -o log_cli=false -n 3 --timeout 600 -rfE",
+   "passed": 0,
+   "failed": 4,
+   "skipped": 0,
+   "errors": 0,
+   "xfailed": 0,
+   "seconds": 6.13,
+   "subset_notes": "TRANSPLANT: the fix PR's new regression test (-k test_correctness_reduction_none_per_token_grad_output, 4 cases) collected from the fixed tree but importing liger_kernel from the buggy tree's src (the tree's pyproject sets pytest pythonpath=['src','.'], so -o 'pythonpath=<e44a5fe8>/src .' is required; a helper plugin printed the imported path to confirm). Shows the regression test catches the bug; this test does not exist at the buggy commit.",
+   "pytest_summary": "4 failed, 4 warnings in 6.13s",
+   "wall_seconds": 13,
+   "log": "harness_only/phase1/logs/flce_libtests_transplant_P3_e44a5fe8src_9ac26bb8tests.log"
+  }
+ ],
+ "notes": "Reproduces on the Triton CPU interpreter. Repro: contiguous float32, reduction='none', loss.backward(g) with non-uniform g; grad_input/grad_weight/grad_bias max-normalized errors ~0.4 at e44a5fe8 (all scaled by g[0]) and ~3e-7 at 9ac26bb8; the uniform-upstream control agrees at both. Contiguous layouts only, so the column-stride bug of P2 (present at both P3 commits) cannot fire. Cross-check: no manifestation at 395d6166/ae47958e (fix present). Liger's own suite at e44a5fe8 only backpropagates ones, so it passes the same non-softcap tests as at 9ac26bb8; the fix's 4 new regression tests (present only at 9ac26bb8) fail when transplanted onto e44a5fe8's src. 48 failures at each commit are softcap/ce_weight cases that crash in the interpreter. See harness_only/phase1/flce_notes.md.",
+ "cross_check_other_pair_commits": {
+  "395d6166e86f64f7c27f3c6e49cef89904add1aa": {
+   "stdout_json": {
+    "pair_id": "P3_flce_none",
+    "tree": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+    "backend": "interpreter-cpu",
+    "bug_manifest": false,
+    "metrics": {
+     "shape_BT_H_V": [
+      32,
+      32,
+      64
+     ],
+     "rel_err_nonuniform_upstream": {
+      "loss": 8.129e-08,
+      "grad_input": 3.002e-07,
+      "grad_weight": 9.765e-08,
+      "grad_bias": 1.372e-07
+     },
+     "rel_err_uniform_upstream_control": {
+      "loss": 8.129e-08,
+      "grad_input": 2.495e-07,
+      "grad_weight": 1.068e-07,
+      "grad_bias": 4.095e-08
+     },
+     "max_grad_rel_err": 3.002e-07,
+     "threshold": 0.001
+    }
+   },
+   "exit_code": 0,
+   "seconds": 2.73,
+   "command": "scripts/harness/in_tree.sh 395d6166 .venv/bin/python harness_only/repros/P3_flce_none.py"
+  },
+  "ae47958e39568874e3b21419130582a271f2a903": {
+   "stdout_json": {
+    "pair_id": "P3_flce_none",
+    "tree": "ae47958e39568874e3b21419130582a271f2a903",
+    "backend": "interpreter-cpu",
+    "bug_manifest": false,
+    "metrics": {
+     "shape_BT_H_V": [
+      32,
+      32,
+      64
+     ],
+     "rel_err_nonuniform_upstream": {
+      "loss": 8.129e-08,
+      "grad_input": 3.002e-07,
+      "grad_weight": 9.765e-08,
+      "grad_bias": 1.372e-07
+     },
+     "rel_err_uniform_upstream_control": {
+      "loss": 8.129e-08,
+      "grad_input": 2.495e-07,
+      "grad_weight": 1.068e-07,
+      "grad_bias": 4.095e-08
+     },
+     "max_grad_rel_err": 3.002e-07,
+     "threshold": 0.001
+    }
+   },
+   "exit_code": 0,
+   "seconds": 2.58,
+   "command": "scripts/harness/in_tree.sh ae47958e .venv/bin/python harness_only/repros/P3_flce_none.py"
+  }
+ }
+}

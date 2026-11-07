@@ -1,0 +1,22 @@
+# commit 39adfeef tree /atlas/u/pranavsb/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c files test/transformers/test_tvd.py
+# started 2026-11-07T06:19:09Z
+...s....s....s....s....s....s....s....s....s....s....s....s....s....s... [ 36%]
+.s....s....s....s....s....s....s....s....s....s....s....s....s....s....s [ 72%]
+....s....s....s....s....s....s....s....s....s....s....s.                 [100%]
+=============================== warnings summary ===============================
+../../../../../../../atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+test/transformers/test_tvd.py::test_correctness[dtype0-1e-08-1e-06-batchmean-1-4096-32000]
+  /atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+    warn_once(FP_FUSION_DEFAULT_WARNING)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+SKIPPED [8] test/transformers/test_tvd.py:152: This test requires a GPU with at least 36GB of memory
+SKIPPED [8] test/transformers/test_tvd.py:161: This test requires a GPU with at least 36GB of memory
+SKIPPED [24] test/transformers/test_tvd.py:181: This test requires a GPU with at least 36GB of memory
+160 passed, 40 skipped, 2 warnings in 26.26s
+# exit_code 0 wall_seconds 33

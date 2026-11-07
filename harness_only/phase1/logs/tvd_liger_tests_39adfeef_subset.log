@@ -1,0 +1,54 @@
+# commit 39adfeefab06c9a8b596199cb7f9e9d515986d8c  tree /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# started 2026-11-07T04:04:57Z
+# cwd /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/39adfeefab06c9a8b596199cb7f9e9d515986d8c
+# command: env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_tvd.py -q -p no:cacheprovider -p pytest_cpu_shims -o log_cli=false -n 3 --timeout 600 -rs --durations=25 --junitxml=/Users/pranavs/Coding/cs329z/kernel-verification/harness_only/phase1/logs/tvd_liger_tests_39adfeef_subset.xml -k 41-401-1271\ or\ 3-423-32000\ or\ with_ties
+bringing up nodes...
+bringing up nodes...
+
+ssssssssssssss........ss....sss..sssss......sssss..sss........ssssss.s.s [ 90%]
+........                                                                 [100%]W1106 20:05:01.365000 86321 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================= slowest 25 durations =============================
+18.86s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-41-401-1271]
+18.60s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-mean-41-401-1271]
+18.36s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-41-401-1271]
+15.02s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-sum-41-401-1271]
+14.99s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-sum-41-401-1271]
+14.43s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-mean-41-401-1271]
+12.68s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[0-dtype1-1e-08-1e-06-batchmean-41-401-1271]
+12.59s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[0-dtype1-1e-08-1e-06-mean-41-401-1271]
+12.05s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[1-dtype1-1e-08-1e-06-mean-41-401-1271]
+11.91s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[1-dtype1-1e-08-1e-06-sum-41-401-1271]
+11.90s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[0-dtype1-1e-08-1e-06-sum-41-401-1271]
+11.79s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[1-dtype1-1e-08-1e-06-batchmean-41-401-1271]
+11.73s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[-100-dtype1-1e-08-1e-06-sum-41-401-1271]
+11.65s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[-100-dtype1-1e-08-1e-06-mean-41-401-1271]
+11.47s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[-100-dtype1-1e-08-1e-06-batchmean-41-401-1271]
+10.73s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[1-dtype1-1e-08-1e-06-none-41-401-1271]
+10.44s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-none-41-401-1271]
+10.05s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-none-41-401-1271]
+9.93s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[-100-dtype1-1e-08-1e-06-none-41-401-1271]
+9.20s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[0-dtype1-1e-08-1e-06-none-41-401-1271]
+6.61s call     test/transformers/test_tvd.py::test_correctness_with_ignore_index[1-dtype1-1e-08-1e-06-none-3-423-32000]
+5.09s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-mean-3-423-32000]
+5.08s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-batchmean-3-423-32000]
+4.99s call     test/transformers/test_tvd.py::test_correctness[dtype1-1e-08-1e-06-batchmean-3-423-32000]
+4.21s call     test/transformers/test_tvd.py::test_correctness_not_last[dtype1-1e-08-1e-06-mean-3-423-32000]
+=========================== short test summary info ============================
+SKIPPED [8] test/transformers/test_tvd.py:152: bfloat16 not supported on this GPU
+SKIPPED [8] test/transformers/test_tvd.py:161: bfloat16 not supported on this GPU
+SKIPPED [24] test/transformers/test_tvd.py:181: bfloat16 not supported on this GPU
+40 passed, 40 skipped, 4 warnings in 127.63s (0:02:07)
+# exit_code 0
+# wall_seconds 133
+# finished 2026-11-07T04:07:10Z

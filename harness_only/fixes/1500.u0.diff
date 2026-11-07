@@ -1,0 +1,22 @@
+diff --git a/src/liger_kernel/ops/fused_linear_cross_entropy.py b/src/liger_kernel/ops/fused_linear_cross_entropy.py
+index 0dd376d..df35068 100644
+--- a/src/liger_kernel/ops/fused_linear_cross_entropy.py
++++ b/src/liger_kernel/ops/fused_linear_cross_entropy.py
+@@ -432,0 +433 @@ def fused_linear_cross_entropy_backward(grad_output, grad_input, grad_weight, gr
++            X_col_stride=grad_input.stride(-1),
+@@ -446,0 +448 @@ def fused_linear_cross_entropy_backward(grad_output, grad_input, grad_weight, gr
++                X_col_stride=grad_weight.stride(-1),
+diff --git a/src/liger_kernel/ops/utils.py b/src/liger_kernel/ops/utils.py
+index 9b2599f..45ad478 100644
+--- a/src/liger_kernel/ops/utils.py
++++ b/src/liger_kernel/ops/utils.py
+@@ -114,0 +115 @@ def element_mul_kernel(
++    X_col_stride: tl.constexpr = 1,
+@@ -125,0 +127 @@ def element_mul_kernel(
++    X_col_stride (int): The stride between columns of the input tensor.
+@@ -140,2 +142,3 @@ def element_mul_kernel(
+-        X_block = tl.load(X_ptr + X_offsets, mask=X_offsets < n_cols)
+-        tl.store(X_ptr + X_offsets, X_block * grad_output, mask=X_offsets < n_cols)
++        X_ptrs = X_ptr + X_offsets.to(tl.int64) * X_col_stride
++        X_block = tl.load(X_ptrs, mask=X_offsets < n_cols)
++        tl.store(X_ptrs, X_block * grad_output, mask=X_offsets < n_cols)

@@ -1,0 +1,8 @@
+e44a5fe8 test/transformers/test_fused_linear_cross_entropy.py rc=1 wall=92s
+scripts/harness/run_liger_tests_flce.sh: line 18: 82220 Terminated: 15          sleep "$SUITE_TIMEOUT"
+9ac26bb8 test/transformers/test_fused_linear_cross_entropy.py rc=1 wall=101s
+395d6166 test/transformers/test_fused_linear_cross_entropy.py rc=1 wall=180s
+395d6166 test/ops/test_fused_linear_cross_entropy.py rc=0 wall=14s
+ae47958e test/transformers/test_fused_linear_cross_entropy.py rc=1 wall=1263s
+scripts/harness/run_liger_tests_flce.sh: line 18: 85910 Terminated: 15          sleep "$SUITE_TIMEOUT"
+ae47958e test/ops/test_fused_linear_cross_entropy.py rc=0 wall=14s

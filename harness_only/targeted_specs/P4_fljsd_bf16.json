@@ -1,0 +1,5 @@
+{"tensors": {"student_input": {"shape": [256, 1024], "dtype": "bfloat16"},
+             "student_weight": {"shape": [32000, 1024], "dtype": "bfloat16", "init": {"kind": "randn", "std": 0.9375}},
+             "teacher_input": {"shape": [256, 1024], "dtype": "bfloat16"},
+             "teacher_weight": {"shape": [32000, 1024], "dtype": "bfloat16", "init": {"kind": "randn", "std": 0.9375}}},
+ "kwargs": {"jsd_beta": 0.0}, "upstream": {"kind": "ones"}, "seed": 0}

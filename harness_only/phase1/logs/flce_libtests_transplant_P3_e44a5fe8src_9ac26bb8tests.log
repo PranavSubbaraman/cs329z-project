@@ -1,0 +1,640 @@
+# cwd: /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/9ac26bb82226c9279f0fda784300f5e02ce444b2
+# cmd: env TRITON_INTERPRET=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src:/Users/pranavs/Coding/cs329z/kernel-verification/scripts/harness /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python -m pytest test/transformers/test_fused_linear_cross_entropy.py -k test_correctness_reduction_none_per_token_grad_output -q -p no:cacheprovider -p pytest_cpu_shims -p flce_where -o "pythonpath=/Users/pranavs/Coding/cs329z/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src ." -o log_cli=false -n 3 --timeout 600 -rfE
+
+LIGER_KERNEL_IMPORTED_FROM /Users/pranavs/Coding/cs329z/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src/liger_kernel/ops/fused_linear_cross_entropy.py
+bringing up nodes...
+bringing up nodes...
+
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-False-2-16-32-64] _
+[gw1] darwin -- Python 3.12.0 /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python
+
+B = 2, T = 16, H = 32, V = 64, bias = False, dtype = torch.float32
+atol = 0.0001, rtol = 0.0001
+
+    @pytest.mark.parametrize(
+        "B, T, H, V",
+        [
+            (2, 16, 32, 64),
+            (1, 32, 64, 128),
+        ],
+    )
+    @pytest.mark.parametrize("bias", [True, False])
+    @pytest.mark.parametrize(
+        "dtype, atol, rtol",
+        [
+            (torch.float32, 1e-4, 1e-4),
+        ],
+    )
+    def test_correctness_reduction_none_per_token_grad_output(B, T, H, V, bias, dtype, atol, rtol):
+        """reduction="none" must honour a *per-token* upstream gradient.
+    
+        With ``reduction="none"`` the loss is a per-token vector, so ``backward()``
+        receives a per-token ``grad_output``. The chain rule then requires
+    
+            dL/dW = sum_i grad_output[i] * (g_i outer x_i)
+    
+        i.e. the upstream weight has to be applied to each row of the logits gradient
+        *before* it is summed into ``grad_weight`` / ``grad_bias``. Scaling the
+        already-summed result afterwards cannot reproduce this.
+    
+        Regression test: previously ``element_mul_kernel`` loaded ``grad_output`` as a
+        scalar, so every gradient was multiplied by ``grad_output[0]``. A uniform
+        ``grad_output`` (e.g. ``torch.ones``) hides the bug, so this test uses a
+        non-uniform one.
+        """
+        set_seed(42)
+        BT = B * T
+    
+        _input = torch.randn(BT, H, device=device, dtype=dtype) * 0.1
+        weight = torch.randn(V, H, device=device, dtype=dtype) * 0.1
+        bias_t = torch.randn(V, device=device, dtype=dtype) * 0.1 if bias else None
+        target = torch.randint(0, V, (BT,), device=device, dtype=torch.long)
+        # a genuinely non-uniform per-token upstream gradient
+        grad_output = torch.rand(BT, device=device, dtype=dtype) + 0.5
+    
+        def torch_ref():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            logits = torch.nn.functional.linear(x, w, b)
+            loss = torch.nn.functional.cross_entropy(logits, target, reduction="none")
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        def liger():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            loss, _, _, _ = LigerFusedLinearCrossEntropyFunction.apply(
+                x, w, target, b, None, -100, 0.0, 0.0, "none", None, False, None, False, False, False
+            )
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        ref_loss, ref_gx, ref_gw, ref_gb = torch_ref()
+        lig_loss, lig_gx, lig_gw, lig_gb = liger()
+    
+        assert_verbose_allclose(lig_loss, ref_loss, atol=atol, rtol=rtol)
+>       assert_verbose_allclose(lig_gx, ref_gx, atol=atol, rtol=rtol)
+
+test/transformers/test_fused_linear_cross_entropy.py:1091: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor1 = tensor([[ 0.0594,  0.0772, -0.0422,  ..., -0.0024,  0.0653,  0.0425],
+        [ 0.0036, -0.1382, -0.1665,  ...,  0.061...2093, -0.1470,  ..., -0.0941,  0.1312, -0.1493],
+        [ 0.0081, -0.0016, -0.0889,  ...,  0.1113,  0.1927, -0.0982]])
+tensor2 = tensor([[ 0.0594,  0.0772, -0.0422,  ..., -0.0024,  0.0653,  0.0425],
+        [ 0.0041, -0.1578, -0.1902,  ...,  0.069...1652, -0.1160,  ..., -0.0743,  0.1036, -0.1179],
+        [ 0.0051, -0.0010, -0.0560,  ...,  0.0701,  0.1215, -0.0619]])
+rtol = 0.0001, atol = 0.0001, max_print = 5, extra_info = ''
+
+    def assert_verbose_allclose(tensor1, tensor2, rtol=1e-05, atol=1e-08, max_print=5, extra_info=""):
+        """
+        Assert that two tensors are element-wise equal within a tolerance, providing detailed information about mismatches.
+    
+        Parameters:
+        tensor1 (torch.Tensor): First tensor to compare.
+        tensor2 (torch.Tensor): Second tensor to compare.
+        rtol (float): Relative tolerance.
+        atol (float): Absolute tolerance.
+        max_print (int): Maximum number of mismatched elements to print.
+        extra_info (str): Extra information to show at the start of the error message.
+    
+        Raises:
+        AssertionError: If the tensors are not all close within the given tolerance.
+        """
+        # Check if the shapes of the tensors match
+        if tensor1.shape != tensor2.shape:
+            raise AssertionError("Input tensors must have the same shape.")
+    
+        # Calculate the difference between the tensors
+        diff = torch.abs(tensor1 - tensor2)
+    
+        # Determine the tolerance
+        tolerance = atol + rtol * torch.abs(tensor2)
+    
+        # Find tolerance mismatched elements
+        tol_mismatched = diff > tolerance
+    
+        # Find nan mismatched elements
+        nan_mismatched = torch.logical_xor(torch.isnan(tensor1), torch.isnan(tensor2))
+    
+        # Find +inf mismatched elements
+        posinf_mismatched = torch.logical_xor(torch.isposinf(tensor1), torch.isposinf(tensor2))
+        # Find -inf mismatched elements
+        neginf_mismatched = torch.logical_xor(torch.isneginf(tensor1), torch.isneginf(tensor2))
+    
+        # Find all mismatched elements
+        mismatched = torch.logical_or(
+            torch.logical_or(tol_mismatched, nan_mismatched),
+            torch.logical_or(posinf_mismatched, neginf_mismatched),
+        )
+    
+        mismatched_indices = torch.nonzero(mismatched)
+    
+        # Count the number of mismatched elements
+        num_mismatched = mismatched.sum().item()
+    
+        # Check if all elements are close
+        all_close = num_mismatched == 0
+    
+        # Raise AssertionError with detailed information if there are mismatches
+        if not all_close and num_mismatched >= 1:
+            mismatch_details = [f"Number of mismatched elements: {num_mismatched}"]
+            print_count = min(max_print, num_mismatched)
+            for index in mismatched_indices[:print_count]:
+                i = tuple(index.tolist())
+                mismatch_details.append(f"Mismatch at index {i}: tensor1[{i}] = {tensor1[i]}, tensor2[{i}] = {tensor2[i]}")
+            if num_mismatched > max_print:
+                mismatch_details.append(f"... and {num_mismatched - max_print} more mismatched elements.")
+    
+>           raise AssertionError(extra_info + "\n".join(mismatch_details))
+E           AssertionError: Number of mismatched elements: 985
+E           Mismatch at index (1, 0): tensor1[(1, 0)] = 0.003558384021744132, tensor2[(1, 0)] = 0.0040646702982485294
+E           Mismatch at index (1, 1): tensor1[(1, 1)] = -0.13815855979919434, tensor2[(1, 1)] = -0.15781594812870026
+E           Mismatch at index (1, 2): tensor1[(1, 2)] = -0.16649682819843292, tensor2[(1, 2)] = -0.19018632173538208
+E           Mismatch at index (1, 3): tensor1[(1, 3)] = -0.11133144050836563, tensor2[(1, 3)] = -0.1271718144416809
+E           Mismatch at index (1, 4): tensor1[(1, 4)] = 0.027373796328902245, tensor2[(1, 4)] = 0.03126857429742813
+E           ... and 980 more mismatched elements.
+
+test/utils.py:208: AssertionError
+_ test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-True-2-16-32-64] _
+[gw2] darwin -- Python 3.12.0 /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python
+
+B = 2, T = 16, H = 32, V = 64, bias = True, dtype = torch.float32, atol = 0.0001
+rtol = 0.0001
+
+    @pytest.mark.parametrize(
+        "B, T, H, V",
+        [
+            (2, 16, 32, 64),
+            (1, 32, 64, 128),
+        ],
+    )
+    @pytest.mark.parametrize("bias", [True, False])
+    @pytest.mark.parametrize(
+        "dtype, atol, rtol",
+        [
+            (torch.float32, 1e-4, 1e-4),
+        ],
+    )
+    def test_correctness_reduction_none_per_token_grad_output(B, T, H, V, bias, dtype, atol, rtol):
+        """reduction="none" must honour a *per-token* upstream gradient.
+    
+        With ``reduction="none"`` the loss is a per-token vector, so ``backward()``
+        receives a per-token ``grad_output``. The chain rule then requires
+    
+            dL/dW = sum_i grad_output[i] * (g_i outer x_i)
+    
+        i.e. the upstream weight has to be applied to each row of the logits gradient
+        *before* it is summed into ``grad_weight`` / ``grad_bias``. Scaling the
+        already-summed result afterwards cannot reproduce this.
+    
+        Regression test: previously ``element_mul_kernel`` loaded ``grad_output`` as a
+        scalar, so every gradient was multiplied by ``grad_output[0]``. A uniform
+        ``grad_output`` (e.g. ``torch.ones``) hides the bug, so this test uses a
+        non-uniform one.
+        """
+        set_seed(42)
+        BT = B * T
+    
+        _input = torch.randn(BT, H, device=device, dtype=dtype) * 0.1
+        weight = torch.randn(V, H, device=device, dtype=dtype) * 0.1
+        bias_t = torch.randn(V, device=device, dtype=dtype) * 0.1 if bias else None
+        target = torch.randint(0, V, (BT,), device=device, dtype=torch.long)
+        # a genuinely non-uniform per-token upstream gradient
+        grad_output = torch.rand(BT, device=device, dtype=dtype) + 0.5
+    
+        def torch_ref():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            logits = torch.nn.functional.linear(x, w, b)
+            loss = torch.nn.functional.cross_entropy(logits, target, reduction="none")
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        def liger():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            loss, _, _, _ = LigerFusedLinearCrossEntropyFunction.apply(
+                x, w, target, b, None, -100, 0.0, 0.0, "none", None, False, None, False, False, False
+            )
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        ref_loss, ref_gx, ref_gw, ref_gb = torch_ref()
+        lig_loss, lig_gx, lig_gw, lig_gb = liger()
+    
+        assert_verbose_allclose(lig_loss, ref_loss, atol=atol, rtol=rtol)
+>       assert_verbose_allclose(lig_gx, ref_gx, atol=atol, rtol=rtol)
+
+test/transformers/test_fused_linear_cross_entropy.py:1091: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor1 = tensor([[ 0.1768,  0.0092, -0.1628,  ..., -0.1546,  0.0435, -0.1422],
+        [-0.1147,  0.1172,  0.3350,  ..., -0.280...0160,  0.0343,  ..., -0.2365, -0.0189,  0.0964],
+        [-0.0149, -0.2481, -0.0250,  ...,  0.3256,  0.1127,  0.2921]])
+tensor2 = tensor([[ 0.1768,  0.0092, -0.1628,  ..., -0.1546,  0.0435, -0.1422],
+        [-0.0654,  0.0667,  0.1909,  ..., -0.159...0164,  0.0353,  ..., -0.2434, -0.0194,  0.0991],
+        [-0.0110, -0.1829, -0.0185,  ...,  0.2400,  0.0831,  0.2153]])
+rtol = 0.0001, atol = 0.0001, max_print = 5, extra_info = ''
+
+    def assert_verbose_allclose(tensor1, tensor2, rtol=1e-05, atol=1e-08, max_print=5, extra_info=""):
+        """
+        Assert that two tensors are element-wise equal within a tolerance, providing detailed information about mismatches.
+    
+        Parameters:
+        tensor1 (torch.Tensor): First tensor to compare.
+        tensor2 (torch.Tensor): Second tensor to compare.
+        rtol (float): Relative tolerance.
+        atol (float): Absolute tolerance.
+        max_print (int): Maximum number of mismatched elements to print.
+        extra_info (str): Extra information to show at the start of the error message.
+    
+        Raises:
+        AssertionError: If the tensors are not all close within the given tolerance.
+        """
+        # Check if the shapes of the tensors match
+        if tensor1.shape != tensor2.shape:
+            raise AssertionError("Input tensors must have the same shape.")
+    
+        # Calculate the difference between the tensors
+        diff = torch.abs(tensor1 - tensor2)
+    
+        # Determine the tolerance
+        tolerance = atol + rtol * torch.abs(tensor2)
+    
+        # Find tolerance mismatched elements
+        tol_mismatched = diff > tolerance
+    
+        # Find nan mismatched elements
+        nan_mismatched = torch.logical_xor(torch.isnan(tensor1), torch.isnan(tensor2))
+    
+        # Find +inf mismatched elements
+        posinf_mismatched = torch.logical_xor(torch.isposinf(tensor1), torch.isposinf(tensor2))
+        # Find -inf mismatched elements
+        neginf_mismatched = torch.logical_xor(torch.isneginf(tensor1), torch.isneginf(tensor2))
+    
+        # Find all mismatched elements
+        mismatched = torch.logical_or(
+            torch.logical_or(tol_mismatched, nan_mismatched),
+            torch.logical_or(posinf_mismatched, neginf_mismatched),
+        )
+    
+        mismatched_indices = torch.nonzero(mismatched)
+    
+        # Count the number of mismatched elements
+        num_mismatched = mismatched.sum().item()
+    
+        # Check if all elements are close
+        all_close = num_mismatched == 0
+    
+        # Raise AssertionError with detailed information if there are mismatches
+        if not all_close and num_mismatched >= 1:
+            mismatch_details = [f"Number of mismatched elements: {num_mismatched}"]
+            print_count = min(max_print, num_mismatched)
+            for index in mismatched_indices[:print_count]:
+                i = tuple(index.tolist())
+                mismatch_details.append(f"Mismatch at index {i}: tensor1[{i}] = {tensor1[i]}, tensor2[{i}] = {tensor2[i]}")
+            if num_mismatched > max_print:
+                mismatch_details.append(f"... and {num_mismatched - max_print} more mismatched elements.")
+    
+>           raise AssertionError(extra_info + "\n".join(mismatch_details))
+E           AssertionError: Number of mismatched elements: 982
+E           Mismatch at index (1, 0): tensor1[(1, 0)] = -0.11471961438655853, tensor2[(1, 0)] = -0.065360426902771
+E           Mismatch at index (1, 1): tensor1[(1, 1)] = 0.11715202033519745, tensor2[(1, 1)] = 0.06674626469612122
+E           Mismatch at index (1, 2): tensor1[(1, 2)] = 0.33502522110939026, tensor2[(1, 2)] = 0.19087746739387512
+E           Mismatch at index (1, 3): tensor1[(1, 3)] = 0.10238304734230042, tensor2[(1, 3)] = 0.05833178013563156
+E           Mismatch at index (1, 4): tensor1[(1, 4)] = -0.11528046429157257, tensor2[(1, 4)] = -0.06567996740341187
+E           ... and 977 more mismatched elements.
+
+test/utils.py:208: AssertionError
+_ test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-True-1-32-64-128] _
+[gw0] darwin -- Python 3.12.0 /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python
+
+B = 1, T = 32, H = 64, V = 128, bias = True, dtype = torch.float32
+atol = 0.0001, rtol = 0.0001
+
+    @pytest.mark.parametrize(
+        "B, T, H, V",
+        [
+            (2, 16, 32, 64),
+            (1, 32, 64, 128),
+        ],
+    )
+    @pytest.mark.parametrize("bias", [True, False])
+    @pytest.mark.parametrize(
+        "dtype, atol, rtol",
+        [
+            (torch.float32, 1e-4, 1e-4),
+        ],
+    )
+    def test_correctness_reduction_none_per_token_grad_output(B, T, H, V, bias, dtype, atol, rtol):
+        """reduction="none" must honour a *per-token* upstream gradient.
+    
+        With ``reduction="none"`` the loss is a per-token vector, so ``backward()``
+        receives a per-token ``grad_output``. The chain rule then requires
+    
+            dL/dW = sum_i grad_output[i] * (g_i outer x_i)
+    
+        i.e. the upstream weight has to be applied to each row of the logits gradient
+        *before* it is summed into ``grad_weight`` / ``grad_bias``. Scaling the
+        already-summed result afterwards cannot reproduce this.
+    
+        Regression test: previously ``element_mul_kernel`` loaded ``grad_output`` as a
+        scalar, so every gradient was multiplied by ``grad_output[0]``. A uniform
+        ``grad_output`` (e.g. ``torch.ones``) hides the bug, so this test uses a
+        non-uniform one.
+        """
+        set_seed(42)
+        BT = B * T
+    
+        _input = torch.randn(BT, H, device=device, dtype=dtype) * 0.1
+        weight = torch.randn(V, H, device=device, dtype=dtype) * 0.1
+        bias_t = torch.randn(V, device=device, dtype=dtype) * 0.1 if bias else None
+        target = torch.randint(0, V, (BT,), device=device, dtype=torch.long)
+        # a genuinely non-uniform per-token upstream gradient
+        grad_output = torch.rand(BT, device=device, dtype=dtype) + 0.5
+    
+        def torch_ref():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            logits = torch.nn.functional.linear(x, w, b)
+            loss = torch.nn.functional.cross_entropy(logits, target, reduction="none")
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        def liger():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            loss, _, _, _ = LigerFusedLinearCrossEntropyFunction.apply(
+                x, w, target, b, None, -100, 0.0, 0.0, "none", None, False, None, False, False, False
+            )
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        ref_loss, ref_gx, ref_gw, ref_gb = torch_ref()
+        lig_loss, lig_gx, lig_gw, lig_gb = liger()
+    
+        assert_verbose_allclose(lig_loss, ref_loss, atol=atol, rtol=rtol)
+>       assert_verbose_allclose(lig_gx, ref_gx, atol=atol, rtol=rtol)
+
+test/transformers/test_fused_linear_cross_entropy.py:1091: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor1 = tensor([[ 0.0647, -0.3299, -0.2699,  ..., -0.0929, -0.2555,  0.0559],
+        [-0.0977, -0.0011,  0.2013,  ..., -0.137...2124, -0.0006,  ...,  0.0973,  0.1120, -0.1085],
+        [-0.0062, -0.3612,  0.0432,  ...,  0.0110, -0.2227, -0.0078]])
+tensor2 = tensor([[ 0.0647, -0.3299, -0.2699,  ..., -0.0929, -0.2555,  0.0559],
+        [-0.0583, -0.0007,  0.1203,  ..., -0.081...1761, -0.0005,  ...,  0.0807,  0.0928, -0.0900],
+        [-0.0027, -0.1585,  0.0190,  ...,  0.0048, -0.0977, -0.0034]])
+rtol = 0.0001, atol = 0.0001, max_print = 5, extra_info = ''
+
+    def assert_verbose_allclose(tensor1, tensor2, rtol=1e-05, atol=1e-08, max_print=5, extra_info=""):
+        """
+        Assert that two tensors are element-wise equal within a tolerance, providing detailed information about mismatches.
+    
+        Parameters:
+        tensor1 (torch.Tensor): First tensor to compare.
+        tensor2 (torch.Tensor): Second tensor to compare.
+        rtol (float): Relative tolerance.
+        atol (float): Absolute tolerance.
+        max_print (int): Maximum number of mismatched elements to print.
+        extra_info (str): Extra information to show at the start of the error message.
+    
+        Raises:
+        AssertionError: If the tensors are not all close within the given tolerance.
+        """
+        # Check if the shapes of the tensors match
+        if tensor1.shape != tensor2.shape:
+            raise AssertionError("Input tensors must have the same shape.")
+    
+        # Calculate the difference between the tensors
+        diff = torch.abs(tensor1 - tensor2)
+    
+        # Determine the tolerance
+        tolerance = atol + rtol * torch.abs(tensor2)
+    
+        # Find tolerance mismatched elements
+        tol_mismatched = diff > tolerance
+    
+        # Find nan mismatched elements
+        nan_mismatched = torch.logical_xor(torch.isnan(tensor1), torch.isnan(tensor2))
+    
+        # Find +inf mismatched elements
+        posinf_mismatched = torch.logical_xor(torch.isposinf(tensor1), torch.isposinf(tensor2))
+        # Find -inf mismatched elements
+        neginf_mismatched = torch.logical_xor(torch.isneginf(tensor1), torch.isneginf(tensor2))
+    
+        # Find all mismatched elements
+        mismatched = torch.logical_or(
+            torch.logical_or(tol_mismatched, nan_mismatched),
+            torch.logical_or(posinf_mismatched, neginf_mismatched),
+        )
+    
+        mismatched_indices = torch.nonzero(mismatched)
+    
+        # Count the number of mismatched elements
+        num_mismatched = mismatched.sum().item()
+    
+        # Check if all elements are close
+        all_close = num_mismatched == 0
+    
+        # Raise AssertionError with detailed information if there are mismatches
+        if not all_close and num_mismatched >= 1:
+            mismatch_details = [f"Number of mismatched elements: {num_mismatched}"]
+            print_count = min(max_print, num_mismatched)
+            for index in mismatched_indices[:print_count]:
+                i = tuple(index.tolist())
+                mismatch_details.append(f"Mismatch at index {i}: tensor1[{i}] = {tensor1[i]}, tensor2[{i}] = {tensor2[i]}")
+            if num_mismatched > max_print:
+                mismatch_details.append(f"... and {num_mismatched - max_print} more mismatched elements.")
+    
+>           raise AssertionError(extra_info + "\n".join(mismatch_details))
+E           AssertionError: Number of mismatched elements: 1974
+E           Mismatch at index (1, 0): tensor1[(1, 0)] = -0.09767171740531921, tensor2[(1, 0)] = -0.058337170630693436
+E           Mismatch at index (1, 1): tensor1[(1, 1)] = -0.0011058100499212742, tensor2[(1, 1)] = -0.0006604784866794944
+E           Mismatch at index (1, 2): tensor1[(1, 2)] = 0.20133614540100098, tensor2[(1, 2)] = 0.12025367468595505
+E           Mismatch at index (1, 3): tensor1[(1, 3)] = -0.18987934291362762, tensor2[(1, 3)] = -0.11341076344251633
+E           Mismatch at index (1, 4): tensor1[(1, 4)] = 0.11824004352092743, tensor2[(1, 4)] = 0.07062219828367233
+E           ... and 1969 more mismatched elements.
+
+test/utils.py:208: AssertionError
+_ test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-False-1-32-64-128] _
+[gw2] darwin -- Python 3.12.0 /Users/pranavs/Coding/cs329z/kernel-verification/.venv/bin/python
+
+B = 1, T = 32, H = 64, V = 128, bias = False, dtype = torch.float32
+atol = 0.0001, rtol = 0.0001
+
+    @pytest.mark.parametrize(
+        "B, T, H, V",
+        [
+            (2, 16, 32, 64),
+            (1, 32, 64, 128),
+        ],
+    )
+    @pytest.mark.parametrize("bias", [True, False])
+    @pytest.mark.parametrize(
+        "dtype, atol, rtol",
+        [
+            (torch.float32, 1e-4, 1e-4),
+        ],
+    )
+    def test_correctness_reduction_none_per_token_grad_output(B, T, H, V, bias, dtype, atol, rtol):
+        """reduction="none" must honour a *per-token* upstream gradient.
+    
+        With ``reduction="none"`` the loss is a per-token vector, so ``backward()``
+        receives a per-token ``grad_output``. The chain rule then requires
+    
+            dL/dW = sum_i grad_output[i] * (g_i outer x_i)
+    
+        i.e. the upstream weight has to be applied to each row of the logits gradient
+        *before* it is summed into ``grad_weight`` / ``grad_bias``. Scaling the
+        already-summed result afterwards cannot reproduce this.
+    
+        Regression test: previously ``element_mul_kernel`` loaded ``grad_output`` as a
+        scalar, so every gradient was multiplied by ``grad_output[0]``. A uniform
+        ``grad_output`` (e.g. ``torch.ones``) hides the bug, so this test uses a
+        non-uniform one.
+        """
+        set_seed(42)
+        BT = B * T
+    
+        _input = torch.randn(BT, H, device=device, dtype=dtype) * 0.1
+        weight = torch.randn(V, H, device=device, dtype=dtype) * 0.1
+        bias_t = torch.randn(V, device=device, dtype=dtype) * 0.1 if bias else None
+        target = torch.randint(0, V, (BT,), device=device, dtype=torch.long)
+        # a genuinely non-uniform per-token upstream gradient
+W1106 20:07:03.174000 86727 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+        grad_output = torch.rand(BT, device=device, dtype=dtype) + 0.5
+    
+        def torch_ref():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            logits = torch.nn.functional.linear(x, w, b)
+            loss = torch.nn.functional.cross_entropy(logits, target, reduction="none")
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        def liger():
+            x = _input.clone().requires_grad_(True)
+            w = weight.clone().requires_grad_(True)
+            b = bias_t.clone().requires_grad_(True) if bias else None
+            loss, _, _, _ = LigerFusedLinearCrossEntropyFunction.apply(
+                x, w, target, b, None, -100, 0.0, 0.0, "none", None, False, None, False, False, False
+            )
+            loss.backward(grad_output)
+            return loss, x.grad, w.grad, (b.grad if bias else None)
+    
+        ref_loss, ref_gx, ref_gw, ref_gb = torch_ref()
+        lig_loss, lig_gx, lig_gw, lig_gb = liger()
+    
+        assert_verbose_allclose(lig_loss, ref_loss, atol=atol, rtol=rtol)
+>       assert_verbose_allclose(lig_gx, ref_gx, atol=atol, rtol=rtol)
+
+test/transformers/test_fused_linear_cross_entropy.py:1091: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor1 = tensor([[ 0.0296, -0.1225, -0.0580,  ...,  0.0399, -0.1948,  0.0015],
+        [-0.2116, -0.1537, -0.1080,  ...,  0.006...2120, -0.1723,  ..., -0.0582, -0.1626,  0.0330],
+        [ 0.0405, -0.1121,  0.1672,  ...,  0.1342, -0.0246,  0.0978]])
+tensor2 = tensor([[ 0.0296, -0.1225, -0.0580,  ...,  0.0399, -0.1948,  0.0015],
+        [-0.3209, -0.2331, -0.1637,  ...,  0.010...2664, -0.2166,  ..., -0.0732, -0.2044,  0.0414],
+        [ 0.0631, -0.1748,  0.2607,  ...,  0.2093, -0.0384,  0.1525]])
+rtol = 0.0001, atol = 0.0001, max_print = 5, extra_info = ''
+
+    def assert_verbose_allclose(tensor1, tensor2, rtol=1e-05, atol=1e-08, max_print=5, extra_info=""):
+        """
+        Assert that two tensors are element-wise equal within a tolerance, providing detailed information about mismatches.
+    
+        Parameters:
+        tensor1 (torch.Tensor): First tensor to compare.
+        tensor2 (torch.Tensor): Second tensor to compare.
+        rtol (float): Relative tolerance.
+        atol (float): Absolute tolerance.
+        max_print (int): Maximum number of mismatched elements to print.
+        extra_info (str): Extra information to show at the start of the error message.
+    
+        Raises:
+        AssertionError: If the tensors are not all close within the given tolerance.
+        """
+        # Check if the shapes of the tensors match
+        if tensor1.shape != tensor2.shape:
+            raise AssertionError("Input tensors must have the same shape.")
+    
+        # Calculate the difference between the tensors
+        diff = torch.abs(tensor1 - tensor2)
+    
+        # Determine the tolerance
+        tolerance = atol + rtol * torch.abs(tensor2)
+    
+        # Find tolerance mismatched elements
+        tol_mismatched = diff > tolerance
+    
+        # Find nan mismatched elements
+        nan_mismatched = torch.logical_xor(torch.isnan(tensor1), torch.isnan(tensor2))
+    
+        # Find +inf mismatched elements
+        posinf_mismatched = torch.logical_xor(torch.isposinf(tensor1), torch.isposinf(tensor2))
+        # Find -inf mismatched elements
+        neginf_mismatched = torch.logical_xor(torch.isneginf(tensor1), torch.isneginf(tensor2))
+    
+        # Find all mismatched elements
+        mismatched = torch.logical_or(
+            torch.logical_or(tol_mismatched, nan_mismatched),
+            torch.logical_or(posinf_mismatched, neginf_mismatched),
+        )
+    
+        mismatched_indices = torch.nonzero(mismatched)
+    
+        # Count the number of mismatched elements
+        num_mismatched = mismatched.sum().item()
+    
+        # Check if all elements are close
+        all_close = num_mismatched == 0
+    
+        # Raise AssertionError with detailed information if there are mismatches
+        if not all_close and num_mismatched >= 1:
+            mismatch_details = [f"Number of mismatched elements: {num_mismatched}"]
+            print_count = min(max_print, num_mismatched)
+            for index in mismatched_indices[:print_count]:
+                i = tuple(index.tolist())
+                mismatch_details.append(f"Mismatch at index {i}: tensor1[{i}] = {tensor1[i]}, tensor2[{i}] = {tensor2[i]}")
+            if num_mismatched > max_print:
+                mismatch_details.append(f"... and {num_mismatched - max_print} more mismatched elements.")
+    
+>           raise AssertionError(extra_info + "\n".join(mismatch_details))
+E           AssertionError: Number of mismatched elements: 1975
+E           Mismatch at index (1, 0): tensor1[(1, 0)] = -0.21158839762210846, tensor2[(1, 0)] = -0.320889413356781
+E           Mismatch at index (1, 1): tensor1[(1, 1)] = -0.15369495749473572, tensor2[(1, 1)] = -0.2330896556377411
+E           Mismatch at index (1, 2): tensor1[(1, 2)] = -0.10795177519321442, tensor2[(1, 2)] = -0.1637168526649475
+E           Mismatch at index (1, 3): tensor1[(1, 3)] = -0.0612822026014328, tensor2[(1, 3)] = -0.09293897449970245
+E           Mismatch at index (1, 4): tensor1[(1, 4)] = -0.11724510788917542, tensor2[(1, 4)] = -0.17781084775924683
+E           ... and 1970 more mismatched elements.
+
+test/utils.py:208: AssertionError
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+../../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636
+  /Users/pranavs/Coding/cs329z/kernel-verification/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test/transformers/test_fused_linear_cross_entropy.py::test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-False-2-16-32-64]
+FAILED test/transformers/test_fused_linear_cross_entropy.py::test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-True-2-16-32-64]
+FAILED test/transformers/test_fused_linear_cross_entropy.py::test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-True-1-32-64-128]
+FAILED test/transformers/test_fused_linear_cross_entropy.py::test_correctness_reduction_none_per_token_grad_output[dtype0-0.0001-0.0001-False-1-32-64-128]
+4 failed, 4 warnings in 6.13s
+EXIT 1
+WALL 13

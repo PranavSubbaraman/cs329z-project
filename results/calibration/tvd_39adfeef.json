@@ -1,0 +1,86 @@
+{
+ "kernel": "tvd",
+ "tree": "39adfeefab06c9a8b596199cb7f9e9d515986d8c",
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ },
+ "runs": [],
+ "targeted": {
+  "spec_file": "/atlas/u/pranavsb/kernel-verification/harness_only/targeted_specs/P1_tvd.json",
+  "reproduces": true,
+  "violations": [
+   "grad_compare"
+  ],
+  "errors": [
+   "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+  ],
+  "items": [
+   {
+    "name": "output",
+    "dtype": "float32",
+    "max_rel_err": 5.489346709817818e-08,
+    "ratio": 0.029360145829584974,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_p",
+    "dtype": "float32",
+    "max_rel_err": 1.0,
+    "ratio": 699050.6666666666,
+    "passed": false,
+    "reason": null
+   }
+  ],
+  "props": {
+   "zero_upstream": {
+    "status": "pass",
+    "violations": {}
+   },
+   "layout_invariance": {
+    "status": "inconclusive",
+    "reason": "contiguous baseline already fails the tolerance rule"
+   },
+   "no_mutation_without_grad": {
+    "status": "pass",
+    "violations": {}
+   },
+   "compile_matches_eager": {
+    "status": "error",
+    "backend": "inductor",
+    "reason": "kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\n"
+   },
+   "determinism": {
+    "status": "pass",
+    "nondeterministic": []
+   }
+  },
+  "seconds": 14.997
+ },
+ "summary": {
+  "n": 0,
+  "n_violating": 0,
+  "violations_by_check": {
+   "grad_compare": 0,
+   "zero_upstream": 0,
+   "layout_invariance": 0,
+   "no_mutation_without_grad": 0,
+   "compile_matches_eager": 0,
+   "determinism": 0
+  },
+  "n_errors": 0,
+  "max_ratio": null,
+  "p99_ratio": null,
+  "seconds": 15.0
+ }
+}
