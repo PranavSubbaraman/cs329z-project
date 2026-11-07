@@ -127,7 +127,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.835
+   "seconds": 1.386
   },
   {
    "seed": 10001,
@@ -238,7 +238,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.077
+   "seconds": 0.451
   },
   {
    "seed": 10002,
@@ -362,7 +362,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.203
+   "seconds": 0.951
   },
   {
    "seed": 10003,
@@ -473,7 +473,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.103
+   "seconds": 0.408
   },
   {
    "seed": 10004,
@@ -584,7 +584,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.156
+   "seconds": 0.386
   },
   {
    "seed": 10005,
@@ -709,7 +709,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.142
+   "seconds": 0.588
   },
   {
    "seed": 10006,
@@ -834,7 +834,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.133
+   "seconds": 0.63
   },
   {
    "seed": 10007,
@@ -945,7 +945,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.113
+   "seconds": 0.505
   },
   {
    "seed": 10008,
@@ -1069,7 +1069,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.101
+   "seconds": 0.343
   },
   {
    "seed": 10009,
@@ -1179,7 +1179,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.08
+   "seconds": 0.45
   },
   {
    "seed": 10010,
@@ -1307,7 +1307,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.804
+   "seconds": 1.726
   },
   {
    "seed": 10011,
@@ -1417,7 +1417,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.074
+   "seconds": 0.086
   },
   {
    "seed": 10012,
@@ -1541,7 +1541,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.161
+   "seconds": 0.629
   },
   {
    "seed": 10013,
@@ -1665,7 +1665,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.231
+   "seconds": 0.589
   },
   {
    "seed": 10014,
@@ -1790,7 +1790,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.086
+   "seconds": 0.314
   },
   {
    "seed": 10015,
@@ -1915,7 +1915,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.104
+   "seconds": 0.46
   },
   {
    "seed": 10016,
@@ -2040,7 +2040,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.138
+   "seconds": 0.479
   },
   {
    "seed": 10017,
@@ -2165,7 +2165,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.193
+   "seconds": 0.32
   },
   {
    "seed": 10018,
@@ -2289,7 +2289,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.137
+   "seconds": 0.372
   },
   {
    "seed": 10019,
@@ -2400,7 +2400,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.062
+   "seconds": 0.245
   },
   {
    "seed": 10020,
@@ -2515,7 +2515,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.714
+   "seconds": 1.501
   },
   {
    "seed": 10021,
@@ -2625,7 +2625,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.045
+   "seconds": 0.069
   },
   {
    "seed": 10022,
@@ -2750,7 +2750,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.387
+   "seconds": 0.444
   },
   {
    "seed": 10023,
@@ -2875,7 +2875,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.111
+   "seconds": 0.232
   },
   {
    "seed": 10024,
@@ -3000,7 +3000,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.154
+   "seconds": 0.306
   },
   {
    "seed": 10025,
@@ -3124,7 +3124,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.194
+   "seconds": 0.426
   },
   {
    "seed": 10026,
@@ -3249,7 +3249,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.147
+   "seconds": 0.303
   },
   {
    "seed": 10027,
@@ -3360,7 +3360,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.292
+   "seconds": 0.169
   },
   {
    "seed": 10028,
@@ -3471,7 +3471,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.134
+   "seconds": 0.183
   },
   {
    "seed": 10029,
@@ -3581,7 +3581,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.085
+   "seconds": 0.221
   },
   {
    "seed": 10030,
@@ -3710,7 +3710,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.885
+   "seconds": 1.971
   },
   {
    "seed": 10031,
@@ -3835,7 +3835,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.254
+   "seconds": 0.52
   },
   {
    "seed": 10032,
@@ -3960,7 +3960,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.203
+   "seconds": 0.619
   },
   {
    "seed": 10033,
@@ -4071,7 +4071,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.113
+   "seconds": 0.31
   },
   {
    "seed": 10034,
@@ -4196,7 +4196,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.143
+   "seconds": 0.132
   },
   {
    "seed": 10035,
@@ -4307,7 +4307,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.127
+   "seconds": 0.135
   },
   {
    "seed": 10036,
@@ -4417,7 +4417,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.104
+   "seconds": 0.137
   },
   {
    "seed": 10037,
@@ -4541,7 +4541,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.302
+   "seconds": 0.475
   },
   {
    "seed": 10038,
@@ -4665,7 +4665,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.089
+   "seconds": 0.182
   },
   {
    "seed": 10039,
@@ -4790,7 +4790,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.097
+   "seconds": 0.41
   },
   {
    "seed": 10040,
@@ -4905,7 +4905,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.68
+   "seconds": 1.234
   },
   {
    "seed": 10041,
@@ -5029,7 +5029,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.156
+   "seconds": 0.518
   },
   {
    "seed": 10042,
@@ -5139,7 +5139,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.063
+   "seconds": 0.318
   },
   {
    "seed": 10043,
@@ -5264,7 +5264,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.072
+   "seconds": 0.214
   },
   {
    "seed": 10044,
@@ -5375,7 +5375,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.097
+   "seconds": 0.352
   },
   {
    "seed": 10045,
@@ -5499,7 +5499,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.098
+   "seconds": 0.259
   },
   {
    "seed": 10046,
@@ -5624,7 +5624,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.112
+   "seconds": 0.271
   },
   {
    "seed": 10047,
@@ -5735,7 +5735,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.116
+   "seconds": 0.184
   },
   {
    "seed": 10048,
@@ -5860,7 +5860,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.073
+   "seconds": 0.19
   },
   {
    "seed": 10049,
@@ -5985,7 +5985,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.094
+   "seconds": 0.223
   },
   {
    "seed": 10050,
@@ -6099,7 +6099,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.752
+   "seconds": 1.216
   },
   {
    "seed": 10051,
@@ -6210,7 +6210,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.323
+   "seconds": 0.318
   },
   {
    "seed": 10052,
@@ -6334,7 +6334,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.094
+   "seconds": 0.286
   },
   {
    "seed": 10053,
@@ -6445,7 +6445,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.156
+   "seconds": 1.371
   },
   {
    "seed": 10054,
@@ -6555,7 +6555,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.101
+   "seconds": 0.448
   },
   {
    "seed": 10055,
@@ -6665,7 +6665,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.07
+   "seconds": 0.11
   },
   {
    "seed": 10056,
@@ -6775,7 +6775,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.081
+   "seconds": 0.24
   },
   {
    "seed": 10057,
@@ -6900,7 +6900,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.123
+   "seconds": 0.294
   },
   {
    "seed": 10058,
@@ -7025,7 +7025,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.164
+   "seconds": 0.357
   },
   {
    "seed": 10059,
@@ -7136,7 +7136,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.17
+   "seconds": 0.323
   },
   {
    "seed": 10060,
@@ -7250,7 +7250,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.655
+   "seconds": 0.924
   },
   {
    "seed": 10061,
@@ -7361,7 +7361,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.088
+   "seconds": 0.337
   },
   {
    "seed": 10062,
@@ -7472,7 +7472,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.091
+   "seconds": 0.236
   },
   {
    "seed": 10063,
@@ -7597,7 +7597,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.122
+   "seconds": 0.479
   },
   {
    "seed": 10064,
@@ -7708,7 +7708,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.138
+   "seconds": 0.336
   },
   {
    "seed": 10065,
@@ -7818,7 +7818,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.152
+   "seconds": 0.495
   },
   {
    "seed": 10066,
@@ -7929,7 +7929,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.078
+   "seconds": 0.087
   },
   {
    "seed": 10067,
@@ -8039,7 +8039,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.136
+   "seconds": 0.235
   },
   {
    "seed": 10068,
@@ -8149,7 +8149,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.098
+   "seconds": 0.102
   },
   {
    "seed": 10069,
@@ -8273,7 +8273,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.184
+   "seconds": 0.517
   },
   {
    "seed": 10070,
@@ -8387,7 +8387,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.635
+   "seconds": 0.923
   },
   {
    "seed": 10071,
@@ -8497,7 +8497,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.107
+   "seconds": 0.29
   },
   {
    "seed": 10072,
@@ -8621,7 +8621,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.139
+   "seconds": 0.576
   },
   {
    "seed": 10073,
@@ -8745,7 +8745,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.17
+   "seconds": 0.473
   },
   {
    "seed": 10074,
@@ -8870,7 +8870,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.105
+   "seconds": 0.23
   },
   {
    "seed": 10075,
@@ -8995,7 +8995,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.121
+   "seconds": 0.204
   },
   {
    "seed": 10076,
@@ -9105,7 +9105,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.202
+   "seconds": 0.32
   },
   {
    "seed": 10077,
@@ -9216,7 +9216,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.104
+   "seconds": 0.271
   },
   {
    "seed": 10078,
@@ -9327,7 +9327,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.118
+   "seconds": 0.129
   },
   {
    "seed": 10079,
@@ -9452,7 +9452,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.137
+   "seconds": 0.189
   },
   {
    "seed": 10080,
@@ -9580,7 +9580,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.941
+   "seconds": 1.877
   },
   {
    "seed": 10081,
@@ -9691,7 +9691,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.092
+   "seconds": 0.212
   },
   {
    "seed": 10082,
@@ -9815,7 +9815,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.081
+   "seconds": 0.309
   },
   {
    "seed": 10083,
@@ -9940,7 +9940,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.071
+   "seconds": 0.236
   },
   {
    "seed": 10084,
@@ -10065,7 +10065,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.087
+   "seconds": 0.19
   },
   {
    "seed": 10085,
@@ -10175,7 +10175,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.063
+   "seconds": 0.107
   },
   {
    "seed": 10086,
@@ -10285,7 +10285,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.051
+   "seconds": 0.066
   },
   {
    "seed": 10087,
@@ -10409,7 +10409,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.108
+   "seconds": 0.391
   },
   {
    "seed": 10088,
@@ -10534,7 +10534,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.902
+   "seconds": 1.206
   },
   {
    "seed": 10089,
@@ -10644,7 +10644,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.077
+   "seconds": 0.103
   },
   {
    "seed": 10090,
@@ -10772,7 +10772,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.751
+   "seconds": 1.756
   },
   {
    "seed": 10091,
@@ -10897,7 +10897,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.102
+   "seconds": 0.199
   },
   {
    "seed": 10092,
@@ -11008,7 +11008,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.067
+   "seconds": 0.135
   },
   {
    "seed": 10093,
@@ -11118,7 +11118,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.078
+   "seconds": 0.163
   },
   {
    "seed": 10094,
@@ -11228,7 +11228,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.09
+   "seconds": 0.157
   },
   {
    "seed": 10095,
@@ -11352,7 +11352,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.118
+   "seconds": 0.291
   },
   {
    "seed": 10096,
@@ -11477,7 +11477,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.185
+   "seconds": 0.477
   },
   {
    "seed": 10097,
@@ -11587,7 +11587,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.222
+   "seconds": 0.392
   },
   {
    "seed": 10098,
@@ -11697,7 +11697,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.068
+   "seconds": 0.097
   },
   {
    "seed": 10099,
@@ -11822,7 +11822,7 @@
      "nondeterministic": []
     }
    },
-   "seconds": 0.095
+   "seconds": 0.121
   }
  ],
  "targeted": {
@@ -11878,7 +11878,7 @@
     "nondeterministic": []
    }
   },
-  "seconds": 55.36
+  "seconds": 64.572
  },
  "summary": {
   "n": 100,
@@ -11894,6 +11894,6 @@
   "n_errors": 0,
   "max_ratio": 0.9604977483997011,
   "p99_ratio": 0.4878251140454716,
-  "seconds": 75.3
+  "seconds": 109.2
  }
 }

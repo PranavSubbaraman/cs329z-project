@@ -98,8 +98,8 @@
   }
  },
  "specs_run": 1,
- "gpu_seconds_used": 6.068,
- "wall_seconds": 6.068,
+ "gpu_seconds_used": 11.687,
+ "wall_seconds": 11.687,
  "n_spec_errors": 0,
  "log": [
   {
@@ -108,7 +108,7 @@
     "grad_compare"
    ],
    "errors": [],
-   "seconds": 6.068
+   "seconds": 11.687
   }
  ],
  "env": {

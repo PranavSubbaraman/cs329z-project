@@ -1,0 +1,30 @@
+=== ce@8c7a5078 condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-400 of 607)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 400-607 of 607)\n  400          )\n  401          sum_non_ignore_weight = torch.gather(weight, dim=0, index=tar'
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 1-140 of 168)\n    1  """\n    2  This file incorporates code from Unsloth licensed under the Apache License, Version 2'
+  [tool 4] run_gradient_test (4.8s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 4.763,\n "stdout": "(kernel_fn, ref_fn, inputs, upstream: \'dict | None\' = None, n: \'int | None\' = None) -> \''
+  [tool 5] run_gradient_test (38.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 38.639,\n "stdout": "0\\n{\'pass\': True, \'items\': [{\'name\': \'output\', \'kind\': \'output\', \'dtype\': \'float16\', \'s'
+  [tool 6] run_gradient_test (70.2s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 70.248,\n "stdout": "432 0\\n[\'input\']\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/py'
+  [tool 7] run_gradient_test (102.4s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 102.403,\n "stdout": "1440 312\\n({\'shape\': [2, 40000], \'dtype\': \'float32\', \'init\': {\'kind\': \'randn\', \'std\': '
+  [tool 8] run_gradient_test (20.2s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 20.183,\n "stdout": "864 0\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/si'
+  [tool 9] check_properties (8.3s): '{\n "result": {\n  "kernel": "ce",\n  "results": {\n   "no_mutation_without_grad": {\n    "status": "fail",\n    "violations": {\n     "input (plain, requires_grad=Fal'
+  [tool 10] run_gradient_test (93.5s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 93.457,\n "stdout": "3456 104\\n({\'shape\': [6, 7], \'dtype\': \'float16\', \'init\': {\'kind\': \'randn\', \'std\': 100.0'
+  [tool 11] run_gradient_test (15.8s): '{\n "returncode": 1,\n "timed_out": false,\n "seconds": 15.816,\n "stdout": "",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-pack'
+  [tool 12] run_gradient_test (17.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 17.005,\n "stdout": "1152 30\\n(\'float16\', {\'kind\': \'randn\', \'std\': 100.0}, {\'reduction\': \'sum\', \'label_smoot'
+  [tool 13] replay (8.8s): '{\n "result": {\n  "kernel": "ce",\n  "checks": [\n   "no_mutation_without_grad"\n  ],\n  "violations": [\n   "no_mutation_without_grad"\n  ],\n  "errors": [],\n  "proper'
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/cross_entropy.py:104-108",
+ "proof_status": "none",
+ "score": "detection",
+ "proof": null,
+ "localized": true,
+ "tool_calls": 14,
+ "wall_s": 459.99,
+ "gpu_s": 379.69,
+ "cost_usd": 0.751492,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/1ea6db4bc2cc.json"
+}

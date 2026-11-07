@@ -72,8 +72,8 @@
   }
  },
  "specs_run": 39,
- "gpu_seconds_used": 11.541,
- "wall_seconds": 11.543,
+ "gpu_seconds_used": 17.983,
+ "wall_seconds": 17.985,
  "n_spec_errors": 4,
  "log": [
   {
@@ -82,61 +82,61 @@
    "errors": [
     "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
    ],
-   "seconds": 7.348
+   "seconds": 9.622
   },
   {
    "i": 1,
    "violations": [],
    "errors": [],
-   "seconds": 0.058
+   "seconds": 0.147
   },
   {
    "i": 2,
    "violations": [],
    "errors": [],
-   "seconds": 0.032
+   "seconds": 0.126
   },
   {
    "i": 3,
    "violations": [],
    "errors": [],
-   "seconds": 0.075
+   "seconds": 0.468
   },
   {
    "i": 4,
    "violations": [],
    "errors": [],
-   "seconds": 0.031
+   "seconds": 0.127
   },
   {
    "i": 5,
    "violations": [],
    "errors": [],
-   "seconds": 0.045
+   "seconds": 0.149
   },
   {
    "i": 6,
    "violations": [],
    "errors": [],
-   "seconds": 0.094
+   "seconds": 0.178
   },
   {
    "i": 7,
    "violations": [],
    "errors": [],
-   "seconds": 0.034
+   "seconds": 0.141
   },
   {
    "i": 8,
    "violations": [],
    "errors": [],
-   "seconds": 0.033
+   "seconds": 0.094
   },
   {
    "i": 9,
    "violations": [],
    "errors": [],
-   "seconds": 0.059
+   "seconds": 0.388
   },
   {
    "i": 10,
@@ -144,123 +144,123 @@
    "errors": [
     "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
    ],
-   "seconds": 0.81
+   "seconds": 1.062
   },
   {
    "i": 11,
    "violations": [],
    "errors": [],
-   "seconds": 0.035
+   "seconds": 0.109
   },
   {
    "i": 12,
    "violations": [],
    "errors": [],
-   "seconds": 0.036
+   "seconds": 0.138
   },
   {
    "i": 13,
    "violations": [],
    "errors": [],
-   "seconds": 0.049
+   "seconds": 0.12
   },
   {
    "i": 14,
    "violations": [],
    "errors": [],
-   "seconds": 0.036
+   "seconds": 0.09
   },
   {
    "i": 15,
    "violations": [],
    "errors": [],
-   "seconds": 0.046
+   "seconds": 0.102
   },
   {
    "i": 16,
    "violations": [],
    "errors": [],
-   "seconds": 0.039
+   "seconds": 0.091
   },
   {
    "i": 17,
    "violations": [],
    "errors": [],
-   "seconds": 0.053
+   "seconds": 0.071
   },
   {
    "i": 18,
    "violations": [],
    "errors": [],
-   "seconds": 0.04
+   "seconds": 0.125
   },
   {
    "i": 19,
    "violations": [],
    "errors": [],
-   "seconds": 0.037
+   "seconds": 0.083
   },
   {
    "i": 20,
    "violations": [],
    "errors": [
-    "compile_matches_eager: kernel raised InductorError: NameError: name '_REDUCTION_MODE_BATCHMEAN' is not defined\n\nSet TORCHDYNAMO_VERBOSE=1 for the full Dynamo stack trace (please do this especially if you're reporting a bug "
+    "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
    ],
-   "seconds": 0.852
+   "seconds": 1.309
   },
   {
    "i": 21,
    "violations": [],
    "errors": [],
-   "seconds": 0.035
+   "seconds": 0.074
   },
   {
    "i": 22,
    "violations": [],
    "errors": [],
-   "seconds": 0.034
+   "seconds": 0.317
   },
   {
    "i": 23,
    "violations": [],
    "errors": [],
-   "seconds": 0.032
+   "seconds": 0.075
   },
   {
    "i": 24,
    "violations": [],
    "errors": [],
-   "seconds": 0.047
+   "seconds": 0.174
   },
   {
    "i": 25,
    "violations": [],
    "errors": [],
-   "seconds": 0.036
+   "seconds": 0.072
   },
   {
    "i": 26,
    "violations": [],
    "errors": [],
-   "seconds": 0.036
+   "seconds": 0.076
   },
   {
    "i": 27,
    "violations": [],
    "errors": [],
-   "seconds": 0.167
+   "seconds": 0.191
   },
   {
    "i": 28,
    "violations": [],
    "errors": [],
-   "seconds": 0.042
+   "seconds": 0.171
   },
   {
    "i": 29,
    "violations": [],
    "errors": [],
-   "seconds": 0.035
+   "seconds": 0.043
   },
   {
    "i": 30,
@@ -268,49 +268,49 @@
    "errors": [
     "compile_matches_eager: kernel raised InductorError: SubprocException: An exception occurred in a subprocess:\n\nName=_tv_distance_kernel\nTraceback (most recent call last):\n  File \"/atlas/u/pranavsb/kernel-verification/.venv-g"
    ],
-   "seconds": 0.71
+   "seconds": 1.192
   },
   {
    "i": 31,
    "violations": [],
    "errors": [],
-   "seconds": 0.039
+   "seconds": 0.101
   },
   {
    "i": 32,
    "violations": [],
    "errors": [],
-   "seconds": 0.218
+   "seconds": 0.055
   },
   {
    "i": 33,
    "violations": [],
    "errors": [],
-   "seconds": 0.038
+   "seconds": 0.063
   },
   {
    "i": 34,
    "violations": [],
    "errors": [],
-   "seconds": 0.028
+   "seconds": 0.055
   },
   {
    "i": 35,
    "violations": [],
    "errors": [],
-   "seconds": 0.039
+   "seconds": 0.19
   },
   {
    "i": 36,
    "violations": [],
    "errors": [],
-   "seconds": 0.094
+   "seconds": 0.267
   },
   {
    "i": 37,
    "violations": [],
    "errors": [],
-   "seconds": 0.05
+   "seconds": 0.07
   },
   {
    "i": 38,
@@ -318,7 +318,7 @@
     "grad_compare"
    ],
    "errors": [],
-   "seconds": 0.017
+   "seconds": 0.057
   }
  ],
  "env": {

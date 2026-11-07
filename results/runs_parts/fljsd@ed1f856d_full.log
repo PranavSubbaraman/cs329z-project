@@ -1,0 +1,31 @@
+=== fljsd@ed1f856d condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_jsd.py (lines 1-383 of 383)\n    1  from typing import Optional\n    2  \n    3  import torch\n    4  import triton\n    5  \n'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/jsd.py (lines 1-213 of 213)\n    1  from typing import Optional\n    2  \n    3  import torch\n    4  import triton\n    5  import triton.'
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/backends/_triton/jsd.py (lines 1-154 of 154)\n    1  """Triton backend registration for ``jsd``.\n    2  \n    3  Two ops registered her'
+  [tool 4] run_gradient_test (0.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 0.024,\n "stdout": "\\"\\"\\"Entry point under test. Same signature and outputs as reference.reference().\\"\\"\\"'
+  [tool 5] run_gradient_test (0.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 0.047,\n "stdout": "106-\\n107-\\n108-@triton.jit\\n109:def element_mul_kernel(\\n110-    X_ptr,\\n111-    X_stri'
+  [tool 6] run_gradient_test (5.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 5.087,\n "stdout": "(kernel_fn, ref_fn, inputs, upstream: \'dict | None\' = None, n: \'int | None\' = None) -> \''
+  [tool 7] run_gradient_test (14.9s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 14.863,\n "stdout": "{\'shape\': (8, 16, 24, 32), \'beta\': 0.5, \'dt\': \'float32\'} {\'pass\': True, \'items\': [{\'nam'
+  [tool 8] run_gradient_test (11.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 11.555,\n "stdout": "0.0 float32 -1 None (20, 16, 24, 50) True [] [0.009]\\n0.0 float32 3 None (20, 16, 24, 5'
+  [tool 9] run_gradient_test (12.7s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 12.649,\n "stdout": "0.0 float32 -1 None (20, 16, 24, 50) True [] [(\'output\', 0.009), (\'grad_student_input\','
+  [tool 10] run_gradient_test (26.2s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 26.193,\n "stdout": "0.0 -1 (30, 4, 6, 500) True [(\'output\', 0.013), (\'grad_student_input\', 0.054), (\'grad_s'
+  [tool 11] run_gradient_test (10.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 10.0,\n "stdout": "0.0 1 1 0 True [(\'output\', 0.06), (\'grad_student_input\', 0.05), (\'grad_student_weight\', 0'
+  [tool 12] run_gradient_test (11.3s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 11.317,\n "stdout": "{\'name\': \'output\', \'kind\': \'output\', \'dtype\': \'float32\', \'shape\': [], \'max_abs_err\': 5.'
+  [tool 13] run_gradient_test (10.8s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 10.772,\n "stdout": "0.0 float32 True [(\'output\', 0.0), (\'grad_student_input\', 0.0), (\'grad_student_weight\','
+  [tool 14] run_gradient_test (12.3s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 12.294,\n "stdout": "1e-06 False [(\'output\', 4.78), (\'grad_student_input\', 0.68), (\'grad_student_weight\', 0.'
+{
+ "verdict": "no_bug",
+ "location": null,
+ "proof_status": "none",
+ "score": "correct_no_bug",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 15,
+ "wall_s": 255.76,
+ "gpu_s": 114.8,
+ "cost_usd": 0.956232,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/8c84a2562f85.json"
+}

@@ -29,7 +29,7 @@ label_smoothing=0.0, reduction="mean")` returns the loss tensor. It calls
 | argument | shape | dtype | domain | differentiable |
 |---|---|---|---|---|
 | input | (BT, H), BT >= 1, H >= 1 | float32 | finite | yes |
-| weight | (V, H), V >= 1 | float32 | finite | yes, or frozen |
+| weight | (V, H), V >= 2 | float32 | finite | yes, or frozen |
 | target | (BT,) | int64 | each entry in [0, V) or == ignore_index; any number ignored (none to all) | no |
 | bias | (V,) or None | float32 | finite | yes, or frozen |
 | ignore_index | int | | any int, e.g. -100 or a class id in [0, V) | |
@@ -57,7 +57,7 @@ In scope: everything in the tables above: bias present or absent; reduction mean
 none, some or all targets ignored; label_smoothing; lse_square_scale (z-loss); trainable or frozen weight/bias.
 Out of scope (the entry point does not expose them; they stay at their defaults): `ce_weight` (per-class
 weights), `softcap`, `return_z_loss`, `return_token_accuracy`, `return_predicted_tokens`, `accum_dtype`,
-`use_token_scaling` and any other keyword of the wrapper; bfloat16, float16, float64 or mixed-dtype inputs;
+`use_token_scaling` and any other keyword of the wrapper; bfloat16, float16, float64 or mixed-dtype inputs; V = 1 (a single class);
 autocast/AMP; calls
 where `input` does not require grad but `weight` or `bias` does; calling backward twice on one graph
 (`retain_graph=True`); double backward, `torch.func` transforms and `torch.compile`.

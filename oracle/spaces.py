@@ -90,7 +90,7 @@ def sample(kernel: str, rng: random.Random, seed: int) -> dict:
         return {"tensors": t, "kwargs": kw, "upstream": _upstream(rng, red != "none"), "seed": seed}
 
     if kernel == "flce":
-        BT, H, V = _logu_int(rng, 1, 64), _logu_int(rng, 1, 128), _logu_int(rng, 1, 512)
+        BT, H, V = _logu_int(rng, 1, 64), _logu_int(rng, 1, 128), _logu_int(rng, 2, 512)  # V >= 2: see task.md
         ls = _logu(rng, 0.5, 40.0)
         red = rng.choice(["mean", "sum", "none"])
         mode = rng.choices(["all", "frozen_weight", "frozen_bias"], [8, 1, 1])[0]

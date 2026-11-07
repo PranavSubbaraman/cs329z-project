@@ -1,0 +1,33 @@
+=== flce@9ac26bb8 condition=full run 1/1
+  [tool 1] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 1-400 of 487)\n    1  import torch\n    2  import triton\n    3  \n    4  from packaging.version imp'
+  [tool 2] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 1-290 of 585)\n    1  import operator\n    2  \n    3  from typing import Optional\n    4  \n    5  import torch\n '
+  [tool 3] read_file (0.0s): 'liger/src/liger_kernel/ops/cross_entropy.py (lines 286-340 of 585)\n  286      # See full derivation at https://github.com/linkedin/Liger-Kernel/pull/198#issueco'
+  [tool 4] read_file (0.0s): 'liger/src/liger_kernel/ops/fused_linear_cross_entropy.py (lines 400-487 of 487)\n  400                  bias=bias,\n  401                  ce_weight=ce_weight,\n  '
+  [tool 5] run_gradient_test (5.2s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 5.154,\n "stdout": "{\'tensors\': {\'input\': {\'shape\': [8, 16], \'dtype\': \'float32\'}, \'weight\': {\'shape\': [32, 1'
+  [tool 6] read_file (0.0s): 'liger/src/liger_kernel/ops/utils.py (lines 60-140 of 152)\n   60      elif BLOCK_SIZE >= 2048:\n   61          num_warps = 8\n   62      return BLOCK_SIZE, num_war'
+  [tool 7] run_gradient_test (4.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 4.556,\n "stdout": "Compare kernel_fn (native dtype) against ref_fn (float64) on `inputs` (a Built from buil'
+  [tool 8] run_gradient_test (10.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 10.578,\n "stdout": "11 7 19 mean 0.0 0.0 False -100 False {\'pass\': False, \'items\': [], \'n\': 19, \'diff_args\''
+  [tool 9] run_gradient_test (10.3s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 10.325,\n "stdout": "{\'pass\': True, \'items\': [{\'name\': \'output\', \'kind\': \'output\', \'dtype\': \'float32\', \'shap'
+  [tool 10] run_gradient_test (8.5s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 8.481,\n "stdout": "{\'pass\': False, \'items\': [], \'n\': 19, \'diff_args\': [\'input\', \'weight\'], \'error\': \\"refer'
+  [tool 11] run_gradient_test (8.6s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 8.642,\n "stdout": "8 16 32 ok\\n11 7 19 ok\\n12 8 16 ok\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification'
+  [tool 12] run_gradient_test (8.1s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 8.096,\n "stdout": "{\'pass\': True, \'items\': [{\'name\': \'output\', \'kind\': \'output\', \'dtype\': \'float32\', \'shape'
+  [tool 13] run_gradient_test (25.5s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 25.534,\n "stdout": "bad 0\\n",\n "stderr": "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/si'
+  [tool 14] run_gradient_test (23.0s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 22.997,\n "stdout": "ok 9 5 13 mean None True\\n(9, 5, 13, \'mean\', 0.2, 0.1, True, -100, {\'input\': \'transpose'
+  [tool 15] run_gradient_test (8.9s): '{\n "returncode": 0,\n "timed_out": false,\n "seconds": 8.924,\n "stdout": "{\'input\': \'transposed\'} ones True []\\n{\'input\': \'transposed\'} scalar False [(\'grad_input'
+  [tool 16] replay (8.2s): '{\n "result": {\n  "kernel": "flce",\n  "checks": [\n   "grad_compare"\n  ],\n  "violations": [\n   "grad_compare"\n  ],\n  "errors": [],\n  "grad_compare": {\n   "pass": '
+{
+ "verdict": "bug",
+ "location": "liger/src/liger_kernel/ops/fused_linear_cross_entropy.py:301",
+ "proof_status": "none",
+ "score": "possible_new_bug",
+ "proof": null,
+ "localized": null,
+ "tool_calls": 17,
+ "wall_s": 197.73,
+ "gpu_s": 121.51,
+ "cost_usd": 1.02764,
+ "providers": [
+  "Anthropic"
+ ],
+ "trace": "results/traces/a7d3de6a9fa5.json"
+}

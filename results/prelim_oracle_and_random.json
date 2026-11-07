@@ -139,7 +139,7 @@
    ],
    "spec_index": 38,
    "specs_run": 39,
-   "gpu_seconds": 11.541
+   "gpu_seconds": 17.983
   },
   {
    "instance": "tvd@559d33e7",
@@ -149,7 +149,7 @@
    "violations": null,
    "spec_index": null,
    "specs_run": 200,
-   "gpu_seconds": 23.407
+   "gpu_seconds": 42.625
   },
   {
    "instance": "flce@395d6166",
@@ -161,7 +161,7 @@
    ],
    "spec_index": 10,
    "specs_run": 11,
-   "gpu_seconds": 8.695
+   "gpu_seconds": 13.748
   },
   {
    "instance": "flce@ae47958e",
@@ -171,9 +171,9 @@
    "violations": [
     "grad_compare"
    ],
-   "spec_index": 27,
-   "specs_run": 28,
-   "gpu_seconds": 12.855
+   "spec_index": 195,
+   "specs_run": 196,
+   "gpu_seconds": 245.192
   },
   {
    "instance": "flce@e44a5fe8",
@@ -185,7 +185,7 @@
    ],
    "spec_index": 0,
    "specs_run": 1,
-   "gpu_seconds": 6.068
+   "gpu_seconds": 11.687
   },
   {
    "instance": "flce@9ac26bb8",
@@ -197,7 +197,7 @@
    ],
    "spec_index": 10,
    "specs_run": 11,
-   "gpu_seconds": 9.349
+   "gpu_seconds": 13.049
   },
   {
    "instance": "fljsd@5b828eef",
@@ -209,7 +209,7 @@
    ],
    "spec_index": 0,
    "specs_run": 1,
-   "gpu_seconds": 6.019
+   "gpu_seconds": 9.927
   },
   {
    "instance": "fljsd@ed1f856d",
@@ -219,7 +219,7 @@
    "violations": null,
    "spec_index": null,
    "specs_run": 200,
-   "gpu_seconds": 77.75
+   "gpu_seconds": 87.131
   },
   {
    "instance": "ce@8c7a5078",
@@ -231,7 +231,7 @@
    ],
    "spec_index": 0,
    "specs_run": 1,
-   "gpu_seconds": 8.245
+   "gpu_seconds": 12.294
   }
  ]
 }

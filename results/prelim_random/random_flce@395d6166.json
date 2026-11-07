@@ -96,69 +96,69 @@
   }
  },
  "specs_run": 11,
- "gpu_seconds_used": 8.695,
- "wall_seconds": 8.696,
+ "gpu_seconds_used": 13.748,
+ "wall_seconds": 13.749,
  "n_spec_errors": 0,
  "log": [
   {
    "i": 0,
    "violations": [],
    "errors": [],
-   "seconds": 6.487
+   "seconds": 9.73
   },
   {
    "i": 1,
    "violations": [],
    "errors": [],
-   "seconds": 0.37
+   "seconds": 0.464
   },
   {
    "i": 2,
    "violations": [],
    "errors": [],
-   "seconds": 0.159
+   "seconds": 0.537
   },
   {
    "i": 3,
    "violations": [],
    "errors": [],
-   "seconds": 0.099
+   "seconds": 0.205
   },
   {
    "i": 4,
    "violations": [],
    "errors": [],
-   "seconds": 0.099
+   "seconds": 0.082
   },
   {
    "i": 5,
    "violations": [],
    "errors": [],
-   "seconds": 0.109
+   "seconds": 0.188
   },
   {
    "i": 6,
    "violations": [],
    "errors": [],
-   "seconds": 0.141
+   "seconds": 0.307
   },
   {
    "i": 7,
    "violations": [],
    "errors": [],
-   "seconds": 0.164
+   "seconds": 0.32
   },
   {
    "i": 8,
    "violations": [],
    "errors": [],
-   "seconds": 0.113
+   "seconds": 0.191
   },
   {
    "i": 9,
    "violations": [],
    "errors": [],
-   "seconds": 0.098
+   "seconds": 0.104
   },
   {
    "i": 10,
@@ -166,7 +166,7 @@
     "zero_upstream"
    ],
    "errors": [],
-   "seconds": 0.854
+   "seconds": 1.62
   }
  ],
  "env": {
