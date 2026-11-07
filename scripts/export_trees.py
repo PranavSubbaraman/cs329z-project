@@ -12,6 +12,7 @@ import argparse
 import io
 import json
 import shutil
+import ssl
 import subprocess
 import tarfile
 import urllib.request
@@ -36,7 +37,12 @@ def export(commit: str, dest: Path) -> str:
         how = "git archive"
     else:
         url = f"https://codeload.github.com/linkedin/Liger-Kernel/tar.gz/{commit}"
-        with urllib.request.urlopen(url, timeout=120) as r:
+        try:  # python.org macOS builds don't read the system keychain; truststore (an openai dependency) does
+            import truststore
+            ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        except ImportError:
+            ctx = ssl.create_default_context()
+        with urllib.request.urlopen(url, timeout=120, context=ctx) as r:
             data = r.read()
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tf:
             tf.extractall(tmp, filter="data")
