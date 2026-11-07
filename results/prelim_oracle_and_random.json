@@ -1,0 +1,237 @@
+{
+ "oracle": [
+  {
+   "instance": "tvd@39adfeef",
+   "pair": "P1_tvd",
+   "side": "buggy",
+   "targeted_violation": true,
+   "targeted_checks": [
+    "grad_compare"
+   ],
+   "calib_n": 0,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": null,
+   "compile_errors": 0
+  },
+  {
+   "instance": "tvd@559d33e7",
+   "pair": "P1_tvd",
+   "side": "fixed",
+   "targeted_violation": false,
+   "targeted_checks": [],
+   "calib_n": 100,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": 0.3402584224604043,
+   "compile_errors": 10
+  },
+  {
+   "instance": "flce@395d6166",
+   "pair": "P2_flce_strides",
+   "side": "buggy",
+   "targeted_violation": true,
+   "targeted_checks": [
+    "grad_compare",
+    "zero_upstream",
+    "layout_invariance"
+   ],
+   "calib_n": 0,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": null,
+   "compile_errors": 0
+  },
+  {
+   "instance": "flce@ae47958e",
+   "pair": "P2_flce_strides",
+   "side": "fixed",
+   "targeted_violation": false,
+   "targeted_checks": [],
+   "calib_n": 100,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": 0.18313506500597243,
+   "compile_errors": 0
+  },
+  {
+   "instance": "flce@e44a5fe8",
+   "pair": "P3_flce_none",
+   "side": "buggy",
+   "targeted_violation": true,
+   "targeted_checks": [
+    "grad_compare"
+   ],
+   "calib_n": 0,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": null,
+   "compile_errors": 0
+  },
+  {
+   "instance": "flce@9ac26bb8",
+   "pair": "P3_flce_none",
+   "side": "fixed",
+   "targeted_violation": false,
+   "targeted_checks": [],
+   "calib_n": 100,
+   "calib_violating": 26,
+   "calib_by_check": {
+    "grad_compare": 4,
+    "zero_upstream": 9,
+    "layout_invariance": 21,
+    "determinism": 2
+   },
+   "max_ratio": 9782289.981520807,
+   "compile_errors": 0
+  },
+  {
+   "instance": "fljsd@5b828eef",
+   "pair": "P4_fljsd_bf16",
+   "side": "buggy",
+   "targeted_violation": true,
+   "targeted_checks": [
+    "grad_compare"
+   ],
+   "calib_n": 0,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": null,
+   "compile_errors": 0
+  },
+  {
+   "instance": "fljsd@ed1f856d",
+   "pair": "P4_fljsd_bf16",
+   "side": "fixed",
+   "targeted_violation": false,
+   "targeted_checks": [],
+   "calib_n": 100,
+   "calib_violating": 0,
+   "calib_by_check": {},
+   "max_ratio": 0.9604977483997011,
+   "compile_errors": 0
+  },
+  {
+   "instance": "ce@8c7a5078",
+   "pair": "B5_ce_ignore",
+   "side": "buggy",
+   "targeted_violation": true,
+   "targeted_checks": [
+    "no_mutation_without_grad"
+   ],
+   "calib_n": 100,
+   "calib_violating": 60,
+   "calib_by_check": {
+    "no_mutation_without_grad": 60
+   },
+   "max_ratio": 0.2970822664989176,
+   "compile_errors": 0
+  }
+ ],
+ "random": [
+  {
+   "instance": "tvd@39adfeef",
+   "pair": "P1_tvd",
+   "side": "buggy",
+   "verdict": "bug",
+   "violations": [
+    "grad_compare"
+   ],
+   "spec_index": 38,
+   "specs_run": 39,
+   "gpu_seconds": 11.541
+  },
+  {
+   "instance": "tvd@559d33e7",
+   "pair": "P1_tvd",
+   "side": "fixed",
+   "verdict": "no_bug",
+   "violations": null,
+   "spec_index": null,
+   "specs_run": 200,
+   "gpu_seconds": 23.407
+  },
+  {
+   "instance": "flce@395d6166",
+   "pair": "P2_flce_strides",
+   "side": "buggy",
+   "verdict": "bug",
+   "violations": [
+    "zero_upstream"
+   ],
+   "spec_index": 10,
+   "specs_run": 11,
+   "gpu_seconds": 8.695
+  },
+  {
+   "instance": "flce@ae47958e",
+   "pair": "P2_flce_strides",
+   "side": "fixed",
+   "verdict": "bug",
+   "violations": [
+    "grad_compare"
+   ],
+   "spec_index": 27,
+   "specs_run": 28,
+   "gpu_seconds": 12.855
+  },
+  {
+   "instance": "flce@e44a5fe8",
+   "pair": "P3_flce_none",
+   "side": "buggy",
+   "verdict": "bug",
+   "violations": [
+    "grad_compare"
+   ],
+   "spec_index": 0,
+   "specs_run": 1,
+   "gpu_seconds": 6.068
+  },
+  {
+   "instance": "flce@9ac26bb8",
+   "pair": "P3_flce_none",
+   "side": "fixed",
+   "verdict": "bug",
+   "violations": [
+    "zero_upstream"
+   ],
+   "spec_index": 10,
+   "specs_run": 11,
+   "gpu_seconds": 9.349
+  },
+  {
+   "instance": "fljsd@5b828eef",
+   "pair": "P4_fljsd_bf16",
+   "side": "buggy",
+   "verdict": "bug",
+   "violations": [
+    "grad_compare"
+   ],
+   "spec_index": 0,
+   "specs_run": 1,
+   "gpu_seconds": 6.019
+  },
+  {
+   "instance": "fljsd@ed1f856d",
+   "pair": "P4_fljsd_bf16",
+   "side": "fixed",
+   "verdict": "no_bug",
+   "violations": null,
+   "spec_index": null,
+   "specs_run": 200,
+   "gpu_seconds": 77.75
+  },
+  {
+   "instance": "ce@8c7a5078",
+   "pair": "B5_ce_ignore",
+   "side": "buggy",
+   "verdict": "bug",
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "spec_index": 0,
+   "specs_run": 1,
+   "gpu_seconds": 8.245
+  }
+ ]
+}

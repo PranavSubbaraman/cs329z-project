@@ -62,7 +62,10 @@ if _ROOT:
             if not _under(p, _READ):
                 _deny("read outside the sandbox: " + p)
         elif event in ("os.listdir", "os.scandir"):
-            p = os.path.realpath(os.fsdecode(args[0] if args and args[0] is not None else "."))
+            a0 = args[0] if args and args[0] is not None else "."
+            if isinstance(a0, int):  # listing an already-open directory fd
+                return
+            p = os.path.realpath(os.fsdecode(a0))
             if not _under(p, _READ) or _under(p, [_BOOT]):
                 _deny("listing outside the sandbox: " + p)
         elif event.startswith("socket.") and event in ("socket.connect", "socket.bind", "socket.getaddrinfo", "socket.sendto", "socket.gethostbyname"):
