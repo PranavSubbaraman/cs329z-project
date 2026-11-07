@@ -10,45 +10,36 @@ AGENT_BUGGY=results/traces/e97fbfc97da6.json; AGENT_FIXED=results/traces/26e460e
 export OMP_NUM_THREADS=4 KV_KERNEL=tvd KV_TASK_DIR=benchmark/kernels/tvd
 step() { printf "\n\033[1;36m== %s ==\033[0m\n" "$1"; [ "${PAUSE:-0}" = 1 ] && read -r -p "" _; true; }
 
-step "1. The problem: a hand-written gradient in a real training kernel"
-echo "Liger-Kernel TVD loss = 0.5 * |p - q|.  Its backward pass (src/liger_kernel/ops/tvd.py):"
+step "1. The kernel"
 sed -n '89p' work/trees/${BUGGY}*/src/liger_kernel/ops/tvd.py | sed 's/^ */    /'
-echo "When p == q the true gradient is 0, but this line gives -0.5*scale."
 
-step "2. Standard checks don't catch it"
+step "2. Existing checks"
 printf "Liger's own test suite:   %s\n" "$(grep -E ' passed' results/gpu/logs/libtests_tvd_${BUGGY}.log | tail -1 | sed 's/, [0-9]* warnings.*//')"
 scripts/harness/in_tree.sh $BUGGY $PY baselines/random_testing.py --seed 0 --max-specs 25 --out work/demo/random.json 2>/dev/null \
-  | $PY -c "import json,sys; r=json.loads(sys.stdin.read()); print(f\"Random testing:           {r['specs_run']} random inputs vs. a float64 reference -> {'no bug found' if r['verdict']=='no_bug' else 'bug found'}\")"
+  | $PY -c "import json,sys; r=json.loads(sys.stdin.read()); print(f\"Random testing:           {r['specs_run']} random inputs -> {'no bug found' if r['verdict']=='no_bug' else 'bug found'}\")"
 
-step "3. The agent finds it"
+step "3. The agent"
 $PY - "$AGENT_BUGGY" <<'EOF'
 import json, sys
 r = json.load(open(sys.argv[1]))["record"]; v = r["verdict"]
-print(f"Agent (Claude Sonnet 5.5 in a sandbox, {r['tool_calls']} tool calls, {r['wall_seconds']:.0f} s, ${r['usage']['cost_usd']:.2f}):")
+print(f"Agent: {r['tool_calls']} tool calls, {r['wall_seconds']:.0f} s, ${r['usage']['cost_usd']:.2f}")
 print(f"  verdict:  BUG at {v['location']}")
-print(f"  why:      {v['evidence'].split('. ')[0]}.")
 json.dump(v["counterexample"], open("work/demo/agent_counterexample.json", "w"))
 EOF
-echo "Replaying the agent's counterexample (p == q in some entries) on real tensors:"
 for c in $BUGGY $FIXED; do
   scripts/harness/in_tree.sh $c $PY -c "
 import json; from oracle import replay
 r = replay({'input_spec': json.load(open('work/demo/agent_counterexample.json')), 'checks': ['grad_compare']})
 g = [it for it in r['grad_compare']['items'] if it['name'] == 'grad_p'][0]
 side = 'buggy version' if '$c' == '$BUGGY' else 'fixed version'
-print(f'  {side}:  ' + (f\"gradient WRONG  (kernel {g['kernel_at']:+.2f}, correct {g['ref_at']:+.2f})\" if r['reproduces'] else 'gradient correct'))
+print(f'  replay on {side}:  ' + (f\"gradient WRONG  (kernel {g['kernel_at']:+.2f}, correct {g['ref_at']:+.2f})\" if r['reproduces'] else 'gradient correct'))
 " 2>/dev/null
 done
 
-step "4. ...and it doesn't cry wolf"
+step "4. Fixed version"
 $PY - "$AGENT_FIXED" <<'EOF'
 import json, sys
 r = json.load(open(sys.argv[1]))["record"]; v = r["verdict"]
-print(f"Same agent on the fixed version ({r['tool_calls']} tool calls, ${r['usage']['cost_usd']:.2f}):  NO BUG")
-print("  (it tested ties, all four reductions, ignored rows, mixed dtypes, large vocabularies)")
+print(f"Agent: {r['tool_calls']} tool calls, ${r['usage']['cost_usd']:.2f}")
+print("  verdict:  NO BUG")
 EOF
-
-step "Where this is going"
-echo "  * Benchmark: 5 real Liger-Kernel gradient bugs (logic, indexing, gradient formula, precision, side effect)."
-echo "  * Liger's own tests catch 0 of 5."
-echo "  * Next: Z3 proofs that fixed code is correct, and a head-to-head against random testing and LLM review."
