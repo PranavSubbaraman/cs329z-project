@@ -24,7 +24,7 @@
     },
     "weight": {
      "shape": [
-      14,
+      21,
       40
      ],
      "dtype": "float32",
@@ -43,7 +43,7 @@
      "init": {
       "kind": "randint",
       "low": 0,
-      "high": 14,
+      "high": 21,
       "ignore_frac": 0.4838999974600857,
       "ignore_index": 0
      }
@@ -69,22 +69,22 @@
   "grad_items": [
    {
     "name": "output",
-    "max_rel_err": 1.2316298948170466e-07,
-    "ratio": 0.04509833332727129,
+    "max_rel_err": 1.1107385333079743e-07,
+    "ratio": 0.043656093745298725,
     "passed": true,
     "reason": null
    },
    {
     "name": "grad_input",
-    "max_rel_err": 1.003109534337985,
-    "ratio": 374904.07452515233,
+    "max_rel_err": 0.7546727583584557,
+    "ratio": 271801.82544572285,
     "passed": false,
     "reason": null
    },
    {
     "name": "grad_weight",
-    "max_rel_err": 0.9675705423979072,
-    "ratio": 321937.28258806583,
+    "max_rel_err": 0.8414613989674458,
+    "ratio": 336613.70826816745,
     "passed": false,
     "reason": null
    }
@@ -98,8 +98,8 @@
   }
  },
  "specs_run": 1,
- "gpu_seconds_used": 11.687,
- "wall_seconds": 11.687,
+ "gpu_seconds_used": 12.978,
+ "wall_seconds": 12.978,
  "n_spec_errors": 0,
  "log": [
   {
@@ -108,7 +108,7 @@
     "grad_compare"
    ],
    "errors": [],
-   "seconds": 11.687
+   "seconds": 12.978
   }
  ],
  "env": {

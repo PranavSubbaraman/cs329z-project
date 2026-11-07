@@ -18,10 +18,10 @@
 |---|---|---|---|---|---|
 | tvd@39adfeef | P1_tvd buggy | bug | grad_compare (#38) | 39 | 18.0 |
 | tvd@559d33e7 | P1_tvd fixed | no_bug | -- | 200 | 42.6 |
-| flce@395d6166 | P2_flce_strides buggy | bug | zero_upstream (#10) | 11 | 13.7 |
-| flce@ae47958e | P2_flce_strides fixed | bug | grad_compare (#195) | 196 | 245.2 |
-| flce@e44a5fe8 | P3_flce_none buggy | bug | grad_compare (#0) | 1 | 11.7 |
-| flce@9ac26bb8 | P3_flce_none fixed | bug | zero_upstream (#10) | 11 | 13.0 |
+| flce@395d6166 | P2_flce_strides buggy | bug | grad_compare, zero_upstream, layout_invariance (#10) | 11 | 37.8 |
+| flce@ae47958e | P2_flce_strides fixed | no_bug | -- | 200 | 217.3 |
+| flce@e44a5fe8 | P3_flce_none buggy | bug | grad_compare (#0) | 1 | 13.0 |
+| flce@9ac26bb8 | P3_flce_none fixed | bug | grad_compare, zero_upstream, layout_invariance (#10) | 11 | 19.4 |
 | fljsd@5b828eef | P4_fljsd_bf16 buggy | bug | grad_compare (#0) | 1 | 9.9 |
 | fljsd@ed1f856d | P4_fljsd_bf16 fixed | no_bug | -- | 200 | 87.1 |
 | ce@8c7a5078 | B5_ce_ignore buggy | bug | no_mutation_without_grad (#0) | 1 | 12.3 |

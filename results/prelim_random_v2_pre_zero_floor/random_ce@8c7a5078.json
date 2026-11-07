@@ -1,0 +1,107 @@
+{
+ "method": "random_testing",
+ "kernel": "ce",
+ "tree": "8c7a5078318da1295dc3ca445f9d85e9e9e153f5",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "bug",
+ "counterexample": {
+  "spec": {
+   "tensors": {
+    "input": {
+     "shape": [
+      34,
+      647
+     ],
+     "dtype": "float16",
+     "init": {
+      "kind": "randn",
+      "std": 2.948
+     },
+     "layout": "row_strided:2",
+     "requires_grad": true
+    },
+    "target": {
+     "shape": [
+      34
+     ],
+     "dtype": "int64",
+     "init": {
+      "kind": "randint",
+      "low": 0,
+      "high": 647,
+      "ignore_frac": 1.0,
+      "ignore_index": -100
+     }
+    }
+   },
+   "kwargs": {
+    "ignore_index": -100,
+    "reduction": "sum",
+    "label_smoothing": 0.0,
+    "lse_square_scale": 0.0
+   },
+   "upstream": {
+    "kind": "ones"
+   },
+   "seed": 0
+  },
+  "violations": [
+   "no_mutation_without_grad"
+  ],
+  "spec_index": 0,
+  "grad_items": [
+   {
+    "name": "output",
+    "max_rel_err": 0.0,
+    "ratio": 0.0,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_input",
+    "max_rel_err": 0.0,
+    "ratio": 0.0,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "properties": {
+   "zero_upstream": "pass",
+   "layout_invariance": "pass",
+   "no_mutation_without_grad": "fail",
+   "compile_matches_eager": "pass",
+   "determinism": "pass"
+  }
+ },
+ "specs_run": 1,
+ "gpu_seconds_used": 8.245,
+ "wall_seconds": 8.245,
+ "n_spec_errors": 0,
+ "log": [
+  {
+   "i": 0,
+   "violations": [
+    "no_mutation_without_grad"
+   ],
+   "errors": [],
+   "seconds": 8.245
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}

@@ -1,0 +1,231 @@
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break from `Tensor.item()`, consider setting:
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] or:
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] to include these operations in the captured graph.
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break: from user code at:
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/benchmark/kernels/tvd/entry.py", line 7, in kernel
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return liger_tvd(
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/559d33e7b14d81476b295ef41a962937efa74517/src/liger_kernel/transformers/functional.py", line 333, in liger_tvd
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return LigerTVDLossFunction.apply(
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_functorch/autograd_function.py", line 890, in inner
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     outs = orig_fwd(*args, **kwargs)
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~~~~~~^^^^^^^^^^^^^^^^^
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/559d33e7b14d81476b295ef41a962937efa74517/src/liger_kernel/ops/utils.py", line 52, in wrapper
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return fn(ctx, *args, **kwargs)
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~^^^^^^^^^^^^^^^^^^^^^^
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/559d33e7b14d81476b295ef41a962937efa74517/src/liger_kernel/ops/tvd.py", line 200, in forward
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     loss, grads = tv_distance_forward_triton(p, q, shift_labels, reduction, ignore_index, has_label)
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]                   ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/559d33e7b14d81476b295ef41a962937efa74517/src/liger_kernel/ops/tvd.py", line 118, in tv_distance_forward_triton
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     n_non_ignore = (shift_labels != ignore_index).sum().item() if has_label else BT
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 22:58:19.529000 4100247 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] Graph break from `Tensor.item()`, consider setting:
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] or:
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] to include these operations in the captured graph.
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] 
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] Graph break: from user code at:
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/395d6166e86f64f7c27f3c6e49cef89904add1aa/src/liger_kernel/transformers/functional.py", line 120, in torch_dynamo_resume_in_liger_fused_linear_cross_entropy_at_118
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     loss, z_loss, token_accuracy, predicted_tokens = LigerFusedLinearCrossEntropyFunction.apply(*apply_args)
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_functorch/autograd_function.py", line 890, in inner
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     outs = orig_fwd(*args, **kwargs)
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]            ~~~~~~~~^^^^^^^^^^^^^^^^^
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 481, in decorate_fwd
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     return fwd(*args, **kwargs)  # pyrefly: ignore [not-callable]
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]            ~~~^^^^^^^^^^^^^^^^^
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/395d6166e86f64f7c27f3c6e49cef89904add1aa/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 529, in forward
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     fused_linear_cross_entropy_forward(
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/395d6166e86f64f7c27f3c6e49cef89904add1aa/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 132, in fused_linear_cross_entropy_forward
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     total_n_non_ignore = target_mask.sum().item()
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]                          ~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] 
+W1106 22:58:34.582000 4100379 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] 
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] Graph break from `Tensor.item()`, consider setting:
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] or:
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] to include these operations in the captured graph.
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] 
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] Graph break: from user code at:
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/ae47958e39568874e3b21419130582a271f2a903/src/liger_kernel/transformers/functional.py", line 120, in torch_dynamo_resume_in_liger_fused_linear_cross_entropy_at_118
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     loss, z_loss, token_accuracy, predicted_tokens = LigerFusedLinearCrossEntropyFunction.apply(*apply_args)
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_functorch/autograd_function.py", line 890, in inner
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     outs = orig_fwd(*args, **kwargs)
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]            ~~~~~~~~^^^^^^^^^^^^^^^^^
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 481, in decorate_fwd
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     return fwd(*args, **kwargs)  # pyrefly: ignore [not-callable]
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]            ~~~^^^^^^^^^^^^^^^^^
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/ae47958e39568874e3b21419130582a271f2a903/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 531, in forward
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     fused_linear_cross_entropy_forward(
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/ae47958e39568874e3b21419130582a271f2a903/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 132, in fused_linear_cross_entropy_forward
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]     total_n_non_ignore = target_mask.sum().item()
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0]                          ~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] 
+W1106 22:58:46.731000 4100488 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [2/0] 
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break from `Tensor.item()`, consider setting:
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] or:
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] to include these operations in the captured graph.
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break: from user code at:
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/benchmark/kernels/flce/entry.py", line 16, in kernel
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return liger_fused_linear_cross_entropy(
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src/liger_kernel/transformers/functional.py", line 98, in liger_fused_linear_cross_entropy
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     loss, z_loss, token_accuracy, predicted_tokens = LigerFusedLinearCrossEntropyFunction.apply(
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_functorch/autograd_function.py", line 890, in inner
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     outs = orig_fwd(*args, **kwargs)
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~~~~~~^^^^^^^^^^^^^^^^^
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 481, in decorate_fwd
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return fwd(*args, **kwargs)  # pyrefly: ignore [not-callable]
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~^^^^^^^^^^^^^^^^^
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 368, in forward
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     fused_linear_cross_entropy_forward(
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/e44a5fe86d3ee00def43913329e4c4ff70c3b416/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 84, in fused_linear_cross_entropy_forward
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     total_n_non_ignore = target_mask.sum().item()
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]                          ~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 22:59:27.686000 4100690 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break from `Tensor.item()`, consider setting:
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] or:
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] to include these operations in the captured graph.
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break: from user code at:
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/benchmark/kernels/flce/entry.py", line 16, in kernel
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return liger_fused_linear_cross_entropy(
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/9ac26bb82226c9279f0fda784300f5e02ce444b2/src/liger_kernel/transformers/functional.py", line 98, in liger_fused_linear_cross_entropy
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     loss, z_loss, token_accuracy, predicted_tokens = LigerFusedLinearCrossEntropyFunction.apply(
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_functorch/autograd_function.py", line 890, in inner
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     outs = orig_fwd(*args, **kwargs)
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~~~~~~^^^^^^^^^^^^^^^^^
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 481, in decorate_fwd
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return fwd(*args, **kwargs)  # pyrefly: ignore [not-callable]
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~^^^^^^^^^^^^^^^^^
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/9ac26bb82226c9279f0fda784300f5e02ce444b2/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 396, in forward
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     fused_linear_cross_entropy_forward(
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/9ac26bb82226c9279f0fda784300f5e02ce444b2/src/liger_kernel/ops/fused_linear_cross_entropy.py", line 93, in fused_linear_cross_entropy_forward
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     total_n_non_ignore = target_mask.sum().item()
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]                          ~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 22:59:40.079000 4100769 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+Backend impl 'liger_kernel.ops.backends._cutedsl.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cutlass'
+Backend impl 'liger_kernel.ops.backends._cutile.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda.tile'
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Backend impl 'liger_kernel.ops.backends._cutedsl.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cutlass'
+Backend impl 'liger_kernel.ops.backends._cutile.jsd' for op 'jsd_loss_and_grad' could not be imported: ModuleNotFoundError: No module named 'cuda.tile'
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break from `Tensor.item()`, consider setting:
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] or:
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] to include these operations in the captured graph.
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break: from user code at:
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/benchmark/kernels/fljsd/entry.py", line 17, in kernel
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return liger_fused_linear_jsd(
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f/src/liger_kernel/transformers/functional.py", line 164, in liger_fused_linear_jsd
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return LigerFusedLinearJSDFunction.apply(
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_functorch/autograd_function.py", line 890, in inner
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     outs = orig_fwd(*args, **kwargs)
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~~~~~~^^^^^^^^^^^^^^^^^
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 481, in decorate_fwd
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return fwd(*args, **kwargs)  # pyrefly: ignore [not-callable]
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]            ~~~^^^^^^^^^^^^^^^^^
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f/src/liger_kernel/ops/fused_linear_jsd.py", line 357, in forward
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     loss, grad_input, grad_weight = fused_linear_jsd_forward(
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/ed1f856d5b00d4ff75a62d66cdb78a4ad935d02f/src/liger_kernel/ops/fused_linear_jsd.py", line 168, in fused_linear_jsd_forward
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     n_non_ignore = (shift_labels != ignore_index).sum().item()
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 23:01:42.149000 4101278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break from `Tensor.item()`, consider setting:
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     torch._dynamo.config.capture_scalar_outputs = True
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] or:
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] to include these operations in the captured graph.
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] Graph break: from user code at:
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/benchmark/kernels/ce/entry.py", line 14, in kernel
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     return liger_cross_entropy(
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/transformers/functional.py", line 62, in liger_cross_entropy
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     loss, z_loss, token_accuracy, predicted_tokens = LigerCrossEntropyFunction.apply(
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 548, in forward
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     loss, z_loss, token_accuracy, predicted_tokens, _input = cross_entropy_forward(
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]   File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 389, in cross_entropy_forward
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]     n_non_ignore = target_mask.sum().item()
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0]                    ~~~~~~~~~~~~~~~~~~~~~~^^
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+W1106 23:02:08.638000 4102278 .venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/tensor.py:2043] [0/0] 
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:3115: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function at 'cross_entropy.py:423'. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS=+dynamo for a DEBUG stack trace.
+
+This call originates from:
+  File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 423, in torch_dynamo_resume_in_cross_entropy_forward_at_393
+    is_blackwell = infer_device_arch().startswith("blackwell")
+                   ^^^^^^^^^^^^^^^^^^^
+
+  torch._dynamo.utils.warn_once(msg)
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:3115: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function at 'cross_entropy.py:423'. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS=+dynamo for a DEBUG stack trace.
+
+This call originates from:
+  File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 423, in torch_dynamo_resume_in_cross_entropy_forward_at_393
+    is_blackwell = infer_device_arch().startswith("blackwell")
+                   ^^^^^^^^^^^^^^^^^^^
+
+  torch._dynamo.utils.warn_once(msg)
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:3115: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function at 'cross_entropy.py:423'. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS=+dynamo for a DEBUG stack trace.
+
+This call originates from:
+  File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 423, in torch_dynamo_resume_in_cross_entropy_forward_at_393
+    is_blackwell = infer_device_arch().startswith("blackwell")
+                   ^^^^^^^^^^^^^^^^^^^
+
+  torch._dynamo.utils.warn_once(msg)
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:3115: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function at 'cross_entropy.py:423'. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS=+dynamo for a DEBUG stack trace.
+
+This call originates from:
+  File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 423, in torch_dynamo_resume_in_cross_entropy_forward_at_393
+    is_blackwell = infer_device_arch().startswith("blackwell")
+                   ^^^^^^^^^^^^^^^^^^^
+
+  torch._dynamo.utils.warn_once(msg)
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:3115: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function at 'cross_entropy.py:423'. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS=+dynamo for a DEBUG stack trace.
+
+This call originates from:
+  File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 423, in torch_dynamo_resume_in_cross_entropy_forward_at_393
+    is_blackwell = infer_device_arch().startswith("blackwell")
+                   ^^^^^^^^^^^^^^^^^^^
+
+  torch._dynamo.utils.warn_once(msg)
+/atlas/u/pranavsb/kernel-verification/.venv-gpu/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:3115: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function at 'cross_entropy.py:423'. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS=+dynamo for a DEBUG stack trace.
+
+This call originates from:
+  File "/atlas/u/pranavsb/kernel-verification/work/trees/8c7a5078318da1295dc3ca445f9d85e9e9e153f5/src/liger_kernel/ops/cross_entropy.py", line 423, in torch_dynamo_resume_in_cross_entropy_forward_at_393
+    is_blackwell = infer_device_arch().startswith("blackwell")
+                   ^^^^^^^^^^^^^^^^^^^
+
+  torch._dynamo.utils.warn_once(msg)

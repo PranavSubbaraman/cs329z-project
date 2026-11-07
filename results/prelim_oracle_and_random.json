@@ -157,23 +157,23 @@
    "side": "buggy",
    "verdict": "bug",
    "violations": [
-    "zero_upstream"
+    "grad_compare",
+    "zero_upstream",
+    "layout_invariance"
    ],
    "spec_index": 10,
    "specs_run": 11,
-   "gpu_seconds": 13.748
+   "gpu_seconds": 37.846
   },
   {
    "instance": "flce@ae47958e",
    "pair": "P2_flce_strides",
    "side": "fixed",
-   "verdict": "bug",
-   "violations": [
-    "grad_compare"
-   ],
-   "spec_index": 195,
-   "specs_run": 196,
-   "gpu_seconds": 245.192
+   "verdict": "no_bug",
+   "violations": null,
+   "spec_index": null,
+   "specs_run": 200,
+   "gpu_seconds": 217.271
   },
   {
    "instance": "flce@e44a5fe8",
@@ -185,7 +185,7 @@
    ],
    "spec_index": 0,
    "specs_run": 1,
-   "gpu_seconds": 11.687
+   "gpu_seconds": 12.978
   },
   {
    "instance": "flce@9ac26bb8",
@@ -193,11 +193,13 @@
    "side": "fixed",
    "verdict": "bug",
    "violations": [
-    "zero_upstream"
+    "grad_compare",
+    "zero_upstream",
+    "layout_invariance"
    ],
    "spec_index": 10,
    "specs_run": 11,
-   "gpu_seconds": 13.049
+   "gpu_seconds": 19.4
   },
   {
    "instance": "fljsd@5b828eef",

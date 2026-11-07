@@ -1,0 +1,117 @@
+{
+ "kernel": "flce",
+ "tree": "395d6166e86f64f7c27f3c6e49cef89904add1aa",
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ },
+ "runs": [],
+ "targeted": {
+  "spec_file": "/atlas/u/pranavsb/kernel-verification/harness_only/targeted_specs/P2_flce_strides.json",
+  "reproduces": true,
+  "violations": [
+   "grad_compare",
+   "zero_upstream",
+   "layout_invariance"
+  ],
+  "errors": [],
+  "items": [
+   {
+    "name": "output",
+    "dtype": "float32",
+    "max_rel_err": 2.6689362212970405e-08,
+    "ratio": 0.013622591576039065,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_input",
+    "dtype": "float32",
+    "max_rel_err": 0.9409032043567315,
+    "ratio": 312305.7210180052,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_weight",
+    "dtype": "float32",
+    "max_rel_err": 0.9999999349575699,
+    "ratio": 382028.2758577505,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_bias",
+    "dtype": "float32",
+    "max_rel_err": 9.929389899507001e-08,
+    "ratio": 0.03639398131054724,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "props": {
+   "zero_upstream": {
+    "status": "fail",
+    "violations": {
+     "input": {
+      "nonzero_or_nonfinite": 345,
+      "numel": 384,
+      "max_abs": 0.02900845929980278
+     },
+     "weight": {
+      "nonzero_or_nonfinite": 585,
+      "numel": 640,
+      "max_abs": 0.16102036833763123
+     }
+    }
+   },
+   "layout_invariance": {
+    "status": "fail",
+    "violating_variants": [
+     "input:transposed",
+     "weight:transposed",
+     "all_non_contiguous"
+    ]
+   },
+   "no_mutation_without_grad": {
+    "status": "pass",
+    "violations": {}
+   },
+   "compile_matches_eager": {
+    "status": "inconclusive",
+    "backend": "inductor",
+    "reason": "eager already fails the tolerance rule"
+   },
+   "determinism": {
+    "status": "pass",
+    "nondeterministic": []
+   }
+  },
+  "seconds": 5.987
+ },
+ "summary": {
+  "n": 0,
+  "n_violating": 0,
+  "violations_by_check": {
+   "grad_compare": 0,
+   "zero_upstream": 0,
+   "layout_invariance": 0,
+   "no_mutation_without_grad": 0,
+   "compile_matches_eager": 0,
+   "determinism": 0
+  },
+  "n_errors": 0,
+  "max_ratio": null,
+  "p99_ratio": null,
+  "seconds": 6.0
+ }
+}

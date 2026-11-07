@@ -13,160 +13,184 @@
    "tensors": {
     "input": {
      "shape": [
-      3,
-      18
+      7,
+      7
      ],
      "dtype": "float32",
      "init": {
       "kind": "randn"
      },
-     "layout": "transposed"
+     "layout": "contiguous"
     },
     "weight": {
      "shape": [
-      16,
-      18
+      47,
+      7
      ],
      "dtype": "float32",
      "init": {
       "kind": "randn",
-      "std": 0.25353093739741456
+      "std": 1.7552250130184992
      },
-     "layout": "contiguous",
+     "layout": "transposed",
      "requires_grad": true
     },
     "target": {
      "shape": [
-      3
+      7
      ],
      "dtype": "int64",
      "init": {
       "kind": "randint",
       "low": 0,
-      "high": 16,
-      "ignore_frac": 0.4374023471347992,
-      "ignore_index": 1
+      "high": 47,
+      "ignore_frac": 0.4188305871844895,
+      "ignore_index": 0
      }
+    },
+    "bias": {
+     "shape": [
+      47
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn",
+      "std": 0.5
+     },
+     "layout": "contiguous",
+     "requires_grad": true
     }
    },
    "kwargs": {
-    "ignore_index": 1,
+    "ignore_index": 0,
     "reduction": "sum",
-    "label_smoothing": 0.0,
-    "lse_square_scale": 0.000679
+    "label_smoothing": 0.544,
+    "lse_square_scale": 0.0
    },
    "upstream": {
-    "kind": "ones"
+    "kind": "scalar",
+    "value": 1.049
    },
    "seed": 10
   },
   "violations": [
-   "zero_upstream"
+   "grad_compare",
+   "zero_upstream",
+   "layout_invariance"
   ],
   "spec_index": 10,
   "grad_items": [
    {
     "name": "output",
-    "max_rel_err": 4.0875374553111e-09,
-    "ratio": 0.0027182744949464754,
+    "max_rel_err": 7.040398040839186e-08,
+    "ratio": 0.03419036534847815,
     "passed": true,
     "reason": null
    },
    {
     "name": "grad_input",
-    "max_rel_err": 1.117194302344122e-07,
-    "ratio": 0.05030524941850232,
+    "max_rel_err": 1.7107407566031416e-07,
+    "ratio": 0.021475987849737675,
     "passed": true,
     "reason": null
    },
    {
     "name": "grad_weight",
-    "max_rel_err": 7.170871980386035e-08,
-    "ratio": 0.037471673361186085,
+    "max_rel_err": 0.04671107100482055,
+    "ratio": 5976.351036062136,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_bias",
+    "max_rel_err": 2.2739541916953962e-07,
+    "ratio": 0.03278336983788099,
     "passed": true,
     "reason": null
    }
   ],
   "properties": {
    "zero_upstream": "fail",
-   "layout_invariance": "pass",
+   "layout_invariance": "fail",
    "no_mutation_without_grad": "pass",
-   "compile_matches_eager": "pass",
+   "compile_matches_eager": "inconclusive",
    "determinism": "pass"
   }
  },
  "specs_run": 11,
- "gpu_seconds_used": 13.748,
- "wall_seconds": 13.749,
+ "gpu_seconds_used": 37.846,
+ "wall_seconds": 37.847,
  "n_spec_errors": 0,
  "log": [
   {
    "i": 0,
    "violations": [],
    "errors": [],
-   "seconds": 9.73
+   "seconds": 26.404
   },
   {
    "i": 1,
    "violations": [],
    "errors": [],
-   "seconds": 0.464
+   "seconds": 0.436
   },
   {
    "i": 2,
    "violations": [],
    "errors": [],
-   "seconds": 0.537
+   "seconds": 0.194
   },
   {
    "i": 3,
    "violations": [],
    "errors": [],
-   "seconds": 0.205
+   "seconds": 0.552
   },
   {
    "i": 4,
    "violations": [],
    "errors": [],
-   "seconds": 0.082
+   "seconds": 0.469
   },
   {
    "i": 5,
    "violations": [],
    "errors": [],
-   "seconds": 0.188
+   "seconds": 0.592
   },
   {
    "i": 6,
    "violations": [],
    "errors": [],
-   "seconds": 0.307
+   "seconds": 0.125
   },
   {
    "i": 7,
    "violations": [],
    "errors": [],
-   "seconds": 0.32
+   "seconds": 0.148
   },
   {
    "i": 8,
    "violations": [],
    "errors": [],
-   "seconds": 0.191
+   "seconds": 0.597
   },
   {
    "i": 9,
    "violations": [],
    "errors": [],
-   "seconds": 0.104
+   "seconds": 1.948
   },
   {
    "i": 10,
    "violations": [
-    "zero_upstream"
+    "grad_compare",
+    "zero_upstream",
+    "layout_invariance"
    ],
    "errors": [],
-   "seconds": 1.62
+   "seconds": 6.38
   }
  ],
  "env": {

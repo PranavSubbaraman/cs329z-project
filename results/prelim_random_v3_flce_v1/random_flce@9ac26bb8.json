@@ -1,0 +1,185 @@
+{
+ "method": "random_testing",
+ "kernel": "flce",
+ "tree": "9ac26bb82226c9279f0fda784300f5e02ce444b2",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "bug",
+ "counterexample": {
+  "spec": {
+   "tensors": {
+    "input": {
+     "shape": [
+      3,
+      18
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn"
+     },
+     "layout": "transposed"
+    },
+    "weight": {
+     "shape": [
+      16,
+      18
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn",
+      "std": 0.25353093739741456
+     },
+     "layout": "contiguous",
+     "requires_grad": true
+    },
+    "target": {
+     "shape": [
+      3
+     ],
+     "dtype": "int64",
+     "init": {
+      "kind": "randint",
+      "low": 0,
+      "high": 16,
+      "ignore_frac": 0.4374023471347992,
+      "ignore_index": 1
+     }
+    }
+   },
+   "kwargs": {
+    "ignore_index": 1,
+    "reduction": "sum",
+    "label_smoothing": 0.0,
+    "lse_square_scale": 0.000679
+   },
+   "upstream": {
+    "kind": "ones"
+   },
+   "seed": 10
+  },
+  "violations": [
+   "zero_upstream"
+  ],
+  "spec_index": 10,
+  "grad_items": [
+   {
+    "name": "output",
+    "max_rel_err": 4.0875374553111e-09,
+    "ratio": 0.0027182744949464754,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_input",
+    "max_rel_err": 1.117194302344122e-07,
+    "ratio": 0.05030524941850232,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_weight",
+    "max_rel_err": 7.170871980386035e-08,
+    "ratio": 0.037471673361186085,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "properties": {
+   "zero_upstream": "fail",
+   "layout_invariance": "pass",
+   "no_mutation_without_grad": "pass",
+   "compile_matches_eager": "pass",
+   "determinism": "pass"
+  }
+ },
+ "specs_run": 11,
+ "gpu_seconds_used": 13.049,
+ "wall_seconds": 13.05,
+ "n_spec_errors": 0,
+ "log": [
+  {
+   "i": 0,
+   "violations": [],
+   "errors": [],
+   "seconds": 7.158
+  },
+  {
+   "i": 1,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.746
+  },
+  {
+   "i": 2,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.681
+  },
+  {
+   "i": 3,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.435
+  },
+  {
+   "i": 4,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.159
+  },
+  {
+   "i": 5,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.456
+  },
+  {
+   "i": 6,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.349
+  },
+  {
+   "i": 7,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.622
+  },
+  {
+   "i": 8,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.405
+  },
+  {
+   "i": 9,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.308
+  },
+  {
+   "i": 10,
+   "violations": [
+    "zero_upstream"
+   ],
+   "errors": [],
+   "seconds": 1.729
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}

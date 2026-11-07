@@ -1,0 +1,306 @@
+{
+ "method": "random_testing",
+ "kernel": "flce",
+ "tree": "ae47958e39568874e3b21419130582a271f2a903",
+ "seed": 0,
+ "budget": {
+  "gpu_seconds": null,
+  "max_specs": 200
+ },
+ "verdict": "bug",
+ "counterexample": {
+  "spec": {
+   "tensors": {
+    "input": {
+     "shape": [
+      29,
+      6
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn"
+     },
+     "layout": "contiguous"
+    },
+    "weight": {
+     "shape": [
+      1,
+      6
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn",
+      "std": 1.5749442879789421
+     },
+     "layout": "contiguous",
+     "requires_grad": true
+    },
+    "target": {
+     "shape": [
+      29
+     ],
+     "dtype": "int64",
+     "init": {
+      "kind": "randint",
+      "low": 0,
+      "high": 1,
+      "ignore_frac": 0.0,
+      "ignore_index": -100
+     }
+    },
+    "bias": {
+     "shape": [
+      1
+     ],
+     "dtype": "float32",
+     "init": {
+      "kind": "randn",
+      "std": 0.5
+     },
+     "layout": "contiguous",
+     "requires_grad": true
+    }
+   },
+   "kwargs": {
+    "ignore_index": -100,
+    "reduction": "sum",
+    "label_smoothing": 0.649,
+    "lse_square_scale": 0.0
+   },
+   "upstream": {
+    "kind": "scalar",
+    "value": 1.134
+   },
+   "seed": 27
+  },
+  "violations": [
+   "grad_compare"
+  ],
+  "spec_index": 27,
+  "grad_items": [
+   {
+    "name": "output",
+    "max_rel_err": Infinity,
+    "ratio": 1.2564146381618524e+37,
+    "passed": false,
+    "reason": null
+   },
+   {
+    "name": "grad_input",
+    "max_rel_err": 0.0,
+    "ratio": 0.0,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_weight",
+    "max_rel_err": 0.0,
+    "ratio": 0.0,
+    "passed": true,
+    "reason": null
+   },
+   {
+    "name": "grad_bias",
+    "max_rel_err": 0.0,
+    "ratio": 0.0,
+    "passed": true,
+    "reason": null
+   }
+  ],
+  "properties": {
+   "zero_upstream": "pass",
+   "layout_invariance": "inconclusive",
+   "no_mutation_without_grad": "pass",
+   "determinism": "pass"
+  }
+ },
+ "specs_run": 28,
+ "gpu_seconds_used": 12.855,
+ "wall_seconds": 12.857,
+ "n_spec_errors": 0,
+ "log": [
+  {
+   "i": 0,
+   "violations": [],
+   "errors": [],
+   "seconds": 6.226
+  },
+  {
+   "i": 1,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.425
+  },
+  {
+   "i": 2,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.204
+  },
+  {
+   "i": 3,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.11
+  },
+  {
+   "i": 4,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.087
+  },
+  {
+   "i": 5,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.105
+  },
+  {
+   "i": 6,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.135
+  },
+  {
+   "i": 7,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.162
+  },
+  {
+   "i": 8,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.091
+  },
+  {
+   "i": 9,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.085
+  },
+  {
+   "i": 10,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.891
+  },
+  {
+   "i": 11,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.319
+  },
+  {
+   "i": 12,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.211
+  },
+  {
+   "i": 13,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.116
+  },
+  {
+   "i": 14,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.103
+  },
+  {
+   "i": 15,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.154
+  },
+  {
+   "i": 16,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.185
+  },
+  {
+   "i": 17,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.093
+  },
+  {
+   "i": 18,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.396
+  },
+  {
+   "i": 19,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.165
+  },
+  {
+   "i": 20,
+   "violations": [],
+   "errors": [],
+   "seconds": 1.172
+  },
+  {
+   "i": 21,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.164
+  },
+  {
+   "i": 22,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.302
+  },
+  {
+   "i": 23,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.249
+  },
+  {
+   "i": 24,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.184
+  },
+  {
+   "i": 25,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.251
+  },
+  {
+   "i": 26,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.198
+  },
+  {
+   "i": 27,
+   "violations": [
+    "grad_compare"
+   ],
+   "errors": [],
+   "seconds": 0.073
+  }
+ ],
+ "env": {
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "torch": "2.15.0+cu132",
+  "triton": "3.9.0",
+  "triton_interpret": false,
+  "cuda_available": true,
+  "backend": "cuda:NVIDIA RTX A4000",
+  "gpu": "NVIDIA RTX A4000",
+  "capability": "8.6",
+  "cuda_runtime": "13.2",
+  "driver": "610.43.02"
+ }
+}

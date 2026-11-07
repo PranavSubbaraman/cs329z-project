@@ -7,1296 +7,1212 @@
   "gpu_seconds": null,
   "max_specs": 200
  },
- "verdict": "bug",
- "counterexample": {
-  "spec": {
-   "tensors": {
-    "input": {
-     "shape": [
-      16,
-      31
-     ],
-     "dtype": "float32",
-     "init": {
-      "kind": "randn"
-     },
-     "layout": "contiguous"
-    },
-    "weight": {
-     "shape": [
-      1,
-      31
-     ],
-     "dtype": "float32",
-     "init": {
-      "kind": "randn",
-      "std": 0.14737336141797894
-     },
-     "layout": "contiguous",
-     "requires_grad": true
-    },
-    "target": {
-     "shape": [
-      16
-     ],
-     "dtype": "int64",
-     "init": {
-      "kind": "randint",
-      "low": 0,
-      "high": 1,
-      "ignore_frac": 0.0,
-      "ignore_index": -100
-     }
-    },
-    "bias": {
-     "shape": [
-      1
-     ],
-     "dtype": "float32",
-     "init": {
-      "kind": "randn",
-      "std": 0.5
-     },
-     "layout": "offset:3",
-     "requires_grad": true
-    }
-   },
-   "kwargs": {
-    "ignore_index": -100,
-    "reduction": "none",
-    "label_smoothing": 0.845,
-    "lse_square_scale": 0.0
-   },
-   "upstream": {
-    "kind": "randn",
-    "std": 1.0,
-    "layout": "contiguous"
-   },
-   "seed": 195
-  },
-  "violations": [
-   "grad_compare"
-  ],
-  "spec_index": 195,
-  "grad_items": [
-   {
-    "name": "output",
-    "max_rel_err": Infinity,
-    "ratio": 0.009179183826519952,
-    "passed": true,
-    "reason": null
-   },
-   {
-    "name": "grad_input",
-    "max_rel_err": Infinity,
-    "ratio": 4.9586787891636e+35,
-    "passed": false,
-    "reason": null
-   },
-   {
-    "name": "grad_weight",
-    "max_rel_err": Infinity,
-    "ratio": 7.887322520589641e+36,
-    "passed": false,
-    "reason": null
-   },
-   {
-    "name": "grad_bias",
-    "max_rel_err": Infinity,
-    "ratio": 3.043029336999344e+36,
-    "passed": false,
-    "reason": null
-   }
-  ],
-  "properties": {
-   "zero_upstream": "pass",
-   "layout_invariance": "inconclusive",
-   "no_mutation_without_grad": "pass",
-   "determinism": "pass"
-  }
- },
- "specs_run": 196,
- "gpu_seconds_used": 245.192,
- "wall_seconds": 245.208,
+ "verdict": "no_bug",
+ "counterexample": null,
+ "specs_run": 200,
+ "gpu_seconds_used": 217.271,
+ "wall_seconds": 217.29,
  "n_spec_errors": 0,
  "log": [
   {
    "i": 0,
    "violations": [],
    "errors": [],
-   "seconds": 7.533
+   "seconds": 11.185
   },
   {
    "i": 1,
    "violations": [],
    "errors": [],
-   "seconds": 0.427
+   "seconds": 0.604
   },
   {
    "i": 2,
    "violations": [],
    "errors": [],
-   "seconds": 0.172
+   "seconds": 0.272
   },
   {
    "i": 3,
    "violations": [],
    "errors": [],
-   "seconds": 0.106
+   "seconds": 0.148
   },
   {
    "i": 4,
    "violations": [],
    "errors": [],
-   "seconds": 0.094
+   "seconds": 0.105
   },
   {
    "i": 5,
    "violations": [],
    "errors": [],
-   "seconds": 0.092
+   "seconds": 0.134
   },
   {
    "i": 6,
    "violations": [],
    "errors": [],
-   "seconds": 0.12
+   "seconds": 0.192
   },
   {
    "i": 7,
    "violations": [],
    "errors": [],
-   "seconds": 0.155
+   "seconds": 0.222
   },
   {
    "i": 8,
    "violations": [],
    "errors": [],
-   "seconds": 0.102
+   "seconds": 0.17
   },
   {
    "i": 9,
    "violations": [],
    "errors": [],
-   "seconds": 0.087
+   "seconds": 0.313
   },
   {
    "i": 10,
    "violations": [],
    "errors": [],
-   "seconds": 1.204
+   "seconds": 1.842
   },
   {
    "i": 11,
    "violations": [],
    "errors": [],
-   "seconds": 0.92
+   "seconds": 2.453
   },
   {
    "i": 12,
    "violations": [],
    "errors": [],
-   "seconds": 0.61
+   "seconds": 0.58
   },
   {
    "i": 13,
    "violations": [],
    "errors": [],
-   "seconds": 0.319
+   "seconds": 0.494
   },
   {
    "i": 14,
    "violations": [],
    "errors": [],
-   "seconds": 0.216
+   "seconds": 0.695
   },
   {
    "i": 15,
    "violations": [],
    "errors": [],
-   "seconds": 0.264
+   "seconds": 0.535
   },
   {
    "i": 16,
    "violations": [],
    "errors": [],
-   "seconds": 0.354
+   "seconds": 0.721
   },
   {
    "i": 17,
    "violations": [],
    "errors": [],
-   "seconds": 0.371
+   "seconds": 0.739
   },
   {
    "i": 18,
    "violations": [],
    "errors": [],
-   "seconds": 0.822
+   "seconds": 0.561
   },
   {
    "i": 19,
    "violations": [],
    "errors": [],
-   "seconds": 0.365
+   "seconds": 0.973
   },
   {
    "i": 20,
    "violations": [],
    "errors": [],
-   "seconds": 4.392
+   "seconds": 3.198
   },
   {
    "i": 21,
    "violations": [],
    "errors": [],
-   "seconds": 0.24
+   "seconds": 0.092
   },
   {
    "i": 22,
    "violations": [],
    "errors": [],
-   "seconds": 0.488
+   "seconds": 0.647
   },
   {
    "i": 23,
    "violations": [],
    "errors": [],
-   "seconds": 0.211
+   "seconds": 0.558
   },
   {
    "i": 24,
    "violations": [],
    "errors": [],
-   "seconds": 0.288
+   "seconds": 1.432
   },
   {
    "i": 25,
    "violations": [],
    "errors": [],
-   "seconds": 0.48
+   "seconds": 0.735
   },
   {
    "i": 26,
    "violations": [],
    "errors": [],
-   "seconds": 0.137
+   "seconds": 2.33
   },
   {
    "i": 27,
    "violations": [],
    "errors": [],
-   "seconds": 0.41
+   "seconds": 1.726
   },
   {
    "i": 28,
    "violations": [],
    "errors": [],
-   "seconds": 1.517
+   "seconds": 2.422
   },
   {
    "i": 29,
    "violations": [],
    "errors": [],
-   "seconds": 0.84
+   "seconds": 0.817
   },
   {
    "i": 30,
    "violations": [],
    "errors": [],
-   "seconds": 2.6
+   "seconds": 2.406
   },
   {
    "i": 31,
    "violations": [],
    "errors": [],
-   "seconds": 0.36
+   "seconds": 1.841
   },
   {
    "i": 32,
    "violations": [],
    "errors": [],
-   "seconds": 1.111
+   "seconds": 0.653
   },
   {
    "i": 33,
    "violations": [],
    "errors": [],
-   "seconds": 0.05
+   "seconds": 1.649
   },
   {
    "i": 34,
    "violations": [],
    "errors": [],
-   "seconds": 2.111
+   "seconds": 0.847
   },
   {
    "i": 35,
    "violations": [],
    "errors": [],
-   "seconds": 0.803
+   "seconds": 0.572
   },
   {
    "i": 36,
    "violations": [],
    "errors": [],
-   "seconds": 0.472
+   "seconds": 0.511
   },
   {
    "i": 37,
    "violations": [],
    "errors": [],
-   "seconds": 0.598
+   "seconds": 0.692
   },
   {
    "i": 38,
    "violations": [],
    "errors": [],
-   "seconds": 0.378
+   "seconds": 0.435
   },
   {
    "i": 39,
    "violations": [],
    "errors": [],
-   "seconds": 0.407
+   "seconds": 0.503
   },
   {
    "i": 40,
    "violations": [],
    "errors": [],
-   "seconds": 1.843
+   "seconds": 1.698
   },
   {
    "i": 41,
    "violations": [],
    "errors": [],
-   "seconds": 1.088
+   "seconds": 0.178
   },
   {
    "i": 42,
    "violations": [],
    "errors": [],
-   "seconds": 0.613
+   "seconds": 0.558
   },
   {
    "i": 43,
    "violations": [],
    "errors": [],
-   "seconds": 2.124
+   "seconds": 0.391
   },
   {
    "i": 44,
    "violations": [],
    "errors": [],
-   "seconds": 0.727
+   "seconds": 0.76
   },
   {
    "i": 45,
    "violations": [],
    "errors": [],
-   "seconds": 0.361
+   "seconds": 0.166
   },
   {
    "i": 46,
    "violations": [],
    "errors": [],
-   "seconds": 0.765
+   "seconds": 0.782
   },
   {
    "i": 47,
    "violations": [],
    "errors": [],
-   "seconds": 2.173
+   "seconds": 0.252
   },
   {
    "i": 48,
    "violations": [],
    "errors": [],
-   "seconds": 0.699
+   "seconds": 0.212
   },
   {
    "i": 49,
    "violations": [],
    "errors": [],
-   "seconds": 2.379
+   "seconds": 1.906
   },
   {
    "i": 50,
    "violations": [],
    "errors": [],
-   "seconds": 11.867
+   "seconds": 8.359
   },
   {
    "i": 51,
    "violations": [],
    "errors": [],
-   "seconds": 0.961
+   "seconds": 0.904
   },
   {
    "i": 52,
    "violations": [],
    "errors": [],
-   "seconds": 1.4
+   "seconds": 0.209
   },
   {
    "i": 53,
    "violations": [],
    "errors": [],
-   "seconds": 2.149
+   "seconds": 0.348
   },
   {
    "i": 54,
    "violations": [],
    "errors": [],
-   "seconds": 0.505
+   "seconds": 0.579
   },
   {
    "i": 55,
    "violations": [],
    "errors": [],
-   "seconds": 0.536
+   "seconds": 0.878
   },
   {
    "i": 56,
    "violations": [],
    "errors": [],
-   "seconds": 0.511
+   "seconds": 0.471
   },
   {
    "i": 57,
    "violations": [],
    "errors": [],
-   "seconds": 0.392
+   "seconds": 0.552
   },
   {
    "i": 58,
    "violations": [],
    "errors": [],
-   "seconds": 0.555
+   "seconds": 0.146
   },
   {
    "i": 59,
    "violations": [],
    "errors": [],
-   "seconds": 2.735
+   "seconds": 0.381
   },
   {
    "i": 60,
    "violations": [],
    "errors": [],
-   "seconds": 2.676
+   "seconds": 2.288
   },
   {
    "i": 61,
    "violations": [],
    "errors": [],
-   "seconds": 0.527
+   "seconds": 0.425
   },
   {
    "i": 62,
    "violations": [],
    "errors": [],
-   "seconds": 0.53
+   "seconds": 0.111
   },
   {
    "i": 63,
    "violations": [],
    "errors": [],
-   "seconds": 0.948
+   "seconds": 0.187
   },
   {
    "i": 64,
    "violations": [],
    "errors": [],
-   "seconds": 0.684
+   "seconds": 0.288
   },
   {
    "i": 65,
    "violations": [],
    "errors": [],
-   "seconds": 0.596
+   "seconds": 0.758
   },
   {
    "i": 66,
    "violations": [],
    "errors": [],
-   "seconds": 0.877
+   "seconds": 0.673
   },
   {
    "i": 67,
    "violations": [],
    "errors": [],
-   "seconds": 0.689
+   "seconds": 0.775
   },
   {
    "i": 68,
    "violations": [],
    "errors": [],
-   "seconds": 1.419
+   "seconds": 0.923
   },
   {
    "i": 69,
    "violations": [],
    "errors": [],
-   "seconds": 0.968
+   "seconds": 1.889
   },
   {
    "i": 70,
    "violations": [],
    "errors": [],
-   "seconds": 2.14
+   "seconds": 4.899
   },
   {
    "i": 71,
    "violations": [],
    "errors": [],
-   "seconds": 0.702
+   "seconds": 0.537
   },
   {
    "i": 72,
    "violations": [],
    "errors": [],
-   "seconds": 1.679
+   "seconds": 0.093
   },
   {
    "i": 73,
    "violations": [],
    "errors": [],
-   "seconds": 0.675
+   "seconds": 0.491
   },
   {
    "i": 74,
    "violations": [],
    "errors": [],
-   "seconds": 0.59
+   "seconds": 0.467
   },
   {
    "i": 75,
    "violations": [],
    "errors": [],
-   "seconds": 2.268
+   "seconds": 1.614
   },
   {
    "i": 76,
    "violations": [],
    "errors": [],
-   "seconds": 2.431
+   "seconds": 0.703
   },
   {
    "i": 77,
    "violations": [],
    "errors": [],
-   "seconds": 0.72
+   "seconds": 0.754
   },
   {
    "i": 78,
    "violations": [],
    "errors": [],
-   "seconds": 1.346
+   "seconds": 0.178
   },
   {
    "i": 79,
    "violations": [],
    "errors": [],
-   "seconds": 0.583
+   "seconds": 1.561
   },
   {
    "i": 80,
    "violations": [],
    "errors": [],
-   "seconds": 7.134
+   "seconds": 3.035
   },
   {
    "i": 81,
    "violations": [],
    "errors": [],
-   "seconds": 0.8
+   "seconds": 0.118
   },
   {
    "i": 82,
    "violations": [],
    "errors": [],
-   "seconds": 1.505
+   "seconds": 0.589
   },
   {
    "i": 83,
    "violations": [],
    "errors": [],
-   "seconds": 1.483
+   "seconds": 1.867
   },
   {
    "i": 84,
    "violations": [],
    "errors": [],
-   "seconds": 1.644
+   "seconds": 0.562
   },
   {
    "i": 85,
    "violations": [],
    "errors": [],
-   "seconds": 0.595
+   "seconds": 1.143
   },
   {
    "i": 86,
    "violations": [],
    "errors": [],
-   "seconds": 0.551
+   "seconds": 0.708
   },
   {
    "i": 87,
    "violations": [],
    "errors": [],
-   "seconds": 0.525
+   "seconds": 0.53
   },
   {
    "i": 88,
    "violations": [],
    "errors": [],
-   "seconds": 1.76
+   "seconds": 2.034
   },
   {
    "i": 89,
    "violations": [],
    "errors": [],
-   "seconds": 2.635
+   "seconds": 1.16
   },
   {
    "i": 90,
    "violations": [],
    "errors": [],
-   "seconds": 2.772
+   "seconds": 3.736
   },
   {
    "i": 91,
    "violations": [],
    "errors": [],
-   "seconds": 0.647
+   "seconds": 1.742
   },
   {
    "i": 92,
    "violations": [],
    "errors": [],
-   "seconds": 0.606
+   "seconds": 2.037
   },
   {
    "i": 93,
    "violations": [],
    "errors": [],
-   "seconds": 0.599
+   "seconds": 1.988
   },
   {
    "i": 94,
    "violations": [],
    "errors": [],
-   "seconds": 0.616
+   "seconds": 0.801
   },
   {
    "i": 95,
    "violations": [],
    "errors": [],
-   "seconds": 0.633
+   "seconds": 0.738
   },
   {
    "i": 96,
    "violations": [],
    "errors": [],
-   "seconds": 2.013
+   "seconds": 0.118
   },
   {
    "i": 97,
    "violations": [],
    "errors": [],
-   "seconds": 0.478
+   "seconds": 0.404
   },
   {
    "i": 98,
    "violations": [],
    "errors": [],
-   "seconds": 1.386
+   "seconds": 0.718
   },
   {
    "i": 99,
    "violations": [],
    "errors": [],
-   "seconds": 0.606
+   "seconds": 0.998
   },
   {
    "i": 100,
    "violations": [],
    "errors": [],
-   "seconds": 3.689
+   "seconds": 3.589
   },
   {
    "i": 101,
    "violations": [],
    "errors": [],
-   "seconds": 0.658
+   "seconds": 0.684
   },
   {
    "i": 102,
    "violations": [],
    "errors": [],
-   "seconds": 0.363
+   "seconds": 0.739
   },
   {
    "i": 103,
    "violations": [],
    "errors": [],
-   "seconds": 2.586
+   "seconds": 1.369
   },
   {
    "i": 104,
    "violations": [],
    "errors": [],
-   "seconds": 0.681
+   "seconds": 0.137
   },
   {
    "i": 105,
    "violations": [],
    "errors": [],
-   "seconds": 1.032
+   "seconds": 0.577
   },
   {
    "i": 106,
    "violations": [],
    "errors": [],
-   "seconds": 0.516
+   "seconds": 0.546
   },
   {
    "i": 107,
    "violations": [],
    "errors": [],
-   "seconds": 0.675
+   "seconds": 0.1
   },
   {
    "i": 108,
    "violations": [],
    "errors": [],
-   "seconds": 2.087
+   "seconds": 0.238
   },
   {
    "i": 109,
    "violations": [],
    "errors": [],
-   "seconds": 1.386
+   "seconds": 0.18
   },
   {
    "i": 110,
    "violations": [],
    "errors": [],
-   "seconds": 2.067
+   "seconds": 1.892
   },
   {
    "i": 111,
    "violations": [],
    "errors": [],
-   "seconds": 1.028
+   "seconds": 0.3
   },
   {
    "i": 112,
    "violations": [],
    "errors": [],
-   "seconds": 0.563
+   "seconds": 0.217
   },
   {
    "i": 113,
    "violations": [],
    "errors": [],
-   "seconds": 0.676
+   "seconds": 0.57
   },
   {
    "i": 114,
    "violations": [],
    "errors": [],
-   "seconds": 0.507
+   "seconds": 0.629
   },
   {
    "i": 115,
    "violations": [],
    "errors": [],
-   "seconds": 2.164
+   "seconds": 0.519
   },
   {
    "i": 116,
    "violations": [],
    "errors": [],
-   "seconds": 0.445
+   "seconds": 0.529
   },
   {
    "i": 117,
    "violations": [],
    "errors": [],
-   "seconds": 0.867
+   "seconds": 0.105
   },
   {
    "i": 118,
    "violations": [],
    "errors": [],
-   "seconds": 0.395
+   "seconds": 1.091
   },
   {
    "i": 119,
    "violations": [],
    "errors": [],
-   "seconds": 0.758
+   "seconds": 0.698
   },
   {
    "i": 120,
    "violations": [],
    "errors": [],
-   "seconds": 5.573
+   "seconds": 4.108
   },
   {
    "i": 121,
    "violations": [],
    "errors": [],
-   "seconds": 2.266
+   "seconds": 0.231
   },
   {
    "i": 122,
    "violations": [],
    "errors": [],
-   "seconds": 1.906
+   "seconds": 0.261
   },
   {
    "i": 123,
    "violations": [],
    "errors": [],
-   "seconds": 0.583
+   "seconds": 0.645
   },
   {
    "i": 124,
    "violations": [],
    "errors": [],
-   "seconds": 1.059
+   "seconds": 1.053
   },
   {
    "i": 125,
    "violations": [],
    "errors": [],
-   "seconds": 0.633
+   "seconds": 0.68
   },
   {
    "i": 126,
    "violations": [],
    "errors": [],
-   "seconds": 0.473
+   "seconds": 0.479
   },
   {
    "i": 127,
    "violations": [],
    "errors": [],
-   "seconds": 0.562
+   "seconds": 0.125
   },
   {
    "i": 128,
    "violations": [],
    "errors": [],
-   "seconds": 0.259
+   "seconds": 0.497
   },
   {
    "i": 129,
    "violations": [],
    "errors": [],
-   "seconds": 0.512
+   "seconds": 0.516
   },
   {
    "i": 130,
    "violations": [],
    "errors": [],
-   "seconds": 3.148
+   "seconds": 2.418
   },
   {
    "i": 131,
    "violations": [],
    "errors": [],
-   "seconds": 0.664
+   "seconds": 0.06
   },
   {
    "i": 132,
    "violations": [],
    "errors": [],
-   "seconds": 0.714
+   "seconds": 0.124
   },
   {
    "i": 133,
    "violations": [],
    "errors": [],
-   "seconds": 0.12
+   "seconds": 1.194
   },
   {
    "i": 134,
    "violations": [],
    "errors": [],
-   "seconds": 0.718
+   "seconds": 0.721
   },
   {
    "i": 135,
    "violations": [],
    "errors": [],
-   "seconds": 0.425
+   "seconds": 0.343
   },
   {
    "i": 136,
    "violations": [],
    "errors": [],
-   "seconds": 0.893
+   "seconds": 1.233
   },
   {
    "i": 137,
    "violations": [],
    "errors": [],
-   "seconds": 0.981
+   "seconds": 0.319
   },
   {
    "i": 138,
    "violations": [],
    "errors": [],
-   "seconds": 0.643
+   "seconds": 0.67
   },
   {
    "i": 139,
    "violations": [],
    "errors": [],
-   "seconds": 1.84
+   "seconds": 1.151
   },
   {
    "i": 140,
    "violations": [],
    "errors": [],
-   "seconds": 2.469
+   "seconds": 2.036
   },
   {
    "i": 141,
    "violations": [],
    "errors": [],
-   "seconds": 0.457
+   "seconds": 0.557
   },
   {
    "i": 142,
    "violations": [],
    "errors": [],
-   "seconds": 0.72
+   "seconds": 0.546
   },
   {
    "i": 143,
    "violations": [],
    "errors": [],
-   "seconds": 0.557
+   "seconds": 0.591
   },
   {
    "i": 144,
    "violations": [],
    "errors": [],
-   "seconds": 0.789
+   "seconds": 1.443
   },
   {
    "i": 145,
    "violations": [],
    "errors": [],
-   "seconds": 0.419
+   "seconds": 2.31
   },
   {
    "i": 146,
    "violations": [],
    "errors": [],
-   "seconds": 2.061
+   "seconds": 0.636
   },
   {
    "i": 147,
    "violations": [],
    "errors": [],
-   "seconds": 0.545
+   "seconds": 1.656
   },
   {
    "i": 148,
    "violations": [],
    "errors": [],
-   "seconds": 0.495
+   "seconds": 1.349
   },
   {
    "i": 149,
    "violations": [],
    "errors": [],
-   "seconds": 1.279
+   "seconds": 0.443
   },
   {
    "i": 150,
    "violations": [],
    "errors": [],
-   "seconds": 5.091
+   "seconds": 6.634
   },
   {
    "i": 151,
    "violations": [],
    "errors": [],
-   "seconds": 2.516
+   "seconds": 1.166
   },
   {
    "i": 152,
    "violations": [],
    "errors": [],
-   "seconds": 2.332
+   "seconds": 1.211
   },
   {
    "i": 153,
    "violations": [],
    "errors": [],
-   "seconds": 0.832
+   "seconds": 1.549
   },
   {
    "i": 154,
    "violations": [],
    "errors": [],
-   "seconds": 0.553
+   "seconds": 0.514
   },
   {
    "i": 155,
    "violations": [],
    "errors": [],
-   "seconds": 0.822
+   "seconds": 0.524
   },
   {
    "i": 156,
    "violations": [],
    "errors": [],
-   "seconds": 2.281
+   "seconds": 0.494
   },
   {
    "i": 157,
    "violations": [],
    "errors": [],
-   "seconds": 0.491
+   "seconds": 0.618
   },
   {
    "i": 158,
    "violations": [],
    "errors": [],
-   "seconds": 0.73
+   "seconds": 0.952
   },
   {
    "i": 159,
    "violations": [],
    "errors": [],
-   "seconds": 2.067
+   "seconds": 2.212
   },
   {
    "i": 160,
    "violations": [],
    "errors": [],
-   "seconds": 2.543
+   "seconds": 2.072
   },
   {
    "i": 161,
    "violations": [],
    "errors": [],
-   "seconds": 1.309
+   "seconds": 0.061
   },
   {
    "i": 162,
    "violations": [],
    "errors": [],
-   "seconds": 2.303
+   "seconds": 0.48
   },
   {
    "i": 163,
    "violations": [],
    "errors": [],
-   "seconds": 0.68
+   "seconds": 0.596
   },
   {
    "i": 164,
    "violations": [],
    "errors": [],
-   "seconds": 0.736
+   "seconds": 1.232
   },
   {
    "i": 165,
    "violations": [],
    "errors": [],
-   "seconds": 0.987
+   "seconds": 0.37
   },
   {
    "i": 166,
    "violations": [],
    "errors": [],
-   "seconds": 2.073
+   "seconds": 0.623
   },
   {
    "i": 167,
    "violations": [],
    "errors": [],
-   "seconds": 2.404
+   "seconds": 0.525
   },
   {
    "i": 168,
    "violations": [],
    "errors": [],
-   "seconds": 0.759
+   "seconds": 1.298
   },
   {
    "i": 169,
    "violations": [],
    "errors": [],
-   "seconds": 1.114
+   "seconds": 0.7
   },
   {
    "i": 170,
    "violations": [],
    "errors": [],
-   "seconds": 2.651
+   "seconds": 10.668
   },
   {
    "i": 171,
    "violations": [],
    "errors": [],
-   "seconds": 0.691
+   "seconds": 0.469
   },
   {
    "i": 172,
    "violations": [],
    "errors": [],
-   "seconds": 0.653
+   "seconds": 0.474
   },
   {
    "i": 173,
    "violations": [],
    "errors": [],
-   "seconds": 0.701
+   "seconds": 0.104
   },
   {
    "i": 174,
    "violations": [],
    "errors": [],
-   "seconds": 0.822
+   "seconds": 1.011
   },
   {
    "i": 175,
    "violations": [],
    "errors": [],
-   "seconds": 0.508
+   "seconds": 0.995
   },
   {
    "i": 176,
    "violations": [],
    "errors": [],
-   "seconds": 0.523
+   "seconds": 0.465
   },
   {
    "i": 177,
    "violations": [],
    "errors": [],
-   "seconds": 0.649
+   "seconds": 0.452
   },
   {
    "i": 178,
    "violations": [],
    "errors": [],
-   "seconds": 0.702
+   "seconds": 1.416
   },
   {
    "i": 179,
    "violations": [],
    "errors": [],
-   "seconds": 0.477
+   "seconds": 0.431
   },
   {
    "i": 180,
    "violations": [],
    "errors": [],
-   "seconds": 9.491
+   "seconds": 1.911
   },
   {
    "i": 181,
    "violations": [],
    "errors": [],
-   "seconds": 1.137
+   "seconds": 0.624
   },
   {
    "i": 182,
    "violations": [],
    "errors": [],
-   "seconds": 1.152
+   "seconds": 1.025
   },
   {
    "i": 183,
    "violations": [],
    "errors": [],
-   "seconds": 1.476
+   "seconds": 0.457
   },
   {
    "i": 184,
    "violations": [],
    "errors": [],
-   "seconds": 2.395
+   "seconds": 2.607
   },
   {
    "i": 185,
    "violations": [],
    "errors": [],
-   "seconds": 0.624
+   "seconds": 2.662
   },
   {
    "i": 186,
    "violations": [],
    "errors": [],
-   "seconds": 1.978
+   "seconds": 0.254
   },
   {
    "i": 187,
    "violations": [],
    "errors": [],
-   "seconds": 0.489
+   "seconds": 1.949
   },
   {
    "i": 188,
    "violations": [],
    "errors": [],
-   "seconds": 0.09
+   "seconds": 0.856
   },
   {
    "i": 189,
    "violations": [],
    "errors": [],
-   "seconds": 0.59
+   "seconds": 0.123
   },
   {
    "i": 190,
    "violations": [],
    "errors": [],
-   "seconds": 6.196
+   "seconds": 2.172
   },
   {
    "i": 191,
    "violations": [],
    "errors": [],
-   "seconds": 0.607
+   "seconds": 1.879
   },
   {
    "i": 192,
    "violations": [],
    "errors": [],
-   "seconds": 0.74
+   "seconds": 0.553
   },
   {
    "i": 193,
    "violations": [],
    "errors": [],
-   "seconds": 0.691
+   "seconds": 0.261
   },
   {
    "i": 194,
    "violations": [],
    "errors": [],
-   "seconds": 0.57
+   "seconds": 0.708
   },
   {
    "i": 195,
-   "violations": [
-    "grad_compare"
-   ],
+   "violations": [],
    "errors": [],
-   "seconds": 0.416
+   "seconds": 0.281
+  },
+  {
+   "i": 196,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.189
+  },
+  {
+   "i": 197,
+   "violations": [],
+   "errors": [],
+   "seconds": 1.031
+  },
+  {
+   "i": 198,
+   "violations": [],
+   "errors": [],
+   "seconds": 2.121
+  },
+  {
+   "i": 199,
+   "violations": [],
+   "errors": [],
+   "seconds": 0.81
   }
  ],
  "env": {
