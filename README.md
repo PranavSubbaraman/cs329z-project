@@ -23,7 +23,7 @@ Each step below was tested on a fresh clone. Times and costs are from those runs
 
 ```bash
 git clone https://github.com/PranavSubbaraman/cs329z-project.git
-cd cs329z-project            # results are on the `dev` branch: git checkout dev
+cd cs329z-project
 ```
 
 **Linux with a CUDA GPU:** pip pulls the matching Triton wheel.
