@@ -18,7 +18,6 @@ Each step below was tested on a fresh clone. Times and costs are from those runs
 | Driver | – | one that supports CUDA 13 (torch 2.15.0 wheels bundle CUDA 13.2; results used driver 610) |
 | Disk | ~3 GB (+ ~7 GB to build Triton on macOS) | ~6 GB |
 
-All instances run on the CPU interpreter except the precision pair (`fljsd`). That pair's fix only takes effect on CUDA with compute capability ≥ 8, so on CPU the buggy and fixed versions behave identically.
 
 ## 2. Install
 
