@@ -36,12 +36,12 @@ python3 -m venv .venv
 ```bash
 uv venv --seed --python 3.12 .venv          # or: python3.12 -m venv .venv
 uv pip install --python .venv/bin/python -r requirements.txt
-./scripts/install_triton_macos.sh            # clones + builds triton v3.9.0 into .deps/ (~15-25 min, ~7 GB)
+./scripts/install_triton_macos.sh            # clones + builds triton v3.9.0 into .deps/
 ```
 
 Check the install:
 ```bash
-.venv/bin/python -m pytest tests -q          # 582 reference math checks, ~5 s
+.venv/bin/python -m pytest tests -q
 TRITON_INTERPRET=1 .venv/bin/python scripts/env_report.py   # or omit TRITON_INTERPRET on a GPU
 ```
 
@@ -67,7 +67,7 @@ Every call records the serving provider, tokens and cost (`agent/llm.py`). `pyth
 The agent sees an exported Liger-Kernel source tree (no `.git`, so no history or commit messages) at one commit. This downloads those trees from GitHub into `work/trees/`, about 40 MB per commit:
 
 ```bash
-.venv/bin/python scripts/export_trees.py               # all 9 instances (~1 min)
+.venv/bin/python scripts/export_trees.py               # all 9 instances
 .venv/bin/python scripts/export_trees.py --kernel tvd  # just the TVD pair (quick start)
 ```
 
@@ -103,7 +103,7 @@ More examples. Instances are listed in `benchmark/instances.json`; `--condition`
 .venv/bin/python scripts/run_agent.py --instance ce@8c7a5078 --condition static
 ```
 
-**No API key?** `./demo_midway.sh` reproduces the headline TVD result in about 20 s. It runs Liger's recorded test result, random testing, and a live replay of the agent's recorded counterexample on both commits. It needs `export_trees.py --kernel tvd` first.
+I have a script called `./demo_midway.sh` that reproduces the TVD result if an API key is not available. It runs Liger's recorded test result, random testing, and a live replay of the agent's recorded counterexample on both commits. It needs `export_trees.py --kernel tvd` first.
 
 ## 6. Reproduce the evaluation
 
