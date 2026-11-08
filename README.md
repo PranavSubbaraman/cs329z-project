@@ -128,14 +128,6 @@ To re-run everything from scratch on a Linux GPU machine, use these scripts from
 
 The metrics, scoring rules and budgets were fixed in advance in **`PREREGISTRATION.md`**, including every deviation and why it was made. On a buggy instance, a bug claim counts as a detection only if the harness replays its counterexample. On a fixed instance, an unconfirmed claim is a false alarm.
 
-**On a Slurm cluster** (how the reported runs were made, on Stanford SC): allocate a GPU, then run the scripts inside the allocation.
-```bash
-salloc --no-shell --partition=<gpu-partition> --account=<account> --gres=gpu:1 --cpus-per-task=4 --mem=16G --time=04:00:00
-srun --jobid=<jobid> --overlap scripts/gpu/setup_env_linux.sh        # once
-srun --jobid=<jobid> --overlap scripts/gpu/phase1_gpu.sh             # etc.
-```
-The agent needs outbound HTTPS to `openrouter.ai` from the compute node; `phase1_gpu.sh` checks this. Put the key in `.env` with `chmod 600`.
-
 ## 7. Repository layout
 
 | Path | What it is |
