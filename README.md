@@ -1,6 +1,6 @@
 # Finding silent gradient bugs in Triton training kernels
 
-CS 329Z project. An LLM agent reads a fused Triton kernel's source (from [Liger-Kernel](https://github.com/linkedin/Liger-Kernel)), guesses which input condition could break its hand-written backward pass, builds inputs that trigger it, and checks the gradients against a float64 PyTorch reference. It can also use Z3 to search for counterexamples or prove equivalence. Bug claims count only if the harness can replay them.
+An LLM agent reads a fused Triton kernel's source (from [Liger-Kernel](https://github.com/linkedin/Liger-Kernel)), guesses which input condition could break its hand-written backward pass, builds inputs that trigger it, and checks the gradients against a float64 PyTorch reference. It can also use Z3 to search for counterexamples or prove equivalence. Bug claims count only if the harness can replay them.
 
 The benchmark is 5 real Liger-Kernel bugs (logic, index arithmetic, gradient formula, precision, side effect), as 9 buggy/fixed instances. The agent is compared against Liger's own tests, random differential testing, and a static LLM review that can read the code but not run it.
 
